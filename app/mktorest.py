@@ -4,7 +4,7 @@ import time
 import httplib2
 import json
 import logging
-import settings
+#import settings
 
 # TODO
 
@@ -46,7 +46,7 @@ def listify_parameter(name, values):
     """
     query_string = ""
     for ii in range(len(values)):
-        query_string += "&"+str(name)+"="str(values[ii])
+        query_string += "&"+str(name)+"="+str(values[ii])
     return query_string
 
 ############################################################################################
@@ -151,7 +151,7 @@ class MarketoWrapper:
         """
         # Default parameters in Python work differently than in other languages. See
         # this link for a full description: http://effbot.org/zone/default-values.htm
-         if content_type is None:
+        if content_type is None:
             content_type = "application/json"
         if payload is None:
             payload = {}
@@ -389,7 +389,7 @@ class MarketoWrapper:
         Returns:
             dict: The response from the server indicating success or failure.
         """
-        call = "rest/v1/leads/"str(lead_id)"/associate.json?cookie="+str(cokie)
+        call = "rest/v1/leads/"+str(lead_id)+"/associate.json?cookie="+str(cokie)
         method = "POST"
         return self.__generic_api_call(call, method)
     
@@ -715,7 +715,7 @@ class MarketoWrapper:
             dict:   The response from the server that contains the information about the list
                     such as created date, updated date, description etc.
         """
-        call = "rest/v1/lists/"+str(list_id)+".json
+        call = "rest/v1/lists/"+str(list_id)+".json"
         method = "GET"
         return self.__generic_api_call(call, method)
     
@@ -758,7 +758,7 @@ class MarketoWrapper:
         method = "GET"
         return self.__generic_api_call(call, method)
     
-     def add_leads_to_list(self, list_id, leads):
+    def add_leads_to_list(self, list_id, leads):
         """
         This method will add the given leads to the specified list. 
         
@@ -1056,13 +1056,13 @@ class MarketoWrapper:
         payload = {"filterType": str(filter_type)}
         if filter_values is not None:
             payload["input"] = list(map(str, filter_values))
-        if fields is not None
+        if fields is not None:
             payload["fields"] = list(map(str, fields))
         if paging_token is not None:
             payload["nextPageToken"] = str(paging_token)
         if batch_size is not None:
             payload["batchSize"] = str(batch_size)
-        return self.__generic_api_call(call, method payload=json.dumps(payload))
+        return self.__generic_api_call(call, method, payload=json.dumps(payload))
     
     def describe_opportunity_role(self):
         """
@@ -1161,13 +1161,13 @@ class MarketoWrapper:
         payload = {"filterType": str(filter_type)}
         if filter_values is not None:
             payload["input"] = list(map(str, filter_values))
-        if fields is not None
+        if fields is not None:
             payload["fields"] = list(map(str, fields))
         if paging_token is not None:
             payload["nextPageToken"] = str(paging_token)
         if batch_size is not None:
             payload["batchSize"] = str(batch_size)
-        return self.__generic_api_call(call, method payload=json.dumps(payload))
+        return self.__generic_api_call(call, method, payload=json.dumps(payload))
     
 ############################################################################################
 #                                                                                          #
@@ -1271,13 +1271,13 @@ class MarketoWrapper:
         payload = {"filterType": str(filter_type)}
         if filter_values is not None:
             payload["input"] = list(map(str, filter_values))
-        if fields is not None
+        if fields is not None:
             payload["fields"] = list(map(str, fields))
         if paging_token is not None:
             payload["nextPageToken"] = str(paging_token)
         if batch_size is not None:
             payload["batchSize"] = str(batch_size)
-        return self.__generic_api_call(call, method payload=json.dumps(payload))
+        return self.__generic_api_call(call, method, payload=json.dumps(payload))
     
 ############################################################################################
 #                                                                                          #
@@ -1381,13 +1381,13 @@ class MarketoWrapper:
         payload = {"filterType": str(filter_type)}
         if filter_values is not None:
             payload["input"] = list(map(str, filter_values))
-        if fields is not None
+        if fields is not None:
             payload["fields"] = list(map(str, fields))
         if paging_token is not None:
             payload["nextPageToken"] = str(paging_token)
         if batch_size is not None:
             payload["batchSize"] = str(batch_size)
-        return self.__generic_api_call(call, method payload=json.dumps(payload))
+        return self.__generic_api_call(call, method, payload=json.dumps(payload))
     
 ############################################################################################
 #                                                                                          #
@@ -1514,18 +1514,18 @@ class MarketoWrapper:
             dict:   The response from the server. It includes metadata on each object that matches
                     the search criteria such as created date, modified date, Marketo id etc.
         """
-        call = "rest/v1/customobjects/"+str(name)+".json?_method=GET
+        call = "rest/v1/customobjects/"+str(name)+".json?_method=GET"
         method = "POST"
         payload = {"filterType": str(filter_type)}
         if filter_values is not None:
             payload["input"] = list(map(str, filter_values))
-        if fields is not None
+        if fields is not None:
             payload["fields"] = list(map(str, fields))
         if paging_token is not None:
             payload["nextPageToken"] = str(paging_token)
         if batch_size is not None:
             payload["batchSize"] = str(batch_size)
-        return self.__generic_api_call(call, method payload=json.dumps(payload))
+        return self.__generic_api_call(call, method, payload=json.dumps(payload))
     
 ############################################################################################
 #                                                                                          #
