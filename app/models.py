@@ -4,7 +4,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(32))
     last_name = db.Column(db.String(32))
-    email = db.Column(db.String(64))
+    email = db.Column(db.String(64), unique=True)
     role = db.Column(db.String(20))
     password = db.Column(db.String(80))
     marketo_lead_id = db.Column(db.Integer)
@@ -17,9 +17,11 @@ class User(db.Model):
 class Subscription(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     account_string = db.Column(db.String(80))
+    mkto_pod = db.Column(db.String(20))
     login = db.Column(db.String(64))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     is_admin = db.Column(db.Boolean)
+    last_login = db.Column(db.DateTime)
 
     def __repr__(self):
         return '<Subscription %r @ %r>' % (self.login, self.account_string)
