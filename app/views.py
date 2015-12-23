@@ -1,5 +1,6 @@
-from app import app, api, mktorest, models
+from app import app, api, mktorest, models, lm
 from flask_restful import Resource, reqparse
+from flask.ext.login import login_user, logout_user, current_user, login_required
 import os
 from datetime import datetime
 
@@ -15,6 +16,32 @@ except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
 	apiKey = os.environ['apiKey']
 
+@app.before_request
+def before_request():
+    g.user = current_user
+
+@lm.user_loader
+def load_user(id):
+    return models.User.query.get(int(id))
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+@app.route('/login', methods=['GET', 'POST'])
+@oid.loginhandler
+def login():
+    if g.user is not None and g.user.is_authenticated:
+        return redirect(url_for('index'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        session['remember_me'] = form.remember_me.data
+        return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
+    return render_template('login.html', 
+                           title='Sign In',
+                           form=form,
+                           providers=app.config['OPENID_PROVIDERS'])
 
 @app.route('/')
 @app.route('/index')
@@ -59,43 +86,27 @@ rl_parser.add_argument('pod',required=True)
 rl_parser.add_argument('loginDate')
 
 #Endpoint to track who is using mktolive - pass in first/last/email-of-user-id/account-string/pod/(I infer current login date or accept login date)
-#may be taking in marketo munchkin ID and not pod, but need one of the two
-class RecordLogin(Resource):
-	def post(self, api_key_in):
-		args=rl_parser.parse_args()
-		if 'loginDate' not in args:
-			login_date=datetime.utcnow()
-		else:
-			login_date=datetime.fromtimestamp(args['loginDate'], timezone.utc)
-		user = models.User.query.filter_by(email=args['email']).first()
-		if not user:
-			user = models.User()
-			user.first_name = args['firstName']
-			user.last_name = args['lastName']
-			user.email = args['email']
-			#eventually: here we will query the marketo instance with the user db to populate the rest of the fields
-		sub = user.subscriptions.filter_by(account_string=args['accountString']).first()
-		if not sub:
-			sub = models.Subscription()
-			sub.mkto_pod = args['pod']
-			sub.account_string = args['accountString']
-
-		sub.last_login = login_date
-account_string = db.Column(db.String(80))
-    mkto_pod = db.Column(db.String(20))
-    login = db.Column(db.String(64))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    is_admin = db.Column(db.Boolean)
-    last_login = db.Column(db.DateTime)
-
-first_name = db.Column(db.String(32))
-    last_name = db.Column(db.String(32))
-    email = db.Column(db.String(64))
-    role = db.Column(db.String(20))
-    password = db.Column(db.String(80))
-    marketo_lead_id = db.Column(db.Integer)
-    created = db.Column(db.DateTime)
-    subscriptions
+# #may be taking in marketo munchkin ID and not pod, but need one of the two
+# class RecordLogin(Resource):
+# 	def post(self, api_key_in):
+# 		args=rl_parser.parse_args()
+# 		if 'loginDate' not in args:
+# 			login_date=datetime.utcnow()
+# 		else:
+# 			login_date=datetime.fromtimestamp(args['loginDate'], timezone.utc)
+# 		user = models.User.query.filter_by(email=args['email']).first()
+# 		if not user:
+# 			user = models.User()
+# 			user.first_name = args['firstName']
+# 			user.last_name = args['lastName']
+# 			user.email = args['email']
+# 			#eventually: here we will query the marketo instance with the user db to populate the rest of the fields
+# 		sub = user.subscriptions.filter_by(account_string=args['accountString']).first()
+# 		if not sub:
+# 			sub = models.Subscription()
+# 			sub.mkto_pod = args['pod']
+# 			sub.account_string = args['accountString']
+# 		sub.last_login = login_date
 
 
 # This was an example for pope on how to serve robots.txt, we may use it later
