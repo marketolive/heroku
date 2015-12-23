@@ -1,5 +1,6 @@
 from app import app, api, mktorest, models
 from flask_restful import Resource, reqparse
+from flask import Flask, render_template
 import os
 from datetime import datetime
 
@@ -17,9 +18,14 @@ except ImportError:
 
 
 @app.route('/')
-@app.route('/index')
 def index():
-    return "<html><body><h1>Welcome to the MarketoLive Server!</h1><h2>AKA Project Queequeg</h2><h3><a href='http://www.marketolive.com'>Proceed to Marketo Live</a></h3></body></html>"
+		return render_template('index.html')
+		
+@app.route('/get-started-b2b')
+def get_started_b2b():
+    return render_template('get-started-b2b.html')
+
+
 
 
 class CreateFolders(Resource):
@@ -58,8 +64,13 @@ api.add_resource(CreateFolders, '/createfolders/<string:api_key_in>/<string:new_
 # rl_parser.add_argument('pod',required=True)
 # rl_parser.add_argument('loginDate')
 
+
 # #Endpoint to track who is using mktolive - pass in first/last/email-of-user-id/account-string/pod/(I infer current login date or accept login date)
 # #may be taking in marketo munchkin ID and not pod, but need one of the two
+
+#Endpoint to track who is using mktolive - pass in first/last/email-of-user-id/account-string/pod/(I infer current login date or accept login date)
+#may be taking in marketo munchkin ID and not pod, but need one of the two
+
 # class RecordLogin(Resource):
 # 	def post(self, api_key_in):
 # 		args=rl_parser.parse_args()
@@ -81,21 +92,6 @@ api.add_resource(CreateFolders, '/createfolders/<string:api_key_in>/<string:new_
 # 			sub.account_string = args['accountString']
 
 # 		sub.last_login = login_date
-# account_string = db.Column(db.String(80))
-#     mkto_pod = db.Column(db.String(20))
-#     login = db.Column(db.String(64))
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-#     is_admin = db.Column(db.Boolean)
-#     last_login = db.Column(db.DateTime)
-
-# first_name = db.Column(db.String(32))
-#     last_name = db.Column(db.String(32))
-#     email = db.Column(db.String(64))
-#     role = db.Column(db.String(20))
-#     password = db.Column(db.String(80))
-#     marketo_lead_id = db.Column(db.Integer)
-#     created = db.Column(db.DateTime)
-#     subscriptions
 
 
 # This was an example for pope on how to serve robots.txt, we may use it later
