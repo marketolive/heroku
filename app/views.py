@@ -1,10 +1,7 @@
 from app import app, api, mktorest, models, lm
 from flask_restful import Resource, reqparse
-<<<<<<< HEAD
 from flask.ext.login import login_user, logout_user, current_user, login_required
-=======
-from flask import Flask, render_template
->>>>>>> 13729db3974b0975523f6b7ae360bdf40285f380
+from flask import render_template
 import os
 from datetime import datetime
 
@@ -33,19 +30,18 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/login', methods=['GET', 'POST'])
-@oid.loginhandler
-def login():
-    if g.user is not None and g.user.is_authenticated:
-        return redirect(url_for('index'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        session['remember_me'] = form.remember_me.data
-        return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
-    return render_template('login.html', 
-                           title='Sign In',
-                           form=form,
-                           providers=app.config['OPENID_PROVIDERS'])
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     if g.user is not None and g.user.is_authenticated:
+#         return redirect(url_for('index'))
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         session['remember_me'] = form.remember_me.data
+#         return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
+#     return render_template('login.html', 
+#                            title='Sign In',
+#                            form=form,
+#                            providers=app.config['OPENID_PROVIDERS'])
 
 @app.route('/')
 def index():
