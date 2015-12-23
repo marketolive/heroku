@@ -1,6 +1,10 @@
-from app import app, api, mktorest, models
+from app import app, api, mktorest, models, lm
 from flask_restful import Resource, reqparse
+<<<<<<< HEAD
+from flask.ext.login import login_user, logout_user, current_user, login_required
+=======
 from flask import Flask, render_template
+>>>>>>> 13729db3974b0975523f6b7ae360bdf40285f380
 import os
 from datetime import datetime
 
@@ -16,6 +20,32 @@ except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
 	apiKey = os.environ['apiKey']
 
+@app.before_request
+def before_request():
+    g.user = current_user
+
+@lm.user_loader
+def load_user(id):
+    return models.User.query.get(int(id))
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+@app.route('/login', methods=['GET', 'POST'])
+@oid.loginhandler
+def login():
+    if g.user is not None and g.user.is_authenticated:
+        return redirect(url_for('index'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        session['remember_me'] = form.remember_me.data
+        return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
+    return render_template('login.html', 
+                           title='Sign In',
+                           form=form,
+                           providers=app.config['OPENID_PROVIDERS'])
 
 @app.route('/')
 def index():
@@ -89,23 +119,7 @@ rl_parser.add_argument('loginDate')
 # 			sub = models.Subscription()
 # 			sub.mkto_pod = args['pod']
 # 			sub.account_string = args['accountString']
-
 # 		sub.last_login = login_date
-# account_string = db.Column(db.String(80))
-# mkto_pod = db.Column(db.String(20))
-# login = db.Column(db.String(64))
-# user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-# is_admin = db.Column(db.Boolean)
-# last_login = db.Column(db.DateTime)
-
-# first_name = db.Column(db.String(32))
-#     last_name = db.Column(db.String(32))
-#     email = db.Column(db.String(64))
-#     role = db.Column(db.String(20))
-#     password = db.Column(db.String(80))
-#     marketo_lead_id = db.Column(db.Integer)
-#     created = db.Column(db.DateTime)
-#     subscriptions
 
 
 # This was an example for pope on how to serve robots.txt, we may use it later
