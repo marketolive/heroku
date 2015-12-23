@@ -1,6 +1,7 @@
-from app import app, api, mktorest, models
+from app import app, api, mktorest, models, lm
 from flask_restful import Resource, reqparse
-from flask import Flask, render_template
+from flask.ext.login import login_user, logout_user, current_user, login_required
+from flask import render_template
 import os
 from datetime import datetime
 
@@ -16,6 +17,31 @@ except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
 	apiKey = os.environ['apiKey']
 
+# @app.before_request
+# def before_request():
+#     g.user = current_user
+
+@lm.user_loader
+def load_user(id):
+    return models.User.query.get(int(id))
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     if g.user is not None and g.user.is_authenticated:
+#         return redirect(url_for('index'))
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         session['remember_me'] = form.remember_me.data
+#         return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
+#     return render_template('login.html', 
+#                            title='Sign In',
+#                            form=form,
+#                            providers=app.config['OPENID_PROVIDERS'])
 
 @app.route('/')
 def index():
@@ -94,7 +120,6 @@ api.add_resource(CreateFolders, '/createfolders/<string:api_key_in>/<string:new_
 # 			sub = models.Subscription()
 # 			sub.mkto_pod = args['pod']
 # 			sub.account_string = args['accountString']
-
 # 		sub.last_login = login_date
 
 
