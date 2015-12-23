@@ -20,6 +20,10 @@ except ImportError:
 @app.route('/')
 def index():
 		return render_template('index.html')
+
+@app.route('/base')
+def base():
+		return render_template('base.html')
 		
 @app.route('/get-started-b2b')
 def get_started_b2b():
