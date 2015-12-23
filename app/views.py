@@ -1,6 +1,10 @@
 from app import app, api, mktorest, models, lm
 from flask_restful import Resource, reqparse
+<<<<<<< HEAD
 from flask.ext.login import login_user, logout_user, current_user, login_required
+=======
+from flask import Flask, render_template
+>>>>>>> 13729db3974b0975523f6b7ae360bdf40285f380
 import os
 from datetime import datetime
 
@@ -44,9 +48,18 @@ def login():
                            providers=app.config['OPENID_PROVIDERS'])
 
 @app.route('/')
-@app.route('/index')
 def index():
-    return "<html><body><h1>Welcome to the MarketoLive Server!</h1><h2>AKA Project Queequeg</h2><h3><a href='http://www.marketolive.com'>Proceed to Marketo Live</a></h3></body></html>"
+		return render_template('index.html')
+
+@app.route('/base')
+def base():
+		return render_template('base.html')
+		
+@app.route('/get-started-b2b')
+def get_started_b2b():
+    return render_template('get-started-b2b.html')
+
+
 
 
 class CreateFolders(Resource):
@@ -86,7 +99,7 @@ rl_parser.add_argument('pod',required=True)
 rl_parser.add_argument('loginDate')
 
 #Endpoint to track who is using mktolive - pass in first/last/email-of-user-id/account-string/pod/(I infer current login date or accept login date)
-# #may be taking in marketo munchkin ID and not pod, but need one of the two
+#may be taking in marketo munchkin ID and not pod, but need one of the two
 # class RecordLogin(Resource):
 # 	def post(self, api_key_in):
 # 		args=rl_parser.parse_args()
