@@ -2,6 +2,6 @@
   width: 60px;
 }
 
-.logo-nav:last-child {
+.logo-nav-container:last-child {
   display: none;
-};
+}
