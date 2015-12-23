@@ -17,9 +17,9 @@ except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
 	apiKey = os.environ['apiKey']
 
-@app.before_request
-def before_request():
-    g.user = current_user
+# @app.before_request
+# def before_request():
+#     g.user = current_user
 
 @lm.user_loader
 def load_user(id):
