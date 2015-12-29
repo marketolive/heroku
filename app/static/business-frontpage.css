@@ -9,7 +9,23 @@ body {
     /*padding-top: 50px;*/ /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
-/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+h2 {
+    font-size: 2.0em;
+    margin-top: 0px;
+}
+
+h3 {
+    font-size: 1.7em;
+}
+
+h4, h5 {
+    font-size: 1.2em;
+}
+
+p {
+    font-size: 1.3em;
+}
+
 
 .business-header {
     min-height: 500px;
@@ -25,7 +41,7 @@ body {
 /* Customize the text color and shadow color and to optimize text legibility. */
 
 .tagline {
-    font-size: 48px;
+    font-size: 3.8em;
     text-shadow: 0 0 10px #000;
     color: #fff;
     text-align: center;
@@ -33,7 +49,7 @@ body {
 
 .subject-tagline {
     color: white;
-    font-size: 22px;
+    font-size: 2.0em;
     text-align: center;
 }
 
@@ -53,11 +69,6 @@ body {
     margin-top: 1%;
     margin-left: 5%;
 }
-
-/*.image-spacing-pic {
-    max-width: 90%;
-    max-height: px;
-}*/
 
 .arrow-container-down {
     margin-left: 50%;
@@ -123,23 +134,13 @@ body {
     vertical-align: middle;
 }
 
-
-
-.font-size-16 {
-    font-size: 16px;
-}
-
-.section-options-5 {
+.mt-5{
     margin-top: 5%;
 }
-
-.section-options {
+.mt-10 {
     margin-top: 10%;
 }
 
-.section-options-18{
-    margin-top: 18%;
-}
 
 .group-section-container {
     margin-bottom: 5%;
@@ -154,6 +155,11 @@ body {
 }
 .img-center {
     margin: 0 auto;
+}
+
+.indent {
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 
