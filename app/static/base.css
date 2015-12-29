@@ -16,10 +16,32 @@
 .navbar {
   min-height: 60px;
   margin-bottom: 0px;
-  z-index: 999;
+  z-index: 900;
 }
 
 .container-custom {
   padding-right: 0px;
   padding-left: 0px;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
+
+.help-nav {
+  width: 30px;
+}
+
+.help-nav-container:last-child {
+  display: none;
+}
+
+@media (max-width:767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #777;
+  }
+
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+    color: #777`;
+  }
 }
