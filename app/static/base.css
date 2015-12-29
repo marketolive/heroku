@@ -19,4 +19,7 @@
   z-index: 999;
 }
 
-.navbar-brand
+.container-custom {
+  padding-right: 0px;
+  padding-left: 0px;
+}
