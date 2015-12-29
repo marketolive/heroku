@@ -23,34 +23,49 @@
     {% endblock %}
     </head>
 
-    {% block navbar %}
-    <div class="navbar navbar-fixed-top" role="navigation">
-        <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 <div class="logo-nav-container">
-                    <a class="navbar-brand" href="/">
-                        <img class="logo-nav" src="{{ url_for('static', filename='marketo-live-circle-logo.png') }}">
+                    <a class="navbar-brand" href="#">
+                        <img class="logo-nav" alt="Marketo Live" src="{{ url_for('static', filename='marketo-live-circle-logo.png') }}">
                     </a>
                 </div>
                 <div class="logo-nav-container">
-                    <a class="navbar-brand" href="/">
-                        <img class="logo-nav" src="{{ url_for('static', filename='marketo-live-circle-orange-logo.png') }}">
+                    <a class="navbar-brand" href="#">
+                        <img class="logo-nav" alt="Marketo Live" src="{{ url_for('static', filename='marketo-live-circle-orange-logo.png') }}">
                     </a>
                 </div>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="/about-us">About</a></li>
+                    <li><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another Action</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
+    {% block navbar %}
+    
     {% endblock %}
 
 
