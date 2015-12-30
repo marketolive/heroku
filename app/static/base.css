@@ -1,7 +1,7 @@
 .logo-nav {
   background-color: #5A54A4;
   border-radius: 50%;
-  width: 60px;
+  width: 50px;
 }
 
 .logo-nav-container:last-child {
@@ -12,9 +12,9 @@
   background-color: #5A54A4;
   border-color: #5A54A4;
 }
-
+ 
 .navbar {
-  min-height: 60px;
+  min-height: 40px;
   margin-bottom: 0px;
   z-index: 900;
 }
@@ -32,32 +32,79 @@
   color: white;
 }
 
-.help-nav {
-  width: 30px;
-}
-
 .help-icon {
   background: url('help-white-nav.png');
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
 }
 
 .help-icon:hover {
   background: url('help-orange-nav.png');
-  width: 30px;
+  width: 26px;
+  height: 26px;
+}
+
+.help-nav-link {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sign-in-btn {
+  margin-top: 7px;
+  margin-bottom: 0px;
+  padding: 2px 12px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #d1d3d4;
+}
+
+.navbar-default .navbar-nav > li > button:hover {
+  background-color: transparent;
+  color: #d1d3d4;
+}
+
+.navbar-brand {
   height: 30px;
 }
 
-.help-nav-container:last-child {
-  display: none;
+.btn-default {
+  color: white;
+  background-color: transparent;
 }
 
-@media (max-width:767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
-    color: #777;
+#help-nav-link {
+  padding-top: 7px;
+  padding-bottom: 0px;
+}
+
+@media (max-width:768px) {
+  .navbar-default .navbar-nav > li > a:hover {
+      color: #58595b;
   }
 
-  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
-    color: #777`;
+  .link-padding {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .help-nav-link {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  #help-nav-link {
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 }
