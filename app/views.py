@@ -1,7 +1,7 @@
 from app import app, api, mktorest, models, lm
 from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from flask import render_template
+from flask import render_template, flash, request, redirect
 import os
 from datetime import datetime
 
@@ -26,9 +26,27 @@ def load_user(id):
     return models.User.query.get(int(id))
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        # Login and validate the user.
+        # user should be an instance of your `User` class
+        user = models.User.query.filter_by(email=form.email.data).first()
+        if user and user.check_password(form.password.data):
+        	login_user(user)
+        	g.user=user
+        	flash('Logged in successfully.')
+        	return redirect(request.path)
+        else:
+        	flash('Login Failed, GFY')
+        	return redirect(request.path)
+    return redirect('/')
 
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
@@ -54,9 +72,6 @@ def base():
 @app.route('/get-started-b2b')
 def get_started_b2b():
     return render_template('get-started-b2b.html')
-
-
-
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
