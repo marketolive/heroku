@@ -22,10 +22,10 @@ $(window).resize(function(){
 	    	scrollingSpeed: 7000,
 	    	autoScrolling: false
 	    });
-	    $('.inner-arrow-container').css("display:none");
+	    $('.inner-arrow-container').css("display", "none");
 	   
 	}
-	if($(window).width() > 999) {
+	else if($(window).width() > 999) {
 		console.log("did it restore?");
 		$('#fullpage').fullpage();
 		
