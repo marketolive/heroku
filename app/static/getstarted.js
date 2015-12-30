@@ -15,22 +15,23 @@ $(document).ready(function(){
 
 });
 
-// $(window).resize(function(){
-// 	if($(window).width() < 999) {
-// 		console.log("did it register?");
-// 	    $('#fullpage').fullpage({
-// 	    	scrollingSpeed: 7000,
-// 	    	autoScrolling: false
-// 	    });
+$(window).resize(function(){
+	if($(window).width() < 999) {
+		console.log("did it register?");
+	    $('#fullpage').fullpage({
+	    	scrollingSpeed: 7000,
+	    	autoScrolling: false
+	    });
+	    $('.inner-arrow-container').css("display:none");
 	   
-// 	}
-// 	if($(window).width() > 999) {
-// 		console.log("did it restore?");
-// 		$('#fullpage').fullpage();
+	}
+	if($(window).width() > 999) {
+		console.log("did it restore?");
+		$('#fullpage').fullpage();
 		
 		
-// 	}
+	}
 
 
-// });
+});
 
