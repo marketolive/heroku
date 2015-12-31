@@ -1,7 +1,8 @@
-from app import app, api, mktorest, models, lm
+from app import app, api, mktorest, models, lm, db
 from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from flask import render_template
+from flask import render_template, flash, request, redirect, g
+from .forms import LoginForm
 import os
 from datetime import datetime
 
@@ -17,18 +18,43 @@ except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
 	apiKey = os.environ['apiKey']
 
-# @app.before_request
-# def before_request():
-#     g.user = current_user
+@app.before_request
+def before_request():
+	g.loginform=LoginForm()
+	g.user = current_user
+	if current_user.is_authenticated:
+		g.name = g.user.first_name
+	else:
+		g.name = None
 
 @lm.user_loader
 def load_user(id):
     return models.User.query.get(int(id))
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    g.user=None
+    return redirect('/')
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        # Login and validate the user.
+        # user should be an instance of your `User` class
+        user = models.User.query.filter_by(email=form.inputEmail.data).first()
+        if user:
+        	if user.check_password(form.inputPassword.data):
+	        	login_user(user)
+	        	g.user=user
+	        	return redirect(request.referrer)
+        	flash('Invalid Password')
+        else:
+        	flash('Unrecognized Email Address')
+        return redirect(request.referrer)
+    return redirect('/')
 
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
@@ -43,20 +69,18 @@ def logout():
 #                            form=form,
 #                            providers=app.config['OPENID_PROVIDERS'])
 
+
 @app.route('/')
 def index():
-		return render_template('index.html')
+	return render_template('index.html', form=g.loginform, name=g.name)
 
 @app.route('/base')
 def base():
-		return render_template('base.html')
+	return render_template('base.html', form=g.loginform, name=g.name)
 		
 @app.route('/get-started-b2b')
 def get_started_b2b():
-    return render_template('get-started-b2b.html')
-
-
-
+	return render_template('get-started-b2b.html', form=g.loginform, name=g.name)
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
@@ -85,6 +109,29 @@ class CreateFolders(Resource):
 
 api.add_resource(CreateFolders, '/createfolders/<string:api_key_in>/<string:new_email>')
 
+cu_parser = reqparse.RequestParser()
+cu_parser.add_argument('FirstName', type=str, required=True, location='form')
+cu_parser.add_argument('LastName', type=str, required=True, location='form')
+cu_parser.add_argument('Email', type=str, required=True, location='form')
+cu_parser.add_argument('password', type=str, required=True, location='form')
+cu_parser.add_argument('LeadRole', type=str, required=True, location='form')
+cu_parser.add_argument('language', location='form')
+
+class CreateUser(Resource):
+	def post(self, api_key_in):
+		if api_key_in != apiKey:
+			return {'success':False, 'message':''}
+		args = cu_parser.parse_args()
+		if models.User.query.filter_by(email=args['Email']).all():
+			return {'success':False, 'message':'This email address is already in use by another account'}
+		else:
+			newuser = models.User(args['FirstName'], args['LastName'], args['LeadRole'], args['Email'], 
+								  args['password'], language=args['language'])
+			db.session.add(newuser)
+			db.session.commit()
+			return {'success':True, 'message':''}
+
+api.add_resource(CreateUser, '/api/<string:api_key_in>/newuser')
 
 # rl_parser = reqparse.RequestParser()
 # rl_parser.add_argument('firstName')

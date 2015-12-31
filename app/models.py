@@ -1,4 +1,6 @@
 from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -6,10 +8,40 @@ class User(db.Model):
     last_name = db.Column(db.String(32))
     email = db.Column(db.String(64), unique=True)
     role = db.Column(db.String(20))
+    language = db.Column(db.String(20))
     password = db.Column(db.String(80))
     marketo_lead_id = db.Column(db.Integer)
     created = db.Column(db.DateTime)
     subscriptions = db.relationship('Subscription', backref='user', lazy='dynamic')
+
+    def __init__(self, fname, lname, role, email, password, created=None, language=None):
+        self.first_name=fname
+        self.last_name=lname
+        self.role=role
+        self.created=created if created else datetime.now()
+        self.email = email
+        self.set_password(password)
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)  # python 3
 
     def __repr__(self):
         return '<User %r>' % (self.email)
