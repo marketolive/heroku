@@ -8,7 +8,7 @@ class User(db.Model):
     last_name = db.Column(db.String(32))
     email = db.Column(db.String(64), unique=True)
     role = db.Column(db.String(20))
-    pw_hash = db.Column(db.String(80))
+    password = db.Column(db.String(80))
     marketo_lead_id = db.Column(db.Integer)
     created = db.Column(db.DateTime)
     subscriptions = db.relationship('Subscription', backref='user', lazy='dynamic')
@@ -22,10 +22,10 @@ class User(db.Model):
         self.set_password(password)
 
     def set_password(self, password):
-        self.pw_hash = generate_password_hash(password)
+        self.password = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.pw_hash, password)
+        return check_password_hash(self.password, password)
 
     @property
     def is_authenticated(self):

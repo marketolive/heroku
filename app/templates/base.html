@@ -64,7 +64,11 @@
                         </ul>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-default navbar-btn sign-in-btn" data-toggle="modal" data-target=".bs-example-modal-lg">Sign In</button>
+                        {% if name %}
+                        <button type="button" class="btn btn-default navbar-btn sign-in-btn" >{{ name }}</button>
+                        {% else %}
+                        <button type="button" id='signinBtn' class="btn btn-default navbar-btn sign-in-btn" data-toggle="modal" data-target=".bs-example-modal-lg">Sign In</button>
+                        {% endif %}
                     </li>
                     <li>
                         <a id="help-nav-link" class="help-nav-link" href="#">
@@ -86,22 +90,26 @@
            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
               <div class="modal-dialog modal-md">
                 <div class="modal-content">
-                  <form class="form-horizontal">
+                  <form class="form-horizontal" method="Post" action="/login">
                     <div class="form-group">
+                        {{ form.hidden_tag() }}
                         <label for="inputEmail" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                            {{ form.inputEmail(class_="form-control", placeholder="Email") }}
+                            <!--<input type="email" class="form-control" id="inputEmail" placeholder="Email">-->
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            {{ form.inputPassword(class_="form-control",placeholder="Password") }}
+                            <!--<input type="password" class="form-control" id="inputPassword" placeholder="Password">-->
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default sign-in-btn-form">Sign In</button>
+                            {% if get_flashed_messages()[0] %}<p>{{get_flashed_messages()[0]}}</p>{% endif %}
+                            <button type="submit"  class="btn btn-default sign-in-btn-form">Sign In</button>
                         </div>
                     </div>
                     <div class="col-sm-offset-2">
@@ -139,6 +147,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="{{ url_for('static', filename='base.js') }}"></script>
+    {% if get_flashed_messages()[0] %}<script type='text/javascript'>$("#signinBtn").trigger("click");</script>{% endif %}
     {% block scripts %}
 
     {% endblock %}

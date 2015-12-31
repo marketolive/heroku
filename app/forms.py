@@ -1,7 +1,8 @@
 from flask.ext.wtf import Form
-from wtforms import EmailField, PasswordField
+from flask.ext.wtf.html5 import EmailField
+from wtforms import PasswordField
 from wtforms.validators import DataRequired
 
 class LoginForm(Form):
-    email = EmailField('email', label='Email', validators=[DataRequired()])
-    password = PasswordField('password', label='Password', validators=[DataRequired()])
+    inputEmail = EmailField('inputEmail', validators=[DataRequired()])
+    inputPassword = PasswordField('inputPassword', validators=[DataRequired()])

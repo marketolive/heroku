@@ -1,7 +1,8 @@
 from app import app, api, mktorest, models, lm
 from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from flask import render_template, flash, request, redirect
+from flask import render_template, flash, request, redirect, g
+from .forms import LoginForm
 import os
 from datetime import datetime
 
@@ -17,9 +18,13 @@ except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
 	apiKey = os.environ['apiKey']
 
-# @app.before_request
-# def before_request():
-#     g.user = current_user
+@app.before_request
+def before_request():
+    g.user = current_user
+    if current_user.is_authenticated:
+    	g.name = g.user.first_name
+    else:
+    	g.name = None
 
 @lm.user_loader
 def load_user(id):
@@ -29,7 +34,8 @@ def load_user(id):
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    g.user=None
+    return redirect('/')
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -37,15 +43,15 @@ def login():
     if form.validate_on_submit():
         # Login and validate the user.
         # user should be an instance of your `User` class
-        user = models.User.query.filter_by(email=form.email.data).first()
-        if user and user.check_password(form.password.data):
+        user = models.User.query.filter_by(email=form.inputEmail.data).first()
+        if user and user.check_password(form.inputPassword.data):
         	login_user(user)
         	g.user=user
         	flash('Logged in successfully.')
-        	return redirect(request.path)
+        	return redirect(request.referrer)
         else:
         	flash('Login Failed, GFY')
-        	return redirect(request.path)
+        	return redirect(request.referrer)
     return redirect('/')
 
 # @app.route('/login', methods=['GET', 'POST'])
@@ -61,17 +67,33 @@ def login():
 #                            form=form,
 #                            providers=app.config['OPENID_PROVIDERS'])
 
+
 @app.route('/')
 def index():
-		return render_template('index.html')
+	if g.name:
+		name = g.name
+	else:
+		name=None
+	form = LoginForm()
+	return render_template('index.html', form=form, name=name)
 
 @app.route('/base')
 def base():
-		return render_template('base.html')
+	form = LoginForm()
+	if g.name:
+		name = g.name
+	else:
+		name=None
+	return render_template('base.html', form=form, name=name)
 		
 @app.route('/get-started-b2b')
 def get_started_b2b():
-    return render_template('get-started-b2b.html')
+	form = LoginForm()
+	if g.name:
+		name = g.name
+	else:
+		name=None
+	return render_template('get-started-b2b.html', form=form, name=name)
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
