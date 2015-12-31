@@ -8,12 +8,13 @@ class User(db.Model):
     last_name = db.Column(db.String(32))
     email = db.Column(db.String(64), unique=True)
     role = db.Column(db.String(20))
+    language = db.Column(db.String(20))
     password = db.Column(db.String(80))
     marketo_lead_id = db.Column(db.Integer)
     created = db.Column(db.DateTime)
     subscriptions = db.relationship('Subscription', backref='user', lazy='dynamic')
 
-    def __init__(self, fname, lname, role, email, password, created=None):
+    def __init__(self, fname, lname, role, email, password, created=None, language=None):
         self.first_name=fname
         self.last_name=lname
         self.role=role

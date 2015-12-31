@@ -1,4 +1,4 @@
-from app import app, api, mktorest, models, lm
+from app import app, api, mktorest, models, lm, db
 from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask import render_template, flash, request, redirect, g
@@ -45,14 +45,15 @@ def login():
         # Login and validate the user.
         # user should be an instance of your `User` class
         user = models.User.query.filter_by(email=form.inputEmail.data).first()
-        if user and user.check_password(form.inputPassword.data):
-        	login_user(user)
-        	g.user=user
-        	flash('Logged in successfully.')
-        	return redirect(request.referrer)
+        if user:
+        	if user.check_password(form.inputPassword.data):
+	        	login_user(user)
+	        	g.user=user
+	        	return redirect(request.referrer)
+        	flash('Invalid Password')
         else:
-        	flash('Login Failed, GFY')
-        	return redirect(request.referrer)
+        	flash('Unrecognized Email Address')
+        return redirect(request.referrer)
     return redirect('/')
 
 # @app.route('/login', methods=['GET', 'POST'])
@@ -108,6 +109,29 @@ class CreateFolders(Resource):
 
 api.add_resource(CreateFolders, '/createfolders/<string:api_key_in>/<string:new_email>')
 
+cu_parser = reqparse.RequestParser()
+cu_parser.add_argument('FirstName', type=str, required=True, location='form')
+cu_parser.add_argument('LastName', type=str, required=True, location='form')
+cu_parser.add_argument('Email', type=str, required=True, location='form')
+cu_parser.add_argument('password', type=str, required=True, location='form')
+cu_parser.add_argument('LeadRole', type=str, required=True, location='form')
+cu_parser.add_argument('language', location='form')
+
+class CreateUser(Resource):
+	def post(self, api_key_in):
+		if api_key_in != apiKey:
+			return {'success':False, 'message':''}
+		args = cu_parser.parse_args()
+		if models.User.query.filter_by(email=args['Email']).all():
+			return {'success':False, 'message':'This email address is already in use by another account'}
+		else:
+			newuser = models.User(args['FirstName'], args['LastName'], args['LeadRole'], args['Email'], 
+								  args['password'], language=args['language'])
+			db.session.add(newuser)
+			db.session.commit()
+			return {'success':True, 'message':''}
+
+api.add_resource(CreateUser, '/api/<string:api_key_in>/newuser')
 
 # rl_parser = reqparse.RequestParser()
 # rl_parser.add_argument('firstName')
