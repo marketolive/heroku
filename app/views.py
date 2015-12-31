@@ -20,11 +20,12 @@ except ImportError:
 
 @app.before_request
 def before_request():
-    g.user = current_user
-    if current_user.is_authenticated:
-    	g.name = g.user.first_name
-    else:
-    	g.name = None
+	g.loginform=LoginForm()
+	g.user = current_user
+	if current_user.is_authenticated:
+		g.name = g.user.first_name
+	else:
+		g.name = None
 
 @lm.user_loader
 def load_user(id):
@@ -70,30 +71,15 @@ def login():
 
 @app.route('/')
 def index():
-	if g.name:
-		name = g.name
-	else:
-		name=None
-	form = LoginForm()
-	return render_template('index.html', form=form, name=name)
+	return render_template('index.html', form=g.loginform, name=g.name)
 
 @app.route('/base')
 def base():
-	form = LoginForm()
-	if g.name:
-		name = g.name
-	else:
-		name=None
-	return render_template('base.html', form=form, name=name)
+	return render_template('base.html', form=g.loginform, name=g.name)
 		
 @app.route('/get-started-b2b')
 def get_started_b2b():
-	form = LoginForm()
-	if g.name:
-		name = g.name
-	else:
-		name=None
-	return render_template('get-started-b2b.html', form=form, name=name)
+	return render_template('get-started-b2b.html', form=g.loginform, name=g.name)
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
