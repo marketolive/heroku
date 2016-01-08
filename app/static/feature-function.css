@@ -1,0 +1,33 @@
+.introduction {
+
+}
+
+.funnel-container{
+	margin: 0 5%;
+}
+
+
+
+.tofu {
+	margin: 0 auto;
+	border-left: 400px solid red;
+    border-top: 120px solid transparent;
+    border-bottom: 120px solid transparent;
+    height: 400px;
+}
+
+.mofu {
+	margin-top: 7%;
+	border-left: 375px solid red;
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    height: 170px;
+}
+
+.bofu {
+	margin-top: 10%;
+	border-left: 250px solid red;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    height: 70px;
+}

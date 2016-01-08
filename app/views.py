@@ -82,6 +82,10 @@ def base():
 def get_started_b2b():
 	return render_template('get-started-b2b.html', form=g.loginform, name=g.name)
 
+@app.route('/feature-function')
+def feature_function():
+	return render_template('feature-function.html', form=g.loginform, name=g.name)
+
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
 		if api_key_in != apiKey or '@' not in new_email:
