@@ -1,7 +1,9 @@
 $(document).ready(function(){
 	console.log("working?");
 	if($(window).width() > 999) {
-	    $('#fullpage').fullpage();
+	    $('#fullpage').fullpage({
+        	anchors:['B2B-Marketing', 'DriveMoreAwareness', 'EngageYourCustomer', 'AlignWithSales', 'MeasureYourSuccess']
+    	});
 	    console.log("fullpage iniatilizing?XX");
 
 	    $('.arrow-container-down').click(function(){
