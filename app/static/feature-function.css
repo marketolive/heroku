@@ -1,33 +1,81 @@
-.introduction {
-
+h2 {
+    font-size: 28px;
+    color: #5A54A4;
+    font-weight: 0.5;
 }
 
 .funnel-container{
-	margin: 0 5%;
+    position: absolute;
+	margin: 2% 5%;
 }
 
 
 
-.tofu {
-	margin: 0 auto;
-	border-left: 400px solid red;
-    border-top: 120px solid transparent;
-    border-bottom: 120px solid transparent;
-    height: 400px;
+
+.relative {
+    position: relative;
+}
+
+.tofu {    
+    display: flex;
+    flex-direction: column;
+    top: 160px;
+    left: 200px;    
 }
 
 .mofu {
-	margin-top: 7%;
-	border-left: 375px solid red;
-    border-top: 60px solid transparent;
-    border-bottom: 60px solid transparent;
-    height: 170px;
+    display: flex;
+    flex-direction: column;
+    top: -215px;
+    left: 425px;
+    z-index: 2;
 }
 
 .bofu {
-	margin-top: 10%;
-	border-left: 250px solid red;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-    height: 70px;
+    display: flex;
+    flex-direction: column;
+    top: -475px;
+    left: 645px;
+    z-index: 3;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.features {
+    align-items: center;
+    margin-bottom: 10px;
+    height: 100px;
+    width: 100px;
+    color: #5a54a4;
+    border-radius: 100px;
+    border: 2px solid #5a54a4;
+}
+
+.arrow-container {
+    width: 100px;
+    height: 100px;
+}
+
+.arrow {
+    height: 30px;
+    width: 30px;
+}
+
+
+
+.tofu div,
+.mofu div,
+.bofu div {
+    
+}
+
+
+.tofu div p, 
+.mofu div p,
+.bofu div p {
+    text-align: center;
+    margin: auto;
 }
