@@ -10,10 +10,10 @@
 }
 
 .circle:hover {
-  background: purple;
+  background: #5A54A4;
   color: white;
   border: 1.5px solid green;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .circle-bg {

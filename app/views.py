@@ -96,6 +96,10 @@ def get_started_b2b(language):
 		return redirect('/en/get-started-b2b')
 	return render_template(language+'/get-started-b2b.html', form=g.loginform, name=g.name)
 
+@app.route('/lead-management')
+def feature_function():
+	return render_template('lead-management.html', form=g.loginform, name=g.name)
+
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
 		if api_key_in != apiKey or '@' not in new_email:

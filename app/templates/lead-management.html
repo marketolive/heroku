@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+
+<head>
+	<link href="static/feature-function.css" rel="stylesheet">
+	<title>Marketo Lead Management</title>
+
+{% endblock %}
+</head>
+
+<body>
+{% block page_content %}
+
+
+	<h2 class="text-center"><u>Marketo Lead Management</u></h2>
+
+	<div class= "flex full-funnel">
+		<h3>Top of Funnel (TOFU)</h3>
+		<h3>Middle of Funnel (MOFU)</h3>
+		<h3>Bottom of Funnel (BOFU)</h3>
+	</div>
+
+	
+	<div class="funnel-container flex">
+		
+			<img class="tofu-image image-responsive" src="../static/tofu-purp.png" />
+		
+			<img class="mofu-image image-responsive"src="../static/mofu-purp.png" />
+		
+			<img src="../static/bofu-purp.png" />
+		
+
+	</div>
+	
+
+	<div class="row tofu relative">
+		<div class="flex features">
+			<p>SEO</p>
+		</div>
+		<div class="flex features">
+			<p>RTP</p>
+		</div>
+		<div class="flex features">
+			<p>DIY Design</p>
+		</div>
+		<div class="flex arrow-container">
+			<img class="arrow" src="../static/downarrow-purp.png" />
+		</div>
+	</div>
+
+	<div class="row mofu relative">
+		<div class="flex features">
+			<p>Powerful Automation</p>
+		</div>
+		<div class="flex features">
+			<p>Customer Engagement Engine</p>
+		</div>
+		<div class="flex arrow-container">
+			<img class="arrow" src="../static/downarrow-purp.png" />
+		</div>
+		<div class="flex features hidden">
+			<p>Replicate Success</p>
+		</div>
+	</div>
+
+	<div class="row bofu relative">
+		<div class="flex features">
+			<p>Actionable Insight</p>
+		</div>
+		<div class="flex arrow-container">
+			<img class="arrow" src="../static/downarrow-purp.png" />
+		</div>
+		<div class="flex features hidden">
+			<p>Marketing ROI</p>
+		</div>
+	</div>
+
+
+{% endblock %}
+</body>
+</html>
