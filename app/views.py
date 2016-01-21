@@ -82,19 +82,19 @@ def index(language):
 		return redirect('/en/'+language)
 	if language not in languages:
 		return redirect('/en')
-	return render_template(language+'/index.html', form=g.loginform, name=g.name)
+	return render_template(language+'/index.html', form=g.loginform, name=g.name, lang=language)
 
 @app.route('/<language>/base')
 def base(language):
 	if language not in languages:
 		return redirect('/en/base')
-	return render_template(language+'/base.html', form=g.loginform, name=g.name)
+	return render_template(language+'/base.html', form=g.loginform, name=g.name, lang=language)
 
 @app.route('/<language>/get-started-b2b')
 def get_started_b2b(language):
 	if language not in languages:
 		return redirect('/en/get-started-b2b')
-	return render_template(language+'/get-started-b2b.html', form=g.loginform, name=g.name)
+	return render_template(language+'/get-started-b2b.html', form=g.loginform, name=g.name, lang=language)
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
@@ -119,7 +119,26 @@ class CreateFolders(Resource):
 						trialcounter+=1
 						if trialcounter==3:
 							results.append('Unknown Error')
-			return {'success':True,'folder_name': foldername,'results':results}
+			p_result='error on folder creation'
+			if isinstance( results[0], int ):
+				trialcounter=0
+				while trialcounter<3:
+					try:
+						program_result = restClient.create_program({"type":"Folder", "id":results[0]},"My First Program - "+foldername, "Default", "Content", "My First Program")
+						if program_result['success']:
+							p_result=program_result['result'][0]['id']
+						else:
+							p_result=program_result['errors']
+						break
+					except Exception as e:
+						print(e)
+						trialcounter+=1
+						if trialcounter==3:
+							p_result='Unknown Error'
+				# result[0] is the id of the parent folder, finish writing create_program api call first
+				# prog_result = restClient.create_program()
+
+			return {'success':True,'folder_name': foldername,'folder_results':results, 'program_result':p_result}
 
 api.add_resource(CreateFolders, '/createfolders/<string:api_key_in>/<string:new_email>')
 
