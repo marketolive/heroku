@@ -1,0 +1,37 @@
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px 5px 25px 5px;
+  padding: 20px;
+  border: 1.5px solid black;
+  /*background: url('acquire-and-segment.png');*/
+}
+
+.circle:hover {
+  background: purple;
+  color: white;
+  border: 1.5px solid green;
+  cursor: pointer
+}
+
+.circle-bg {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.modal-content-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.inner-circle {
+  display: inline-block;
+}

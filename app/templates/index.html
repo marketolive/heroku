@@ -2,11 +2,62 @@
 
 {% block head %}
 <title>Welcome to Marketo Live</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
 {% endblock %}
 
 {% block page_content %}
   <h1>Welcome to Marketo Live</h1>
-  <button class="button" type="button" href="#">Go Agile</button>
-  <a href="/get-started-b2b"><button class="button" type="button">Get Started</button></a>
+  <a target="_blank" href="https://login.marketo.com"><button class="button" type="button" href="https://login.marketo.com">Login</button></a>
+  <button class="button" data-toggle="modal" data-target=".go-agile-en-options" type="button" href="#">Solutions</button>
+  <button class="button" data-toggle="modal" data-target=".get-started-en-options" type="button">Verticals</button>
+
+  <div class="modal fade go-agile-en-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <h1>Solutions</h1>
+        <div class="modal-content-container">
+          <div class="img circle">
+            <p class="inner-circle">Email Marketing</p>
+            <!-- <img class="circle-bg img-responsive" src="{{ url_for('static', filename='acquire-and-segment.png') }}"> -->
+          </div>
+          <div class="circle">
+            <p>Lead Management</p>
+          </div>
+          <div class="circle">
+            <p>Consumer Marketing</p>
+          </div>
+          <div class="circle">  
+            <p>Customer Base Marketing</p>
+          </div>
+          <div class="circle">
+            <p>Mobile Marketing</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade get-started-en-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <h1>Verticals</h1>
+        <div class="modal-content-container">
+          <div class="img circle">
+            <p class="inner-circle">B2B</p>
+            <img class="circle-bg img-responsive" src="{{ url_for('static', filename='acquire-and-segment.png') }}">
+          </div>
+          <div class="circle">
+            <p>B2C</p>
+          </div>
+          <div class="circle">
+            <p>Healthcare</p>
+          </div>
+          <div class="circle">  
+            <p>Financial Services</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
