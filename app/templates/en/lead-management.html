@@ -1,11 +1,18 @@
-{% extends "base.html" %}
+{% extends "/en/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 {% block head %}
 
 <head>
-	<link href="static/feature-function.css" rel="stylesheet">
+	<link href="{{ url_for('static', filename='lead-managment.css') }}" rel="stylesheet">
 	<title>Marketo Lead Management</title>
+
+{% block lang_nav %}
+<ul class="dropdown-menu">
+    <li><a href="/en/lead-management">English</a></li>
+    <li><a href="/jp/lead-management">日本語（日本）</a></li>
+</ul>
+{% endblock %}
 
 {% endblock %}
 </head>
@@ -25,9 +32,9 @@
 	
 	<div class="funnel-container flex">
 		
-			<img class="tofu-image image-responsive" src="../static/tofu-purp.png" />
+			<img class="tofu-image image-responsive" src="{{ url_for('static', filename='tofu-purp.png') }}" />
 		
-			<img class="mofu-image image-responsive"src="../static/mofu-purp.png" />
+			<img class="mofu-image image-responsive"src="{{ url_for('static', filename='mofu-purp.png') }}" />
 		
 			<img src="../static/bofu-purp.png" />
 		
@@ -46,7 +53,7 @@
 			<p>DIY Design</p>
 		</div>
 		<div class="flex arrow-container">
-			<img class="arrow" src="../static/downarrow-purp.png" />
+			<img class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
 		</div>
 	</div>
 
@@ -58,7 +65,7 @@
 			<p>Customer Engagement Engine</p>
 		</div>
 		<div class="flex arrow-container">
-			<img class="arrow" src="../static/downarrow-purp.png" />
+			<img class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
 		</div>
 		<div class="flex features hidden">
 			<p>Replicate Success</p>
@@ -70,7 +77,7 @@
 			<p>Actionable Insight</p>
 		</div>
 		<div class="flex arrow-container">
-			<img class="arrow" src="../static/downarrow-purp.png" />
+			<img class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
 		</div>
 		<div class="flex features hidden">
 			<p>Marketing ROI</p>

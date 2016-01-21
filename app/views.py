@@ -70,7 +70,7 @@ def login():
 #                            providers=app.config['OPENID_PROVIDERS'])
 
 languages = ['en', 'jp']
-pages = ['base', 'get-started-b2b']
+pages = ['base', 'get-started-b2b', 'lead-management']
 
 @app.route('/')
 def no_language():
@@ -82,7 +82,7 @@ def index(language):
 		return redirect('/en/'+language)
 	if language not in languages:
 		return redirect('/en')
-	return render_template(language+'/index.html', form=g.loginform, name=g.name)
+	return render_template(language+'/index.html', form=g.loginform, name=g.name, lang=language)
 
 @app.route('/<language>/base')
 def base(language):
@@ -90,15 +90,17 @@ def base(language):
 		return redirect('/en/base')
 	return render_template(language+'/base.html', form=g.loginform, name=g.name)
 
-@app.route('/<language>/get-started-b2b')
+@app.route('/<language>/b2b')
 def get_started_b2b(language):
 	if language not in languages:
 		return redirect('/en/get-started-b2b')
-	return render_template(language+'/get-started-b2b.html', form=g.loginform, name=g.name)
+	return render_template(language+'/b2b.html', form=g.loginform, name=g.name, lang=language)
 
-@app.route('/lead-management')
-def feature_function():
-	return render_template('lead-management.html', form=g.loginform, name=g.name)
+@app.route('/<language>/lead-management')
+def feature_function(language):
+	if language not in languages:
+		return redirect('/en/lead-management.html')
+	return render_template(language+'/lead-management.html', form=g.loginform, name=g.name, lang=language)
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
