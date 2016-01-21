@@ -69,7 +69,7 @@ def login():
 #                            form=form,
 #                            providers=app.config['OPENID_PROVIDERS'])
 
-languages = ['en']
+languages = ['en', 'jp']
 pages = ['base', 'get-started-b2b']
 
 @app.route('/')
