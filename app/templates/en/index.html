@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "en/base.html" %}
 
 {% block head %}
 <title>Welcome to Marketo Live</title>
@@ -7,6 +7,7 @@
 
 {% block page_content %}
   <h1>Welcome to Marketo Live</h1>
+
   <a target="_blank" href="https://login.marketo.com"><button class="button" type="button" href="https://login.marketo.com">Login</button></a>
   <button class="button" data-toggle="modal" data-target=".go-agile-en-options" type="button" href="#">Solutions</button>
   <button class="button" data-toggle="modal" data-target=".get-started-en-options" type="button">Verticals</button>
@@ -59,5 +60,9 @@
       </div>
     </div>
   </div>
+
+  <button class="button" type="button" href="#">Go Agile</button>
+  <a href="/en/get-started-b2b"><button class="button" type="button">Get Started</button></a>
+
 
 {% endblock %}

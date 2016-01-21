@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "en/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 {% block head %}
 <head>
 
-<link href="static/business-frontpage.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="static/jquery.fullPage.css">
+<link href="{{ url_for('static', filename='business-frontpage.css')}}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css')}}">
 <title>Business Frontpage</title>
 {% endblock %}
 
@@ -26,26 +26,26 @@
                 <div class="row mt-10">
                     <div class="col-md-3 col-xs-3">
                         <h2 class="subject-tagline">DRIVE MORE AWARENESS</h2>
-                        <div class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
-                            <img class="img-size img-responsive" src= "{{ url_for('static', filename='drive.png') }}" />
+                        <div data-menuanchor="driveMoreAwareness" class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
+                            <a href="#DriveMoreAwareness"><img class="img-size img-responsive" src= "{{ url_for('static', filename='drive.png') }}" /></a>
                         </div>
                     </div>  
                     <div class="col-md-3 col-xs-3">
                         <h2 class="subject-tagline">ENGAGE YOUR CUSTOMER</h2>   
                         <div class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
-                            <img class="img-size img-responsive" src= "{{ url_for('static', filename='engage.png') }}" />
+                            <a href="#EngageYourCustomer"><img class="img-size img-responsive" src= "{{ url_for('static', filename='engage.png') }}" /></a>
                         </div>            
                     </div> 
                     <div class="col-md-3 col-xs-3">
                         <h2 class="subject-tagline">ALIGN WITH THE SALES TEAM</h2> 
                         <div class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
-                            <img class="img-size img-responsive" src= "{{ url_for('static', filename='sales.png') }}" />
+                            <a href="#AlignWithSales"><img class="img-size img-responsive" src= "{{ url_for('static', filename='sales.png') }}" /></a>
                         </div>           
                     </div> 
                     <div class="col-md-3 col-xs-3">
                         <h2 class="subject-tagline">MEASURE YOUR SUCCESS</h2>   
                         <div class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
-                            <img class="img-size img-responsive" src= "{{ url_for('static', filename='report.png') }}" />
+                            <a href="#MeasureYourSuccess"><img class="img-size img-responsive" src= "{{ url_for('static', filename='report.png') }}" /></a>
                         </div>            
                     </div> 
                 </div>                
@@ -321,9 +321,9 @@
     {% endblock %}
     {% block scripts %}
     <!-- fullPage javascript -->
-    <script src="static/jquery.fullPage.js"></script>
+    <script src="{{ url_for('static', filename='jquery.fullPage.js')}}"></script>
 
-    <script src="static/getstarted.js"></script>
+    <script src="{{ url_for('static', filename='getstarted.js')}}"></script>
     {% endblock %}
 </body>
 
