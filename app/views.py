@@ -69,18 +69,32 @@ def login():
 #                            form=form,
 #                            providers=app.config['OPENID_PROVIDERS'])
 
+languages = ['en']
+pages = ['base', 'get-started-b2b']
 
 @app.route('/')
-def index():
-	return render_template('index.html', form=g.loginform, name=g.name)
+def no_language():
+	return redirect('/en')
 
-@app.route('/base')
-def base():
-	return render_template('base.html', form=g.loginform, name=g.name)
-		
-@app.route('/get-started-b2b')
-def get_started_b2b():
-	return render_template('get-started-b2b.html', form=g.loginform, name=g.name)
+@app.route('/<language>')
+def index(language):
+	if language in pages:
+		return redirect('/en/'+language)
+	if language not in languages:
+		return redirect('/en')
+	return render_template(language+'/index.html', form=g.loginform, name=g.name)
+
+@app.route('/<language>/base')
+def base(language):
+	if language not in languages:
+		return redirect('/en/base')
+	return render_template(language+'/base.html', form=g.loginform, name=g.name)
+
+@app.route('/<language>/get-started-b2b')
+def get_started_b2b(language):
+	if language not in languages:
+		return redirect('/en/get-started-b2b')
+	return render_template(language+'/get-started-b2b.html', form=g.loginform, name=g.name)
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):

@@ -8,10 +8,12 @@ $(document).ready(function(){
 
 	    $('.arrow-container-down').click(function(){
 	      $.fn.fullpage.moveSectionDown();
+	      //console.log("did it move down?");
 	    });
 
 	    $('.arrow-container-up').click(function(){
 	      $.fn.fullpage.moveSectionUp();
+	      //console.log("did it move up?");
 	    });
 	}
 
