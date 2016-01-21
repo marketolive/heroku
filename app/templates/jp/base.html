@@ -33,12 +33,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="logo-nav-container">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/{{lang}}">
                         <img class="logo-nav" alt="Marketo Live" src="{{ url_for('static', filename='marketo-live-circle-logo.png') }}">
                     </a>
                 </div>
                 <div class="logo-nav-container">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/{{lang}}">
                         <img class="logo-nav" alt="Marketo Live" src="{{ url_for('static', filename='marketo-live-circle-orange-logo.png') }}">
                     </a>
                 </div>
@@ -46,22 +46,37 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="#"> <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Go Agile</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Started<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solutions<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/get-started-b2b">B2B Lead Management</a></li>
-                            <li><a href="#">Consumer Marketing</a></li>
+                            <li><a href="/{{lang}}/email-marketing">Email Marketing</a></li>
+                            <li><a href="/{{lang}}/lead-management">Lead Management</a></li>
+                            <li><a href="/{{lang}}/lead-management">Consumer Marketing</a></li>
+                            <li><a href="/{{lang}}/customer-base-marketing">Customer Base Marketing</a></li>
+                            <li><a href="/{{lang}}/mobile-marketing">Mobile Marketing</a></li>
+                            <li><a href="/en">Consumer Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Verticals<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/{{lang}}/b2b">B2B</a></li>
+                            <li><a href="/{{lang}}/b2c">Consumer Marketing</a></li>
+                            <li><a href="/{{lang}}/higher-education">Higher Education</a></li>
+                            <li><a href="/{{lang}}/financial-services">Financial Services</a></li>
+                            <li><a href="/{{lang}}/healthcare">Healthcare</a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle link-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">日本語（日本）<span class="caret"></span></a>
+                        {% block lang_nav %}
                         <ul class="dropdown-menu">
                             <li><a href="/en">English</a></li>
                             <li><a href="/jp">日本語（日本）</a></li>
                         </ul>
+                        {% endblock %}
                     </li>
                     <li>
                         {% if name %}
