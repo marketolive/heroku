@@ -82,9 +82,9 @@ def base():
 def get_started_b2b():
 	return render_template('get-started-b2b.html', form=g.loginform, name=g.name)
 
-@app.route('/feature-function')
+@app.route('/lead-management')
 def feature_function():
-	return render_template('feature-function.html', form=g.loginform, name=g.name)
+	return render_template('lead-management.html', form=g.loginform, name=g.name)
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
