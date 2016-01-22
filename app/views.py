@@ -94,13 +94,13 @@ def base(language):
 def get_started_b2b(language):
 	if language not in languages:
 		return redirect('/en/b2b')
-	return render_template(language+'/b2b.html', form=g.loginform, name=g.name, lang=language)
+	return render_template(language+'/b2b.html', form=g.loginform, name=g.name, lang=language, page='b2b')
 
 @app.route('/<language>/lead-management')
 def feature_function(language):
 	if language not in languages:
 		return redirect('/en/lead-management.html')
-	return render_template(language+'/lead-management.html', form=g.loginform, name=g.name, lang=language)
+	return render_template(language+'/lead-management.html', form=g.loginform, name=g.name, lang=language, page='lead-management')
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
