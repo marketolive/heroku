@@ -69,23 +69,39 @@ def login():
 #                            form=form,
 #                            providers=app.config['OPENID_PROVIDERS'])
 
+languages = ['en', 'jp']
+pages = ['base', 'b2b', 'lead-management']
 
 @app.route('/')
-def index():
-	return render_template('index.html', form=g.loginform, name=g.name)
+def no_language():
+	return redirect('/en')
 
-@app.route('/base')
-def base():
-	return render_template('base.html', form=g.loginform, name=g.name)
-		
-@app.route('/get-started-b2b')
-def get_started_b2b():
-	return render_template('get-started-b2b.html', form=g.loginform, name=g.name)
+@app.route('/<language>')
+def index(language):
+	if language in pages:
+		return redirect('/en/'+language)
+	if language not in languages:
+		return redirect('/en')
+	return render_template(language+'/index.html', form=g.loginform, name=g.name, lang=language)
 
-@app.route('/lead-management')
-def lead_management():
-	return render_template('lead-management.html', form=g.loginform, name=g.name)
+@app.route('/<language>/base')
+def base(language):
+	if language not in languages:
+		return redirect('/en/base')
+	return render_template(language+'/base.html', form=g.loginform, name=g.name, lang=language)
 
+@app.route('/<language>/b2b')
+def get_started_b2b(language):
+	if language not in languages:
+		return redirect('/en/b2b')
+	return render_template(language+'/b2b.html', form=g.loginform, name=g.name, lang=language, page='b2b')
+
+@app.route('/<language>/lead-management')
+def feature_function(language):
+	if language not in languages:
+		return redirect('/en/lead-management.html')
+	return render_template(language+'/lead-management.html', form=g.loginform, name=g.name, lang=language, page='lead-management')
+	
 @app.route('/higher-ed')
 def higher_ed():
 	return render_template('higher-ed.html', form=g.loginform, name=g.name)
@@ -115,7 +131,26 @@ class CreateFolders(Resource):
 						trialcounter+=1
 						if trialcounter==3:
 							results.append('Unknown Error')
-			return {'success':True,'folder_name': foldername,'results':results}
+			p_result='error on folder creation'
+			if isinstance( results[0], int ):
+				trialcounter=0
+				while trialcounter<3:
+					try:
+						program_result = restClient.create_program({"type":"Folder", "id":results[0]},"My First Program - "+foldername, "Default", "Content", "My First Program")
+						if program_result['success']:
+							p_result=program_result['result'][0]['id']
+						else:
+							p_result=program_result['errors']
+						break
+					except Exception as e:
+						print(e)
+						trialcounter+=1
+						if trialcounter==3:
+							p_result='Unknown Error'
+				# result[0] is the id of the parent folder, finish writing create_program api call first
+				# prog_result = restClient.create_program()
+
+			return {'success':True,'folder_name': foldername,'folder_results':results, 'program_result':p_result}
 
 api.add_resource(CreateFolders, '/createfolders/<string:api_key_in>/<string:new_email>')
 
