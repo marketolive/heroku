@@ -70,7 +70,7 @@ def login():
 #                            providers=app.config['OPENID_PROVIDERS'])
 
 languages = ['en', 'jp']
-pages = ['base', 'get-started-b2b', 'lead-management']
+pages = ['base', 'b2b', 'lead-management']
 
 @app.route('/')
 def no_language():
@@ -93,7 +93,7 @@ def base(language):
 @app.route('/<language>/b2b')
 def get_started_b2b(language):
 	if language not in languages:
-		return redirect('/en/get-started-b2b')
+		return redirect('/en/b2b')
 	return render_template(language+'/b2b.html', form=g.loginform, name=g.name, lang=language)
 
 @app.route('/<language>/lead-management')
