@@ -1706,15 +1706,15 @@ class MarketoWrapper:
         
         *Types are case sensitive
         """
-        call = "rest/asset/v1/folder/"+parent_id+"/tokens.json"
+        call = "rest/asset/v1/folder/"+str(parent_id)+"/tokens.json"
         method = "POST"
-#        payload = { "folderType": parent_type,
-#                    "type": type,
-#                    "name": name,
-#                    "value": value}
-#        return self.__generic_api_call(call, method, payload=json.dumps(payload))
-#        payload = "folderType="+parent_type+"&type="+type+"&name="+name+"&value="+value
-#        return self.__generic_api_call(call, method, payload=payload)
+        # payload = { "folderType": folder_type,
+        #            "type": token_type,
+        #            "name": name,
+        #            "value": value}
+        # return self.__generic_api_call(call, method, payload=json.dumps(payload))
+        payload = "folderType="+folder_type+"&type="+token_type+"&name="+name+"&value="+value
+        return self.__generic_api_call(call, method, payload=payload, content_type='application/x-www-form-urlencoded')
         
     def get_tokens(self, parent_id, folder_type):
         """
@@ -2015,6 +2015,48 @@ class MarketoWrapper:
         payload["name"] = name
         payload["folder"] = folder
         return self.__generic_api_call(call, method, payload=json.dumps(payload))
+
+############################################################################################
+#                                                                                          #
+#                                Program API Calls                                         # 
+#                                                                                          #             
+############################################################################################
+
+    def create_program(self, parent_folder, name, program_type, channel, description, tags=None):
+        """
+        This method makes takes an array of dictionaries that represent all of the leads
+        and their attributes that should be updated in Marketo. It takes that array, and
+        does an upsert operation to the Marketo database.
+        
+        Args:
+            parent_folder (mkto type/id pair):  e.g. {"type": "Folder","id": 26}
+            
+            name (string):                      Name of program                   
+                                                
+            type (string):                      New Program type, e.g. "Default"
+
+            channel (string):                   New program channel, e.g. "Content"
+
+            description (multipart):            Basically a description string
+
+            tags (multipart, optional):         Tag list or single tag string
+
+            costs (multipart, optional):        [{"startDate":"2015-06-01","cost":100,"note":"this is the cost"}]
+                                                *Costs implemented in wiki version but not docs, may not be available
+            
+        Returns:
+            dict:   A dictionary that has the completion status and program information similar to get_program.
+        """
+        
+        call = "rest/asset/v1/programs.json"
+        method = "POST"
+        #POST PUBLIC RELEASE:
+        #payload = "folder="+json.dumps(parent_folder)+"&name="+name+"&type="+program_type+"&description="+description+"&channel="+channel
+        #PRE PUBLIC RELEASE:
+        payload = "folders="+json.dumps(parent_folder)+"&programName="+name+"&programType="+program_type+"&programDescription="+description+"&programChannel="+channel
+        if tags:
+            payload+="&tags="+tags
+        return self.__generic_api_call(call, method, payload=payload, content_type='application/x-www-form-urlencoded')
     
 ############################################################################################
 #                                                                                          #
