@@ -83,8 +83,14 @@ def get_started_b2b():
 	return render_template('get-started-b2b.html', form=g.loginform, name=g.name)
 
 @app.route('/lead-management')
-def feature_function():
+def lead_management():
 	return render_template('lead-management.html', form=g.loginform, name=g.name)
+
+@app.route('/higher-ed')
+def higher_ed():
+	return render_template('higher-ed.html', form=g.loginform, name=g.name)
+
+
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
