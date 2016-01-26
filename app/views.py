@@ -70,7 +70,7 @@ def login():
 #                            providers=app.config['OPENID_PROVIDERS'])
 
 languages = ['en', 'jp']
-pages = ['base', 'get-started-b2b', 'lead-management']
+pages = ['base', 'b2b', 'lead-management']
 
 @app.route('/')
 def no_language():
