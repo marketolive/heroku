@@ -78,7 +78,8 @@
           <div>
             <a href="{{lang}}/b2b">
               <div class="circle">
-                <img src="{{ url_for('static', filename='') }}">
+                <img class="img-responsive" src="{{ url_for('static', filename='office-icon-purple.png') }}">
+                <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='office-icon-white.png') }}"> 
                 <p>B2B</p>
               </div>
             </a>
@@ -86,6 +87,8 @@
           <div>
             <a href="{{lang}}/higher-education">
               <div class="circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='education-icon-purple.png') }}">
+                <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='education-icon-white.png') }}">
                 <p>Higher Education</p>
               </div>
             </a>
@@ -94,6 +97,13 @@
             <a href="{{lang}}/financial-services">
               <div class="circle">
                 <p>Financial Services</p>
+              </div>
+            </a>
+          </div>
+          <div>
+            <a href="{{lang}}/healthcare">
+              <div class="circle">
+                <p>Healthcare</p>
               </div>
             </a>
           </div>
