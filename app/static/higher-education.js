@@ -18,8 +18,8 @@ $(document).ready(function(){
 	}
 
 	$('.section2-options, .section3-options, .section4-options, .section5-options').hover(function(){
-		var parent = $(this).parent;
-		console.log(parent).get(0);
+		// var parent = $(this).parent;
+		// console.log(parent).get(0);
 		// mouse enter function
 		var order = $(this).attr('data-order');
 		order = order.split('-');
