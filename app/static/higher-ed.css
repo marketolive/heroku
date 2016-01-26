@@ -86,11 +86,11 @@ p {
     width: 100%;
     height: 0;
     padding-top: 90%;
-    background: url(tofu.png);
+    background: url(highered1.png);
     background-repeat: no-repeat; 
     /*background-size: contain;*/
-    background-size: 300% auto;
-    background-position: 52% 0%; 
+    background-size: 246% auto;
+    background-position: 0% 0%; 
 }
 
 .section2-image {
@@ -103,7 +103,7 @@ p {
     width: 100%;
     height: 0;
     padding-top: 90%;
-    background: url(section3.png);
+    background: url(highered2.png);
     background-repeat: no-repeat; 
     /*background-size: contain;*/
     background-size: 600% auto;
@@ -114,7 +114,7 @@ p {
     width: 100%;
     height: 0;
     padding-top: 90%;
-    background: url(section4.png);
+    background: url(highered3.png);
     background-repeat: no-repeat; 
     background-size: 300% auto;
     background-position: -5% 0%; 
@@ -151,9 +151,9 @@ p {
     display: table-cell;
     border: 5px solid #5a54a4;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    padding: 10%;
+    width: 110px;
+    height: 110px;
+    /*padding: 10%;*/
     vertical-align: middle;
 }
 

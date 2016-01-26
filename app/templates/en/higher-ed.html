@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "en/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 {% block head %}
 <head>
 
-<link href="static/higher-ed.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="static/jquery.fullPage.css">
+<link href="{{ url_for('static', filename='higher-ed.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css') }}">
 <title>Marketo Higher Education</title>
 {% endblock %}
 
@@ -70,7 +70,7 @@
                     <div class="col-md-6 col-lg-6 col-xs-12">
                                         
                         <div class="section2-image-container">
-                            <img class="section2-image" src="{{ url_for('static', filename= 'drive1.png') }}" />
+                            <!--  -->
                         </div>
                     </div>
 
@@ -85,19 +85,19 @@
                         <div class="col-lg-12 col-md-12 col-xs-12 mt-10">        
                             <div class="col-lg-4 col-md-4 col-xs-4">
                                 <div data-order="section2-0" class="section2-options purple-background">
-                                    <h5 class="text-center white-text">Seach Optimization</h4>
+                                    <h5 class="text-center white-text">Seach Optimization</h5>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-xs-4">
                                 <div data-order="section2-1" class="section2-options">
-                                    <h5 class="text-center">Social Promotions</h4>
+                                    <h5 class="text-center">Capture Applicants</h5>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-xs-4">
                                 <div data-order="section2-2" class="section2-options">
-                                    <h5 class="text-center">Capture Applicants</h4>
+                                    <h5 class="text-center">Social Promotions</h5>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                     <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
                 </div>
 
-                <h2 class="text-center">Engage your Customers</h2>
+                <h2 class="text-center">Communicate at Scale</h2>
 
                 <div class="row indent">
 
@@ -131,46 +131,34 @@
 
                         <h3 class="text-center" id="section3-header">Automate</h4>
 
-                        <p class="section3-copy">It's hard to coordinate all of your markting programs in flight across teams and regions.  The Marketo Marketing Calendar makes it easy for marketing teams to efficiently plan, coordinate, and share the many great things happening in marketing.</p>
+                        <p class="section3-copy">With Marketo's email capabilities marketers can put into action an immediate email strategy that incorporates the best email practices.  Provide truly personalized experiences for your applicants and alumni that drive more engagement.</p>
                    
 
                         <div class="col-md-12 col-xs-12 mb-5 mt-5">
-                            <div class="col-md-4 col-xs-4">
+                            <div class="col-md-6 col-xs-6">
                                 <div data-order="section3-0" class="section3-options purple-background">
-                                    <h4 class="text-center font-size-16 white-text">Automate</h4>
+                                    <h4 class="text-center font-size-16 white-text">Email Marketing</h4>
                                 </div>
                             </div>
 
-                            <div class="col-md-4 col-xs-4">
+                            <div class="col-md-6 col-xs-6">
                                 <div data-order="section3-1" class="section3-options">
-                                    <h4 class="text-center font-size-16">Batch</h4>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-xs-4">
-                                <div data-order="section3-2" class="section3-options">
-                                    <h4 class="text-center font-size-16">Drip</h4>
+                                    <h4 class="text-center font-size-16">Retargeting</h4>
                                 </div>
                             </div>
                         </div>
 
                         
                         <div class="col-md-12 col-xs-12 mb-5">
-                            <div class="col-md-4 col-xs-4">
-                                <div data-order="section3-3" class="section3-options">
+                            <div class="col-md-6 col-xs-6">
+                                <div data-order="section3-2" class="section3-options">
                                     <h4 class="text-center font-size-16">Nurture</h4>
                                 </div>
                             </div>
 
-                            <div class="col-md-4 col-xs-4">
-                                <div data-order="section3-4" class="section3-options">
+                            <div class="col-md-6 col-xs-6">
+                                <div data-order="section3-3" class="section3-options">
                                     <h4 class="text-center font-size-16">Events</h4>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-xs-4">
-                                <div data-order="section3-5" class="section3-options">
-                                    <h4 class="text-center font-size-16">Calendar</h4>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +190,7 @@
                     <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
                 </div>
 
-                <h2 class="text-center">Align with Sales</h2>
+                <h2 class="text-center">Measure Success</h2>
 
                 <div class="row indent">
                     <div class="col-md-6">
@@ -218,24 +206,24 @@
 
                         <h3 id="section4-header" class="text-center">Lead Scoring</h3>
 
-                        <p class="section4-copy">Lead scoring is a shared sales and marketing methodology for ranking leads in order to determine their sales-readiness.  You score leads based on the interest they show in your business, their current stage in the buying cycle, and their fit in regards to yoru business.</p>
+                        <p class="section4-copy">Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance</p>
 
                         <div class="col-md-12 col-xs-12 mt-10">        
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section4-0" class="section4-options purple-background">
-                                    <h4 class="text-center white-text">Lead Scoring</h4>
+                                    <h4 class="text-center white-text">Student Engagement</h4>
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section4-1" class="section4-options">
-                                    <h4 class="text-center">Sales Notification</h4>
+                                    <h4 class="text-center">ROI Analysis</h4>
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section4-2" class="section4-options">
-                                    <h4 class="text-center">Sales Insight</h4>
+                                    <h4 class="text-center">Dashboards & Advanced Analytics</h4>
                                 </div>
                             </div>
                         </div>
@@ -316,9 +304,9 @@
     {% endblock %}
     {% block scripts %}
     <!-- fullPage javascript -->
-    <script src="static/jquery.fullPage.js"></script>
+    <script src="{{ url_for('static', filename='jquery.fullPage.js') }}"></script>
 
-    <script src="static/getstarted.js"></script>
+    <script src="{{ url_for('static',  filename='highered.js') }}"></script>
     {% endblock %}
 </body>
 
