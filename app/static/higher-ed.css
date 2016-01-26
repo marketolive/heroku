@@ -1,0 +1,210 @@
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 2.0em;
+    margin-top: 0px;
+    margin-bottom: 0px; 
+}
+
+h3 {
+    font-size: 1.7em;
+}
+
+h4, h5 {
+    font-size: 1.2em;
+}
+
+p {
+    font-size: 1.3em;
+}
+
+
+.business-header {
+    min-height: 500px;
+    padding-bottom: 100px;
+    height: 100%;
+    background: url('marketobackground.png') center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+/* Customize the text color and shadow color and to optimize text legibility. */
+
+.tagline {
+    font-size: 3.8em;
+    text-shadow: 0 0 10px #000;
+    color: #fff;
+    text-align: center;
+}
+
+.subject-tagline {
+    margin-bottom: 15px;
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.subject-tagline-image {
+    float: none;
+    margin: 0 auto;
+    padding: 15%;
+    background-color: white;
+    border-radius: 50%;
+    border: 5px solid #5a54a4;
+    
+}
+
+.img-size {
+    width: 100%;
+    height: 100%;
+    max-width: 160px;
+    max-height: 160px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.logo {
+    height: 60px;
+    width: 60px;
+    margin-top: 1%;
+    margin-left: 5%;
+}
+
+.inner-arrow-container {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+}
+
+.section2-image-container {
+    width: 100%;
+    height: 0;
+    padding-top: 90%;
+    background: url(highered1.png);
+    background-repeat: no-repeat; 
+    /*background-size: contain;*/
+    background-size: 246% auto;
+    background-position: 0% 0%; 
+}
+
+.section2-image {
+    display: block;
+    margin: 0 auto;
+    padding-top: 5%;
+}
+
+.section3-image-container {
+    width: 100%;
+    height: 0;
+    padding-top: 90%;
+    background: url(highered2.png);
+    background-repeat: no-repeat; 
+    /*background-size: contain;*/
+    background-size: 600% auto;
+    background-position: 0% 0%; 
+}
+
+.section4-image-container {
+    width: 100%;
+    height: 0;
+    padding-top: 90%;
+    background: url(highered3.png);
+    background-repeat: no-repeat; 
+    background-size: 300% auto;
+    background-position: -5% 0%; 
+}
+
+
+
+
+.section5-image-container {
+    width: 100%;
+    height: 0;
+    padding-top: 90%;
+    background: url(section5.png);
+    background-repeat: no-repeat; 
+    background-size: 300% auto;
+    background-position: 0% 0%; 
+}
+
+.section2-options {
+    display: table-cell;
+    border: 5px solid #5a54a4;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    padding: 10%;
+    vertical-align: middle;
+}
+
+.section3 {
+    margin-bottom: 1%;
+}
+
+.section3-options {
+    display: table-cell;
+    border: 5px solid #5a54a4;
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    /*padding: 10%;*/
+    vertical-align: middle;
+}
+
+.section4-options {
+    display: table-cell;
+    border: 5px solid #5a54a4;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    padding: 10%;
+    vertical-align: middle;
+}
+
+.section5-options {
+    display: table-cell;
+    border: 5px solid #5a54a4;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    padding: 10%;
+    vertical-align: middle;
+}
+
+.mt-5{
+    margin-top: 5%;
+}
+.mt-10 {
+    margin-top: 10%;
+}
+
+
+.mb-5 {
+    margin-bottom: 5%;
+}
+
+.purple-background {
+    background-color: #5a54a4;
+}
+
+.white-text {
+    color: white;
+}
+.img-center {
+    margin: 0 auto;
+}
+
+.indent {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+footer {
+    margin: 50px 0;
+}

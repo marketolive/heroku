@@ -70,7 +70,7 @@ def login():
 #                            providers=app.config['OPENID_PROVIDERS'])
 
 languages = ['en', 'jp']
-pages = ['base', 'b2b', 'lead-management']
+pages = ['base', 'b2b', 'lead-management', 'higher-ed']
 
 @app.route('/')
 def no_language():
@@ -101,6 +101,14 @@ def feature_function(language):
 	if language not in languages:
 		return redirect('/en/lead-management.html')
 	return render_template(language+'/lead-management.html', form=g.loginform, name=g.name, lang=language, page='lead-management')
+	
+@app.route('/<language>/higher-ed')
+def higher_ed(language):
+	if language not in languages:
+		return redirect('/en/higher-ed.html')
+	return render_template(language+'/higher-ed.html', form=g.loginform, name=g.name)
+
+
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
