@@ -46,13 +46,11 @@ def login():
         # user should be an instance of your `User` class
         user = models.User.query.filter_by(email=form.inputEmail.data).first()
         if user:
-        	if user.check_password(form.inputPassword.data):
-	        	login_user(user)
-	        	g.user=user
-	        	return redirect(request.referrer)
-        	flash('Invalid Password')
+        	login_user(user)
+        	g.user=user
+        	return redirect(request.referrer)
         else:
-        	flash('Unrecognized Email Address')
+        	flash('Invalid Email Address')
         return redirect(request.referrer)
     return redirect('/')
 
@@ -160,7 +158,7 @@ cu_parser = reqparse.RequestParser()
 cu_parser.add_argument('FirstName', type=str, required=True, location='form')
 cu_parser.add_argument('LastName', type=str, required=True, location='form')
 cu_parser.add_argument('Email', type=str, required=True, location='form')
-cu_parser.add_argument('password', type=str, required=True, location='form')
+#cu_parser.add_argument('password', type=str, required=True, location='form')
 cu_parser.add_argument('LeadRole', type=str, required=True, location='form')
 cu_parser.add_argument('language', location='form')
 
@@ -172,11 +170,10 @@ class CreateUser(Resource):
 		if models.User.query.filter_by(email=args['Email']).all():
 			return {'success':False, 'message':'This email address is already in use by another account'}
 		else:
-			newuser = models.User(args['FirstName'], args['LastName'], args['LeadRole'], args['Email'], 
-								  args['password'], language=args['language'])
+			newuser = models.User(args['FirstName'], args['LastName'], args['LeadRole'], args['Email'], language=args['language'])
 			db.session.add(newuser)
 			db.session.commit()
-			return {'success':True, 'message':''}
+			return {'success':True, 'result':''}
 
 api.add_resource(CreateUser, '/api/<string:api_key_in>/newuser')
 
