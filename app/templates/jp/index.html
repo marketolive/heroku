@@ -1,60 +1,100 @@
 {% extends "jp/base.html" %}
 
+{% block full_image %}
+<html class="full" lang="jp ">
+{% endblock %}
+
 {% block head %}
 <title>ようこそ to Marketo Live</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-jp.css') }}">
 {% endblock %}
 
 {% block page_content %}
-  <h1>ようこそ to Marketo Live</h1>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page-title">
+    <img class="img-responsive title-img" src="{{ url_for('static', filename='marketo-live-image-white.png') }}">
+  </div>
 
-  <a target="_blank" href="https://login.marketo.com"><button class="button" type="button" href="https://login.marketo.com">Login</button></a>
-  <button class="button" data-toggle="modal" data-target=".go-agile-en-options" type="button" href="#">Solutions</button>
-  <button class="button" data-toggle="modal" data-target=".get-started-en-options" type="button">Verticals</button>
+  <div class="col-lg-12 col-md-12 col-md-offset-7 col-sm-12 col-sm-offset-8 options">
+    <button class="button btn-lg" data-toggle="modal" data-target=".solutions-options" type="button" href="#">デモンストレーション</button>
+    <button class="button btn-lg" data-toggle="modal" data-target=".verticals-options" type="button">プレゼンテーション</button>
+  </div>
 
-  <div class="modal fade go-agile-en-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal fade solutions-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <h1>Solutions</h1>
+        <h1>デモンストレーション</h1>
         <div class="modal-content-container">
-          <div class="img circle">
-            <p class="inner-circle">Email Marketing</p>
-            <!-- <img class="circle-bg img-responsive" src="{{ url_for('static', filename='acquire-and-segment.png') }}"> -->
+          <div>
+            <a href="{{lang}}/email-marketing">
+              <div class="circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='solutions-email-marketing.png') }}">
+                <p class="inner-circle">Email Marketing</p>
+              </div>
+            </a>
           </div>
-          <div class="circle">
-            <p>Lead Management</p>
+          <div>
+            <a href="{{lang}}/lead-management">
+              <div class="circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='solutions-lead-management.png') }}">
+                <p>Lead Management</p>
+              </div>
+            </a>
           </div>
-          <div class="circle">
-            <p>Consumer Marketing</p>
+          <div>
+            <a href="{{lang}}/consumer-marketing">
+              <div class="circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='solutions-consumer-marketing.png') }}">
+                <p>Consumer Marketing</p>
+              </div>
+            </a>
           </div>
-          <div class="circle">  
-            <p>Customer Base Marketing</p>
+          <div>
+            <a href="{{lang}}/customer-base-marketing">
+              <div class="circle">  
+                <img class="img-responsive" src="{{ url_for('static', filename='solutions-customer-base-marketing.png') }}">
+                <p>Customer Base Marketing</p>
+              </div>
+            </a>
           </div>
-          <div class="circle">
-            <p>Mobile Marketing</p>
+          <div>
+            <a href="{{lang}}/mobile-marketing">
+              <div class="circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='solutions-mobile-marketing.png') }}">
+                <p>Mobile Marketing</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal fade get-started-en-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal fade verticals-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <h1>Verticals</h1>
+        <h1>プレゼンテーション</h1>
         <div class="modal-content-container">
-          <div class="img circle">
-            <p class="inner-circle">B2B</p>
-            <img class="circle-bg img-responsive" src="{{ url_for('static', filename='acquire-and-segment.png') }}">
+          <div>
+            <a href="{{lang}}/b2b">
+              <div class="circle">
+                <p>B2B</p>
+              </div>
+            </a>
           </div>
-          <div class="circle">
-            <p>B2C</p>
+          <div>
+            <a href="{{lang}}/higher-education">
+              <div class="circle">
+                <p>Higher Education</p>
+              </div>
+            </a>
           </div>
-          <div class="circle">
-            <p>Healthcare</p>
-          </div>
-          <div class="circle">  
-            <p>Financial Services</p>
+          <div>
+            <a href="{{lang}}/financial-services">
+              <div class="circle">
+                <p>Financial Services</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
