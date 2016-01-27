@@ -1,12 +1,12 @@
-{% extends "en/base.html" %}
+{% extends "jp/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 {% block head %}
 <head>
 
-<link href="{{ url_for('static', filename='higher-ed.css') }}" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css') }}">
-<title>Marketo Higher Education</title>
+<link href="{{ url_for('static', filename='business-frontpage.css')}}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css')}}">
+<title>B2Bマーケティング</title>
 {% endblock %}
 
 </head>
@@ -19,30 +19,35 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        <h1 class="tagline text-center">Higher Education</h1>
+                        <h1 class="tagline text-center">B2Bマーケティング</h1>
                     </div>
                 </div>
                 
                 <div class="row mt-10">
-                    <div class="col-md-4 col-xs-4">
-                        <h2 class="subject-tagline">Increase Student Enrollment</h2>
-                        <div class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
-                            <img class="img-size img-responsive" src= "{{ url_for('static', filename='studentenrollment.png') }}" />
+                    <div class="col-md-3 col-xs-3">
+                        <h2 class="subject-tagline">認知度を高める</h2>
+                        <div data-menuanchor="driveMoreAwareness" class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
+                            <a href="#DriveMoreAwareness"><img class="img-size img-responsive" src= "{{ url_for('static', filename='drive.png') }}" /></a>
                         </div>
                     </div>  
-                    <div class="col-md-4 col-xs-4">
-                        <h2 class="subject-tagline">Build Lasting Relationships</h2>   
+                    <div class="col-md-3 col-xs-3">
+                        <h2 class="subject-tagline">顧客とのエンゲージメントを計る</h2>   
                         <div class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
-                            <img class="img-size img-responsive" src= "{{ url_for('static', filename='lastingrelationships.png') }}" />
+                            <a href="#EngageYourCustomer"><img class="img-size img-responsive" src= "{{ url_for('static', filename='engage.png') }}" /></a>
                         </div>            
                     </div> 
-                    <div class="col-md-4 col-xs-4">
-                        <h2 class="subject-tagline">Measure Success</h2> 
+                    <div class="col-md-3 col-xs-3">
+                        <h2 class="subject-tagline">営業と連携する</h2> 
                         <div class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
-                            <img class="img-size img-responsive" src= "{{ url_for('static', filename='highered-measure.png') }}" />
+                            <a href="#AlignWithSales"><img class="img-size img-responsive" src= "{{ url_for('static', filename='sales.png') }}" /></a>
                         </div>           
                     </div> 
-                    
+                    <div class="col-md-3 col-xs-3">
+                        <h2 class="subject-tagline">効果を測定する</h2>   
+                        <div class= "col-lg-10 col-md-10 col-xs-10 subject-tagline-image">
+                            <a href="#MeasureYourSuccess"><img class="img-size img-responsive" src= "{{ url_for('static', filename='report.png') }}" /></a>
+                        </div>            
+                    </div> 
                 </div>                
             </div>
 
@@ -63,14 +68,14 @@
                     <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
                 </div>
 
-                <h2 class="text-center">Increase Student Enrollment</h2>
+                <h2 class="text-center">認知度を高める</h2>
 
                 <!-- Begining of Section 2 -->
                 <div class="row indent">
                     <div class="col-md-6 col-lg-6 col-xs-12">
                                         
                         <div class="section2-image-container">
-                            <!--  -->
+                            <!-- <img class="section2-image-container" src="{{ url_for('static', filename= 'tofu.png') }}" /> -->
                         </div>
                     </div>
 
@@ -78,26 +83,26 @@
                        
                         <hr>
 
-                        <h3 class="text-center" id="section2-header">Search Optimization</h3>
+                        <h3 class="text-center" id="section2-header">検索の最適化</h3>
 
-                        <p class="section2-copy">Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential students to their website and landing pages.</p>
+                        <p class="section2-copy">Marketo SEOは、マーケターがSEOの専門的な知識がなくても、企業のWebサイト、ランディングページへ質の高いトラッフィクを増やすことをサポートします。</p>
 
                         <div class="col-lg-12 col-md-12 col-xs-12 mt-10">        
                             <div class="col-lg-4 col-md-4 col-xs-4">
                                 <div data-order="section2-0" class="section2-options purple-background">
-                                    <h5 class="text-center white-text">Seach Optimization</h5>
+                                    <h5 class="text-center white-text">検索最適化（SEO）</h4>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-xs-4">
                                 <div data-order="section2-1" class="section2-options">
-                                    <h5 class="text-center">Capture Applicants</h5>
+                                    <h5 class="text-center">ソーシャルプロモーション</h4>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-xs-4">
                                 <div data-order="section2-2" class="section2-options">
-                                    <h5 class="text-center">Social Promotions</h5>
+                                    <h5 class="text-center">パーソナライゼーション</h4>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +126,7 @@
                     <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
                 </div>
 
-                <h2 class="text-center">Communicate a Scale</h2>
+                <h2 class="text-center">顧客とのエンゲージメントを計る</h2>
 
                 <div class="row indent">
 
@@ -129,36 +134,48 @@
 
                         <hr>
 
-                        <h3 class="text-center" id="section3-header">Automate</h4>
+                        <h3 class="text-center" id="section3-header">自動化</h4>
 
-                        <p class="section3-copy">With Marketo's email capabilities marketers can put into action an immediate email strategy that incorporates the best email practices.  Provide truly personalized experiences for your applicants and alumni that drive more engagement.</p>
+                        <p class="section3-copy">自動化プログラムはトリガーを使い、見込顧客の特定の行動をリアルタイムで捉え、メール送信、営業担当者へのアラート通知、スコアリングいった適切なアクションを瞬時に実行します。</p>
                    
 
                         <div class="col-md-12 col-xs-12 mb-5 mt-5">
-                            <div class="col-md-6 col-xs-6">
+                            <div class="col-md-4 col-xs-4">
                                 <div data-order="section3-0" class="section3-options purple-background">
-                                    <h4 class="text-center font-size-16 white-text">Email Marketing</h4>
+                                    <h4 class="text-center font-size-16 white-text">自動化</h4>
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-xs-6">
+                            <div class="col-md-4 col-xs-4">
                                 <div data-order="section3-1" class="section3-options">
-                                    <h4 class="text-center font-size-16">Retargeting</h4>
+                                    <h4 class="text-center font-size-16">バッチ</h4>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-xs-4">
+                                <div data-order="section3-2" class="section3-options">
+                                    <h4 class="text-center font-size-16">ドリップ</h4>
                                 </div>
                             </div>
                         </div>
 
                         
                         <div class="col-md-12 col-xs-12 mb-5">
-                            <div class="col-md-6 col-xs-6">
-                                <div data-order="section3-2" class="section3-options">
-                                    <h4 class="text-center font-size-16">Nurture</h4>
+                            <div class="col-md-4 col-xs-4">
+                                <div data-order="section3-3" class="section3-options">
+                                    <h4 class="text-center font-size-16">ナーチャリング</h4>
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-xs-6">
-                                <div data-order="section3-3" class="section3-options">
-                                    <h4 class="text-center font-size-16">Events</h4>
+                            <div class="col-md-4 col-xs-4">
+                                <div data-order="section3-4" class="section3-options">
+                                    <h4 class="text-center font-size-16">イベント</h4>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-xs-4">
+                                <div data-order="section3-5" class="section3-options">
+                                    <h4 class="text-center font-size-16">カレンダー</h4>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +207,7 @@
                     <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
                 </div>
 
-                <h2 class="text-center">Measure Success</h2>
+                <h2 class="text-center">営業と連携する</h2>
 
                 <div class="row indent">
                     <div class="col-md-6">
@@ -204,26 +221,26 @@
                        
                         <hr>
 
-                        <h3 id="section4-header" class="text-center">Lead Scoring</h3>
+                        <h3 id="section4-header" class="text-center">リードスコアリング</h3>
 
-                        <p class="section4-copy">Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance</p>
+                        <p class="section4-copy">リードスコアリングはマーケティングと営業が連携するための手法で、営業が案件にアタッチするタイミングを見極めるために見込顧客をランク付けします。企業への関心、購買サイクルでの現在のステージ、ニーズとビジネスへのマッチなどを基にスコア付けします。</p>
 
                         <div class="col-md-12 col-xs-12 mt-10">        
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section4-0" class="section4-options purple-background">
-                                    <h4 class="text-center white-text">Student Engagement</h4>
+                                    <h4 class="text-center white-text">リードスコアリング</h4>
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section4-1" class="section4-options">
-                                    <h4 class="text-center">ROI Analysis</h4>
+                                    <h4 class="text-center">営業への通知</h4>
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section4-2" class="section4-options">
-                                    <h4 class="text-center">Dashboards & Advanced Analytics</h4>
+                                    <h4 class="text-center">セールスインサイト</h4>
                                 </div>
                             </div>
                         </div>
@@ -239,15 +256,14 @@
             <!-- End of Section 4 -->
 
             <!-- Start of Section 5 -->
-            
-<div class="section container">
+            <div class="section container">
                 <hr>
 
                 <div class="arrow-container-up">
                     <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
                 </div>
 
-                <h2 class="text-center">Measure Your Success</h2>
+                <h2 class="text-center">効果を測定する</h2>
 
                 <div class="row section3 indent">
 
@@ -255,9 +271,9 @@
 
                         <hr>
 
-                        <h3 id="section5-header" class="text-center">Executive Dashboard</h4>
+                        <h3 id="section5-header" class="text-center">エグゼクティブダッシュボード</h4>
 
-                        <p class="section5-copy">Most CRMs and Marketing Automation software only captures attribution metrics with a single touch (e.g a lead source).  Don't limit yourself to a single-touch attribution model with Marketo.</p>
+                        <p class="section5-copy">ほとんどのCRM、マーケティングオートメーションソフトはリードソースからのシングルタッチ（最初あるいは最後の接触ポイント）のみを貢献度の指標としています。マルケトはすべての接触ポイントを反映しマルチタッチでの効果測定を可能にします。</p>
                    
 
                         <div class="col-md-12 col-xs-12 mb-5 mt-10">
@@ -293,6 +309,7 @@
 
                 </div>
             </div>
+
                 
 
 
@@ -304,9 +321,9 @@
     {% endblock %}
     {% block scripts %}
     <!-- fullPage javascript -->
-    <script src="{{ url_for('static', filename='jquery.fullPage.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery.fullPage.js')}}"></script>
 
-    <script src="{{ url_for('static',  filename='highered.js') }}"></script>
+    <script src="{{ url_for('static', filename='b2b-jp.js')}}"></script>
     {% endblock %}
 </body>
 

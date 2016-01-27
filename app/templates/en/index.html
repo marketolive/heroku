@@ -26,7 +26,7 @@
         <h1>Solutions</h1>
         <div class="modal-content-container">
           <div>
-            <a href="{{lang}}/email-marketing">
+            <a href="{{lang}}/solutions/email-marketing">
               <div class="circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-email-marketing.png') }}">
                 <p class="inner-circle">Email Marketing</p>
@@ -34,7 +34,7 @@
             </a>
           </div>
           <div>
-            <a href="{{lang}}/lead-management">
+            <a href="{{lang}}/solutions/lead-management">
               <div class="circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-lead-management.png') }}">
                 <p>Lead Management</p>
@@ -42,7 +42,7 @@
             </a>
           </div>
           <div>
-            <a href="{{lang}}/consumer-marketing">
+            <a href="{{lang}}/solutions/consumer-marketing">
               <div class="circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-consumer-marketing.png') }}">
                 <p>Consumer Marketing</p>
@@ -50,7 +50,7 @@
             </a>
           </div>
           <div>
-            <a href="{{lang}}/customer-base-marketing">
+            <a href="{{lang}}/solutions/customer-base-marketing">
               <div class="circle">  
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-customer-base-marketing.png') }}">
                 <p>Customer Base Marketing</p>
@@ -58,7 +58,7 @@
             </a>
           </div>
           <div>
-            <a href="{{lang}}/mobile-marketing">
+            <a href="{{lang}}/solutions/mobile-marketing">
               <div class="circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-mobile-marketing.png') }}">
                 <p>Mobile Marketing</p>
@@ -75,8 +75,8 @@
       <div class="modal-content">
         <h1>Verticals</h1>
         <div class="modal-content-container">
-          <div>
-            <a href="{{lang}}/b2b">
+          <div id="b2b">
+            <a href="{{lang}}/verticals/b2b">
               <div class="circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='office-icon-purple.png') }}">
                 <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='office-icon-white.png') }}"> 
@@ -84,8 +84,8 @@
               </div>
             </a>
           </div>
-          <div>
-            <a href="{{lang}}/higher-education">
+          <div id="higher-education">
+            <a href="{{lang}}/verticals/higher-education">
               <div class="circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='education-icon-purple.png') }}">
                 <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='education-icon-white.png') }}">
@@ -93,16 +93,20 @@
               </div>
             </a>
           </div>
-          <div>
-            <a href="{{lang}}/financial-services">
+          <div id="financial-services">
+            <a href="{{lang}}/verticals/financial-services">
               <div class="circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='financial-services-icon-purple.png') }}">
+                <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='financial-services-icon-white.png') }}">
                 <p>Financial Services</p>
               </div>
             </a>
           </div>
-          <div>
-            <a href="{{lang}}/healthcare">
+          <div id="healthcare">
+            <a href="{{lang}}/verticals/healthcare">
               <div class="circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='healthcare-icon-purple.png') }}">
+                <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='healthcare-icon-white.png') }}">
                 <p>Healthcare</p>
               </div>
             </a>
@@ -112,4 +116,9 @@
     </div>
   </div>
 
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
 {% endblock %}

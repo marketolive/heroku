@@ -27,10 +27,12 @@
 
 .circle:hover {
   background: #5A54A4;
-  color: white;
+  color: #00a1db;
+  text-decoration: underline;
   border: 1.5px solid green;
   cursor: pointer;
 }
+
 
 .circle-bg {
   width: 150px;
