@@ -130,14 +130,18 @@ p {
     background-position: 0% 0%; 
 }
 
-.section2-options {
+.section2-options,
+.section4-options,
+.section5-options {
     display: table-cell;
     border: 2px solid #5a54a4;
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    padding: 10%;
     vertical-align: middle;
+    -webkit-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
 }
 
 .section3 {
@@ -152,27 +156,12 @@ p {
     height: 100px;
     padding: 10%;
     vertical-align: middle;
+    -webkit-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
 }
 
-.section4-options {
-    display: table-cell;
-    border: 2px solid #5a54a4;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    padding: 10%;
-    vertical-align: middle;
-}
 
-.section5-options {
-    display: table-cell;
-    border: 2px solid #5a54a4;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    padding: 10%;
-    vertical-align: middle;
-}
 
 .section5-copy {
     height: 175px;
@@ -208,6 +197,11 @@ p {
 
 .fixed-height {
     height: 470px;
+}
+
+.no-pad{
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 footer {

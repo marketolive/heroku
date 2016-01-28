@@ -4,7 +4,7 @@ $(document).ready(function(){
 	    $('#fullpage').fullpage({
         	anchors:['B2B-Marketing', 'DriveMoreAwareness', 'EngageYourCustomer', 'AlignWithSales', 'MeasureYourSuccess']
     	});
-	    console.log("fullpage iniatilizing?XX");
+	    // console.log("fullpage iniatilizing?XX");
 
 	    $('.arrow-container-down').click(function(){
 	      $.fn.fullpage.moveSectionDown();
@@ -19,6 +19,9 @@ $(document).ready(function(){
 
 	$('.section2-options, .section3-options, .section4-options, .section5-options').hover(function(){
 		// mouse enter function
+		var container = $(this).parent().siblings().find('purple-background').replaceWith("");
+		console.log(container);
+
 		var order = $(this).attr('data-order');
 		order = order.split('-');
 		var section = order[0];
@@ -64,9 +67,9 @@ $(window).resize(function(){
 
 var b2b = {
 	section2: [
-	{"header": "Search Optimization", "description": "Marketo Search Engine Optimization (SEO) is an easy-to-use resource that helps marketers without specialized knowledge drive more quality traffic to their website and landing pages.", "bp":"0% 0%"},
+	{"header": "Search Optimization", "description": "Marketo's Search Engine Optimization (SEO) is an easy-to-use resource that helps marketers without specialized knowledge drive more quality traffic to their website and landing pages.", "bp":"0% 0%"},
 	{"header": "Social Promotions", "description": "Social marketing makes it easy for your prospects and customers to share your message.  According to a recent Forrester research report, 70% of consumers trust recommendations from a friend, whereas only 10% trust advertising.", "bp":"55% 0%"},
-	{"header": "Personalization", "description": "Marketo Real-Time Personalization creates meaningful, real-time interactions with targeted individuals through dynamically generated, personalized communication across email, web, ads and mobile-- with an content management system (CMS) and with no IT involvement", "bp":"105% 0%"}
+	{"header": "Personalization", "description": "Marketo's Real-Time Personalization creates meaningful, real-time interactions with targeted individuals through dynamically generated, personalized communication across email, web, ads and mobile-- without an content management system (CMS) and with no IT involvement.", "bp":"105% 0%"}
 	],
 	section3: [
 	{"header": "Automate", "description": "Automated programs use triggers which provide you with the ability to listen in real-time for specific behaviors and respond immediately with an appropriate action (or set of actions), such as sending an email, alerting a sales rep or automating the customer lifecycle.", "bp":"0% 0%"},
