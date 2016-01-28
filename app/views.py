@@ -46,13 +46,11 @@ def login():
         # user should be an instance of your `User` class
         user = models.User.query.filter_by(email=form.inputEmail.data).first()
         if user:
-        	if user.check_password(form.inputPassword.data):
-	        	login_user(user)
-	        	g.user=user
-	        	return redirect(request.referrer)
-        	flash('Invalid Password')
+        	login_user(user)
+        	g.user=user
+        	return redirect(request.referrer)
         else:
-        	flash('Unrecognized Email Address')
+        	flash('Invalid Email Address')
         return redirect(request.referrer)
     return redirect('/')
 
@@ -70,19 +68,20 @@ def login():
 #                            providers=app.config['OPENID_PROVIDERS'])
 
 languages = ['en', 'jp']
-pages = ['base', 'b2b', 'lead-management', 'higher-education']
+pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 'customer-base-marketing', 'mobile-marketing', 'higher-education', 'financial-services', 'healthcare']
 
 @app.route('/')
 def no_language():
 	return redirect('/en')
 
 @app.route('/<language>')
+@app.route('/<language>/')
 def index(language):
 	if language in pages:
-		return redirect('/en/'+language)
+		return redirect('/en/' + language)
 	if language not in languages:
 		return redirect('/en')
-	return render_template(language+'/index.html', form=g.loginform, name=g.name, lang=language)
+	return render_template(language + '/index.html', form=g.loginform, name=g.name, lang=language, page='', path='')
 
 @app.route('/<language>/base')
 def base(language):
@@ -90,24 +89,78 @@ def base(language):
 		return redirect('/en/base')
 	return render_template(language+'/base.html', form=g.loginform, name=g.name, lang=language)
 
-@app.route('/<language>/b2b')
-def get_started_b2b(language):
+########################################################
+#
+#					Solutions Routes
+#					
+########################################################	
+@app.route('/<language>/solutions/email-marketing')
+def email_marketing(language):
+	page = 'email-marketing'
 	if language not in languages:
-		return redirect('/en/b2b')
-	return render_template(language+'/b2b.html', form=g.loginform, name=g.name, lang=language, page='b2b')
+		return redirect('/en/solutions/' + page)
+	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
 
-@app.route('/<language>/lead-management')
-def feature_function(language):
+@app.route('/<language>/solutions/lead-management')
+def lead_management(language):
+	page = 'lead-management'
 	if language not in languages:
-		return redirect('/en/lead-management.html')
-	return render_template(language+'/lead-management.html', form=g.loginform, name=g.name, lang=language, page='lead-management')
+		return redirect('/en/solutions/' + page)
+	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/' + page, page=page)
+
+@app.route('/<language>/solutions/consumer-marketing')
+def consumer_marketing(language):
+	page = 'consumer-marketing'
+	if language not in languages:
+		return redirect('/en/solutions/' + page)
+	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
+
+@app.route('/<language>/solutions/customer-base-marketing')
+def customer_base_marketing(language):
+	page = 'customer-base-marketing'
+	if language not in languages:
+		return redirect('/en/solutions/' + page)
+	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
+
+@app.route('/<language>/solutions/mobile-marketing')
+def mobile_marketing(language):
+	page = 'mobile-marketing'
+	if language not in languages:
+		return redirect('/en/solutions/' + page)
+	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
+
+########################################################
+#
+#					Vertical Routes
+#					
+########################################################	
+@app.route('/<language>/verticals/b2b')
+def b2b(language):
+	page = 'b2b'
+	if language not in languages:
+		return redirect('/en/verticals/' + page)
+	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
 	
-@app.route('/<language>/higher-education')
+@app.route('/<language>/verticals/higher-education')
 def higher_education(language):
+	page = 'higher-education'
 	if language not in languages:
-		return redirect('/en/higher-education.html')
-	return render_template(language+'/higher-education.html', form=g.loginform, name=g.name)
+		return redirect('/en/verticals/' + page)
+	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
 
+@app.route('/<language>/verticals/financial-services')
+def financial_services(language):
+	page = 'financial-services'
+	if language not in languages:
+		return redirect('/en/verticals/' + page)
+	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
+
+@app.route('/<language>/verticals/healthcare')
+def healthcare(language):
+	page = 'healthcare'
+	if language not in languages:
+		return redirect('/en/verticals/' + page)
+	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
 
 
 class CreateFolders(Resource):
@@ -160,7 +213,7 @@ cu_parser = reqparse.RequestParser()
 cu_parser.add_argument('FirstName', type=str, required=True, location='form')
 cu_parser.add_argument('LastName', type=str, required=True, location='form')
 cu_parser.add_argument('Email', type=str, required=True, location='form')
-cu_parser.add_argument('password', type=str, required=True, location='form')
+#cu_parser.add_argument('password', type=str, required=True, location='form')
 cu_parser.add_argument('LeadRole', type=str, required=True, location='form')
 cu_parser.add_argument('language', location='form')
 
@@ -172,11 +225,10 @@ class CreateUser(Resource):
 		if models.User.query.filter_by(email=args['Email']).all():
 			return {'success':False, 'message':'This email address is already in use by another account'}
 		else:
-			newuser = models.User(args['FirstName'], args['LastName'], args['LeadRole'], args['Email'], 
-								  args['password'], language=args['language'])
+			newuser = models.User(args['FirstName'], args['LastName'], args['LeadRole'], args['Email'], language=args['language'])
 			db.session.add(newuser)
 			db.session.commit()
-			return {'success':True, 'message':''}
+			return {'success':True, 'result':''}
 
 api.add_resource(CreateUser, '/api/<string:api_key_in>/newuser')
 

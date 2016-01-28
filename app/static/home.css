@@ -1,3 +1,20 @@
+.page-title {
+  position: absolute;
+  top: 20%;
+}
+
+.title-img {
+  width: 50%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.options {
+  bottom: 100px;
+  position: absolute;
+}
+
 .circle {
   width: 150px;
   height: 150px;
@@ -6,13 +23,18 @@
   margin: 5px 5px 25px 5px;
   padding: 20px;
   border: 1.5px solid black;
-  /*background: url('acquire-and-segment.png');*/
 }
 
 .circle:hover {
   background: #5A54A4;
-  color: white;
-  border: 1.5px solid green;
+  color: #00a1db;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.vertical-container:hover {
+  color: #00a1db;
+  text-decoration: underline;
   cursor: pointer;
 }
 
@@ -22,8 +44,23 @@
   margin: auto;
 }
 
+.circle p {
+  margin: 30px 0 10px;
+}
+
+.circle p:hover {
+  color: #00a1db;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.circle a {
+  text-decoration: none;
+}
+
 .modal-content {
   text-align: center;
+  background-color: rgb(238, 238, 238);
 }
 
 .modal-content-container {
@@ -35,3 +72,11 @@
 .inner-circle {
   display: inline-block;
 }
+
+.btn-lg {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+  margin-left: 20px;
+}
+

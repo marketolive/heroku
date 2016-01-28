@@ -5,4 +5,4 @@ from wtforms.validators import DataRequired
 
 class LoginForm(Form):
     inputEmail = EmailField('inputEmail', validators=[DataRequired()])
-    inputPassword = PasswordField('inputPassword', validators=[DataRequired()])
+    #inputPassword = PasswordField('inputPassword', validators=[DataRequired()])

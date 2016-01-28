@@ -14,13 +14,13 @@ class User(db.Model):
     created = db.Column(db.DateTime)
     subscriptions = db.relationship('Subscription', backref='user', lazy='dynamic')
 
-    def __init__(self, fname, lname, role, email, password, created=None, language=None):
+    def __init__(self, fname, lname, role, email, password=None, created=None, language=None):
         self.first_name=fname
         self.last_name=lname
         self.role=role
         self.created=created if created else datetime.now()
         self.email = email
-        self.set_password(password)
+        #self.set_password(password)
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
