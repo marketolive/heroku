@@ -68,7 +68,7 @@ def login():
 #                            providers=app.config['OPENID_PROVIDERS'])
 
 languages = ['en', 'jp']
-pages = ['base', 'b2b', 'lead-management', 'higher-education']
+pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 'customer-base-marketing', 'mobile-marketing', 'higher-education', 'financial-services', 'healthcare']
 
 @app.route('/')
 def no_language():
@@ -78,10 +78,10 @@ def no_language():
 @app.route('/<language>/')
 def index(language):
 	if language in pages:
-		return redirect('/en/'+language)
+		return redirect('/en/' + language)
 	if language not in languages:
 		return redirect('/en')
-	return render_template(language+'/index.html', form=g.loginform, name=g.name, lang=language, page='', path='')
+	return render_template(language + '/index.html', form=g.loginform, name=g.name, lang=language, page='', path='')
 
 @app.route('/<language>/base')
 def base(language):
