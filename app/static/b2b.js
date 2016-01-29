@@ -24,12 +24,9 @@ $(document).ready(function(){
 		var section = order[0];
 		order = order[1];
 
-		// var sectionNumber = section + "-0";
+		// removing the purple from the first child on hover
+		$(this).parent().siblings('div').first().children('div').removeClass("purple-background").children('p').css("color", "black");
 		
-		// var theOne= $('div[data-order= sectionNumber]');
-		// console.log(theOne);
-
-
 		var position = b2b[section][order]["bp"];
 		
 		$(this).css({'color': 'white', 'background-color': '#5a54a4'});
@@ -52,7 +49,7 @@ $(document).ready(function(){
 
 $(window).resize(function(){
 	if($(window).width() < 999) {
-		console.log("did it register?");
+		// console.log("did it register?");
 	    $('#fullpage').fullpage({
 	    	scrollingSpeed: 7000,
 	    	autoScrolling: false
