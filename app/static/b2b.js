@@ -19,14 +19,17 @@ $(document).ready(function(){
 
 	$('.section2-options, .section3-options, .section4-options, .section5-options').hover(function(){
 		// mouse enter function
-		var container = $(this).parent().siblings().find('purple-background').replaceWith("");
-		console.log(container);
-
 		var order = $(this).attr('data-order');
 		order = order.split('-');
 		var section = order[0];
 		order = order[1];
+
+		// var sectionNumber = section + "-0";
 		
+		// var theOne= $('div[data-order= sectionNumber]');
+		// console.log(theOne);
+
+
 		var position = b2b[section][order]["bp"];
 		
 		$(this).css({'color': 'white', 'background-color': '#5a54a4'});
@@ -34,6 +37,7 @@ $(document).ready(function(){
 		$('.'+section+'-copy').text(b2b[section][order]["description"]);
 		$('.'+section+'-image-container').css("background-position", position);
 	}, function(){
+		// mouse out function
 		if ($(this).hasClass("purple-background")){
 			$(this).css('background-color', 'white');
 			$(this).children().first().css('color', 'black');
