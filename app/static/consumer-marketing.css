@@ -49,6 +49,14 @@
   padding: 20px;
 }
 
+.circle:hover {
+  cursor: pointer;
+}
+
+.circle:hover p {
+  color: #f58216;
+}
+
 @media (max-width: 768px) {
   .circle {
     height: 100px;
