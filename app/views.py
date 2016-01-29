@@ -106,7 +106,7 @@ def lead_management(language):
 	page = 'lead-management'
 	if language not in languages:
 		return redirect('/en/solutions/' + page)
-	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/' + page, page=page)
+	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
 
 @app.route('/<language>/solutions/consumer-marketing')
 def consumer_marketing(language):
