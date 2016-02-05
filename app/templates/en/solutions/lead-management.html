@@ -2,18 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 {% block head %}
-
 <head>
 	<link href="{{ url_for('static', filename='lead-managment.css') }}" rel="stylesheet">
 	<title>Marketo Lead Management</title>
-
-{% block lang_nav %}
-<ul class="dropdown-menu">
-    <li><a href="/en/{{page}}">English</a></li>
-    <li><a href="/jp/{{page}}">日本語（日本）</a></li>
-</ul>
-{% endblock %}
-
 {% endblock %}
 </head>
 

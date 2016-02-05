@@ -1,5 +1,76 @@
 {% extends "en/base.html" %}
 
+{% block full_image %}
+<html class="full" lang="en">
+{% endblock %}
+
+{% block head %}
+<title>Consumer Marketing - Marketo</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='consumer-marketing.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-consumer-marketing.css') }}">
+{% endblock %}
+
 {% block page_content %}
-<h1 style="text-align:center;">Consumer Marketing</h1>
+<div class="col-sm-12 col-md-12 col-lg-12 page-container">
+  <h1 style="text-align:center; color:white;">Consumer Marketing</h1>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 stage-container">
+    <h3>Acquire</h3>
+    <div class="stages">
+      <div class="circle">
+        <img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
+        <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
+        <p>Search Optimization</p>
+      </div>
+      <div class="circle">
+        <div>
+          <img class="img-responsive" src="{{ url_for('static', filename='ad-targeting-purple.png') }}">
+          <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='ad-targeting-orange.png') }}">
+        </div>
+        <p>Ad Targeting</p>
+      </div>
+      <div class="circle">
+        <div>
+          <img class="img-responsive" src="{{ url_for('static', filename='web-personalization-purple.png') }}">
+          <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='web-personalization-orange.png') }}">
+        </div>
+        <p>Web Personalization</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 stage-container">
+    <h3>Engage</h3>
+    <div class="stages">
+      <div class="circle">
+        <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-purple.png') }}">
+        <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-orange.png') }}">
+        <p>Powerful Automation</p>
+      </div>
+      <div class="circle">
+        <div>
+          <img class="img-responsive" src="{{ url_for('static', filename='social-promotions-purple.png') }}">
+          <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='social-promotions-orange.png') }}">
+        </div>
+        <p>Social Promotions</p>
+      </div>
+      <!-- <div class="circle"></div> -->
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 stage-container">
+    <h3>Grow</h3>
+    <div class="stages">
+      <div class="circle">
+        <img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
+        <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-orange.png') }}">
+        <p>Program Analysis</p>
+      </div>
+      <!-- <div class="circle"></div> -->
+      <!-- <div class="circle"></div> -->
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='consumer-marketing.js') }}" type="text/javascript"></script>
 {% endblock %}
