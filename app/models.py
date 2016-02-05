@@ -14,12 +14,13 @@ class User(db.Model):
     created = db.Column(db.DateTime)
     subscriptions = db.relationship('Subscription', backref='user', lazy='dynamic')
 
-    def __init__(self, fname, lname, role, email, password=None, created=None, language=None):
+    def __init__(self, fname, lname, email, role=None, password=None, created=None, language=None):
         self.first_name=fname
         self.last_name=lname
         self.role=role
         self.created=created if created else datetime.now()
         self.email = email
+        self.language = language if language else 'en'
         #self.set_password(password)
 
     def set_password(self, password):
@@ -50,7 +51,7 @@ class Subscription(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     account_string = db.Column(db.String(80))
     mkto_pod = db.Column(db.String(20))
-    login = db.Column(db.String(64))
+    login = db.Column(db.String(64)) #Email address used to Login
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     is_admin = db.Column(db.Boolean)
     last_login = db.Column(db.DateTime)

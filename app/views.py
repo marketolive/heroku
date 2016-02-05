@@ -1,7 +1,7 @@
 from app import app, api, mktorest, models, lm, db
 from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from flask import render_template, flash, request, redirect, g
+from flask import render_template, flash, request, redirect, g, abort
 from .forms import LoginForm
 import os
 from datetime import datetime
@@ -18,6 +18,16 @@ except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
 	apiKey = os.environ['apiKey']
 
+########################################################
+#
+#						Logins
+#					
+########################################################
+
+#
+# We use the flask-login library to manage user logins, see docs to understand these endpoints
+# https://flask-login.readthedocs.org/en/latest/
+#
 @app.before_request
 def before_request():
 	g.loginform=LoginForm()
@@ -38,6 +48,8 @@ def logout():
     g.user=None
     return redirect('/')
 
+# TODO: This needs to be updated to take and update a cookie value field on the DB
+#		This cookie will be used to ID the user for the last-login API endpoint
 @app.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
@@ -54,21 +66,19 @@ def login():
         return redirect(request.referrer)
     return redirect('/')
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if g.user is not None and g.user.is_authenticated:
-#         return redirect(url_for('index'))
-#     form = LoginForm()
-#     if form.validate_on_submit():
-#         session['remember_me'] = form.remember_me.data
-#         return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
-#     return render_template('login.html', 
-#                            title='Sign In',
-#                            form=form,
-#                            providers=app.config['OPENID_PROVIDERS'])
+########################################################
+#
+#				Base Template and Index
+#					
+########################################################
 
+# The following should contain a comprehensive list of languages and pages
+# These are used to validate incoming URLs
 languages = ['en', 'jp']
-pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 'customer-base-marketing', 'mobile-marketing', 'higher-education', 'financial-services', 'healthcare']
+categories = ['solutions', 'verticals']
+pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
+		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
+		 'financial-services', 'healthcare']
 
 @app.route('/')
 def no_language():
@@ -88,6 +98,27 @@ def base(language):
 	if language not in languages:
 		return redirect('/en/base')
 	return render_template(language+'/base.html', form=g.loginform, name=g.name, lang=language)
+
+# @app.errorhandler(404)
+# def page_not_found(error):
+#     return render_template('page_not_found.html'), 404
+
+########################################################
+#
+#	   Universal Route for Solutions and Verticals
+#					
+########################################################
+
+@app.route('/<language>/<category>/<page>')
+def email_marketing(language, category, page):
+	if language not in languages:
+		return redirect('/en/%s/%s' % (category, page))
+	if category not in categories or page not in pages:
+		abort(404)
+	return render_template('%s/%s/%s.html' % (language, category, page), form=g.loginform, name=g.name, lang=language, path='%s/' % (category), page=page)
+
+'''
+Will delete this once we are fully confident in the above
 
 ########################################################
 #
@@ -161,7 +192,22 @@ def healthcare(language):
 	if language not in languages:
 		return redirect('/en/verticals/' + page)
 	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
+'''
+########################################################
+#
+#					API Endpoints
+#					
+########################################################	
 
+#
+# Create Folders
+#
+# /createfolders/<string:api_key_in>/<string:new_email>
+# GET, no query string
+#
+# Creates folders and 'My First Program - [name]' in MarketoLive Demo instance. 
+# Name is username from email, i.e. email.split('@')[0]
+# Primarily used during the provisioning of new MarketoLive users
 
 class CreateFolders(Resource):
 	def get(self, api_key_in, new_email):
@@ -209,36 +255,68 @@ class CreateFolders(Resource):
 
 api.add_resource(CreateFolders, '/createfolders/<string:api_key_in>/<string:new_email>')
 
+#
+# Create User
+#
+# /api/<string:api_key_in>/newuser
+# POST, Content-Type = application/x-www-form-urlencoded OR application/json
+# 
+# inputs = *firstName, *lastName, *email, role, language (*REQUIRED)
+#
+# Output = 	{
+#			'success':True/False, 
+#			'message':[error message if unsuccessful or blank if wrong API key],
+#			'result':''
+#			}
+#
+# Creates new user in server database. 
+
 cu_parser = reqparse.RequestParser()
-cu_parser.add_argument('FirstName', type=str, required=True, location='form')
-cu_parser.add_argument('LastName', type=str, required=True, location='form')
-cu_parser.add_argument('Email', type=str, required=True, location='form')
+cu_parser.add_argument('firstName', type=str, required=True)
+cu_parser.add_argument('lastName', type=str, required=True)
+cu_parser.add_argument('email', type=str, required=True)
 #cu_parser.add_argument('password', type=str, required=True, location='form')
-cu_parser.add_argument('LeadRole', type=str, required=True, location='form')
-cu_parser.add_argument('language', location='form')
+cu_parser.add_argument('role', type=str)
+cu_parser.add_argument('language')
 
 class CreateUser(Resource):
 	def post(self, api_key_in):
 		if api_key_in != apiKey:
 			return {'success':False, 'message':''}
 		args = cu_parser.parse_args()
-		if models.User.query.filter_by(email=args['Email']).all():
-			return {'success':False, 'message':'This email address is already in use by another account'}
+		if models.User.query.filter_by(email=args['email']).all():
+			return {'success':False, 'message':'There is already an account associated with this email address'}
 		else:
-			newuser = models.User(args['FirstName'], args['LastName'], args['LeadRole'], args['Email'], language=args['language'])
+			newuser = models.User(args['firstName'], args['lastName'], args['email'], role=args['role'], language=args['language'])
 			db.session.add(newuser)
 			db.session.commit()
-			return {'success':True, 'result':''}
+			return {'success':True, 'message':'','result':''}
 
 api.add_resource(CreateUser, '/api/<string:api_key_in>/newuser')
 
-# rl_parser = reqparse.RequestParser()
-# rl_parser.add_argument('firstName')
-# rl_parser.add_argument('lastName')
-# rl_parser.add_argument('email', required=True)
-# rl_parser.add_argument('accountString', required=True)
-# rl_parser.add_argument('pod',required=True)
-# rl_parser.add_argument('loginDate')
+#
+# Record Last Login - WORK IN PROGRESS
+#
+# /api/<string:api_key_in>/recordlogin
+# POST, Content-Type = application/x-www-form-urlencoded OR application/json
+# 
+# inputs = firstName, lastName, *email, *accountString, *pod, loginDate (*REQUIRED)
+#
+# Output = 	{
+#			'success':True/False, 
+#			'message':[error message if unsuccessful or blank if wrong API key],
+#			'result':''
+#			}
+#
+# Creates new user in server database. 
+
+rl_parser = reqparse.RequestParser()
+rl_parser.add_argument('firstName')
+rl_parser.add_argument('lastName')
+rl_parser.add_argument('email', required=True)
+rl_parser.add_argument('accountString', required=True)
+rl_parser.add_argument('pod',required=True)
+rl_parser.add_argument('loginDate')
 
 
 # #Endpoint to track who is using mktolive - pass in first/last/email-of-user-id/account-string/pod/(I infer current login date or accept login date)
@@ -268,6 +346,14 @@ api.add_resource(CreateUser, '/api/<string:api_key_in>/newuser')
 # 			sub.account_string = args['accountString']
 # 		sub.last_login = login_date
 
+# api.add_resource(RecordLogin, '/api/<string:api_key_in>/recordlogin')
+
+
+########################################################
+#
+#				Archive and Miscellany
+#					
+########################################################
 
 # This was an example for pope on how to serve robots.txt, we may use it later
 # @app.route('/robots.txt')
