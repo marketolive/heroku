@@ -12,6 +12,7 @@ class User(db.Model):
     password = db.Column(db.String(80))
     marketo_lead_id = db.Column(db.Integer)
     created = db.Column(db.DateTime)
+    cookie = db.Column(db.String(200))
     subscriptions = db.relationship('Subscription', backref='user', lazy='dynamic')
 
     def __init__(self, fname, lname, email, role=None, password=None, created=None, language=None):
@@ -28,6 +29,10 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+    def set_id_cookie(self):
+        self.cookie = generate_password_hash(self.email+datetime.now().isoformat())
+        return self.cookie
 
     @property
     def is_authenticated(self):

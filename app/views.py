@@ -1,7 +1,7 @@
 from app import app, api, mktorest, models, lm, db
 from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from flask import render_template, flash, request, redirect, g, abort
+from flask import render_template, flash, request, redirect, g, abort, make_response
 from .forms import LoginForm
 import os
 from datetime import datetime
@@ -52,19 +52,24 @@ def logout():
 #		This cookie will be used to ID the user for the last-login API endpoint
 @app.route('/login', methods=['GET','POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        # Login and validate the user.
-        # user should be an instance of your `User` class
-        user = models.User.query.filter_by(email=form.inputEmail.data).first()
-        if user:
-        	login_user(user)
-        	g.user=user
-        	return redirect(request.referrer)
-        else:
-        	flash('Invalid Email Address')
-        return redirect(request.referrer)
-    return redirect('/')
+	form = LoginForm()
+	if form.validate_on_submit():
+		# Login and validate the user.
+		# user should be an instance of your `User` class
+		user = models.User.query.filter_by(email=form.inputEmail.data).first()
+		if user:
+			login_user(user, remember=True)
+			g.user=user
+			new_cookie=user.set_id_cookie()
+			db.session.add(user)
+			db.session.commit()
+			resp = make_response(redirect(request.referrer))
+			resp.set_cookie('user_id', new_cookie)
+			return resp
+		else:
+			flash('Invalid Email Address')
+		return redirect(request.referrer)
+	return redirect('/')
 
 ########################################################
 #
@@ -282,7 +287,7 @@ cu_parser.add_argument('language')
 class CreateUser(Resource):
 	def post(self, api_key_in):
 		if api_key_in != apiKey:
-			return {'success':False, 'message':''}
+			return {'success':False, 'message':'', 'result':''}
 		args = cu_parser.parse_args()
 		if models.User.query.filter_by(email=args['email']).all():
 			return {'success':False, 'message':'There is already an account associated with this email address'}
@@ -300,53 +305,52 @@ api.add_resource(CreateUser, '/api/<string:api_key_in>/newuser')
 # /api/<string:api_key_in>/recordlogin
 # POST, Content-Type = application/x-www-form-urlencoded OR application/json
 # 
-# inputs = firstName, lastName, *email, *accountString, *pod, loginDate (*REQUIRED)
+# inputs = *uidCookie, *loginEmail, *accountString, *pod, loginDate (*REQUIRED)
 #
 # Output = 	{
 #			'success':True/False, 
-#			'message':[error message if unsuccessful or blank if wrong API key],
+#			'message':[error message, blank if wrong API key, or note about success],
 #			'result':''
 #			}
 #
-# Creates new user in server database. 
+# Records last login in database. Login datetime can be passed in explicitly as a UTC Timestamp
+# or, if blank, will be set to the time of request
 
 rl_parser = reqparse.RequestParser()
-rl_parser.add_argument('firstName')
-rl_parser.add_argument('lastName')
-rl_parser.add_argument('email', required=True)
+rl_parser.add_argument('uidCookie', required=True)
+rl_parser.add_argument('loginEmail', required=True)
 rl_parser.add_argument('accountString', required=True)
 rl_parser.add_argument('pod',required=True)
 rl_parser.add_argument('loginDate')
 
+class RecordLogin(Resource):
+	def post(self, api_key_in):
+		if api_key_in != apiKey:
+			return {'success':False, 'message':'', 'result':''}
+		args=rl_parser.parse_args()
+		if 'loginDate' not in args or not args['loginDate']:
+			login_date=datetime.utcnow()
+		else:
+			login_date=datetime.fromtimestamp(args['loginDate'], timezone.utc)
+		user = models.User.query.filter_by(cookie=args['uidCookie']).first()
+		if not user:
+			return {'success':False, 'message':'No user associated with that cookie', 'result':''}
+		sub = user.subscriptions.filter_by(account_string=args['accountString']).first()
+		if not sub:
+			sub = models.Subscription()
+			sub.user_id = user.id
+			sub.account_string = args['accountString']
+			sub.mkto_pod = args['pod']
+			message='New subscription for this user'
+		else:
+			message='Last login updated'
+		sub.login = args['loginEmail']
+		sub.last_login = login_date
+		db.session.add(sub)
+		db.session.commit()
+		return {'success':True, 'message':message, 'result':''}
 
-# #Endpoint to track who is using mktolive - pass in first/last/email-of-user-id/account-string/pod/(I infer current login date or accept login date)
-# #may be taking in marketo munchkin ID and not pod, but need one of the two
-
-#Endpoint to track who is using mktolive - pass in first/last/email-of-user-id/account-string/pod/(I infer current login date or accept login date)
-#may be taking in marketo munchkin ID and not pod, but need one of the two
-
-# class RecordLogin(Resource):
-# 	def post(self, api_key_in):
-# 		args=rl_parser.parse_args()
-# 		if 'loginDate' not in args:
-# 			login_date=datetime.utcnow()
-# 		else:
-# 			login_date=datetime.fromtimestamp(args['loginDate'], timezone.utc)
-# 		user = models.User.query.filter_by(email=args['email']).first()
-# 		if not user:
-# 			user = models.User()
-# 			user.first_name = args['firstName']
-# 			user.last_name = args['lastName']
-# 			user.email = args['email']
-# 			#eventually: here we will query the marketo instance with the user db to populate the rest of the fields
-# 		sub = user.subscriptions.filter_by(account_string=args['accountString']).first()
-# 		if not sub:
-# 			sub = models.Subscription()
-# 			sub.mkto_pod = args['pod']
-# 			sub.account_string = args['accountString']
-# 		sub.last_login = login_date
-
-# api.add_resource(RecordLogin, '/api/<string:api_key_in>/recordlogin')
+api.add_resource(RecordLogin, '/api/<string:api_key_in>/recordlogin')
 
 
 ########################################################
