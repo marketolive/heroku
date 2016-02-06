@@ -5,21 +5,25 @@ h2 {
 }
 
 .full-funnel {
-    justify-content: space-around;
+    padding: 15px;
 }
 
 .tofu-image {
     height: 500px;
+    opacity: 0.7;
 }
 
 .mofu-image {
+    
+    
     height: 500px;
-    width: 500px;
+    opacity: 0.7;
 }
 
-.bofu {
+.bofu-image {
+    
     height: 500px;
-    width: 500px;
+    opacity: 0.7;
 }
 
 .funnel-container{
@@ -84,3 +88,17 @@ h2 {
 }
 
 
+
+.tofu div,
+.mofu div,
+.bofu div {
+    
+}
+
+
+.tofu div p, 
+.mofu div p,
+.bofu div p {
+    text-align: center;
+    margin: auto;
+}

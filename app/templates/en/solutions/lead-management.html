@@ -3,7 +3,7 @@
 <html lang="en">
 {% block head %}
 <head>
-	<link href="{{ url_for('static', filename='lead-managment.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='lead-management.css') }}" rel="stylesheet">
 	<title>Marketo Lead Management</title>
 {% endblock %}
 </head>
@@ -15,25 +15,26 @@
 	<h2 class="text-center"><u>Marketo Lead Management</u></h2>
 
 	<div class= "flex full-funnel">
-		<h3>Top of Funnel (TOFU)</h3>
-		<h3>Middle of Funnel (MOFU)</h3>
-		<h3>Bottom of Funnel (BOFU)</h3>
+		<div>
+			<h3>Top of Funnel (TOFU)</h3>
+			<img class="tofu-image" src="{{ url_for('static', filename='tofu-purp.png') }}" />
+		</div>
+
+		<div>
+			<h3>Middle of Funnel (MOFU)</h3>
+			<img class="mofu-image"src="{{ url_for('static', filename='mofu-purp.png') }}" />
+		</div>
+
+		<div>
+			<h3>Bottom of Funnel (BOFU)</h3>
+			<img class="bofu-image" src= "{{ url_for('static', filename='bofu-purp.png') }}" />
+		</div>
 	</div>
 
-	
-	<div class="funnel-container flex">
-		
-			<img class="tofu-image image-responsive" src="{{ url_for('static', filename='tofu-purp.png') }}" />
-		
-			<img class="mofu-image image-responsive"src="{{ url_for('static', filename='mofu-purp.png') }}" />
-		
-			<img src="../static/bofu-purp.png" />
-		
 
-	</div>
 	
 
-	<div class="row tofu relative">
+<!-- 	<div class="tofu relative">
 		<div class="flex features">
 			<p>SEO</p>
 		</div>
@@ -48,7 +49,7 @@
 		</div>
 	</div>
 
-	<div class="row mofu relative">
+	<div class="mofu relative">
 		<div class="flex features">
 			<p>Powerful Automation</p>
 		</div>
@@ -73,7 +74,7 @@
 		<div class="flex features hidden">
 			<p>Marketing ROI</p>
 		</div>
-	</div>
+	</div> -->
 
 
 {% endblock %}
