@@ -13,6 +13,7 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
+  overflow: hidden;
 }
 
 .circle {
@@ -21,7 +22,7 @@
   border-color: black;
   height: 150px;
   width: 150px;
-  margin-top: 10px;
+  margin-top: 50px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -30,14 +31,34 @@
   line-height: 50px;
 }
 
-.stages .circle:not(:first-child) {
-  margin-top: 50px;
+.circle:first-of-type {
+  margin-top: 0px;
+}
+
+.arrow {
+  cursor: pointer;
+}
+
+.glyphicon-chevron-up {
+  margin-bottom: 10px;
+}
+
+.glyphicon-chevron-up:hover {
+  color: #f58216;
+}
+
+.glyphicon-chevron-down {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.glyphicon-chevron-down:hover {
+  color: #f58216;
 }
 
 .circle p {
   color: white;
   text-align: center;
-  position: absolute;
   background-color: #5A54A4;
   padding-left: 10px;
   padding-right: 10px;
@@ -45,7 +66,7 @@
   min-width: 150px;
 }
 
-.circle div img {
+.circle .noun-padding img {
   padding: 20px;
 }
 
@@ -57,6 +78,15 @@
   color: #f58216;
 }
 
+.first-icon {
+  margin-top: 0px;
+}
+
+.circle-container-first-column {
+  height: 580px;
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
   .circle {
     height: 100px;
@@ -64,58 +94,23 @@
   }
 }
 
+@media (max-height: 815px) {
+  .circle {
+    height: 125px;
+    width: 125px;
+  }
 
+  .circle p {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: -20px;
+    min-width: 125px;
+    font-size: 11px;
+  }
 
-
-/*
-.circle {
-  position: relative;
-  display: block;
-  margin: 2em 0;
-  background-color: transparent;
-  color: #222;
-  text-align: center;
-}
-
-.circle:after {
-  display: block;
-  padding-bottom: 100%;
-  width: 100%;
-  height: 0;
-  border-radius: 50%;
-  background-color: #fff;
-  content: "";
-}
-
-.circle-inner {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.circle-wrapper {
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-
-.circle-content {
-  display: table-cell;
-  padding: 1em;
-  vertical-align: middle;
-}
-
-@media (min-width: 480px) {
-  .circle-content {
-    font-size: 2em;
+  .circle-container-first-column {
+    height: 500px;
+    overflow: hidden;
   }
 }
 
-@media (min-width: 768px) {
-  .circle-content {
-    font-size: 4em;
-  }
-}*/

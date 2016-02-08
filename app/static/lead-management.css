@@ -1,29 +1,33 @@
-h2 {
-    font-size: 28px;
-    color: #5A54A4;
-    font-weight: 0.5;
+
+.headline {
+    font-size: 2.0em;
+    margin-top: 10px;
+    margin-bottom: 0px; 
+    background: -webkit-linear-gradient(-180deg, grey, #5a54a4);
+     -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 .full-funnel {
+    justify-content: center;
     padding: 15px;
 }
 
 .tofu-image {
-    height: 500px;
+    height: 40em;
     opacity: 0.7;
 }
 
 .mofu-image {
-    
-    
-    height: 500px;
+    height: 23em;   
+    margin-top: 30%;
     opacity: 0.7;
 }
 
 .bofu-image {
-    
-    height: 500px;
+    height: 8em;
     opacity: 0.7;
+    margin-top: 77%;
 }
 
 .funnel-container{
@@ -87,7 +91,9 @@ h2 {
     width: 30px;
 }
 
-
+.align-center {
+    text-align: center;
+}
 
 .tofu div,
 .mofu div,
