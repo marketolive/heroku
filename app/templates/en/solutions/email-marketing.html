@@ -1,6 +1,34 @@
 {% extends "en/base.html" %}
 
-{% block page_content %}
-<h1 style="text-align:center;">Email Marketing</h1>
-<img class="img-responsive" style="display:block; margin-left:auto; margin-right:auto; margin-top: 50px;" src="http://37isppd.com/images/under.gif">
+{% block full_image %}
+<html lang="en">
 {% endblock %}
+
+{% block head %}
+<title>Email Marketing - Marketo</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-black.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='email-marketing.css') }}">
+{% endblock %}
+
+{% block body_tag %}
+<body class="full">
+{% endblock %}
+
+  {% block page_content %}
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-2">
+      <div class="rectangle"></div>
+    </div>
+    <div class="col-sm-4">
+      <div class="rectangle"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-2">
+      <div class="rectangle"></div>
+    </div>
+    <div class="col-sm-4">
+      <div class="rectangle"></div>
+    </div>
+  </div>
+  {% endblock %}

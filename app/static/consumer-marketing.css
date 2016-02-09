@@ -31,10 +31,6 @@
   line-height: 50px;
 }
 
-.circle:first-of-type {
-  margin-top: 0px;
-}
-
 .arrow {
   cursor: pointer;
 }
@@ -45,6 +41,7 @@
 
 .glyphicon-chevron-up:hover {
   color: #f58216;
+  cursor: pointer;
 }
 
 .glyphicon-chevron-down {
@@ -54,6 +51,7 @@
 
 .glyphicon-chevron-down:hover {
   color: #f58216;
+  cursor: pointer;
 }
 
 .circle p {

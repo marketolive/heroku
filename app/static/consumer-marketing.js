@@ -1,4 +1,9 @@
 $(document).ready(function(){
+  $('.first-column div a .circle:first').css('margin-top', '0px');
+  $('.second-column div a .circle:first').css('margin-top', '0px');
+  $('.third-column div a .circle:first').css('margin-top', '0px');
+
+
   $('.circle div').hover(function(){
     $(this).children('img').toggle();
   });
@@ -261,7 +266,6 @@ $(document).ready(function(){
         var iScroll = $('.circle-container-third-column').scrollTop();
         var grabCircles = $('.circle-container-third-column .circle');
         var totalCircles = grabCircles.length;
-        console.log(totalCircles);
         var circleHeight = $('.circle').height();
         $('.glyphicon-chevron-up:eq(2)').css('opacity','1');
         if (circleHeight == 100) {
@@ -290,7 +294,6 @@ $(document).ready(function(){
             }, 600);
           }
         }
-        console.log('myCounter = ' + myCounter);
         if ((myCounter + 1) == totalCircles) {
           $('.stages .glyphicon-chevron-down:eq(2)').css('opacity','0');
         }
