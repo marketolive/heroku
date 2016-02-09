@@ -1,0 +1,97 @@
+
+.headline {
+    font-size: 2.0em;
+    margin-top: 10px;
+    margin-bottom: 0px; 
+    background: -webkit-linear-gradient(-180deg, grey, #5a54a4);
+     -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.flex {
+    display: flex;
+    
+}
+
+.full-funnel {
+    justify-content: center;
+    padding: 15px;
+}
+
+.full-funnel div h3 {
+    color: white;
+}
+
+.tofu-image {
+    height: 40em;
+    opacity: 0.7;
+}
+
+.mofu-image {
+    height: 23em;   
+    margin-top: 30%;
+    opacity: 0.7;
+}
+
+.bofu-image {
+    height: 8em;
+    opacity: 0.7;
+    margin-top: 77%;
+}
+
+.funnel-container{
+    position: absolute;
+	margin: 2% 5%;
+    width: 100%;
+}
+
+.tofu {    
+    display: flex;
+    flex-direction: column;
+    top: 28%;
+    left: 18%;    
+}
+
+.mofu {
+    display: flex;
+    top: 28%;
+    left: 38%;
+    
+}
+
+.bofu {
+    display: flex;
+    flex-direction: column;
+    top: -475px;
+    left: 645px;
+    z-index: 3;
+}
+.features {
+    background-color: white;
+    margin-bottom: 10px;
+    height: 125px;
+    width: 125px;
+    color: #5a54a4;
+    border-radius: 100px;
+    border: 2px solid #5a54a4;
+}
+
+.arrow-container {
+    width: 100px;
+    height: 100px;
+}
+
+.arrow {
+    margin: 0 auto;
+    height: 30px;
+    width: 30px;
+}
+
+.align-center {
+    text-align: center;
+}
+

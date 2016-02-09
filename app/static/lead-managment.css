@@ -14,11 +14,18 @@ h2 {
 
 .mofu-image {
     height: 500px;
+    width: 500px;
+}
+
+.bofu {
+    height: 500px;
+    width: 500px;
 }
 
 .funnel-container{
     position: absolute;
 	margin: 2% 5%;
+    width: 100%;
 }
 
 
@@ -77,17 +84,3 @@ h2 {
 }
 
 
-
-.tofu div,
-.mofu div,
-.bofu div {
-    
-}
-
-
-.tofu div p, 
-.mofu div p,
-.bofu div p {
-    text-align: center;
-    margin: auto;
-}
