@@ -7,7 +7,7 @@ $(document).ready(function(){
   });
   $.getJSON('/static/deeplinks.json')
 	  .done(function(data){
-	  	console.log("Got JSON");
+	  	//console.log("Got JSON");
 	  	$('[deeplink]').each(function(){
 	  		$(this).wrap('<a target="_blank" href="'+data[window.location.pathname.split('/')[1]][$(this).attr('deeplink')]+'"></a>');
 	  	});
