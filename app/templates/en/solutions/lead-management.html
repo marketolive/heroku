@@ -11,9 +11,9 @@
 {% endblock %}
 </head>
 
-<body class="full">
+
 {% block page_content %}
-	<div class="full">
+	<body class="full">
 
 		<h2 class="text-center headline">Marketo Lead Management</h2>
 
@@ -33,19 +33,27 @@
 				<img class="bofu-image" src= "{{ url_for('static', filename='bofu-purp.png') }}" />
 			</div>
 		</div>
-	</div>
 
 
 	
 
-<!-- 	<div class="tofu relative">
-		<div class="flex features">
-			<p>SEO</p>
+
+	
+
+	<div class="tofu absolute">
+		<div class="features">
+			<img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
+            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
+            <p>Search Optimization</p>
 		</div>
-		<div class="flex features">
-			<p>RTP</p>
+		<div class="features">
+			<img class="img-responsive" src="{{ url_for('static', filename='web-personalization-purple.png') }}">
+            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='web-personalization-orange.png') }}">
+            <p>Real Time Personalization</p>
 		</div>
-		<div class="flex features">
+		<div class="features">
+			<img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
+            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
 			<p>DIY Design</p>
 		</div>
 		<div class="flex arrow-container">
@@ -53,22 +61,22 @@
 		</div>
 	</div>
 
-	<div class="mofu relative">
-		<div class="flex features">
+	<div class="mofu absolute">
+		<div class="features">
 			<p>Powerful Automation</p>
 		</div>
-		<div class="flex features">
+		<div class="features">
 			<p>Customer Engagement Engine</p>
-		</div>
-		<div class="flex arrow-container">
-			<img class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
-		</div>
-		<div class="flex features hidden">
+		</div>		
+		<div class="features">
 			<p>Replicate Success</p>
+		</div>
+		<div class="arrow-container">
+			<img class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
 		</div>
 	</div>
 
-	<div class="row bofu relative">
+	<!-- <div class="row bofu relative">
 		<div class="flex features">
 			<p>Actionable Insight</p>
 		</div>

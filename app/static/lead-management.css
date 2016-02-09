@@ -8,9 +8,22 @@
     -webkit-background-clip: text;
 }
 
+.absolute {
+    position: absolute;
+}
+
+.flex {
+    display: flex;
+    
+}
+
 .full-funnel {
     justify-content: center;
     padding: 15px;
+}
+
+.full-funnel div h3 {
+    color: white;
 }
 
 .tofu-image {
@@ -36,26 +49,18 @@
     width: 100%;
 }
 
-
-
-
-.relative {
-    position: relative;
-}
-
 .tofu {    
     display: flex;
     flex-direction: column;
-    top: 160px;
-    left: 200px;    
+    top: 28%;
+    left: 18%;    
 }
 
 .mofu {
     display: flex;
-    flex-direction: column;
-    top: -215px;
-    left: 425px;
-    z-index: 2;
+    top: 28%;
+    left: 38%;
+    
 }
 
 .bofu {
@@ -65,17 +70,11 @@
     left: 645px;
     z-index: 3;
 }
-
-.flex {
-    display: flex;
-    
-}
-
 .features {
-    align-items: center;
+    background-color: white;
     margin-bottom: 10px;
-    height: 100px;
-    width: 100px;
+    height: 125px;
+    width: 125px;
     color: #5a54a4;
     border-radius: 100px;
     border: 2px solid #5a54a4;
@@ -87,6 +86,7 @@
 }
 
 .arrow {
+    margin: 0 auto;
     height: 30px;
     width: 30px;
 }
@@ -95,16 +95,3 @@
     text-align: center;
 }
 
-.tofu div,
-.mofu div,
-.bofu div {
-    
-}
-
-
-.tofu div p, 
-.mofu div p,
-.bofu div p {
-    text-align: center;
-    margin: auto;
-}
