@@ -132,6 +132,32 @@ body {
   color: #e98300;
 }
 
+.circle:hover {
+  cursor: pointer;
+}
+
+.circle div img:nth-child(2) {
+  max-width: 101%;
+  width: 101%;
+}
+
+.circle:hover p {
+  color: #f58216;
+}
+
+.deeplink:hover {
+  text-decoration: none;
+}
+
+.circle .noun-padding img {
+  padding: 20px;
+}
+
+.headline {
+  text-align: center;
+  color: #fff;
+}
+
 @media (max-width:768px) {
   .navbar-default .navbar-nav > li > a:hover {
       color: #d1d3d4;
