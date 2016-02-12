@@ -8,7 +8,7 @@ $(document).ready(function(){
   $.getJSON('/static/deeplinks.json')
 	  .done(function(data){
 	  	$('[deeplink]').each(function(){
-        $(this).attr('href', data[window.location.pathname.split('/')[1]][$(this).attr('deeplink')]);
+        	$(this).attr('href', data[window.location.pathname.split('/')[1]][$(this).attr('deeplink')]);
 	  	});
 	  })
 	  .fail(function( jqxhr, textStatus, error ) {
