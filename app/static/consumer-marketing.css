@@ -64,10 +64,6 @@
   min-width: 150px;
 }
 
-.circle .noun-padding img {
-  padding: 20px;
-}
-
 .circle:hover {
   cursor: pointer;
 }

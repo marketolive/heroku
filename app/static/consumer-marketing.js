@@ -3,17 +3,6 @@ $(document).ready(function(){
   $('.second-column div a .circle:first').css('margin-top', '0px');
   $('.third-column div a .circle:first').css('margin-top', '0px');
 
-
-  $('.circle div').hover(function(){
-    $(this).children('img').toggle();
-  });
-  $('.circle').hover(function(){
-    $(this).children('img').toggle();
-  });
-  $('.circle p').hover(function(){
-    $(this).siblings('div').children('img').toggle();
-  });
-
   //first column scroll functionality 
   function firstColumnScroll() {
     //to count clicks to not scroll past last circle
