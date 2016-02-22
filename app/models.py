@@ -61,5 +61,7 @@ class Subscription(db.Model):
     is_admin = db.Column(db.Boolean)
     last_login = db.Column(db.DateTime)
 
+    
+
     def __repr__(self):
         return '<Subscription %r @ %r>' % (self.login, self.account_string)
