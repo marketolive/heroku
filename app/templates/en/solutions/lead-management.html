@@ -3,10 +3,11 @@
 {% block full_image %}
 <html lang="en">
 {% endblock %}
+
 {% block head %}
 <head>
 	<link href="{{ url_for('static', filename='lead-management.css') }}" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-lead-management.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-black.css') }}">
 	<title>Marketo Lead Management</title>
 {% endblock %}
 </head>
@@ -41,44 +42,50 @@
 	
 
 	<div class="tofu absolute">
-		<div class="features">
-			<img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
-            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
-            <!-- <p>Search Optimization</p> -->
-		</div>
-		<div class="features">
-			<img class="img-responsive" src="{{ url_for('static', filename='web-personalization-purple.png') }}">
-            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='web-personalization-orange.png') }}">
-            <!-- <p>Real Time Personalization</p> -->
-		</div>
-		<div class="features">
-			<img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
-            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
-			<!-- <p>DIY Design</p> -->
+		<div class="tofu-container">
+			<div class="features">
+				<img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
+	            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
+	            <!-- <p>Search Optimization</p> -->
+			</div>
+			<div class="features">
+				<img class="img-responsive" src="{{ url_for('static', filename='web-personalization-purple.png') }}">
+	            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='web-personalization-orange.png') }}">
+	            <!-- <p>Real Time Personalization</p> -->
+			</div>
+			<div class="features">
+				<img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
+	            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
+				<!-- <p>DIY Design</p> -->
+			</div>
 		</div>
 		<div class="flex arrow-container">
 			<img class="arrow" src="{{ url_for('static', filename='downarrow.png') }}" />
+			<img style="display: none;" class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
 		</div>
 	</div>
 
 	<div class="mofu absolute">
-		<div class="features">
-			<img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-guide-option-img-purp.png') }}">
-            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-guide-option-img-orange.png') }}">
-			<!-- <p>Powerful Automation</p> -->
-		</div>
-		<div class="features">
-			<img class="img-responsive" src="{{ url_for('static', filename='nurture.png') }}">
-            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='nurture_orange.png') }}">
-			<!-- <p>Customer Engagement Engine</p> -->
-		</div>		
-		<div class="features">
-			<img class="img-responsive" src="{{ url_for('static', filename='replicate_success.png') }}">
-            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='replicate_success_orange.png') }}">
-			<!-- <p>Replicate Success</p> -->
+		<div class="mofu-container">
+			<div class="features">
+				<img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-guide-option-img-purp.png') }}">
+	            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-guide-option-img-orange.png') }}">
+				<!-- <p>Powerful Automation</p> -->
+			</div>
+			<div class="features">
+				<img class="img-responsive" src="{{ url_for('static', filename='nurture.png') }}">
+	            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='nurture_orange.png') }}">
+				<!-- <p>Customer Engagement Engine</p> -->
+			</div>		
+			<div class="features">
+				<img class="img-responsive" src="{{ url_for('static', filename='replicate_success.png') }}">
+	            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='replicate_success_orange.png') }}">
+				<!-- <p>Replicate Success</p> -->
+			</div>
 		</div>
 		<div class="flex arrow-container">
 			<img class="arrow" src="{{ url_for('static', filename='downarrow.png') }}" />
+			<img style="display: none;" class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
 		</div>
 	</div>
 
@@ -95,6 +102,7 @@
 		</div>
 		<div class="flex arrow-container">
 			<img class="arrow" src="{{ url_for('static', filename='downarrow.png') }}" />
+			<img style="display: none;" class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
 		</div>
 	</div>
 {% endblock %}

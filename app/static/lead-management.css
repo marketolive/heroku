@@ -48,23 +48,27 @@
 	margin: 2% 5%;
     width: 100%;
 }
-
-.tofu {    
-    display: flex;
-    flex-direction: column;
+.tofu {
     top: 30%;
     left: 18%;  
-    overflow-y: auto;
-    height: 500px;  
+}
+.tofu-container {    
+    display: flex;
+    flex-direction: column;    
+    overflow: auto;
+    height: 400px;  
 }
 
 .mofu {
+    top: 40.5%;
+    left: 42%;       
+}
+
+.mofu-container {
     display: flex;
     flex-direction: column;
-    top: 40.5%;
-    left: 42%;
-    height: 370px;
-    overflow-y:auto;
+    height: 260px;
+    overflow: auto;
     
 }
 
@@ -75,9 +79,6 @@
     left: 65%;
 }
 .features {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: white;
     margin-bottom: 10px;
     height: 125px;

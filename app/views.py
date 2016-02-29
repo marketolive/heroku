@@ -48,8 +48,6 @@ def logout():
     g.user=None
     return redirect('/')
 
-# TODO: This needs to be updated to take and update a cookie value field on the DB
-#		This cookie will be used to ID the user for the last-login API endpoint
 @app.route('/login', methods=['GET','POST'])
 def login():
 	form = LoginForm()

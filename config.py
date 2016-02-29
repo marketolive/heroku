@@ -5,7 +5,6 @@ SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL','postgresql://localhost/
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 WTF_CSRF_ENABLED = True
-SECRET_KEY = 'you-will-never-guess'
 
 try:
 	from app.setvars import FORM_KEY
