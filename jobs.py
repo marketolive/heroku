@@ -18,12 +18,11 @@ manager = Manager(app)
 @manager.command
 def skedMonthCampaigns():
 	results = []
-	foldername = new_email.split('@')[0].lower()
-	for parentId in [19802,19801,19799,19797,19798,19794,19795,19791,19790]:
+	for campaignId in [19802,19801,19799,19797,19798,19794,19795,19791,19790]: #NEED TO CHANGE THESE IDS
 		trialcounter=0
 		while trialcounter<3:
 			try:
-				create_result = restClient.create_folder(foldername, str(parentId))
+				sked_result = restClient.schedule_campaign(campaignId, run_at=run_date)
 				print(create_result)
 				if create_result['success']:
 					results.append(create_result['result'][0]['id'])

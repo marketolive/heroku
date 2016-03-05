@@ -571,7 +571,7 @@ class MarketoWrapper:
             call += "&listId="+str(list_id)
         if batch_size is not None:
             call += "&batchSize="+str(batch_size)
-        call += lisitfy_parameter("activityTypeIds", activity_type_ids)
+        call += listify_parameter("activityTypeIds", activity_type_ids)
         method = "GET"
         return self.__generic_api_call(call, method)
     
@@ -1549,7 +1549,7 @@ class MarketoWrapper:
             dict:   The response from the server. The "result" attribute contains all of the 
                     folder attributes for the folders in Marketo.
         """
-        call = "rest/asset/v1/folders.json?root="+str(root)
+        call = 'rest/asset/v1/folders.json?root={"id":%s,"type":"Folder"}' % (str(root))
         method = "GET"
         
         if offset is not None:
@@ -1617,7 +1617,7 @@ class MarketoWrapper:
                     also includes the metadata similar to get folder by id, get folder by
                     name, and browse folders.
         """
-        call = "rest/asset/v1/folders.json?name="+name+"&parent="+parent
+        call = 'rest/asset/v1/folders.json?name=%s&parent={"id":%s, "type":"Folder"}' % (name, parent)
         method = "POST"
 
         if description is not None:
@@ -2024,9 +2024,7 @@ class MarketoWrapper:
 
     def create_program(self, parent_folder, name, program_type, channel, description, tags=None):
         """
-        This method makes takes an array of dictionaries that represent all of the leads
-        and their attributes that should be updated in Marketo. It takes that array, and
-        does an upsert operation to the Marketo database.
+        This method creates a new program
         
         Args:
             parent_folder (mkto type/id pair):  e.g. {"type": "Folder","id": 26}
@@ -2056,6 +2054,30 @@ class MarketoWrapper:
         payload = "folders="+json.dumps(parent_folder)+"&programName="+name+"&programType="+program_type+"&programDescription="+description+"&programChannel="+channel
         if tags:
             payload+="&tags="+tags
+        return self.__generic_api_call(call, method, payload=payload, content_type='application/x-www-form-urlencoded')
+    
+    def clone_program(self, folder_id, parent_folder, name, description=None):
+        """
+        This method clones a program.
+        
+        Args:
+            folder_id (int):                    Id of folder to clone
+            
+            parent_folder (mkto type/id pair):  e.g. {"type": "Folder","id": 26}
+
+            name (string):                      Name of resulting program                   
+                                                
+            description (multipart):            Basically a description string
+
+        Returns:
+            dict:   A dictionary that has the completion status and program information similar to get_program.
+        """
+        
+        call = "rest/asset/v1/program/%s/clone.json" % (str(folder_id))
+        method = "POST"
+        payload = 'folder={"id":%s,"type":"Folder"}&name=%s' % (str(parent_folder), name)
+        if description:
+            payload+="&description="+description
         return self.__generic_api_call(call, method, payload=payload, content_type='application/x-www-form-urlencoded')
     
 ############################################################################################
