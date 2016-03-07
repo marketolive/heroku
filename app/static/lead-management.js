@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
     $('.arrow').on('click', function(event){
     	// This is a routing function-- depending on the arrow they click I am activating a function specific to that section   	
-    	if ($(event.target.parentNode.parentNode).hasClass('tofu absolute')){
+    	if ($(event.target.parentNode.parentNode).hasClass('tofu top-layer')){
     		var target = ($(this).parent()[0].id);
     		if(target == "tofu-up") {
     			scrollUp(target);
@@ -14,7 +14,7 @@ $( document ).ready(function() {
     			scrollDown(target);
     		}
     	}
-    	if ($(event.target.parentNode.parentNode).hasClass('mofu absolute')){
+    	if ($(event.target.parentNode.parentNode).hasClass('mofu top-layer')){
     		var target = ($(this).parent()[0].id);
     		if(target == "mofu-up") {
     			scrollUp(target);
@@ -23,7 +23,7 @@ $( document ).ready(function() {
     			scrollDown(target);
     		}
     	}
-    	if ($(event.target.parentNode.parentNode).hasClass('bofu absolute')){
+    	if ($(event.target.parentNode.parentNode).hasClass('bofu top-layer')){
     		var target = ($(this).parent()[0].id);
     		if(target == "bofu-up") {
     			scrollUp(target);
@@ -58,12 +58,9 @@ $( document ).ready(function() {
     	if (target[0] == "tofu") {    		
     		scrollAmount = 180 
     	}
-    	if (target[0] == "mofu") {
-    		scrollAmount = 165 
-    	}
-    	if (target[0] == "bofu") {
-    		scrollAmount = 165 
-    	}
+    	else {
+            scrollAmount = 165
+        }
 
     	var container = target[0] + "-container";
     	

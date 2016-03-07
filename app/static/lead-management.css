@@ -8,8 +8,23 @@
     -webkit-background-clip: text;
 }
 
-.absolute {
+.funnel-image {
     position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 10%;
+}
+
+.parent-container {
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.top-layer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
 }
 
 .flex {
@@ -22,8 +37,8 @@
     padding: 10px 15px 15px;
 }
 
-.full-funnel h3 {
-    margin: 15px 5%;
+h3 {
+    margin-bottom: 35%;
     color: white;
 }
 
@@ -49,38 +64,30 @@
 	margin: 2% 5%;
     width: 100%;
 }
-.tofu {
-    top: 95%;
-    left: 22%;
-    /*transform: translate(30%, -5%);  */
-}
-.tofu-container {    
+
+.tofu-container {  
+    
     display: flex;
-    flex-direction: column;    
+    flex-direction: column; 
+    align-items: center;   
     overflow: hidden;
     height: 480px;  
-}
-
-.mofu {
-    top: 130%;
-    left: 42%;       
 }
 
 .mofu-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 320px;
+    
     overflow: hidden;    
-}
-
-.bofu {
-    top: 180%;
-    left: 65%;
 }
 
 .bofu-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+   
     height: 160px;
     overflow: hidden;
 }
