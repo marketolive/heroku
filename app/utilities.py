@@ -55,16 +55,16 @@ def clone_folder(folder_id, restClient, parent=None, name_append=None):
 			return False, 'Unable to find folder'
 	#Create new folder in parent
 		print('Creating New Folder')
-		create_result=retry(restClient.create_folder, old_name + ' - clone', parent)
+		create_result=retry(restClient.create_folder, old_name + ' - clone2', parent)
 		if not create_result['success']:
 			return False, 'Unable to create new base folder'
 	#recursively clone children (if child = program, clone to new folder, if child = folder, queue for recursive clone)
 		for child in children:
 			print('Cloning Child: %s' % child['name'])
 			if child['folderId']['type']=='Program':
-				print(child['folderId']['id'], create_result['result'][0]['id'])
+				#print(child['folderId']['id'], create_result['result'][0]['id'])
 				child_result = retry(restClient.clone_program, child['folderId']['id'], create_result['result'][0]['id'], child['name'] + ' - cloned')
-				print(child_result)
+				#print(child_result)
 				if not child_result['success']:
 					failures.append({child['folderId']['id']:'Unable to clone'})
 			elif child['folderId']['type']=='Folder':
