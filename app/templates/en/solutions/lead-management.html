@@ -18,78 +18,100 @@
 
 		<h2 class="text-center headline">Marketo Lead Management</h2>
 
-		<div class= "flex full-funnel">
-			<div>
-				<h3>Top of Funnel (TOFU)</h3>
-				<img class="tofu-image" src="{{ url_for('static', filename='tofu-purp.png') }}" />
+		<img class="funnel-image img-responsive" src="{{ url_for('static', filename='funnel_large.png') }}" />	
+
+	<div class="flex parent-container">
+		<div class="tofu top-layer">
+			<h3>Top of Funnel</h3>
+			<div class="flex arrow-container" id="tofu-up" style="opacity: 0">
+				<img class="arrow up" src="{{ url_for('static', filename='uparrow.png') }}" />
+				<img style="display: none;" class="arrow" src="{{ url_for('static', filename='uparrow-purp.png') }}" />
 			</div>
-
-			<div>
-				<h3 class="text-center">Middle of Funnel (MOFU)</h3>
-				<img class="mofu-image"src="{{ url_for('static', filename='mofu-purp.png') }}" />
+			<div class="tofu-container">
+				<div class="features">
+					<img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
+		            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
+		            <p>Search Optimization</p>
+				</div>
+				<div class="features">
+					<img class="img-responsive" src="{{ url_for('static', filename='web-personalization-purple.png') }}">
+		            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='web-personalization-orange.png') }}">
+		            <p>Real Time Personalization</p>
+				</div>
+				<div class="features">
+					<img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
+		            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
+					<p>DIY Design</p>
+				</div>
+				<div class="features">
+					<img class="img-responsive" src="{{ url_for('static', filename='personalization.png') }}">
+		            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='personalization_orange.png') }}">
+					<p>Ad Retargeting</p>
+				</div>
 			</div>
-
-			<div>
-				<h3>Bottom of Funnel (BOFU)</h3>
-				<img class="bofu-image" src= "{{ url_for('static', filename='bofu-purp.png') }}" />
+			<div class="flex arrow-container" id="tofu-down" style="opacity: 1">
+				<img class="arrow" src="{{ url_for('static', filename='downarrow.png') }}" />
+				<img style="display: none;" class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
 			</div>
 		</div>
 
-
-	
-
-
-	
-
-	<div class="tofu absolute">
-		<div class="features">
-			<img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
-            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
-            <p>Search Optimization</p>
+		<div class="mofu top-layer">
+			<h3>Middle of Funnel</h3>	
+			<div class="flex arrow-container" id="mofu-up" style="opacity: 0">
+				<img class="arrow up" src="{{ url_for('static', filename='uparrow.png') }}" />
+				<img style="display: none;" class="arrow" src="{{ url_for('static', filename='uparrow-purp.png') }}" />
+			</div>
+			<div class="mofu-container">
+				<div class="features">
+					<img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-guide-option-img-purp.png') }}">
+		            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-guide-option-img-orange.png') }}">
+					<p>Powerful Automation</p>
+				</div>
+				<div class="features">
+					<img class="img-responsive" src="{{ url_for('static', filename='nurture.png') }}">
+		            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='nurture_orange.png') }}">
+					<p>Customer Engagement</p>
+				</div>		
+				<div class="features">
+					<img class="img-responsive" src="{{ url_for('static', filename='replicate_success.png') }}">
+		            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='replicate_success_orange.png') }}">
+					<p>Replicate Success</p>
+				</div>
+			</div>
+			<div class="flex arrow-container" id="mofu-down">
+				<img class="arrow" src="{{ url_for('static', filename='downarrow.png') }}" />
+				<img style="display: none;" class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
+			</div>
 		</div>
-		<div class="features">
-			<img class="img-responsive" src="{{ url_for('static', filename='web-personalization-purple.png') }}">
-            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='web-personalization-orange.png') }}">
-            <p>Real Time Personalization</p>
-		</div>
-		<div class="features">
-			<img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
-            <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
-			<p>DIY Design</p>
-		</div>
-		<div class="flex arrow-container">
-			<img class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
+
+		<div class="bofu top-layer">
+			<h3>Bottom of Funnel</h3>	
+			<div class="flex arrow-container" id="bofu-up" style="opacity: 0">
+				<img class="arrow up" src="{{ url_for('static', filename='uparrow.png') }}" />
+				<img style="display: none;" class="arrow" src="{{ url_for('static', filename='uparrow-purp.png') }}" />
+			</div>
+			<div class="bofu-container">
+				<div class="features">
+					<img class="img-responsive" src="{{ url_for('static', filename='actionable-insight-img-purp.png') }}">
+			        <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='actionable-insight-img-orange.png') }}">
+					<p>Actionable Insight</p>
+				</div>
+				<div class="features">
+					<img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
+			        <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-orange.png') }}">
+					<p>Marketing ROI</p>
+				</div>
+			</div>
+			<div class="flex arrow-container" id="bofu-down">
+				<img class="arrow" src="{{ url_for('static', filename='downarrow.png') }}" />
+				<img style="display: none;" class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
+			</div>
+			
 		</div>
 	</div>
-
-	<div class="mofu absolute">
-		<div class="features">
-			<p>Powerful Automation</p>
-		</div>
-		<div class="features">
-			<p>Customer Engagement Engine</p>
-		</div>		
-		<div class="features">
-			<p>Replicate Success</p>
-		</div>
-		<div class="arrow-container">
-			<img class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
-		</div>
-	</div>
-
-	<!-- <div class="row bofu relative">
-		<div class="flex features">
-			<p>Actionable Insight</p>
-		</div>
-		<div class="flex arrow-container">
-			<img class="arrow" src="{{ url_for('static', filename='downarrow-purp.png') }}" />
-		</div>
-		<div class="flex features hidden">
-			<p>Marketing ROI</p>
-		</div>
-	</div> -->
-
-
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='lead-management.js') }}" type="text/javascript"></script>
 {% endblock %}
 </body>
 </html>
