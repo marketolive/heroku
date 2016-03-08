@@ -1,13 +1,6 @@
 from app.mktorest import MarketoWrapper
 
-#from views import restClient
-
-# Account 312 Creds for testing
-client_id = "5612d46a-9628-4d41-8b6f-7a8112de9789"
-client_secret = "mf6M5INTTV9A3ShJmrq19KIBqGx8Rn1y"
-munchkin = "227-MYA-498"
-restClient = MarketoWrapper(munchkin, client_id, client_secret)
-# ---
+from views import restClient
 
 class FailedOut(Exception):
 	def __init__(self, value=None):
