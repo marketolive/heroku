@@ -350,6 +350,15 @@ class RecordLogin(Resource):
 
 api.add_resource(RecordLogin, '/api/<string:api_key_in>/recordlogin')
 
+# Temporary for Andy
+class ReturnCoupon(Resource):
+	def get(self, api_key_in):
+		if api_key_in != apiKey:
+			return {'success':False, 'message':'', 'result':''}
+		return {'success':True, 'couponCode':'coupon123'}
+
+api.add_resource(ReturnCoupon, '/api/<string:api_key_in>/getcoupon')
+
 
 ########################################################
 #
