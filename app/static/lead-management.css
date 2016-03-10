@@ -17,7 +17,7 @@
 
 .parent-container {
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .top-layer{
