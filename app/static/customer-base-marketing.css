@@ -98,3 +98,35 @@ span.text-content span {
 ul.circle-container li:hover span.text-content {
   opacity: 1;
 }
+
+.modal-content {
+  background-color: #DCDCDC;
+}
+
+.modal-body {
+  margin-bottom: 3em;
+}
+
+.circle {
+  border-radius: 50%;
+  background-color: white;
+  border-color: black;
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  text-align: center;
+  line-height: 50px;
+}
+
+.circle p {
+  color: white;
+  text-align: center;
+  background-color: #5A54A4;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: -20px;
+  min-width: 150px;
+}
