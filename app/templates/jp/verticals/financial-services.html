@@ -1,6 +1,130 @@
 {% extends "jp/base.html" %}
 
+{% block head %}
+<head>
+
+<link href="{{ url_for('static', filename='business-frontpage.css')}}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css')}}">
+<title>B2Bマーケティング</title>
+<!-- SEGMENT - MARKETO INTEGRATION TESTING - 3/22 cmpope -->
+<script type="text/javascript">
+!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+analytics.load("vs8fTbHRY3k8EVpjakYsDGlCe7hYDKtI");
+analytics.page()
+}}();
+</script>
+{% endblock %}
+
 {% block page_content %}
 <h1 style="text-align:center;">Financial Services - 日本語（日本）</h1>
 <img class="img-responsive" style="display:block; margin-left:auto; margin-right:auto; margin-top: 50px;" src="http://37isppd.com/images/under.gif">
+<div>
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>My Form</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="firstName"></label>  
+  <div class="col-md-4">
+  <input id="firstName" name="firstName" type="text" placeholder="First" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lastName"></label>  
+  <div class="col-md-4">
+  <input id="lastName" name="lastName" type="text" placeholder="Last" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="emailAddress"></label>  
+  <div class="col-md-4">
+  <input id="emailAddress" name="emailAddress" type="text" placeholder="Email" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="eyeColor"></label>  
+  <div class="col-md-4">
+  <input id="eyeColor" name="eyeColor" type="text" placeholder="Eye Color" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#submit').click(function(){
+    var user = $('#emailAddress').val();
+    var firstName = $('#firstName').val();
+    var lastName = $('#lastName').val();
+    var eyeColor = $('#eyeColor').val();
+    analytics.identify(user, {
+      email: user,
+      firstName: firstName,
+      lastName: lastName,
+      eyeColor: eyeColor
+    });
+    analytics.track(
+      // "user_id": "49fd9359a546ab6b9b7dc05f5cd7065684a75938",
+      'audit_droplet_create', 
+      {
+      "properties": {
+        "name": 'droplet.create',
+        "actor_id": 1,
+        "actor_type": 'Doorkeeper:Application',
+        "actor_ip": '87.103.89.196',
+        "user_id": 1212444,
+        "auditable_id": 12163742,
+        "auditable_type": 'Droplet',
+        "comment": '(TrytonServer)',
+        // created_at: DateTime.iso8601('2016-03-20T01:02:19.000z'),
+        "metadata": {
+          "hostname": 'TrytonServer',
+          "image_id": 15943679,
+          "image_name": '14.04.4 x64',
+          "image_slug": 'ubuntu-14-04-x64',
+          "region_id": 10,
+          "region_name": 'Frankfurt 1',
+          "region_slug": 'fra1',
+          "size_id": 66,
+          "size": '512MB',
+          "distribution": 'Ubuntu',
+          "backups_enabled": false,
+          "private_networking_enabled": false,
+          "ipv6_enabled": false,
+          "sonar_enabled": false,
+          "active_droplet_count": 2,
+          "multiple_create": false
+        }
+    }});
+
+  });
+});
+
+</script>
 {% endblock %}
