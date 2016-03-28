@@ -5,6 +5,7 @@ from flask import render_template, flash, request, redirect, g, abort, make_resp
 from .forms import LoginForm
 import os
 from datetime import datetime
+import analytics
 
 # Init rest client on import
 # setvars.py should be maintained locally containing restcreds dictionary
@@ -17,6 +18,9 @@ try:
 except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
 	apiKey = os.environ['apiKey']
+
+
+analytics.write_key = 'vs8fTbHRY3k8EVpjakYsDGlCe7hYDKtI'
 
 ########################################################
 #
@@ -119,6 +123,55 @@ def email_marketing(language, category, page):
 	if category not in categories or page not in pages:
 		abort(404)
 	return render_template('%s/%s/%s.html' % (language, category, page), form=g.loginform, name=g.name, lang=language, path='%s/' % (category), page=page)
+
+
+'''
+######
+Segment Testing - 3/29/16 - cmpope
+#######
+'''
+@app.route('/segment')
+def segment():
+    analytics.track(
+      "49fd9359a546ab6b9b7dc05f5cd7065684a75938",
+      'audit_droplet_create', 
+      {
+      "properties": {
+        "name": 'droplet.create',
+        "actor_id": 1,
+        "actor_type": 'Doorkeeper:Application',
+        "actor_ip": '87.103.89.196',
+        "user_id": 1212444,
+        "auditable_id": 12163742,
+        "auditable_type": 'Droplet',
+        "comment": '(TrytonServer)',
+        #created_at: DateTime.iso8601('2016-03-20T01:02:19.000z'),
+        "metadata": {
+          "hostname": 'TrytonServer',
+          "image_id": 15943679,
+          "image_name": '14.04.4 x64',
+          "image_slug": 'ubuntu-14-04-x64',
+          "region_id": 10,
+          "region_name": 'Frankfurt 1',
+          "region_slug": 'fra1',
+          "size_id": 66,
+          "size": '512MB',
+          "distribution": 'Ubuntu',
+          "backups_enabled": False,
+          "private_networking_enabled": False,
+          "ipv6_enabled": False,
+          "sonar_enabled": False,
+          "active_droplet_count": 2,
+          "multiple_create": False
+        }
+    }})
+    return 'Made Segment server call'
+'''
+######
+END Segment Testing - 3/29/16 - cmpope
+#######
+'''
+
 
 '''
 Will delete this once we are fully confident in the above
