@@ -1,6 +1,76 @@
 {% extends "jp/base.html" %}
 
+{% block head %}
+<head>
+
+<link href="{{ url_for('static', filename='business-frontpage.css')}}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css')}}">
+<title>B2Bマーケティング</title>
+<!-- SEGMENT - MARKETO INTEGRATION TESTING - 3/22 cmpope -->
+<script type="text/javascript">
+!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+analytics.load("vs8fTbHRY3k8EVpjakYsDGlCe7hYDKtI");
+analytics.page()
+}}();
+</script>
+{% endblock %}
+
 {% block page_content %}
 <h1 style="text-align:center;">Financial Services - 日本語（日本）</h1>
 <img class="img-responsive" style="display:block; margin-left:auto; margin-right:auto; margin-top: 50px;" src="http://37isppd.com/images/under.gif">
+<div>
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>My Form</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="firstName"></label>  
+  <div class="col-md-4">
+  <input id="firstName" name="firstName" type="text" placeholder="First" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lastName"></label>  
+  <div class="col-md-4">
+  <input id="lastName" name="lastName" type="text" placeholder="Last" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="emailAddress"></label>  
+  <div class="col-md-4">
+  <input id="emailAddress" name="emailAddress" type="text" placeholder="Email" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="eyeColor"></label>  
+  <div class="col-md-4">
+  <input id="eyeColor" name="eyeColor" type="text" placeholder="Eye Color" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+</div>
 {% endblock %}

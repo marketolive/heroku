@@ -18,6 +18,7 @@ except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
 	apiKey = os.environ['apiKey']
 
+
 ########################################################
 #
 #						Logins
@@ -119,6 +120,7 @@ def email_marketing(language, category, page):
 	if category not in categories or page not in pages:
 		abort(404)
 	return render_template('%s/%s/%s.html' % (language, category, page), form=g.loginform, name=g.name, lang=language, path='%s/' % (category), page=page)
+
 
 '''
 Will delete this once we are fully confident in the above
