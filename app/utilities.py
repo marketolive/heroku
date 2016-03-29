@@ -1,6 +1,6 @@
 from app.mktorest import MarketoWrapper
 
-from views import restClient
+from setvars import restClient
 
 class FailedOut(Exception):
 	def __init__(self, value=None):
@@ -61,7 +61,7 @@ def clone_folder(folder_id, restClient, parent=None, name_append=None):
 				if not child_result['success']:
 					failures.append({child['folderId']['id']:'Unable to clone'})
 			elif child['folderId']['type']=='Folder':
-				child_success, child_messages = clone_folder(child['folderId']['id'], restClient, parent=create_result['result'][0]['folderId']['id'])
+				child_success, child_messages = clone_folder(child['folderId']['id'], restClient, parent=create_result['result'][0]['id'])
 				if not child_success:
 					failures.append(child_messages)
 		return True, failures
