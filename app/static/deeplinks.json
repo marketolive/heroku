@@ -22,8 +22,12 @@
 		"website-retargeting":"",
 		"event-management":"",
 		"social-promotions":"",
+<<<<<<< HEAD
 		"program-analysis":"",
 		"Carter Put your shit here":""
+=======
+		"program-analysis":""
+>>>>>>> 9d4cfef7067e377927b747dd7aec294ffd396499
 	},
 	"jp":
 	{
@@ -42,6 +46,6 @@
 		"marketo-moments":"http://marketolive.com/jp/apps/moments.html",
 		"mobile-sales-insight":"http://marketolive.com/jp/apps/mobile_sales_insight.html",
 		"mobile-engagement":"http://marketolive.com/jp/apps/mobile-engagement-beacon.html",
-		"adbridge":"http://marketolive.com/jp/apps/adbridge.html",
+		"adbridge":"http://marketolive.com/jp/apps/adbridge.html"
 	}
 }
