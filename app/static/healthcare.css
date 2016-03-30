@@ -56,7 +56,7 @@ p {
 .subject-tagline-image {
     float: none;
     margin: 0 auto;
-    padding: 15%;
+    padding: 155%;
     background-color: white;
     border-radius: 50%;
     border: 5px solid #5a54a4;
@@ -64,13 +64,11 @@ p {
 }
 
 .img-size {
+    margin: 0 auto;
     width: 100%;
-    height: 100%;
-    min-height: 100px;
-    max-width: 160px;
-    max-height: 160px;
-    margin-right: auto;
-    margin-left: auto;
+    height: 100%;    
+    max-width: 100px;
+    max-height: 100px;
 }
 
 .logo {
@@ -83,19 +81,20 @@ p {
 .inner-arrow-container {
     display: block;
     margin: 0 auto;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 
 .section2-image-container {
     width: 100%;
     height: 0;
-    padding-top: 80%;
+    padding-top: 60%;
     background: url(healthcare1.png);
     background-repeat: no-repeat; 
     /*background-size: contain;*/
-    background-size: 246% auto;
-    background-position: 0% 0%; 
+    background-size: 310% auto;
+    background-position: -5% 0%; 
+
 }
 
 .section2-image {
@@ -104,29 +103,38 @@ p {
     padding-top: 5%;
 }
 
+.section2-copy {
+    min-height: 100px;
+}
+
 .section3-image-container {
     width: 100%;
     height: 0;
-    padding-top: 80%;
-    background: url(highered2.png);
+    padding-top: 50%;
+    background: url(healthcare2.png);
     background-repeat: no-repeat; 
     /*background-size: contain;*/
-    background-size: 600% auto;
+    background-size: 420% auto;
     background-position: 0% 0%; 
+}
+
+.section3-copy {
+    min-height: 100px;
 }
 
 .section4-image-container {
     width: 100%;
     height: 0;
-    padding-top: 80%;
-    background: url(highered3.png);
+    padding-top: 50%;
+    background: url(healthcare3.png);
     background-repeat: no-repeat; 
-    background-size: 300% auto;
+    background-size: 350% auto;
     background-position: -5% 0%; 
 }
 
-
-
+.section4-copy {
+    min-height: 100px;
+}
 
 .section5-image-container {
     width: 100%;
@@ -139,8 +147,7 @@ p {
 }
 
 .section2-options,
-.section4-options,
-.section5-options {
+.section4-options {
     display: table-cell;
     border: 2px solid #5a54a4;
     border-radius: 50%;
@@ -150,6 +157,20 @@ p {
     -webkit-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+
+.section3-options {
+    display: table-cell;
+    border: 2px solid #5a54a4;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+    -webkit-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    cursor: pointer;
 }
 
 .section3 {
@@ -160,6 +181,10 @@ p {
 
 .mt-5{
     margin-top: 5%;
+}
+
+.pd-5 {
+    padding-top: 5%;
 }
 .mt-10 {
     margin-top: 10%;

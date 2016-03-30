@@ -1,30 +1,26 @@
 $(document).ready(function(){
-	console.log("working?");
+	
 	if($(window).width() > 999) {
 	    $('#fullpage').fullpage({
         	anchors:['HigherEducation', 'IncreaseStudentEnrollment', 'CommunicateAtScale', 'MeasureSuccess']
     	});
-	    console.log("fullpage iniatilizing?XX");
-
 	    $('.arrow-container-down').click(function(){
 	      $.fn.fullpage.moveSectionDown();
-	      //console.log("did it move down?");
 	    });
 
 	    $('.arrow-container-up').click(function(){
 	      $.fn.fullpage.moveSectionUp();
-	      //console.log("did it move up?");
 	    });
 	}
 
 	$('.section2-options, .section3-options, .section4-options, .section5-options').hover(function(){
-		// var parent = $(this).parent;
-		// console.log(parent).get(0);
-		// mouse enter function
 		var order = $(this).attr('data-order');
 		order = order.split('-');
 		var section = order[0];
 		order = order[1];
+
+		$(this).parent().siblings('div').first().children('div').removeClass("purple-background").children('p').css("color", "black");
+
 		
 		var position = b2b[section][order]["bp"];
 		

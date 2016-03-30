@@ -85,7 +85,7 @@ p {
 .section2-image-container {
     width: 100%;
     height: 0;
-    padding-top: 90%;
+    padding-top: 80%;
     background: url(highered1.png);
     background-repeat: no-repeat; 
     /*background-size: contain;*/
@@ -99,10 +99,14 @@ p {
     padding-top: 5%;
 }
 
+.section2-copy {
+    min-height: 70px;
+}
+
 .section3-image-container {
     width: 100%;
     height: 0;
-    padding-top: 90%;
+    padding-top: 80%;
     background: url(highered2.png);
     background-repeat: no-repeat; 
     /*background-size: contain;*/
@@ -110,10 +114,14 @@ p {
     background-position: 0% 0%; 
 }
 
+.section3-copy {
+    min-height: 100px;
+}
+
 .section4-image-container {
     width: 100%;
     height: 0;
-    padding-top: 90%;
+    padding-top: 80%;
     background: url(highered3.png);
     background-repeat: no-repeat; 
     background-size: 300% auto;
@@ -126,21 +134,23 @@ p {
 .section5-image-container {
     width: 100%;
     height: 0;
-    padding-top: 90%;
+    padding-top: 80%;
     background: url(section5.png);
     background-repeat: no-repeat; 
     background-size: 300% auto;
     background-position: 0% 0%; 
 }
 
-.section2-options {
+.section2-options, .section4-options, .section5-options {
     display: table-cell;
-    border: 5px solid #5a54a4;
+    border: 2px solid #5a54a4;
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    padding: 10%;
     vertical-align: middle;
+    -webkit-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
 }
 
 .section3 {
@@ -149,33 +159,22 @@ p {
 
 .section3-options {
     display: table-cell;
-    border: 5px solid #5a54a4;
+    border: 2px solid #5a54a4;
     border-radius: 50%;
     width: 110px;
     height: 110px;
     /*padding: 10%;*/
     vertical-align: middle;
+    -webkit-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
 }
 
-.section4-options {
-    display: table-cell;
-    border: 5px solid #5a54a4;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    padding: 10%;
-    vertical-align: middle;
+
+.section4-copy {
+    min-height: 100px;
 }
 
-.section5-options {
-    display: table-cell;
-    border: 5px solid #5a54a4;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    padding: 10%;
-    vertical-align: middle;
-}
 
 .mt-5{
     margin-top: 5%;
