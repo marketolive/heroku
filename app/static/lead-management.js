@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 	$('.arrow-container, .features').hover(function(){
-		$(this).children('img').toggle();
+		$(this).find('img').toggle();
 	});
 
     $('.arrow').on('click', function(event){

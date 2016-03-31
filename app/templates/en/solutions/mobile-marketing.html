@@ -1,6 +1,91 @@
 {% extends "en/base.html" %}
 
+{% block full_image %}
+<html lang="en">
+{% endblock %}
+
+{% block head %}
+<head>
+	<link href="{{ url_for('static', filename='mobile-marketing.css') }}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-black.css') }}">
+	<title>Marketo Mobile Marketing</title>
+
+</head>
+{% endblock %}
+
+{% block body_tag %}
+<body class="mobile-full">
+{% endblock %}
+
 {% block page_content %}
-<h1 style="text-align:center;">Mobile Marketing</h1>
-<img class="img-responsive" style="display:block; margin-left:auto; margin-right:auto; margin-top: 50px;" src="http://37isppd.com/images/under.gif">
+<h1>Mobile Marketing</h1>
+<!-- <div class="phone-container"> -->
+	<div class="row">
+	  	<div class="col-md-2 col-md-offset-4">
+	  		<a href="#myModal" data-toggle="modal">
+		  		<div class="feature">
+		  			<img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing1.png') }}" />
+		  			<span class="text-content"><span>Reach Users As The Individuals They Are</span></span>
+		  		</div>
+		  	</a>
+	  	</div>
+	  	<div class="col-md-1">
+	  		<div class= "feature">
+	  			<img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing2.png') }}" />
+	  			<span class="text-content"><span>Find And Attract The Right Users 
+				For Your App</span></span>
+	  		</div>
+	  	</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2 col-md-offset-4">
+			<div class="feature m-l-15">
+				<img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing3.png') }}" />
+				<span class="text-content"><span>Mobile Analytics</span></span>
+		  	</div>
+		</div>
+		<div class="col-md-2">
+			<div class="feature">
+				<img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing4.png') }}" />
+				<span class="text-content"><span>Increase Retention By Reconnecting With Users</span></span>
+		  	</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2 col-md-offset-4">
+			<div class="feature m-l-15">
+				<img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing5.png') }}" />
+				<span class="text-content"><span>Mobile Analytics</span></span>
+		  	</div>
+		</div>
+	</div>
+<!-- </div> -->
+
+<!-- Modal Work -->
+
+<div class="modal-container">
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Marketo for Mobile</h4>
+                </div>
+                <div class="modal-body">
+                    <iframe id="marketoVideo" width="560" height="315" src="https://www.youtube.com/embed/ORODIT9-k04" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+<!-- End of Modal -->
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='icon-toggle.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='mobile-marketing.js') }}" type="text/javascript"></script>
 {% endblock %}
