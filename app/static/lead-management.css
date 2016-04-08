@@ -15,6 +15,10 @@
     top: 10%;
 }
 
+.overview {
+    justify-content: space-around;
+}
+
 .parent-container {
     justify-content: space-around;
     align-items: center;
@@ -38,8 +42,10 @@
 }
 
 h3 {
-    margin-bottom: 30%;
+    /*margin-bottom: 30%;*/
     color: white;
+    flex: 1;
+    text-align: center;
 }
 
 .tofu-image {
@@ -133,7 +139,7 @@ h3 {
 
 @media (max-width: 1100px) {
     h3 {
-        margin-bottom: 10%;
+        /*margin-bottom: 10%;*/
     }
     .features {
         height: 100px;
@@ -154,6 +160,12 @@ h3 {
 
     .bofu-container {
         height: 140px;
+    }
+}
+
+@media (max-width: 900px){
+    .funnel-image {
+        top: 15%;
     }
 }
 
