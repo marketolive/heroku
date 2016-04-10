@@ -31,6 +31,14 @@
   line-height: 50px;
 }
 
+.circle:active {
+  opacity: .75;
+  -webkit-transform: scale(0.97);
+          transform: scale(0.97);
+  -webkit-transition: all 60ms ease;
+  transition: all 60ms ease;
+}
+
 .arrow {
   cursor: pointer;
 }
@@ -158,5 +166,35 @@
     overflow: hidden;
   }
 }
+/*
+@media (max-height: 620px) {
+  .circle {
+    height: 6em;
+    width: 6em;
+    margin-top: 35px;
+  }
 
+  .circle p {
+    padding-right: 5px;
+    padding-left: 5px;
+    min-width: 84px;
+    font-size: 8px;
+    line-height: 40px;
+  }
 
+  .circle-container-first-column {
+    height: 342px;
+    overflow: hidden;
+  }
+
+  .circle-container-second-column {
+    height: 223px;
+    overflow: hidden;
+  }
+
+  .circle-container-third-column {
+    height: 104px;
+    overflow: hidden;
+  }
+}
+*/
