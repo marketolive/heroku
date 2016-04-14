@@ -20,7 +20,6 @@ $(document).ready(function(){
 		order = order[1];
 
 		$(this).parent().siblings('div').first().children('div').removeClass("purple-background").children('p').css("color", "black");
-
 		
 		var position = b2b[section][order]["bp"];
 		
@@ -31,11 +30,12 @@ $(document).ready(function(){
 	}, function(){
 		if ($(this).hasClass("purple-background")){
 			$(this).css('background-color', 'white');
-			$(this).children().first().css('color', 'black');
+			$(this).children().css('color', 'black');
 		}
 
 		else {
 			$(this).css({'color': 'black', 'background-color': 'white'});
+			// $(this).parent().siblings('div').first().children('div').removeClass("purple-background").children('p').css("color", "black");
 		}
 	});
 
@@ -77,11 +77,6 @@ var b2b = {
 	{"header": "ROI Analysis", "description": "Prove program effectiveness and identify which programs deliver the highest marketing ROI. Focus your marketing efforts on the highest driving campaigns. Focus your marketing efforts on the highest performing channels and campaigns.", "bp":"48% 0%"},
 	{"header": "Dashboards & Advanced Analytics", "description": "Create ad hoc reports and dashboards with an intuitive UI built for marketers. Get the data you need when you want it.", "bp":"100% 0%"}
 	]
-	// section5: [
-	// {"header": "Executive Dashboard", "description": "Most CRMs and marketing automation software only capture attribution metrics with a single touch (e.g. a lead source).  Don't limit youself to a single-touch attribution model with Marketo.", "bp":"0% 0%"},
-	// {"header": "Content Analysis", "description": "Identifying email engagement can be a challenge because opens and clicks are not a direct indicator of what drives a successful conversion.  Because of this, Marketo formulated an algorithm to calculate the end-to-end engagement of your content.  Even conversions that are further downtream from the initial email will be calculated as part of this 'Engagement Score'.", "bp":"50% 0%"},
-	// {"header": "Flexible Reporting", "description": "Analytics and reporting provide an integral aspect of any decision making process.  As such, it is imperative to identify how your marketing efforts are performing, and to analyze their performance from different perspectives.", "bp":"100% 0%"}
-	// ]
 }
 
 

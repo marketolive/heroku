@@ -19,7 +19,7 @@ $(document).ready(function(){
 		var section = order[0];
 		order = order[1];
 
-		$(this).parent().siblings('div').first().children('div').removeClass("purple-background").children('p').css("color", "black");
+		$(this).parent().siblings('div').first().children('div').removeClass("purple-background").children().css("color", "black");
 
 		
 		var position = b2b[section][order]["bp"];
@@ -31,7 +31,7 @@ $(document).ready(function(){
 	}, function(){
 		if ($(this).hasClass("purple-background")){
 			$(this).css('background-color', 'white');
-			$(this).children().first().css('color', 'black');
+			$(this).children().css('color', 'black');
 		}
 
 		else {

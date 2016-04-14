@@ -34,7 +34,7 @@ $(document).ready(function(){
 	}, function(){
 		if ($(this).hasClass("purple-background")){
 			$(this).css('background-color', 'white');
-			$(this).children().first().css('color', 'black');
+			$(this).children().css('color', 'black');
 		}
 
 		else {
