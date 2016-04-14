@@ -47,6 +47,9 @@ p {
     color: white;
     font-size: 1.5em;
     text-align: center;
+    background: -webkit-linear-gradient(#eee, #5a54a4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .subject-tagline-image {
