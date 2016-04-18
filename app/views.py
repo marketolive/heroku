@@ -79,10 +79,10 @@ def login():
 # The following should contain a comprehensive list of languages and pages
 # These are used to validate incoming URLs
 languages = ['en', 'jp']
-categories = ['solutions', 'verticals']
+categories = ['solutions', 'verticals', 'analytics']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
-		 'financial-services', 'healthcare']
+		 'financial-services', 'healthcare', 'email-insights']
 
 @app.route('/')
 def no_language():

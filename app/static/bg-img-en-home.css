@@ -1,5 +1,8 @@
 .full {
-  background: url('marketolive-home-bkg-2.jpg') no-repeat center center fixed;
+  /*background: url('laptop-and-phone-on-table.jpg') no-repeat center center fixed;*/
+  /*background: url('mouse-and-keyboard-on-desk.jpg') no-repeat center center fixed;*/
+  /*background: url('mouse-on-desk.jpg') no-repeat center center fixed;*/
+  background: url('sky-bg.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
