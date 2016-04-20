@@ -1,10 +1,20 @@
+.full {
+  position: absolute;
+  width: 100%;
+  background-color: #000;
+  background: url('marketolivemain.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
 
 .headline {
     font-size: 2.0em;
     margin-top: 10px;
     margin-bottom: 0px; 
     background: -webkit-linear-gradient(-180deg, grey, #5a54a4);
-     -webkit-text-fill-color: transparent;
+     /*-webkit-text-fill-color: transparent;*/
     -webkit-background-clip: text;
 }
 

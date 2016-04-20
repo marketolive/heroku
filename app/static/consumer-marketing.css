@@ -1,3 +1,14 @@
+.full {
+  position: absolute;
+  width: 100%;
+  background-color: #000;
+  background: url('dialog-bkg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
 .page-container {
   position: absolute;
 }
@@ -41,26 +52,37 @@
 
 .arrow {
   cursor: pointer;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+
+.arrow:hover {
+  -webkit-transform: scale(2.5);
+          transform: scale(2.5);
+  -webkit-transition: all 60ms ease;
+  transition: all 60ms ease;
+  color: #f58216;
+  cursor: pointer;
 }
 
 .glyphicon-chevron-up {
   margin-bottom: 10px;
 }
 
-.glyphicon-chevron-up:hover {
+/*.glyphicon-chevron-up:hover {
   color: #f58216;
   cursor: pointer;
-}
+}*/
 
 .glyphicon-chevron-down {
   margin-top: 20px;
   margin-bottom: 50px;
 }
 
-.glyphicon-chevron-down:hover {
+/*.glyphicon-chevron-down:hover {
   color: #f58216;
   cursor: pointer;
-}
+}*/
 
 .circle p {
   color: white;
@@ -74,10 +96,6 @@
 
 .circle:hover {
   cursor: pointer;
-}
-
-.circle:hover p {
-  color: #f58216;
 }
 
 .first-icon {

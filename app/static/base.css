@@ -1,7 +1,8 @@
 /*Font declaration*/
-body {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-  font-weight: 300;
+body, h1, h2, h3, p {
+  /*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; */
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
 }
 
 .logo-nav {
@@ -147,10 +148,6 @@ body {
   transition: all 60ms ease;
 }*/
 
-/*.circle:hover p {
-  color: #f58216;
-}
-*/
 .circle:active {
   opacity: .75;
   -webkit-transform: scale(0.97);
@@ -170,6 +167,8 @@ body {
 .headline {
   text-align: center;
   color: #fff;
+  /*color: #7b63b0;*/
+  text-shadow: 2px 2px 2px rgba(123, 99, 176, 1);
 }
 
 @media (max-width:768px) {

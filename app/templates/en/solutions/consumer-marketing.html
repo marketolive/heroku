@@ -7,12 +7,14 @@
 {% block head %}
 <title>Consumer Marketing - Marketo</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='consumer-marketing.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-consumer-marketing.css') }}">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-consumer-marketing.css') }}"> -->
 {% endblock %}
 
 {% block page_content %}
 <div class="col-sm-12 col-md-12 col-lg-12 page-container">
-  <h1 style="text-align:center; color:white;">Consumer Marketing</h1>
+  <div class="row headline-container">
+      <h1 class="headline">Consumer Marketing</h1>
+  </div>
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 stage-container">
     <h3>Acquire</h3>
     <div class="stages first-column">

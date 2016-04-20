@@ -2,7 +2,7 @@
 
 {% block head %}
 <title>Customer Base Marketing - Marketo</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-black.css') }}">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-black.css') }}"> -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='customer-base-marketing.css') }}">
 {% endblock %}
 
@@ -14,7 +14,9 @@
 {% block page_content %}
 <div class="row">
   <div class="col-sm-12">
-    <h1 class="headline">Customer Base Marketing</h1>
+  <div class="row headline-container">
+      <h1 class="headline">Customer Base Marketing</h1>
+  </div>
     <ul class='circle-container'>
       <li>
         <a data-toggle='modal' data-target='#target-growth-opportunities'>

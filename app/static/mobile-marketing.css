@@ -1,9 +1,20 @@
+.full {
+  position: absolute;
+  width: 100%;
+  background-color: #000;
+  background: url('laptop-and-phone-on-table.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
 h1 {
 	text-align: center;
 	color: white;
 }
 
-.mobile-full {
+/*.mobile-full {
   position: absolute;
   width: 100%;
   background-color: #aca9d1;
@@ -12,7 +23,7 @@ h1 {
   -moz-background-size: contain;
   background-size: contain;
   -o-background-size: contain;
-}
+}*/
 
 /*.phone-container {
   position: absolute;

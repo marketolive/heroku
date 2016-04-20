@@ -7,7 +7,7 @@
 {% block head %}
 <title>Email Marketing - Marketo</title>
 <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-black.css') }}"> -->
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='coffee-cup-bg.css') }}">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='coffee-cup-bg.css') }}"> -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='email-marketing.css') }}">
 {% endblock %}
 
@@ -16,7 +16,9 @@
 {% endblock %}
 
   {% block page_content %}
-  <h1 style="text-align:center; color:white;">Email Marketing</h1>
+  <div class="row headline-container">
+    <h1 class="headline">Email Marketing</h1>
+  </div>
   <div class="row">
     <div class="row-content col-sm-10 col-sm-offset-1">
       <div class="col-sm-12">
