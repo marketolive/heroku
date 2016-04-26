@@ -122,6 +122,10 @@ def email_marketing(language, category, page):
 	return render_template('%s/%s/%s.html' % (language, category, page), form=g.loginform, name=g.name, lang=language, path='%s/' % (category), page=page)
 
 
+@app.route('/plugin')
+def plugin():
+	return redirect('https://chrome.google.com/webstore/detail/marketolive/onibnnoghllldiecboelbpcaeggfiohl')
+
 '''
 Will delete this once we are fully confident in the above
 
