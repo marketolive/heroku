@@ -15,12 +15,12 @@ h3 {
 
 h4, h5 {
     font-size: 1.2em;
+    font-weight: 100;
 }
 
 p {
     font-size: 1.3em;
 }
-
 
 .business-header {
     min-height: 500px;
@@ -58,15 +58,14 @@ p {
     padding: 15%;
     background-color: white;
     border-radius: 50%;
-    border: 5px solid #5a54a4;
-    
+    border: 5px solid #5a54a4;    
 }
 
 .img-size {
-    max-width: 160px;
-    max-height: 160px;
-    margin-right: auto;
-    margin-left: auto;
+    height: 100%;
+    width: 100%;
+    max-width: 150px;
+    max-height: 150px;    
 }
 
 .logo {
@@ -89,9 +88,8 @@ p {
     padding-top: 80%;
     background: url(highered1.png);
     background-repeat: no-repeat; 
-    /*background-size: contain;*/
     background-size: 246% auto;
-    background-position: 0% 0%; 
+    background-position: -10% 0%; 
 }
 
 .section2-image {
@@ -101,7 +99,7 @@ p {
 }
 
 .section2-copy {
-    min-height: 70px;
+    min-height: 90px;
 }
 
 .section3-image-container {
@@ -110,8 +108,7 @@ p {
     padding-top: 80%;
     background: url(highered2.png);
     background-repeat: no-repeat; 
-    /*background-size: contain;*/
-    background-size: 600% auto;
+    background-size: 400% auto;
     background-position: 0% 0%; 
 }
 
@@ -128,9 +125,9 @@ p {
     background-size: 300% auto;
     background-position: -5% 0%; 
 }
-
-
-
+.second-row {
+    margin-top: 4em;
+}
 
 .section5-image-container {
     width: 100%;
@@ -164,18 +161,15 @@ p {
     border-radius: 50%;
     width: 110px;
     height: 110px;
-    /*padding: 10%;*/
     vertical-align: middle;
     -webkit-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 50px -6px rgba(0,0,0,0.75);
 }
 
-
 .section4-copy {
     min-height: 100px;
 }
-
 
 .mt-5{
     margin-top: 5%;
@@ -183,7 +177,6 @@ p {
 .mt-10 {
     margin-top: 10%;
 }
-
 
 .mb-5 {
     margin-bottom: 5%;

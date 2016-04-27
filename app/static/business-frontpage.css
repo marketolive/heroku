@@ -50,12 +50,8 @@ p {
 }
 
 .pull-bottom {
-    /*float: none;*/
-    /*display: table-cell;*/
     vertical-align: bottom;
 }
-
-
 
 .subject-tagline {
     margin-bottom: 15px;
@@ -100,7 +96,7 @@ p {
 .section2-image-container {
     width: 100%;
     height: 0;
-    padding-top: 90%;
+    padding-top: 75%;
     background: url(tofu.png);
     background-repeat: no-repeat; 
     /*background-size: contain;*/
@@ -124,7 +120,7 @@ p {
 }
 
 .section3-copy {
-    height: 150px;
+    height: 165px;
 }
 
 .section4-image-container {
@@ -135,6 +131,10 @@ p {
     background-repeat: no-repeat; 
     background-size: 300% auto;
     background-position: -5% 0%; 
+}
+
+.section4-copy {
+    min-height: 150px;
 }
 
 .section5-image-container {
@@ -185,7 +185,7 @@ p {
 
 
 .section5-copy {
-    height: 175px;
+    height: 190px;
 }
 
 .mt-5{
@@ -217,7 +217,7 @@ p {
 }
 
 .fixed-height {
-    height: 470px;
+    height: 410px;
 }
 
 .no-pad{

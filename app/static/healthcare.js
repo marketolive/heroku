@@ -22,8 +22,7 @@ $(document).ready(function(){
 		var section = order[0];
 		order = order[1];
 		
-		$(this).parent().siblings('div').first().children('div').removeClass("purple-background").children('p').css("color", "black");
-
+		$(this).parent().siblings('div').children('div').css({'background-color':'white', 'color':'black', 'cursor':'pointer'})
 
 		var position = b2b[section][order]["bp"];
 		
@@ -31,16 +30,20 @@ $(document).ready(function(){
 		$('#'+section+'-header').text(b2b[section][order]["header"]);
 		$('.'+section+'-copy').text(b2b[section][order]["description"]);
 		$('.'+section+'-image-container').css("background-position", position);
-	}, function(){
-		if ($(this).hasClass("purple-background")){
-			$(this).css('background-color', 'white');
-			$(this).children().css('color', 'black');
-		}
-
-		else {
-			$(this).css({'color': 'black', 'background-color': 'white'});
-		}
 	});
+	// , function(){
+	// 	if ($(this).hasClass("purple-background")){
+	// 		$(this).css('background-color', 'white');
+	// 		$(this).children().css('color', 'black');
+	// 	}
+
+	// 	else {
+	// 		$(this).css({'color': 'black', 'background-color': 'white'});
+	// 	}
+	// });
+	$('.section2-options').first().css({'color':'white'});
+	$('.section3-options').first().css({'color':'white'});
+	$('.section4-options').first().css({'color':'white'});
 
 });
 
@@ -76,9 +79,9 @@ var b2b = {
 	{"header": "Events", "description": "Marketo provides a platform for you to manage anything from a simple webinar all the way to a large patient events, at scale with minimal rework.", "bp":"100% 0%"},
 	],
 	section4: [
-	{"header": "Patient Engagement", "description": "Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance", "bp":"0% 0%"},
+	{"header": "Patient Engagement", "description": "Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance", "bp":"-10% 0%"},
 	{"header": "ROI Analysis", "description": "Prove program effectiveness and identify which programs deliver the highest marketing ROI. Focus your marketing efforts on the highest driving campaigns. Focus your marketing efforts on the highest performing channels and campaigns.", "bp":"48% 0%"},
-	{"header": "Dashboards & Advanced Analytics", "description": "Create ad hoc reports and dashboards with an intuitive UI built for marketers. Get the data you need when you want it.", "bp":"95% 0%"}
+	{"header": "Dashboards & Advanced Analytics", "description": "Create ad hoc reports and dashboards with an intuitive UI built for marketers. Get the data you need when you want it.", "bp":"100% 0%"}
 	]
 }
 
