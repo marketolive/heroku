@@ -29,25 +29,12 @@ $(document).ready(function(){
 		$('.'+section+'-copy').text(b2b[section][order]["description"]);
 		$('.'+section+'-image-container').css("background-position", position);
 	});
-	// , function(){
-	// 	// mouse out function
-	// 	if ($(this).hasClass("purple-background")){
-	// 		$(this).css('background-color', 'white');
-	// 		$(this).children().first().css('color', 'black');
-	// 	}
-
-	// 	else {
-	// 		$(this).css({'color': 'black', 'background-color': 'white'});
-	// 	}
-	// });
-
-
+	
 	//set first option in each section color to white
 	$('.section2-options').first().css({'color':'white'});
 	$('.section3-options').first().css({'color':'white'});
 	$('.section4-options').first().css({'color':'white'});
 	$('.section5-options').first().css({'color':'white'});
-
 });
 
 $(window).resize(function(){

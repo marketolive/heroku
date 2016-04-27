@@ -2,7 +2,7 @@ $(document).ready(function(){
 	
 	if($(window).width() > 999) {
 	    $('#fullpage').fullpage({
-        	anchors:['FinancialServices', 'IncreaseBorrowerPipeline', 'CommunicateAtScale', 'MeasureSuccess']
+        	anchors:['FinancialServices', 'IncreaseBorrowerPipeline', 'DriveLoanRevenue', 'MeasureSuccess']
     	});
 	    $('.arrow-container-down').click(function(){
 	      $.fn.fullpage.moveSectionDown();
@@ -19,7 +19,7 @@ $(document).ready(function(){
 		var section = order[0];
 		order = order[1];
 
-		$(this).parent().siblings('div').first().children('div').removeClass("purple-background").children('p').css("color", "black");
+		$(this).parent().siblings('div').children('div').css({'background-color':'white', 'color':'black', 'cursor':'pointer'})
 		
 		var position = b2b[section][order]["bp"];
 		
@@ -27,18 +27,12 @@ $(document).ready(function(){
 		$('#'+section+'-header').text(b2b[section][order]["header"]);
 		$('.'+section+'-copy').text(b2b[section][order]["description"]);
 		$('.'+section+'-image-container').css("background-position", position);
-	}, function(){
-		if ($(this).hasClass("purple-background")){
-			$(this).css('background-color', 'white');
-			$(this).children().css('color', 'black');
-		}
-
-		else {
-			$(this).css({'color': 'black', 'background-color': 'white'});
-			// $(this).parent().siblings('div').first().children('div').removeClass("purple-background").children('p').css("color", "black");
-		}
 	});
 
+	$('.section2-options').first().css({'color':'white'});
+	$('.section3-options').first().css({'color':'white'});
+	$('.section4-options').first().css({'color':'white'});
+	$('.section5-options').first().css({'color':'white'});
 });
 
 $(window).resize(function(){
