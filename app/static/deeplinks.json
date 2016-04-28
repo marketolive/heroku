@@ -19,15 +19,16 @@
 		"*mobile-engagement":"https://marketolive.com/m3/apps/mobile-engagement-beacon.html",
 		"#adbridge":"https://marketolive.com/m3/apps/adbridge.html",
 		"ad-targeting":"https://marketolive.com/m3/apps/adbridge.html",
-		"website-retargeting":"",
-		"event-management":"",
+		"website-retargeting":"https://sjrtp1.marketo.com/app/retargeting.ext",
+		"event-management":"https://marketolive.com/m3/apps/replicate-success.html",
 		"social-promotions":"",
 		"program-analysis":"",
 		"Carter Put your shit here":"",
 		"program-analysis":"",
 		"lead-scoring":"",
 		"sales-alerts":"",
-		"advanced-report-builder":""
+		"advanced-report-builder":"",
+		"social-marketing":"https://app-sjp.marketo.com/#SOA586B2LA1"
 	},
 	"jp":
 	{
@@ -46,6 +47,8 @@
 		"marketo-moments":"http://marketolive.com/jp/apps/moments.html",
 		"mobile-sales-insight":"http://marketolive.com/jp/apps/mobile_sales_insight.html",
 		"mobile-engagement":"http://marketolive.com/jp/apps/mobile-engagement-beacon.html",
-		"adbridge":"http://marketolive.com/jp/apps/adbridge.html"
+		"adbridge":"http://marketolive.com/jp/apps/adbridge.html",
+		"social-marketing":"",
+		"website-retargeting":""
 	}
 }
