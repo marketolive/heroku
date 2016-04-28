@@ -1,8 +1,8 @@
 $(document).ready(function(){
-	
-	if($(window).width() > 999) {
-	    $('#fullpage').fullpage({
-        	anchors:['FinancialServices', 'IncreaseBorrowerPipeline', 'DriveLoanRevenue', 'MeasureSuccess']
+	$('#fullpage').fullpage({
+        	anchors:['FinancialServices', 'IncreaseBorrowerPipeline', 'DriveLoanRevenue', 'MeasureSuccess'],
+        	verticalCentered: true,
+        	resize: false
     	});
 	    $('.arrow-container-down').click(function(){
 	      $.fn.fullpage.moveSectionDown();
@@ -10,8 +10,21 @@ $(document).ready(function(){
 
 	    $('.arrow-container-up').click(function(){
 	      $.fn.fullpage.moveSectionUp();
-	    });
-	}
+	    });	
+	// if($(window).width() > 999) {
+	//     $('#fullpage').fullpage({
+ //        	anchors:['FinancialServices', 'IncreaseBorrowerPipeline', 'DriveLoanRevenue', 'MeasureSuccess'],
+ //        	verticalCentered: true,
+ //        	resize: false
+ //    	});
+	//     $('.arrow-container-down').click(function(){
+	//       $.fn.fullpage.moveSectionDown();
+	//     });
+
+	//     $('.arrow-container-up').click(function(){
+	//       $.fn.fullpage.moveSectionUp();
+	//     });
+	// }
 
 	$('.section2-options, .section3-options, .section4-options, .section5-options').hover(function(){
 		var order = $(this).attr('data-order');
@@ -35,30 +48,30 @@ $(document).ready(function(){
 	$('.section5-options').first().css({'color':'white'});
 });
 
-$(window).resize(function(){
-	if($(window).width() < 999) {
-		console.log("did it register?");
-	    $('#fullpage').fullpage({
-	    	scrollingSpeed: 7000,
-	    	autoScrolling: false
-	    });
-	    $('.inner-arrow-container').css("display", "none");
+// $(window).resize(function(){
+// 	if($(window).width() < 999) {
+// 		console.log("did it register?");
+// 	    $('#fullpage').fullpage({
+// 	    	scrollingSpeed: 7000,
+// 	    	autoScrolling: false
+// 	    });
+// 	    $('.inner-arrow-container').css("display", "none");
 	   
-	}
-	else if($(window).width() > 999) {
+// 	}
+// 	else if($(window).width() > 999) {
 		
-		$('#fullpage').fullpage();
+// 		$('#fullpage').fullpage();
 
-		$('.inner-arrow-container').css("display", "block");
+// 		$('.inner-arrow-container').css("display", "block");
 		
-	}
-});
+// 	}
+// });
 
 var b2b = {
 	section2: [
-	{"header": "Search Optimization", "description": "Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential borrowers to their website and landing pages.", "bp":"-20% 0%"},
-	{"header": "Capture Interests", "description": "Drive and increase borrower conversions with relevant landing pages and forms designed with a clear call to action.", "bp":"68% 0%"},
-	{"header": "Social Promotions", "description": "Marketo offers truly integrated social marketing that supports every aspect of your marketing strategy. Marketo helps you find people interested in your services, turn them into patients and retain them for life.", "bp":"143% 0%"}
+	{"header": "Search Optimization", "description": "Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential borrowers to their website and landing pages.", "bp":"-5% 0%"},
+	{"header": "Capture Interests", "description": "Drive and increase borrower conversions with relevant landing pages and forms designed with a clear call to action.", "bp":"48% 0%"},
+	{"header": "Social Promotions", "description": "Marketo offers truly integrated social marketing that supports every aspect of your marketing strategy. Marketo helps you find people interested in your services, turn them into patients and retain them for life.", "bp":"115% 0%"}
 	],
 	section3: [
 	{"header": "Email Marketing", "description": "With Marketo’s email capabilities marketers can put into action an immediate email strategy that incorporates the best email practices. Provide truly personalized experiences for your prospective and existing borrowers.", "bp":"0% 0%"},
