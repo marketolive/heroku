@@ -1,8 +1,8 @@
 $(document).ready(function(){
-	
-	if($(window).width() > 999) {
-	    $('#fullpage').fullpage({
-        	anchors:['B2B-Marketing', 'DriveMoreAwareness', 'EngageYourCustomer', 'AlignWithSales', 'MeasureYourSuccess']
+	$('#fullpage').fullpage({
+        	anchors:['B2B-Marketing', 'DriveMoreAwareness', 'EngageYourCustomer', 'AlignWithSales', 'MeasureYourSuccess'],
+        	verticalCentered: true,
+        	resize: false
     	});
 	    $('.arrow-container-down').click(function(){
 	      $.fn.fullpage.moveSectionDown();
@@ -10,7 +10,19 @@ $(document).ready(function(){
 	    $('.arrow-container-up').click(function(){
 	      $.fn.fullpage.moveSectionUp();
 	    });
-	}
+	// if($(window).width() > 999) {
+	//     $('#fullpage').fullpage({
+ //        	anchors:['B2B-Marketing', 'DriveMoreAwareness', 'EngageYourCustomer', 'AlignWithSales', 'MeasureYourSuccess'],
+ //        	verticalCentered: true,
+ //        	resize: false
+ //    	});
+	//     $('.arrow-container-down').click(function(){
+	//       $.fn.fullpage.moveSectionDown();
+	//     });
+	//     $('.arrow-container-up').click(function(){
+	//       $.fn.fullpage.moveSectionUp();
+	//     });
+	// }
 
 	$('.section2-options, .section3-options, .section4-options, .section5-options').hover(function(){
 		// mouse enter function
@@ -37,24 +49,24 @@ $(document).ready(function(){
 	$('.section5-options').first().css({'color':'white'});
 });
 
-$(window).resize(function(){
-	if($(window).width() < 999) {
-		// console.log("did it register?");
-	    $('#fullpage').fullpage({
-	    	scrollingSpeed: 7000,
-	    	autoScrolling: false
-	    });
-	    $('.inner-arrow-container').css("display", "none");
+// $(window).resize(function(){
+// 	if($(window).width() < 999) {
+// 		// console.log("did it register?");
+// 	    $('#fullpage').fullpage({
+// 	    	scrollingSpeed: 7000,
+// 	    	autoScrolling: false
+// 	    });
+// 	    $('.inner-arrow-container').css("display", "none");
 	   
-	}
-	else if($(window).width() > 999) {
+// 	}
+// 	else if($(window).width() > 999) {
 		
-		$('#fullpage').fullpage();
+// 		$('#fullpage').fullpage();
 
-		$('.inner-arrow-container').css("display", "block");
+// 		$('.inner-arrow-container').css("display", "block");
 		
-	}
-});
+// 	}
+// });
 
 var b2b = {
 	section2: [
@@ -71,8 +83,8 @@ var b2b = {
 	{"header": "Calendar", "description": "It's hard to coordinate all of your marketing programs in flight across teams and regions.  The Marketo Marketing Calendar makes it easy for marketing teams to efficiently plan, coordinate and share the many great things happening in marketing.", "bp":"100% 0%"}
 	],
 	section4: [
-	{"header": "Lead Scoring", "description": "Lead scoring is a shared sales and marketing methodology for ranking leads in order to determine their sales-readiness.  You score leads based on the interest they show in your business, their current stage in the buying cycle, and their fit in regards to your business.", "bp":"-5% 0%"},
-	{"header": "Sales Notification", "description": "Automated programs use triggers which provide you with the ability to listen in real time for specific behaviors and respond immediately with an appropriate action (or set of actions), such as sending an email, alerting a sales rep or automating the customer lifecycle.", "bp":"48% 0%"},
+	{"header": "Lead Scoring", "description": "Lead scoring is a shared sales and marketing methodology for ranking leads in order to determine their sales-readiness.  You score leads based on the interest they show in your business, known as behavioral, their current stage in the buying cycle, and their fit in regards to your business, known as demographic.", "bp":"-5% 0%"},
+	{"header": "Sales Notification", "description": "Automated programs use triggers which provide you with the ability to listen in real time for specific behaviors and respond immediately with an appropriate action (or set of actions), such as sending an email, alerting a sales rep, creating a task, or automating the customer lifecycle.", "bp":"48% 0%"},
 	{"header": "Sales Insight", "description": "Relay the most important marketing engagements from your prospects and customers directly into the sales person's CRM account.  Then prioritize them to enable your reps to follow up with most the most sales-ready leads and not waste time on prospects that aren't ready to actively evaluate.", "bp":"100% 0%"}
 	],
 	section5: [
