@@ -5,6 +5,7 @@ from flask import render_template, flash, request, redirect, g, abort, make_resp
 from .forms import LoginForm
 import os
 from datetime import datetime
+from math import floor
 
 # Init rest client on import
 # setvars.py should be maintained locally containing restcreds dictionary
@@ -33,7 +34,7 @@ except ImportError:
 def before_request():
 	g.loginform=LoginForm()
 	g.user = current_user
-	g.timestamp = datetime.now().timestamp()
+	g.timestamp = floor(datetime.now().timestamp())
 	if current_user.is_authenticated:
 		g.name = g.user.first_name
 		g.email = g.user.email
