@@ -33,8 +33,10 @@ except ImportError:
 def before_request():
 	g.loginform=LoginForm()
 	g.user = current_user
+	g.timestamp = datetime.now().timestamp()
 	if current_user.is_authenticated:
 		g.name = g.user.first_name
+		g.email = g.user.email
 	else:
 		g.name = None
 
@@ -95,13 +97,25 @@ def index(language):
 		return redirect('/en/' + language)
 	if language not in languages:
 		return redirect('/en')
-	return render_template(language + '/index.html', form=g.loginform, name=g.name, lang=language, page='', path='')
+	return render_template(language + '/index.html', 
+							form=g.loginform, 
+							name=g.name, 
+							lang=language, 
+							page='', 
+							path='', 
+							user_email = g.email, 
+							timestamp = g.timestamp)
 
 @app.route('/<language>/base')
 def base(language):
 	if language not in languages:
 		return redirect('/en/base')
-	return render_template(language+'/base.html', form=g.loginform, name=g.name, lang=language)
+	return render_template(language+'/base.html', 
+							form=g.loginform, 
+							name=g.name, 
+							lang=language, 
+							user_email = g.email, 
+							timestamp = g.timestamp)
 
 # @app.errorhandler(404)
 # def page_not_found(error):
@@ -119,7 +133,14 @@ def email_marketing(language, category, page):
 		return redirect('/en/%s/%s' % (category, page))
 	if category not in categories or page not in pages:
 		abort(404)
-	return render_template('%s/%s/%s.html' % (language, category, page), form=g.loginform, name=g.name, lang=language, path='%s/' % (category), page=page)
+	return render_template('%s/%s/%s.html' % (language, category, page), 
+							form=g.loginform,
+							name=g.name,
+							lang=language, 
+							path='%s/' % (category), 
+							page=page, 
+							user_email = g.email, 
+							timestamp = g.timestamp)
 
 @app.route('/plugin')
 def plugin():
