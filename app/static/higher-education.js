@@ -1,8 +1,9 @@
 $(document).ready(function(){
-	
-	if($(window).width() > 999) {
-	    $('#fullpage').fullpage({
-        	anchors:['HigherEducation', 'IncreaseStudentEnrollment', 'CommunicateAtScale', 'MeasureSuccess']
+
+	$('#fullpage').fullpage({
+        	anchors:['HigherEducation', 'IncreaseStudentEnrollment', 'BuildLastingRelationships', 'MeasureSuccess'],
+        	verticalCentered: true,
+        	resize: false
     	});
 	    $('.arrow-container-down').click(function(){
 	      $.fn.fullpage.moveSectionDown();
@@ -11,7 +12,19 @@ $(document).ready(function(){
 	    $('.arrow-container-up').click(function(){
 	      $.fn.fullpage.moveSectionUp();
 	    });
-	}
+	
+	// if($(window).width() > 999) {
+	//     $('#fullpage').fullpage({
+ //        	anchors:['HigherEducation', 'IncreaseStudentEnrollment', 'BuildLastingRelationships', 'MeasureSuccess']
+ //    	});
+	//     $('.arrow-container-down').click(function(){
+	//       $.fn.fullpage.moveSectionDown();
+	//     });
+
+	//     $('.arrow-container-up').click(function(){
+	//       $.fn.fullpage.moveSectionUp();
+	//     });
+	// }
 
 	$('.section2-options, .section3-options, .section4-options, .section5-options').hover(function(){
 		var order = $(this).attr('data-order');
@@ -47,24 +60,24 @@ $(document).ready(function(){
 
 });
 
-$(window).resize(function(){
-	if($(window).width() < 999) {
-		console.log("did it register?");
-	    $('#fullpage').fullpage({
-	    	scrollingSpeed: 7000,
-	    	autoScrolling: false
-	    });
-	    $('.inner-arrow-container').css("display", "none");
+// $(window).resize(function(){
+// 	if($(window).width() < 999) {
+// 		console.log("did it register?");
+// 	    $('#fullpage').fullpage({
+// 	    	scrollingSpeed: 7000,
+// 	    	autoScrolling: false
+// 	    });
+// 	    $('.inner-arrow-container').css("display", "none");
 	   
-	}
-	else if($(window).width() > 999) {
+// 	}
+// 	else if($(window).width() > 999) {
 		
-		$('#fullpage').fullpage();
+// 		$('#fullpage').fullpage();
 
-		$('.inner-arrow-container').css("display", "block");
+// 		$('.inner-arrow-container').css("display", "block");
 		
-	}
-});
+// 	}
+// });
 
 var b2b = {
 	section2: [

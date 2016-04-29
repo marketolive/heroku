@@ -84,7 +84,7 @@ languages = ['en', 'jp']
 categories = ['solutions', 'verticals', 'analytics']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
-		 'financial-services', 'healthcare', 'email-insights']
+		 'financial-services', 'healthcare', 'email-insights', 'test']
 
 @app.route('/')
 def no_language():
@@ -128,7 +128,7 @@ def base(language):
 ########################################################
 
 @app.route('/<language>/<category>/<page>')
-def email_marketing(language, category, page):
+def main_router(language, category, page):
 	if language not in languages:
 		return redirect('/en/%s/%s' % (category, page))
 	if category not in categories or page not in pages:

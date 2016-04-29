@@ -1,12 +1,12 @@
 $(document).ready(function(){
     $('#fullpage').fullpage({
         //Navigation
-        menu: '#myMenu',
-        lockAnchors: false,
-        anchors:['slider'],
-        navigation: false,
+        menu: '#menu',
+        lockAnchors: true,
+        anchors:['acquire', 'engage', 'grow'],
+        navigation: true,
         navigationPosition: 'right',
-        navigationTooltips: ['firstSlide', 'secondSlide'],
+        navigationTooltips: ['Acquire', 'Engage', 'Grow'],
         showActiveTooltip: false,
         slidesNavigation: true,
         slidesNavPosition: 'bottom',
