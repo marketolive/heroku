@@ -40,6 +40,7 @@ def before_request():
 		g.email = g.user.email
 	else:
 		g.name = None
+		g.email = None
 
 @lm.user_loader
 def load_user(id):
