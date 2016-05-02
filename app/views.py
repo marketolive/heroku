@@ -37,9 +37,11 @@ def before_request():
 	g.timestamp = floor(datetime.now().timestamp())
 	if current_user.is_authenticated:
 		g.name = g.user.first_name
+		g.full_name = g.user.first_name + ' ' + g.user.last_name
 		g.email = g.user.email
 	else:
 		g.name = None
+		g.full_name = None
 		g.email = None
 
 @lm.user_loader
@@ -101,7 +103,8 @@ def index(language):
 		return redirect('/en')
 	return render_template(language + '/index.html', 
 							form=g.loginform, 
-							name=g.name, 
+							name=g.name,
+							full_name = g.full_name, 
 							lang=language, 
 							page='', 
 							path='', 
@@ -115,6 +118,7 @@ def base(language):
 	return render_template(language+'/base.html', 
 							form=g.loginform, 
 							name=g.name, 
+							full_name = g.full_name,
 							lang=language, 
 							user_email = g.email, 
 							timestamp = g.timestamp)
@@ -138,6 +142,7 @@ def main_router(language, category, page):
 	return render_template('%s/%s/%s.html' % (language, category, page), 
 							form=g.loginform,
 							name=g.name,
+							full_name = g.full_name,
 							lang=language, 
 							path='%s/' % (category), 
 							page=page, 
