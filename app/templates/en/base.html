@@ -169,7 +169,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="{{ url_for('static', filename='base.js') }}"></script>
     {% if get_flashed_messages()[0] %}<script type='text/javascript'>$("#signinBtn").trigger("click");</script>{% endif %}
-    {% if email %}
+    {% if user_email %}
         <script>
         console.log('Intercom logged in script');
           window.intercomSettings = {
