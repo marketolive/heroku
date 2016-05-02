@@ -128,12 +128,8 @@ body {
   transition: all 60ms ease;
 }
 
-.fp-slidesNav.bottom {
-  bottom: 18%;
-}
-
-.fp-slidesNav ul li a span {
-    background: #fff;
+#fp-nav ul li a span {
+    background: #5A54A4;
 }
 
 

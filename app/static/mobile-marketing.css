@@ -25,16 +25,69 @@ h1 {
   -o-background-size: contain;
 }*/
 
-/*.phone-container {
+.phone-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.phone-skin {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    background: url('android-portrait.png') no-repeat center center fixed;
+    margin: auto;
+    z-index: 1;
+    width: 342px;
+    height: 678px;
+}
+
+.phone-contents-container {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+/*  top: 50px;
+  left: 40px;*/
+}
+
+.app {
+  width: 10em;
+  height: 10em;
+  margin: 1em;
+  background: white;
+  border-radius: 25%;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .8);
+}
+
+.app:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 60ms ease;
+  transition: all 60ms ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.app:active {
+  opacity: .75;
+  -webkit-transform: scale(0.97);
+          transform: scale(0.97);
+  -webkit-transition: all 60ms ease;
+  transition: all 60ms ease;
+}
+
+.app p {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
+}
+
+.app-img {
   width: 100%;
-  height: 40em;
-  background: url('bg-mobile-marketing1.jpg') no-repeat center center fixed;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  background-size: contain;
-  -o-background-size: contain;
-}*/
+}
 
 .feature {
 	background-color: white;

@@ -6,9 +6,9 @@ $(document).ready(function(){
         anchors:['acquire', 'engage', 'grow'],
         navigation: true,
         navigationPosition: 'right',
-        navigationTooltips: ['Acquire', 'Engage', 'Grow'],
+        // navigationTooltips: ['Acquire', 'Engage', 'Grow'],
         showActiveTooltip: false,
-        slidesNavigation: true,
+        slidesNavigation: false,
         slidesNavPosition: 'bottom',
 
         //Scrolling

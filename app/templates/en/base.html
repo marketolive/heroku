@@ -22,6 +22,7 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/j7h9frxj';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
     {% block head %}
 
     {% endblock %}
@@ -158,6 +159,34 @@
             {% endblock %}
         </footer>
 
+        {% if user_email %}
+            <script>
+              window.Intercom('boot', {
+                //app_id: "diiaol39" //dev app ID
+                app_id: "j7h9frxj", //production app ID
+                name: "{{ name }}",
+                email: "{{ user_email }}", // Email address
+                created_at: {{ timestamp }},
+                widget: {
+                  activator: '#IntercomDefaultWidget'
+                } 
+              });
+              console.log('Intercom logged in script');
+            </script>
+            <!--<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/j7h9frxj';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>-->
+        {% else %}
+            <script>
+              window.Intercom('boot', {
+                //app_id: "diiaol39" //dev app ID
+                app_id: "j7h9frxj", //production app ID
+                widget: {
+                  activator: '#IntercomDefaultWidget'
+                } 
+              });
+            console.log('Intercom logged-out script');
+            </script>
+            <!--<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/j7h9frxj';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>-->
+        {% endif %}
     </body>
     {% endblock %}
 
@@ -169,12 +198,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="{{ url_for('static', filename='base.js') }}"></script>
     {% if get_flashed_messages()[0] %}<script type='text/javascript'>$("#signinBtn").trigger("click");</script>{% endif %}
-    <script>
-      window.intercomSettings = {
-        app_id: "j7h9frxj"
-      };
-    </script>
-    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/j7h9frxj';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
     {% block scripts %}
 
     {% endblock %}
