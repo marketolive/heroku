@@ -4,13 +4,15 @@ hr {
 }
 
 h2 {
-    font-size: 2.0em;
+    font-size: 2.25em;
     margin-top: 0px;
     margin-bottom: 0px; 
+    font-weight:500;
+
 }
 
 h3 {
-    font-size: 1.7em;
+    font-size: 2em;
 }
 
 h4, h5 {
@@ -19,7 +21,7 @@ h4, h5 {
 }
 
 p {
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 .business-header {
@@ -80,16 +82,17 @@ p {
     margin: 0 auto;
     width: 40px;
     height: 40px;
+    cursor: pointer;
 }
 
 .section2-image-container {
     width: 100%;
     height: 0;
-    padding-top: 55%;
+    padding-top: 80%;
     background: url(finservices1.png);
     background-repeat: no-repeat; 
-    background-size: 275% auto;
-    background-position: -5% 0%;
+    background-size: 282% auto;
+    background-position: 0% 0%;
 }
 
 .section2-image {
@@ -105,10 +108,10 @@ p {
 .section3-image-container {
     width: 100%;
     height: 0;
-    padding-top: 50%;
+    padding-top: 80%;
     background: url(finservices2.png);
     background-repeat: no-repeat; 
-    background-size: 420% auto;
+    background-size: 410% auto;
     background-position: 0% 0%; 
 }
 
@@ -119,11 +122,11 @@ p {
 .section4-image-container {
     width: 100%;
     height: 0;
-    padding-top: 50%;
-    background: url(healthcare3.png);
+    padding-top: 80%;
+    background: url(finservices3.png);
     background-repeat: no-repeat; 
-    background-size: 350% auto;
-    background-position: -5% 0%; 
+    background-size: 300% auto;
+    background-position: 0% 0%; 
 }
 
 .section4-copy {
@@ -208,4 +211,34 @@ p {
 
 footer {
     margin: 50px 0;
+}
+
+.arrow-container-up {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.arrow-container-down {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+@media (max-width: 1030px) {
+  .section2-options {
+    height: 8em;
+    width: 8em;
+  }
+
+  .section3-options {
+    height: 8em;
+    width: 8em;
+  }
+
+    .section4-options {
+    height: 8em;
+    width: 8em;
+  }
+  h4 {
+    font-size: 1em;
+  }
 }
