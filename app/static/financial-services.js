@@ -69,19 +69,19 @@ $(document).ready(function(){
 
 var b2b = {
 	section2: [
-	{"header": "Search Optimization", "description": "Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential borrowers to their website and landing pages.", "bp":"-5% 0%"},
-	{"header": "Capture Interests", "description": "Drive and increase borrower conversions with relevant landing pages and forms designed with a clear call to action.", "bp":"48% 0%"},
-	{"header": "Social Promotions", "description": "Marketo offers truly integrated social marketing that supports every aspect of your marketing strategy. Marketo helps you find people interested in your services, turn them into patients and retain them for life.", "bp":"115% 0%"}
+	{"header": "Search Optimization", "description": "Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential borrowers to their website and landing pages.", "bp":"0% 0%"},
+	{"header": "Capture Interests", "description": "Drive and increase conversions with relevant landing pages and forms designed with a clear call to action.", "bp":"61% 0%"},
+	{"header": "Social Promotions", "description": "Marketo offers truly integrated social marketing that supports every aspect of your marketing strategy. Marketo helps you find people interested in your services, turn them into lifetime customers and retain them for life.", "bp":"116% 0%"}
 	],
 	section3: [
 	{"header": "Email Marketing", "description": "With Marketo’s email capabilities marketers can put into action an immediate email strategy that incorporates the best email practices. Provide truly personalized experiences for your prospective and existing borrowers.", "bp":"0% 0%"},
-	{"header": "Retargeting", "description": "Marketo Ad Bridge connects Marketo's rich behavioral data with Facebook, Google, LinkedIn and other advertising platforms, so marketers can target the right people with meaningful, relevant ads.", "bp":"28% 0%"},
-	{"header": "Nurture", "description": "Marketo provides a platform for you to manage anything from a simple webinar all the way to a large borrowers events, at scale with minimal rework.", "bp":"60% 0%"},
-	{"header": "Events", "description": "Efficiently manage and execute marketing programs to nurture prospective borrowers that span all channels including email, web, mobile, events, direct mail, social media and more.", "bp":"100% 0%"},
+	{"header": "Retargeting", "description": "Marketo Ad Bridge connects Marketo's rich behavioral data with Facebook, Google, LinkedIn and other advertising platforms, so marketers can target the right people with meaningful, relevant ads.", "bp":"30% 0%"},
+	{"header": "Nurture", "description": "Marketo provides a platform for you to manage anything from a simple webinar all the way to large events, at scale with minimal rework.", "bp":"63% 0%"},
+	{"header": "Events", "description": "Efficiently manage and execute marketing events to nurture prospective and existing customers that span all channels including email, web, mobile, events, direct mail, social media and more.", "bp":"100% 0%"},
 	],
 	section4: [
-	{"header": "Borrower Engagement", "description": "Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance", "bp":"-5% 0%"},
-	{"header": "ROI Analysis", "description": "Prove program effectiveness and identify which programs deliver the highest marketing ROI. Focus your marketing efforts on the highest driving campaigns. Focus your marketing efforts on the highest performing channels and campaigns.", "bp":"48% 0%"},
+	{"header": "Borrower Engagement", "description": "Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance", "bp":"0% 0%"},
+	{"header": "ROI Analysis", "description": "Prove program effectiveness and identify which programs deliver the highest marketing ROI. Focus your marketing efforts on the highest driving campaigns and channels.", "bp":"48% 0%"},
 	{"header": "Dashboards & Advanced Analytics", "description": "Create ad hoc reports and dashboards with an intuitive UI built for marketers. Get the data you need when you want it.", "bp":"100% 0%"}
 	]
 }
