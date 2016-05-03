@@ -35,25 +35,25 @@ h1 {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    background: url('android-portrait.png') no-repeat center center fixed;
+    justify-content: center;
+    background: url('android-portrait-with-background-test.png') no-repeat center center fixed;
     margin: auto;
     z-index: 1;
     width: 342px;
-    height: 678px;
+    height: 540px;
 }
 
 .phone-contents-container {
-  position: absolute;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  height: 490px;
   z-index: 5;
-/*  top: 50px;
-  left: 40px;*/
 }
 
 .app {
-  width: 10em;
-  height: 10em;
+  width: 7em;
+  height: 7em;
   margin: 1em;
   background: white;
   border-radius: 25%;
@@ -134,6 +134,10 @@ span.text-content span {
 
 .feature:hover span.text-content {
 	opacity: 1;
+}
+
+.noun-padding {
+  padding: 20px;
 }
 
 /*.spacing {
