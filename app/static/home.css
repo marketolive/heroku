@@ -136,10 +136,9 @@
       -ms-flex-wrap: inherit;
           flex-wrap: inherit;
   -webkit-box-pack: center;
-  -webkit-justify-content: flex-end;
-      -ms-flex-pack: flex-end;
-          justify-content: flex-end;
-  /*margin: 60px auto;*/
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .button {
