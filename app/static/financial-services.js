@@ -70,7 +70,7 @@ $(document).ready(function(){
 var b2b = {
 	section2: [
 	{"header": "Search Optimization", "description": "Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential borrowers to their website and landing pages.", "bp":"0% 0%"},
-	{"header": "Capture Interests", "description": "Drive and increase conversions with relevant landing pages and forms designed with a clear call to action.", "bp":"61% 0%"},
+	{"header": "Capture Interests", "description": "Drive and increase conversions with relevant landing pages and forms designed with a clear call to action.", "bp":"58% 0%"},
 	{"header": "Social Promotions", "description": "Marketo offers truly integrated social marketing that supports every aspect of your marketing strategy. Marketo helps you find people interested in your services, turn them into lifetime customers and retain them for life.", "bp":"116% 0%"}
 	],
 	section3: [

@@ -4,24 +4,26 @@ hr {
 }
 
 h2 {
-    font-size: 2.0em;
+    font-size: 2.25em;
     margin-top: 0px;
     margin-bottom: 0px; 
     background: -webkit-linear-gradient(-180deg, grey, #5a54a4);
     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-weight:500;
 }
 
 h3 {
-    font-size: 1.7em;
+    font-size: 2em;
 }
 
 h4, h5 {
     font-size: 1.2em;
+    font-weight: 100;
 }
 
 p {
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 
@@ -91,6 +93,7 @@ p {
     margin: 0 auto;
     width: 50px;
     height: 50px;
+    cursor: pointer;
 }
 
 .section2-image-container {
@@ -240,6 +243,36 @@ p {
     align-items: baseline;
 }
 
+ a, a:link, a:hover, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
 footer {
     margin: 50px 0;
+
+}
+
+@media (max-width: 1030px) {
+  .section2-options {
+    height: 8em;
+    width: 8em;
+  }
+
+  .section3-options {
+    height: 8em;
+    width: 8em;
+  }
+
+    .section4-options {
+    height: 8em;
+    width: 8em;
+  }
+   .section5-options {
+    height: 8em;
+    width: 8em;
+  }
+  h4 {
+    font-size: 1em;
+  }    
 }
