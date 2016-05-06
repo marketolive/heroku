@@ -3,6 +3,15 @@
   top: 20%;
 }
 
+.center-text {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.center-text a {
+  color: white;
+}
+
 .title-img {
   width: 50%;
   display: block;
