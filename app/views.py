@@ -149,6 +149,10 @@ def main_router(language, category, page):
 							user_email = g.email, 
 							timestamp = g.timestamp)
 
+@app.route('/', subdomain="partners")
+def partners_main():
+		return redirect('https://www.medium.com')
+
 @app.route('/plugin')
 def plugin():
 	return redirect('https://chrome.google.com/webstore/detail/marketolive/onibnnoghllldiecboelbpcaeggfiohl')
