@@ -1,6 +1,136 @@
 {% extends "jp/base.html" %}
 
+{% block full_image %}
+<html lang="ja">
+{% endblock %}
+
+{% block head %}
+<head>
+  <link href="{{ url_for('static', filename='mobile-marketing.css') }}" rel="stylesheet">
+  <title>モバイルマーケティング - Marketo</title>
+
+</head>
+{% endblock %}
+
+{% block body_tag %}
+<body class="full mobile-full">
+{% endblock %}
+
 {% block page_content %}
-<h1 style="text-align:center;">Mobile Marketing - 日本語（日本）</h1>
-<img class="img-responsive" style="display:block; margin-left:auto; margin-right:auto; margin-top: 50px;" src="http://37isppd.com/images/under.gif">
+  <div class="row headline-container">
+      <h1 class="headline">モバイルマーケティング</h1>
+  </div>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <div class="phone-container">
+      <!-- <img class="phone-skin" src="{{ url_for('static', filename='android-portrait.png') }}"> -->
+      <div class="phone-skin">
+        <div class="phone-contents-container">
+          <a href="#" target="_blank" deeplink="push-notification">
+            <div class="app">
+              <img class="app-img" src="{{ url_for('static', filename='mobile-engagement-guide-option-img-purp.png')}}">
+              <p>Push Notifications</p>
+            </div>
+          </a>
+          <a href="#" target="_blank" deeplink="push-dashboard">
+            <div class="app">
+              <img class="app-img" src="{{ url_for('static', filename='marketo_moments.png')}}">
+              <p>Push Dashboard</p>
+            </div>
+          </a>
+          <a href="#" target="_blank" deeplink="in-app-messaging">
+            <div class="app">
+              <img class="app-img" src="{{ url_for('static', filename='in-app-message.png')}}">
+              <p>In-App Messaging</p>
+            </div>
+          </a>
+          <a href="#" target="_blank" deeplink="in-app-dashboard">
+            <div class="app">
+              <img class="app-img" src="{{ url_for('static', filename='in-app-dashboard.png')}}">
+              <p>In-App Dashboard</p>
+            </div>
+          </a>
+          <a href="#" target="_blank" deeplink="cross-channel-engagement">
+            <div class="app">
+              <img class="app-img noun-padding" src="{{ url_for('static', filename='engage.png')}}">
+              <p>Cross-Channel Engagement</p>
+            </div>
+          </a>
+          <a href="#" target="_blank" deeplink="email-insights">
+            <div class="app">
+              <img class="app-img" src="{{ url_for('static', filename='email-insights.png')}}">
+              <p>Email Insights</p>
+            </div>
+          </a>
+        </div>
+    </div>
+  </div>
+<!--  <div class="row">
+      <div class="col-md-2 col-md-offset-4">
+        <a href="#myModal" data-toggle="modal">
+          <div class="feature">
+            <img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing1.png') }}" />
+            <span class="text-content"><span>Reach Users As The Individuals They Are</span></span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-1">
+        <div class= "feature">
+          <img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing2.png') }}" />
+          <span class="text-content"><span>Find And Attract The Right Users 
+        For Your App</span></span>
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-md-offset-4">
+      <div class="feature m-l-15">
+        <img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing3.png') }}" />
+        <span class="text-content"><span>Mobile Analytics</span></span>
+        </div>
+    </div>
+    <div class="col-md-2">
+      <div class="feature">
+        <img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing4.png') }}" />
+        <span class="text-content"><span>Increase Retention By Reconnecting With Users</span></span>
+        </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-md-offset-4">
+      <div class="feature m-l-15">
+        <img class="img-responsive pagination" src="{{ url_for('static', filename='mobile-marketing5.png') }}" />
+        <span class="text-content"><span>Mobile Analytics</span></span>
+        </div>
+    </div>
+  </div> -->
+</div>
+
+<!-- Modal Work -->
+
+<div class="modal-container">
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Marketo for Mobile</h4>
+                </div>
+                <div class="modal-body">
+                    <iframe id="marketoVideo" width="560" height="315" src="https://www.youtube.com/embed/ORODIT9-k04" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+<!-- End of Modal -->
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='icon-toggle.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='mobile-marketing.js') }}" type="text/javascript"></script>
 {% endblock %}

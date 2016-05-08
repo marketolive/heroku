@@ -1,6 +1,119 @@
 {% extends "jp/base.html" %}
 
-{% block page_content %}
-<h1 style="text-align:center;">Email Marketing - 日本語（日本）</h1>
-<img class="img-responsive" style="display:block; margin-left:auto; margin-right:auto; margin-top: 50px;" src="http://37isppd.com/images/under.gif">
+{% block head %}
+<title>メールマーケティング - Marketo</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='email-marketing.css') }}">
+{% endblock %}
+
+  {% block body_tag %}
+  <body class="full">
+  {% endblock %}
+
+  {% block page_content %}
+  <div class="row headline-container">
+    <h1 class="headline">メールマーケティング</h1>
+  </div>
+  <div class="row">
+    <div class="row-content col-sm-10 col-sm-offset-1">
+      <div class="col-sm-12">
+        <div class="row rectangle-title">
+          Attract, Design & Send
+        </div>
+        <div class="row">
+          <div class="col-sm-4">        
+            <a href="#" class="deeplink" target="_blank" deeplink="search-optimization">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
+                </div>
+                <p>Search Optimization</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
+                </div>
+                <p>DIY Design</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#" class="deeplink" target="_blank" deeplink="powerful-automation">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-purple.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-orange.png') }}">
+                </div>
+                <p>Powerful Automation</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1 row-container">
+      <div class="col-sm-12 rectangle">
+        <div class="row rectangle-title-container">
+        </div>
+      </div>
+    </div>
+    <div id="second-row-content" class="row-content col-sm-10 col-sm-offset-1">
+      <div class="col-sm-12">
+        <div class="row rectangle-title">
+          Promote, Plan, & Measure
+        </div>
+        <div class="row">
+          <div class="col-sm-4">        
+            <a href="#" class="deeplink" target="_blank" deeplink="social-marketing">
+              <div class="circle">
+                <div class="noun-padding">
+                  <img class="img-responsive" src="{{ url_for('static', filename='social-promotions-purple.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='social-promotions-orange.png') }}">
+                </div>
+                <p>Social Marketing</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#" class="deeplink" target="_blank" deeplink="marketing-calendar">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-purp.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-orange.png') }}">
+                </div>
+                <p>Marketing Calendar</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4">
+            <a href="#" class="deeplink" target="_blank" deeplink="program-analysis">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-orange.png') }}">
+                </div>
+                <p>Program Analysis</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="second-row-container" class="col-sm-10 col-sm-offset-1 row-container">
+      <div class="col-sm-12 rectangle">
+        <div class="row rectangle-title-container">
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='icon-toggle.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='email-marketing.js') }}" type="text/javascript"></script>
 {% endblock %}

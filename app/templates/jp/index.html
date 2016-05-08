@@ -1,65 +1,73 @@
 {% extends "jp/base.html" %}
 
 {% block full_image %}
-<html class="full" lang="jp ">
+<html lang="ja" class="full" lang="en">
 {% endblock %}
 
 {% block head %}
-<title>ようこそ to Marketo Live</title>
+<title>Welcome to Marketo Live</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-jp-home.css') }}">
 {% endblock %}
 
 {% block page_content %}
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page-title">
-    <img class="img-responsive title-img" src="{{ url_for('static', filename='marketo-live-image-white.png') }}">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page-title">
+      <img class="img-responsive title-img" src="{{ url_for('static', filename='marketo-live-image-white.png') }}">
+    </div>
   </div>
-
-  <div class="col-lg- col-md-12 col-md-offset-8 col-sm-12 col-sm-offset-8 options">
-    <button class="button btn-lg" data-toggle="modal" data-target=".solutions-options" type="button" href="#">Solutions</button>
-    <button class="button btn-lg" data-toggle="modal" data-target=".verticals-options" type="button">Verticals</button>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 options">
+      <div class="btn-container">
+        <div class="button-container">
+          <div data-toggle="modal" data-target=".solutions-options" class='button -border center'>ソリューション</div>
+          <div data-toggle="modal" data-target=".verticals-options" class='button -border center'>Verticals</div>
+        </div>
+      <h6 class="center-text"><a target="_blank" href="http://classic.marketolive.com/">Switch to the old MarketoLive</a></h6>
+      </div>
+    </div>
   </div>
 
   <div class="modal fade solutions-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <h1>デモンストレーション</h1>
+        <h1>ソリューション</h1>
         <div class="modal-content-container">
-          <div>
+          <div class="solution-container">
             <a href="/{{lang}}/solutions/email-marketing">
-              <div class="circle">
+              <div class="solution-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-email-marketing.png') }}">
                 <p class="inner-circle">Email Marketing</p>
               </div>
             </a>
           </div>
-          <div>
+          <div class="solution-container">
             <a href="/{{lang}}/solutions/lead-management">
-              <div class="circle">
+              <div class="solution-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-lead-management.png') }}">
                 <p>Lead Management</p>
               </div>
             </a>
           </div>
-          <div>
+          <div class="solution-container">
             <a href="/{{lang}}/solutions/consumer-marketing">
-              <div class="circle">
+              <div class="solution-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-consumer-marketing.png') }}">
                 <p>Consumer Marketing</p>
               </div>
             </a>
           </div>
-          <div>
+          <div class="solution-container">
             <a href="/{{lang}}/solutions/customer-base-marketing">
-              <div class="circle">  
+              <div class="solution-circle">  
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-customer-base-marketing.png') }}">
                 <p>Customer Base Marketing</p>
               </div>
             </a>
           </div>
-          <div>
+          <div class="solution-container">
             <a href="/{{lang}}/solutions/mobile-marketing">
-              <div class="circle">
+              <div class="solution-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-mobile-marketing.png') }}">
                 <p>Mobile Marketing</p>
               </div>
@@ -73,40 +81,36 @@
   <div class="modal fade verticals-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <h1>プレゼンテーション</h1>
+        <h1>Verticals</h1>
         <div class="modal-content-container">
           <div class="vertical-container">
             <a href="/{{lang}}/verticals/b2b">
-              <div id="b2b" class="circle">
-                <img class="img-responsive" src="{{ url_for('static', filename='office-icon-purple.png') }}">
-                <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='office-icon-white.png') }}"> 
+              <div id="b2b" class="vertical-circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='office-icon-white.png') }}">
                 <p>B2B</p>
               </div>
             </a>
           </div>
           <div class="vertical-container">
             <a href="/{{lang}}/verticals/higher-education">
-              <div id="higher-education" class="circle">
-                <img class="img-responsive" src="{{ url_for('static', filename='education-icon-purple.png') }}">
-                <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='education-icon-white.png') }}">
+              <div id="higher-education" class="vertical-circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='education-icon-white.png') }}">
                 <p>Higher Education</p>
               </div>
             </a>
           </div>
           <div class="vertical-container">
             <a href="/{{lang}}/verticals/financial-services">
-              <div id="financial-services" class="circle">
-                <img class="img-responsive" src="{{ url_for('static', filename='financial-services-icon-purple.png') }}">
-                <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='financial-services-icon-white.png') }}">
+              <div id="financial-services" class="vertical-circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='financial-services-icon-white.png') }}">
                 <p>Financial Services</p>
               </div>
             </a>
           </div>
           <div class="vertical-container">
             <a href="/{{lang}}/verticals/healthcare">
-              <div id="healthcare" class="circle">
-                <img class="img-responsive" src="{{ url_for('static', filename='healthcare-icon-purple.png') }}">
-                <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='healthcare-icon-white.png') }}">
+              <div id="healthcare" class="vertical-circle">
+                <img class="img-responsive" src="{{ url_for('static', filename='healthcare-icon-white.png') }}">
                 <p>Healthcare</p>
               </div>
             </a>
