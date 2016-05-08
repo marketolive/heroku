@@ -48,17 +48,28 @@ body {
   top: 30px;
 }
 
-#second-row-content {
-  top: -170px;
-}
-
-#second-row-container {
-  top: -400px;
-}
-
 .row-container {
   top: -200px;
   opacity: 0.8;
+}
+
+.second-row-content {
+  position: relative;
+  z-index: 90;
+  top: -170px;
+}
+
+.second-row-container {
+  top: -400px;
+  opacity: 0.8;
+}
+
+#third-row-content {
+  top: -370px;
+}
+
+#third-row-container {
+  top: -600px;
 }
 
 .circle {

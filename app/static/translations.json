@@ -1,0 +1,23 @@
+{
+  "en-jp-tranlations":
+  {
+    "solutions":
+      { 
+        "email-marketing":"メールマーケティング",
+        "consumer-marketing":"コンシューマーマーケティング"
+      },
+      "apps":
+      {
+        "diy-design":"アセットの作成",
+        "powerful-automation":"ワークフロー",
+        "intelligent-nurturing":"ナーチャリング",
+        "actionable-insight":"CRM連携",
+        "marketing-roi":"効果測定",
+        "replicate-success":"コンテンツの複製",
+        "search-optimization":"検索の最適化",
+        "marketing-calendar":"カレンダー",
+        "flexible-reporting":"その他レポート",
+        "lifecycle-analysis":"ファネル分析"
+      }
+  }
+}

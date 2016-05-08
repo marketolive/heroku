@@ -132,6 +132,10 @@ body {
     background: #fff;
 }
 
+.second-row {
+  margin-top: 2em;
+}
+
 
 @media (max-width: 768px) {
   .circle {
