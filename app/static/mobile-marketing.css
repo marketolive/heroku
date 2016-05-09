@@ -26,21 +26,20 @@ h1 {
 }*/
 
 .phone-container {
-  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .phone-skin {
-    position: relative;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    background: url('android-portrait-with-background-test.png') no-repeat center center fixed;
-    margin: auto;
+    background: url('android-portrait-with-background-test.png') no-repeat;
     z-index: 1;
-    width: 342px;
-    height: 540px;
+    width: 300px;
+    height: 594px;
 }
 
 .phone-contents-container {
@@ -49,6 +48,7 @@ h1 {
   justify-content: center;
   height: 490px;
   z-index: 5;
+  /*margin-top: 7em;*/
 }
 
 .app {
@@ -143,4 +143,16 @@ span.text-content span {
 /*.spacing {
 	margin-right: 1em;
 	margin-left: 1em;
+}*/
+
+/*@media (min-height: 900px) {
+  .phone-contents-container {
+    margin-top: 7em;
+  }
+}
+
+@media (min-height: 1050px) {
+  .phone-contents-container {
+    margin-top: 13em;
+  }
 }*/
