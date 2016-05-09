@@ -154,6 +154,35 @@ ul.circle-container li:hover span.text-content {
   margin-top: 4em;
 }
 
+#abm div.circle {
+  opacity: 1
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 60ms ease;
+  transition: all 60ms ease;
+}
+
+#abm div.circle:active {
+  opacity: 1
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 60ms ease;
+  transition: all 60ms ease;
+}
+
+#abm:hover a span.text-content {
+  opacity: 1;
+}
+
+#abm:hover {
+  cursor: default;
+}
+
+#abm span.text-content {
+  height: 150px;
+  width: 150px;
+}
+
 
 @media (max-height: 690px) {
   .circle-container {
