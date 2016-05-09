@@ -72,6 +72,14 @@ body {
   top: -600px;
 }
 
+.modal-content {
+  background-color: #DCDCDC;
+}
+
+.modal-body {
+  margin-bottom: 3em;
+}
+
 .circle {
   border-radius: 50%;
   background-color: white;
