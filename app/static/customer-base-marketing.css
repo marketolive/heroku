@@ -154,7 +154,7 @@ ul.circle-container li:hover span.text-content {
   margin-top: 4em;
 }
 
-#abm div.circle {
+/*#abm div.circle {
   opacity: 1
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -181,7 +181,7 @@ ul.circle-container li:hover span.text-content {
 #abm span.text-content {
   height: 150px;
   width: 150px;
-}
+}*/
 
 
 @media (max-height: 690px) {
