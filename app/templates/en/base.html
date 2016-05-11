@@ -14,6 +14,7 @@
         <!-- Bootstrap Core CSS -->
         <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}"> -->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -81,21 +82,22 @@
                         </ul>
                         {% endblock %}
                     </li>
-<!-- Login button and help button
-                    <li>
+
+<!--                     <li>
                         {% if name %}
                         <button type="button" id='loggedinBtn' class="btn btn-default navbar-btn sign-in-btn" data-toggle="modal" data-target=".logout-modal">{{ name }}</button>
                         {% else %}
                         <button type="button" id='signinBtn' class="btn btn-default navbar-btn sign-in-btn" data-toggle="modal" data-target=".bs-example-modal-lg">Sign In</button>
                         {% endif %}
-                    </li>
+                    </li> -->
                     <li>
-                        <a id="help-nav-link" class="help-nav-link" href="#">
-                            <div class="help-icon"></div>
+                        <a data-toggle="modal" data-target="#help-options" class="help-nav-link">
+                            <i id="help-icon" class="material-icons">help_outline</i>
+                            <!-- <div class="help-icon"></div> -->
                         </a>
                     </li> 
 
--->
+
                 </ul>
             </div>
     </nav>
@@ -161,6 +163,52 @@
             {% endblock %}
         </div>
         <!-- </div> -->
+
+          <div id="help-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">What Do You Need Help With?</h4>
+              </div>
+              <div class="modal-body help-modal-body">
+                <div class="row">
+                  <div class="col-sm-4">        
+                    <a href="#" class="deeplink" target="_blank" deeplink="request-account">
+                      <div class="md-icon">
+                        <div>
+                          <i class="material-icons md-dark md-130">person_add</i>
+                          <p>Request an Account</p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-sm-4">
+                    <a href="#" class="deeplink" target="_blank" deeplink="lite-training-content">
+                      <div class="md-icon">
+                        <div>
+                          <i class="material-icons md-dark md-130">ondemand_video</i>
+                        </div>
+                        <p>Lite Training Content</p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-sm-4">
+                    <a href="#" class="deeplink" target="_blank" deeplink="advanced-training-content">
+                      <div class="md-icon">
+                        <div>
+                          <i class="material-icons md-dark md-130">video_library</i>
+                        </div>
+                        <p>Pro Training Content</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <!-- /.container -->
 
 

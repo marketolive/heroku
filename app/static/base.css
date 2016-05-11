@@ -41,13 +41,13 @@ body, h1, h2, h3, p {
   color: white;
 }
 
-.help-icon {
+.help-icon-old {
   background: url('help-white-nav.png');
   width: 26px;
   height: 26px;
 }
 
-.help-icon:hover {
+.help-icon-old:hover {
   background: url('help-orange-nav.png');
   width: 26px;
   height: 26px;
@@ -148,6 +148,30 @@ body, h1, h2, h3, p {
   transition: all 60ms ease;
 }*/
 
+.circle {
+  border-radius: 50%;
+  background-color: white;
+  border-color: black;
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  text-align: center;
+  line-height: 50px;
+}
+
+.circle p {
+  color: white;
+  text-align: center;
+  background-color: #5A54A4;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: -20px;
+  min-width: 150px;
+}
+
 .circle:active {
   opacity: .75;
   -webkit-transform: scale(0.97);
@@ -177,6 +201,81 @@ body, h1, h2, h3, p {
 
 .modal-body {
   margin-bottom: 3em;
+}
+
+.help-modal-body {
+  margin-bottom: 0em;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.material-icons.md-dark { 
+  color: rgba(90, 84, 164, 1); 
+}
+
+.material-icons.md-130 { 
+  font-size: 130px; 
+}
+
+#help-icon:hover {
+  cursor: pointer;
+}
+
+.md-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  text-align: center;
+  line-height: 50px;
+}
+
+.md-icon p {
+  color: #5A54A4;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: -28px;
+  min-width: 150px;
+}
+
+.md-icon:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transition: all 60ms ease;
+  transition: all 60ms ease;
+}
+
+.md-icon:active {
+  opacity: .75;
+  -webkit-transform: scale(0.97);
+          transform: scale(0.97);
+  -webkit-transition: all 60ms ease;
+  transition: all 60ms ease;
 }
 
 @media (max-width:768px) {
