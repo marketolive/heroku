@@ -88,7 +88,7 @@ languages = ['en', 'jp']
 categories = ['solutions', 'verticals', 'analytics']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
-		 'financial-services', 'healthcare', 'email-insights', 'test']
+		 'financial-services', 'healthcare', 'email-insights', 'test', 'higher-education2']
 
 @app.route('/')
 def no_language():

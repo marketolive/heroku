@@ -1,0 +1,286 @@
+{% extends "en/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+
+    <link href="{{ url_for('static', filename='higher-education.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css') }}">
+    <title>Marketo Higher Education</title>
+    {% endblock %}
+
+</head>
+
+<body>
+    {% block page_content %}
+    <div id="fullpage">
+
+        <header class="business-header section container">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <h1 class="tagline text-center" dynId="title-main">Higher Education</h1>
+                    </div>
+                </div>
+
+                <div class="row clearfix mt-10">
+                    <div class="col-lg-4 col-md-4 col-xs-4 pull-bottom">
+                        <h2 class="subject-tagline" dynId="title-link-1">INCREASE STUDENT ENROLLMENT</h2>                        
+                    </div>  
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <h2 class="subject-tagline" dynId="title-link-2">BUILD LASTING RELATIONSHIPS</h2>                        
+                    </div> 
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <h2 class="subject-tagline" dynId="title-link-3">MEASURE SUCCESS</h2>          
+                    </div>
+                </div> 
+
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="row">
+                            <div data-menuanchor="increaseStudentEnrollment" class= "col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
+                                <div class="subject-tagline-image">
+                                    <a href="#IncreaseStudentEnrollment"><img class="img-size img-responsive" src= "{{ url_for('static', filename='studentenrollment.png') }}" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="row">
+                            <div class= "col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
+                                <div class=" subject-tagline-image">
+                                    <a href="#BuildLastingRelationships"><img class="img-size img-responsive" src= "{{ url_for('static', filename='lastingrelationships1.png') }}" /></a>
+                                </div>   
+                            </div>
+                        </div>     
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="row">
+                            <div class= "col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
+                                <div class="subject-tagline-image">
+                                    <a href="#MeasureSuccess"><img class="img-size img-responsive" src= "{{ url_for('static', filename='report.png') }}" /></a>
+                                </div>   
+                            </div>
+                        </div>        
+                    </div>
+                </div>  
+                
+                <div class="arrow-container-down mt-5">
+                    <img class="inner-arrow-container" src= "{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
+                </div>
+
+            </header>
+
+            <!-- Page Content -->
+            <!-- <div class="container"> -->
+            
+            <div class="section container" dynId="page2-content">
+
+                <hr>
+                <div class="arrow-container-up">
+                    <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
+                </div>
+
+                <h2 class="text-center go-bold-text" dynId="page2-title">Increase Student Enrollment</h2>
+
+                <!-- Begining of Section 2 -->
+                <div class="row indent">
+                    <div class="col-md-6 col-lg-6 col-xs-12">
+
+                        <hr>                 
+                        <div class="section2-image-container">
+                            <!--  -->
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-xs-12">        
+
+                        <hr>
+
+                        <h3 class="text-center" id="section2-header" dynsub="header">Search Optimization</h3>
+
+                        <p class="section2-copy" dynsub="description">Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential students to their website and landing pages.</p>
+
+                        <div class="col-lg-12 col-md-12 col-xs-12 mt-10">   
+
+                            <div class="col-lg-4 col-md-4 col-xs-4">
+                               <div data-order="section2-0" class="section2-options purple-background">
+                                <a href="#" class="deeplink" target="_blank" deeplink="search-optimization">    
+                                    <h5 class="text-center" dynsublink="1">Search Optimization</h5>
+                                </a>   
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-xs-4">
+                          <div data-order="section2-1" class="section2-options">
+                            <a href="#" class="deeplink" target="_blank" deeplink="he-capture-applicants"> 
+                                <h5 class="text-center" dynsublink="2">Capture Applicants</h5>
+                            </a>  
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+
+                        <div data-order="section2-2" class="section2-options">
+                          <a href="#" class="deeplink" target="_blank" deeplink="he-social-marketing">
+                            <h5 class="text-center" dynsublink="3">Social Promotions</h5>
+                        </a>  
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="arrow-container-down">
+        <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
+    </div>
+</div>
+
+<!-- End of Section 2 -->            
+
+<!-- Begining of Section 3 -->
+<div class="section container">
+    <hr>
+
+    <div class="arrow-container-up">
+        <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
+    </div>
+
+    <h2 class="text-center">Build Lasting Relationships</h2>
+
+    <div class="row indent">
+
+        <div class="col-md-6 col-xs-12">
+
+            <hr>
+
+            <h3 class="text-center" id="section3-header">Automate</h4>
+
+                <p class="section3-copy">With Marketo's email capabilities marketers can put into action an immediate email strategy that incorporates the best email practices.  Provide truly personalized experiences for your applicants and alumni that drive more engagement.</p>
+
+
+                <div class="col-md-12 col-xs-12 mb-5">
+                    <div class="col-md-6 col-xs-6">
+                        <div data-order="section3-0" class="section3-options purple-background">
+                          <a href="#" class="deeplink" target="_blank" deeplink="he-email-marketing">
+                            <h4 class="text-center font-size-16">Email Marketing</h4>
+                           </a>  
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-6">
+                        <div data-order="section3-1" class="section3-options">
+                         <a href="#" class="deeplink" target="_blank" deeplink="he-retargeting">
+                          <h4 class="text-center font-size-16">Retargeting</h4>
+                         </a> 
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="col-md-6 col-xs-6 second-row">
+                        <div data-order="section3-2" class="section3-options second-row">
+                          <a href="#" class="deeplink" target="_blank" deeplink="he-nurturing">
+                            <h4 class="text-center font-size-16">Nurture</h4>
+                          </a>   
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-6 second-row">
+                        <div data-order="section3-3" class="section3-options">
+                          <a href="#" class="deeplink" target="_blank" deeplink="marketing-calendar">
+                            <h4 class="text-center font-size-16">Events</h4>
+                          </a>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xs-12">  
+
+                <hr>                               
+                <div class="section3-image-container">
+                    <!-- <img class="section3-image-container img-responsive" src="{{ url_for('static', filename= 'section2.png') }}" /> -->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="arrow-container-down">
+            <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
+        </div>
+    </div>
+
+    <!-- End of Section 3 -->
+
+    <!-- Begining of Section 4 -->
+
+    <div class="section container">
+        <hr>
+
+        <div class="arrow-container-up">
+            <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
+        </div>
+
+        <h2 class="text-center">Measure Success</h2>
+
+        <div class="row indent">
+            <div class="col-md-6">
+                <hr>
+
+                <div class="section4-image-container">
+                    <!-- <img class="section4-image-container" src="{{ url_for('static', filename= 'align1.png') }}" /> -->
+                </div>
+            </div>
+
+                 <div class="col-md-6">             
+
+                                <hr>
+
+                                <h3 id="section4-header" class="text-center">Lead Scoring</h3>
+
+                                <p class="section4-copy">Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance</p>
+
+                                <div class="col-md-12 col-xs-12 mt-10">        
+                                    <div class="col-md-4 col-xs-4">
+                                        <div data-order="section4-0" class="section4-options purple-background">
+                                          <a href="#" class="deeplink" target="_blank" deeplink="he-nurturing-dashboard">
+                                            <h4 class="text-center">Student Engagement</h4>
+                                        </a>  
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-xs-4">
+                                    <div data-order="section4-1" class="section4-options">
+                                      <a href="#" class="deeplink" target="_blank" deeplink="program-analysis">
+                                       <h4 class="text-center">ROI Analysis</h4>
+                                   </a>
+                               </div>
+                           </div>
+
+                           <div class="col-md-4 col-xs-4">
+                            <div data-order="section4-2" class="section4-options">
+                              <a href="#" class="deeplink" target="_blank" deeplink="he-dashboard">
+                                <h4 class="text-center">Dashboards & Advanced Analytics</h4>
+                            </a>  
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>       
+</div>
+{% endblock %}
+{% block scripts %}
+<!-- fullPage javascript -->
+<script src="{{ url_for('static', filename='jquery.fullPage.js') }}"></script>
+
+<script src="{{ url_for('static',  filename='higher-education2.js') }}"></script>
+{% endblock %}
+</body>
+
+</html>
