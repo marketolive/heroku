@@ -17,8 +17,12 @@ analytics.page()
 
 {% block page_content %}
 <h1 style="text-align:center;">Financial Services - 日本語（日本）</h1>
+<div class="col-md-12">
+<button class="button" onclick="open_win()">Open Buyer Journey flow</button>
+</div>
 <img class="img-responsive" style="display:block; margin-left:auto; margin-right:auto; margin-top: 50px;" src="http://37isppd.com/images/under.gif">
 <div>
+
 <form class="form-horizontal">
 <fieldset>
 
@@ -73,4 +77,22 @@ analytics.page()
 </form>
 
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+function open_win() {
+    window.open('http://verticals.marketolive.com/search_tech_static');
+    window.open("http://verticals.marketolive.com/technology");
+}
+var linkArray = ['http://verticals.marketolive.com/search_tech_static',
+                  'https://marketoemployee.jiveon.com/external-link.jspa?url=http%3A%2F%2Fverticals.marketolive.com%2Ftechnology'
+                ]; // your links
+for (var i = 0; i < linkArray.length; i++) {
+    // will open each link in the current window
+    chrome.tabs.create({
+        url: linkArray[i]
+    });
+}
+</script>
 {% endblock %}
