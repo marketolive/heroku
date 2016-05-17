@@ -80,7 +80,7 @@ var b2b = {
 	{"header": "Events", "description": "Efficiently manage and execute marketing events to nurture prospective and existing customers that span all channels including email, web, mobile, events, direct mail, social media and more.", "bp":"100% 0%"},
 	],
 	section4: [
-	{"header": "Borrower Engagement", "description": "Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance", "bp":"0% 0%"},
+	{"header": "Lifetime Engagement", "description": "Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance", "bp":"0% 0%"},
 	{"header": "ROI Analysis", "description": "Prove program effectiveness and identify which programs deliver the highest marketing ROI. Focus your marketing efforts on the highest driving campaigns and channels.", "bp":"48% 0%"},
 	{"header": "Dashboards & Advanced Analytics", "description": "Create ad hoc reports and dashboards with an intuitive UI built for marketers. Get the data you need when you want it.", "bp":"100% 0%"}
 	]
