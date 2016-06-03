@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block head %}
+<!-- <title>Email Marketing - Marketo</title> -->
 <title>メールマーケティング - Marketo</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='email-marketing.css') }}">
 {% endblock %}
@@ -15,13 +16,15 @@
 
   {% block page_content %}
   <div class="row headline-container">
+    <!-- <h1 class="headline">Email Marketing</h1> -->
     <h1 class="headline">メールマーケティング</h1>
   </div>
   <div class="row">
     <div class="row-content col-sm-10 col-sm-offset-1">
       <div class="col-sm-12">
         <div class="row rectangle-title">
-          Attract, Design, & Send
+          <!-- Attract, Design, & Send -->
+          喚起,デザイン,送信
         </div>
         <div class="row">
           <div class="col-sm-4">        
@@ -31,17 +34,19 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
                 </div>
+                <!-- <p>Search Optimization</p> -->
                 <p>検索の最適化</p>
               </div>
             </a>
           </div>
           <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+            <a data-toggle="modal" data-target="#diy-options">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
                 </div>
+                <!-- <p>DIY Design</p> -->
                 <p>アセットの作成</p>
               </div>
             </a>
@@ -53,6 +58,7 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-orange.png') }}">
                 </div>
+                <!-- <p>Powerful Automation</p> -->
                 <p>ワークフロー</p>
               </div>
             </a>
@@ -69,15 +75,17 @@
     <div class="second-row-content col-sm-10 col-sm-offset-1">
       <div class="col-sm-12">
         <div class="row rectangle-title">
-          Nurture, Test, & Iterate
+          <!-- Nurture, Test, & Iterate -->
+          ナーチャリング,テスト,&反復
         </div>
         <div class="row">
           <div class="col-sm-4">        
-            <a href="#" class="deeplink" target="_blank" deeplink="*intelligent-nurturing">
+            <a href="#" class="deeplink" target="_blank" deeplink="intelligent-nurturing">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='nurture.png') }}">
                 </div>
+                <!-- <p>Intelligent Nurturing</p> -->
                 <p>ナーチャリング</p>
               </div>
             </a>
@@ -88,17 +96,19 @@
                 <div class="noun-padding">
                   <img class="img-responsive" src="{{ url_for('static', filename='ab-testing.png') }}">
                 </div>
-                <p>A/B Testing</p>
+                <!-- <p>A/B Testing</p> -->
+                <p>A/Bテスト</p>
               </div>
             </a>
           </div>
           <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="email-insights">
+            <a data-toggle="modal" data-target="#email-insights-options">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
                 </div>
-                <p>Email Insights</p>
+                <!-- <p>Email Insights</p> -->
+                <p>Eメールインサイト</p>
               </div>
             </a>
           </div>
@@ -114,7 +124,8 @@
     <div id="third-row-content" class="row-content col-sm-10 col-sm-offset-1">
       <div class="col-sm-12">
         <div class="row rectangle-title">
-          Promote, Plan, & Measure
+          <!-- Promote, Plan, & Measure -->
+          プロモート,計画,&測定
         </div>
         <div class="row">
           <div class="col-sm-4">        
@@ -124,7 +135,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='social-promotions-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='social-promotions-orange.png') }}">
                 </div>
-                <p>Social Marketing</p>
+                <!-- <p>Social Marketing</p> -->
+                <p>ソーシャルマーケティング</p>
               </div>
             </a>
           </div>
@@ -135,7 +147,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-orange.png') }}">
                 </div>
-                <p>カレンダー</p>
+                <!-- <p>Marketing Calendar</p> -->
+                <p>マーケティングカレンダー</p>
               </div>
             </a>
           </div>
@@ -146,7 +159,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-orange.png') }}">
                 </div>
-                <p>効果測定</p>
+                <!-- <p>Program Analysis</p> -->
+                <p>プログラム分析</p>
               </div>
             </a>
           </div>
@@ -160,6 +174,80 @@
       </div>
     </div>
   </div>
+
+  <div id="diy-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- <h4 class="modal-title" id="gridSystemModalLabel">Choose Your Editor</h4> -->
+        <h4 class="modal-title" id="gridSystemModalLabel">エディタを選択</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1">        
+            <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
+                  <!-- <p>Classic Editor</p> -->
+                  <p>クラシックエディタ</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-5">
+            <a href="#" class="deeplink" target="_blank" deeplink="email-experience">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email_deliver.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='funnel-analysis-guide-option-img-orange.png') }}">
+                </div>
+                <!-- <p><strong><em>NEW</em></strong> Email Experience</p> -->
+                <p>新規メール</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  <div id="email-insights-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Choose Your Email Insights Demo</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1">        
+            <a href="#" class="deeplink" target="_blank" deeplink="email-insights-summit-demo-1">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
+                  <p>Summit Demo 1</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-5">
+            <a href="#" class="deeplink" target="_blank" deeplink="email-insights-summit-demo-2">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
+                </div>
+                <p>Exploration Scenario</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
   {% endblock %}
 
 {% block scripts %}

@@ -7,6 +7,7 @@
 {% block head %}
 <head>
   <link href="{{ url_for('static', filename='mobile-marketing.css') }}" rel="stylesheet">
+  <!-- <title>Marketo Mobile Marketing</title> -->
   <title>モバイルマーケティング - Marketo</title>
 
 </head>
@@ -18,6 +19,7 @@
 
 {% block page_content %}
   <div class="row headline-container">
+      <!-- <h1 class="headline">Mobile Marketing</h1> -->
       <h1 class="headline">モバイルマーケティング</h1>
   </div>
 <div class="row">
@@ -29,37 +31,43 @@
           <a href="#" target="_blank" deeplink="push-notification">
             <div class="app">
               <img class="app-img" src="{{ url_for('static', filename='mobile-engagement-guide-option-img-purp.png')}}">
-              <p>Push Notifications</p>
+              <!-- <p>Push Notifications</p> -->
+              <p>プッシュ通知</p>
             </div>
           </a>
           <a href="#" target="_blank" deeplink="push-dashboard">
             <div class="app">
               <img class="app-img" src="{{ url_for('static', filename='marketo_moments.png')}}">
-              <p>Push Dashboard</p>
+              <!-- <p>Push Dashboard</p> -->
+              <p>プッシュダッシュボード</p>
             </div>
           </a>
           <a href="#" target="_blank" deeplink="in-app-messaging">
             <div class="app">
               <img class="app-img" src="{{ url_for('static', filename='in-app-message.png')}}">
-              <p>In-App Messaging</p>
+              <!-- <p>In-App Messaging</p> -->
+              <p>アプリ内メッセージ</p>
             </div>
           </a>
           <a href="#" target="_blank" deeplink="in-app-dashboard">
             <div class="app">
               <img class="app-img" src="{{ url_for('static', filename='in-app-dashboard.png')}}">
-              <p>In-App Dashboard</p>
+              <!-- <p>In-App Dashboard</p> -->
+              <p>アプリ内ダッシュボード</p>
             </div>
           </a>
           <a href="#" target="_blank" deeplink="cross-channel-engagement">
             <div class="app">
               <img class="app-img noun-padding" src="{{ url_for('static', filename='engage.png')}}">
-              <p>Cross-Channel Engagement</p>
+              <!-- <p>Cross-Channel Engagement</p> -->
+              <p>クロスチャネルエンゲージメント</p>
             </div>
           </a>
-          <a href="#" target="_blank" deeplink="email-insights">
+          <a data-toggle="modal" data-target="#email-insights-options">
             <div class="app">
               <img class="app-img" src="{{ url_for('static', filename='email-insights.png')}}">
-              <p>Email Insights</p>
+              <!-- <p>Email Insights</p> -->
+              <p>Eメールインサイト</p>
             </div>
           </a>
         </div>
@@ -108,26 +116,42 @@
   </div> -->
 </div>
 
-<!-- Modal Work -->
 
-<div class="modal-container">
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Marketo for Mobile</h4>
+  <div id="email-insights-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- <h4 class="modal-title" id="gridSystemModalLabel">Choose Your Email Insights Demo</h4> -->
+        <h4 class="modal-title" id="gridSystemModalLabel">Choose Your Email Insights Demo</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1">        
+            <a href="#" class="deeplink" target="_blank" deeplink="email-insights-summit-demo-1">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
+                  <p>Summit Demo 1</p>
                 </div>
-                <div class="modal-body">
-                    <iframe id="marketoVideo" width="560" height="315" src="https://www.youtube.com/embed/ORODIT9-k04" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-5">
+            <a href="#" class="deeplink" target="_blank" deeplink="email-insights-summit-demo-2">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
                 </div>
-            </div>
+                <p>Exploration Scenario</p>
+              </div>
+            </a>
+          </div>
         </div>
-    </div>
-</div>  
-<!-- End of Modal -->
-
-
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {% endblock %}
 
 {% block scripts %}

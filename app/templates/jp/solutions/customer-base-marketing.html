@@ -1,10 +1,7 @@
 {% extends "jp/base.html" %}
 
-{% block full_image %}
-<html lang="ja">
-{% endblock %}
-
 {% block head %}
+<!-- <title>Customer Base Marketing - Marketo</title> -->
 <title>カスタマーベースマーケティング - Marketo</title>
 <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-black.css') }}"> -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='customer-base-marketing.css') }}">
@@ -19,31 +16,36 @@
 <div class="row">
   <div class="col-sm-12">
   <div class="row headline-container">
+      <!-- <h1 class="headline">Customer Base Marketing</h1> -->
       <h1 class="headline">カスタマーベースマーケティング</h1>
   </div>
     <ul class='circle-container'>
       <li>
         <a data-toggle='modal' data-target='#target-growth-opportunities'>
           <img class="img-bg-color" src="{{ url_for('static', filename='target-purple.png') }}">
-          <span class="text-content"><span>Target Growth Opportunities</span></span>
+          <!-- <span class="text-content"><span>Target Growth Opportunities</span></span> -->
+          <span class="text-content"><span>成長オポチュニティをターゲティング</span></span>
         </a>
       </li>
       <li>
         <a data-toggle='modal' data-target='#focus-sales-on-their-best-bets'>
           <img class="img-bg-color" src="{{ url_for('static', filename='eye-test-purple.png') }}">
-          <span class="text-content"><span>Focus Sales on Best Bets</span></span>
+          <!-- <span class="text-content"><span>Focus Sales on Best Bets</span></span> -->
+          <span class="text-content"><span>ベストベットの案件にフォーカス</span></span>
         </a>
       </li>
       <li>
         <a data-toggle='modal' data-target='#measure-marketings-impact-on-growth'>
           <img class="img-bg-color" src="{{ url_for('static', filename='measure-purple.png') }}">
-          <span class="text-content"><span>Measure Marketing's Impact</span></span>
+          <!-- <span class="text-content"><span>Measure Marketing's Impact</span></span> -->
+          <span class="text-content"><span>マーケティング効果を測定</span></span>
         </a>
       </li>
       <li>
         <a data-toggle='modal' data-target='#sell-more-to-existing-customers'>
           <img class="img-bg-color" src="{{ url_for('static', filename='upsell-purple.png') }}">
-          <span class="text-content"><span>Upsell/Cross-sell Existing Customers</span></span>
+          <!-- <span class="text-content"><span>Upsell/Cross-sell Existing Customers</span></span> -->
+          <span class="text-content"><span>既存顧客へのアップセル/クロスセル</span></span>
         </a>
       </li>
     </ul>
@@ -55,7 +57,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Sell More to Existing Customers</h4>
+        <!-- <h4 class="modal-title" id="gridSystemModalLabel">Sell More to Existing Customers</h4> -->
+        <h4 class="modal-title" id="gridSystemModalLabel">既存顧客への販促</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -66,18 +69,20 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
                 </div>
-                <p>Search Optimization</p>
+                <!-- <p>Search Optimization</p> -->
+                <p>検索の最適化</p>
               </div>
             </a>
           </div>
           <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+            <a data-toggle="modal" data-target="#diy-options">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
                 </div>
-                <p>DIY Design</p>
+                <!-- <p>DIY Design</p> -->
+                <p>アセットの作成</p>
               </div>
             </a>
           </div>
@@ -88,7 +93,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-orange.png') }}">
                 </div>
-                <p>Powerful Automation</p>
+                <!-- <p>Powerful Automation</p> -->
+                <p>ワークフロー</p>
               </div>
             </a>
           </div>
@@ -101,7 +107,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='web-personalization-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='web-personalization-orange.png') }}">
                 </div>
-                <p>Web Personalization</p>
+                <!-- <p>Web Personalization</p> -->
+                <p>Webパーソナライゼーション</p>
               </div>
             </a>
           </div>
@@ -112,7 +119,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-orange.png') }}">
                 </div>
-                <p>Ad Targeting</p>
+                <!-- <p>Ad Targeting</p> -->
+                <p>アドターゲティング</p>
               </div>
             </a>
           </div>
@@ -127,7 +135,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Target Your Best Growth Opportunities</h4>
+        <!-- <h4 class="modal-title" id="gridSystemModalLabel">Target Your Best Growth Opportunities</h4> -->
+        <h4 class="modal-title" id="gridSystemModalLabel">最も成長するオポチュニティをターゲティング</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -138,18 +147,20 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
                 </div>
-                <p>Search Optimization</p>
+                <!-- <p>Search Optimization</p> -->
+                <p>検索の最適化</p>
               </div>
             </a>
           </div>
           <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+            <a data-toggle="modal" data-target="#diy-options">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
                 </div>
-                <p>DIY Design</p>
+                <!-- <p>DIY Design</p> -->
+                <p>アセットの作成</p>
               </div>
             </a>
           </div>
@@ -160,7 +171,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-orange.png') }}">
                 </div>
-                <p>Powerful Automation</p>
+                <!-- <p>Powerful Automation</p> -->
+                <p>ワークフロー</p>
               </div>
             </a>
           </div>
@@ -173,7 +185,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='web-personalization-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='web-personalization-orange.png') }}">
                 </div>
-                <p>Web Personalization</p>
+                <!-- <p>Web Personalization</p> -->
+                <p>Webパーソナライゼーション</p>
               </div>
             </a>
           </div>
@@ -184,17 +197,20 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-orange.png') }}">
                 </div>
-                <p>Ad Targeting</p>
+                <!-- <p>Ad Targeting</p> -->
+                <p>アドターゲティング</p>
               </div>
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="account-based-web-marketing">
+          <div id="abm" class="col-sm-4">
+            <a>
               <div class="circle">
                 <div class="noun-padding">
                   <img class="img-responsive" src="{{ url_for('static', filename='account-based-marketing-purple.png') }}">
-                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='account-based-marketing-orange.png') }}">
+                  <!-- <span class="text-content"><span>Coming Soon</span></span> -->
+                  <span class="text-content"><span>Coming Soon</span></span>
                 </div>
+                <!-- <p>ABM</p> -->
                 <p>ABM</p>
               </div>
             </a>
@@ -210,7 +226,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Focus Sales on their Best Bets</h4>
+        <!-- <h4 class="modal-title" id="gridSystemModalLabel">Focus Sales on their Best Bets</h4> -->
+        <h4 class="modal-title" id="gridSystemModalLabel">ベストベットへの営業のフォーカス</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -221,7 +238,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='lead-scoring-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='lead-scoring-orange.png') }}">
                 </div>
-                <p>Lead Scoring</p>
+                <!-- <p>Lead Scoring</p> -->
+                <p>リードスコアリング</p>
               </div>
             </a>
           </div>
@@ -232,7 +250,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='actionable-insight-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='actionable-insight-img-orange.png') }}">
                 </div>
-                <p>Actionalble Insight</p>
+                <!-- <p>Actionable Insight</p> -->
+                <p>アクションへつながるインサイト</p>
               </div>
             </a>
           </div>
@@ -243,6 +262,7 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='sales-alert-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='sales-alert-orange.png') }}">
                 </div>
+                <!-- <p>Sales Alerts</p> -->
                 <p>Sales Alerts</p>
               </div>
             </a>
@@ -258,7 +278,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Measure Marketing's Impact on Growth</h4>
+        <!-- <h4 class="modal-title" id="gridSystemModalLabel">Measure Marketing's Impact on Growth</h4> -->
+        <h4 class="modal-title" id="gridSystemModalLabel">成長に影響するマーケティングを測定</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -268,7 +289,8 @@
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-orange.png') }}">
-                  <p>Program Analysis</p>
+                  <!-- <p>Program Analysis</p> -->
+                  <p>プログラム分析</p>
                 </div>
               </div>
             </a>
@@ -280,7 +302,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='funnel-analysis-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='funnel-analysis-guide-option-img-orange.png') }}">
                 </div>
-                <p>Lifecycle Modeler</p>
+                <!-- <p>Life Cycle Modeler</p> -->
+                <p>ライフサイクルモデラー</p>
               </div>
             </a>
           </div>
@@ -291,7 +314,8 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='flexible-reporting-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='flexible-reporting-guide-option-img-orange.png') }}">
                 </div>
-                <p>Advanced Reporting</p>
+                <!-- <p>Advanced Reporting</p> -->
+                <p>アドバンスレポーティング</p>
               </div>
             </a>
           </div>
@@ -302,7 +326,47 @@
                   <img class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-orange.png') }}">
                 </div>
-                <p>Marketing Calendar</p>
+                <!-- <p>Marketing Calendar</p> -->
+                <p>マーケティングカレンダー</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  <div id="diy-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- <h4 class="modal-title" id="gridSystemModalLabel">Choose Your Editor</h4> -->
+        <h4 class="modal-title" id="gridSystemModalLabel">エディタを選択</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1">        
+            <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
+                  <!-- <p>Classic Editor</p> -->
+                  <p>クラシックエディタ</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-5">
+            <a href="#" class="deeplink" target="_blank" deeplink="email-experience">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email_deliver.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='funnel-analysis-guide-option-img-orange.png') }}">
+                </div>
+                <!-- <p><strong><em>NEW</em></strong> Email Experience</p> -->
+                <p>新規メール</p>
               </div>
             </a>
           </div>

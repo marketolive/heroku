@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block head %}
+<!-- <title>Lead Management - Marketo</title> -->
 <title>リード管理 - Marketo</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lead-management.css') }}">
@@ -13,6 +14,7 @@
 {% block page_content %}
 <div class="col-sm-12 col-md-12 col-lg-12 page-container">
   <div class="row headline-container">
+      <!-- <h1 class="headline">Lead Management</h1> -->
       <h1 class="headline">リード管理</h1>
   </div>
   <div id="fullpage">
@@ -20,7 +22,8 @@
       <!-- <div class="slide"> -->
       <div class="section">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 stage-container">
-          <h2>Top of Funnel</h2>
+          <!-- <h2>Top of Funnel</h2> -->
+          <h2>トップオブファネル</h2>
           <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-3 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
                 <a href="#" class="deeplink" target="_blank" deeplink="search-optimization">
@@ -28,6 +31,7 @@
                     <div>
                       <img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
                       <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
+                      <!-- <p>Search Optimization</p> -->
                       <p>検索の最適化</p>
                     </div>
                   </div>
@@ -40,7 +44,8 @@
                       <img class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-purple.png') }}">
                       <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-orange.png') }}">
                     </div>
-                    <p>Ad Targeting</p>
+                    <!-- <p>Ad Targeting</p> -->
+                    <p>アドターゲティング</p>
                   </div>
                 </a>
               </div>
@@ -48,7 +53,8 @@
                 <a href="#" class="deeplink" target="_blank" deeplink="predictive-content">      
                   <div class="circle">
                      <img class="img-responsive" src="{{ url_for('static', filename='predictive-content.png') }}">
-                    <p>Predective Content</p>
+                    <!-- <p>Predictive Content</p> -->
+                    <p>プレディクティブコンテンツ</p>
                   </div>
                 </a>
                </div>
@@ -61,7 +67,8 @@
                     <img class="img-responsive" src="{{ url_for('static', filename='social-promotions-purple.png') }}">
                     <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='social-promotions-orange.png') }}">
                   </div>
-                  <p>Social Marketing</p>
+                  <!-- <p>Social Marketing</p> -->
+                  <p>ソーシャルマーケティング</p>
                 </div>
               </a>
               </div>
@@ -72,7 +79,8 @@
                     <img class="img-responsive" src="{{ url_for('static', filename='replicate-success-guide-option-img-purp.png') }}">
                     <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='replicate-success-guide-option-img-orange.png') }}">
                   </div>
-                  <p>Event Management</p>
+                  <!-- <p>Event Management</p> -->
+                  <p>イベント管理</p>
                 </div>
               </a>
               </div>
@@ -82,16 +90,18 @@
       <!-- <div class="slide"> -->
       <div class="section">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 stage-container">
-          <h2>Middle of Funnel</h2>
+          <!-- <h2>Middle of Funnel</h2> -->
+          <h2>ミドルオブファネル</h2>
           <div class="row">
             <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
-              <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+              <a href="#" data-toggle="modal" data-target="#diy-options">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
                     <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
                   </div>
-                  <p>DIY Design</p>
+                  <!-- <p>DIY Design</p> -->
+                  <p>アセットの作成</p>
                 </div>
               </a>
             </div>
@@ -100,18 +110,20 @@
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation.png') }}">
-                    <p>Powerful Automation</p>
+                    <!-- <p>Powerful Automation</p> -->
+                    <p>ワークフロー</p>
                   </div>
                 </div>
               </a>
             </div>
             <div class="col-md-3 col-sm-3">
-              <a href="#" class="deeplink" target="_blank" deeplink="*intelligent-nurturing">
+              <a href="#" class="deeplink" target="_blank" deeplink="intelligent-nurturing">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='nurture.png') }}">
                   </div>
-                  <p>Intelligent Nurturing</p>
+                  <!-- <p>Intelligent Nurturing</p> -->
+                  <p>ナーチャリング</p>
                 </div>
               </a>
             </div>
@@ -123,7 +135,8 @@
                   <div class="noun-padding">
                     <img class="img-responsive" src="{{ url_for('static', filename='ab-testing.png') }}">
                   </div>
-                  <p>A/B Testing</p>
+                  <!-- <p>A/B Testing</p> -->
+                  <p>A/Bテスト</p>
                 </div>
               </a>
             </div>
@@ -132,7 +145,8 @@
                 <div class="circle circle-second-row">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='lead-scoring-purple.png') }}">
-                    <p>Lead Scoring</p>
+                    <!-- <p>Lead Scoring</p> -->
+                    <p>リードスコアリング</p>
                   </div>
                 </div>
               </a>
@@ -142,7 +156,8 @@
                 <div class="circle circle-second-row">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='actionable-insight-img-purp.png') }}">
-                    <p>Sales Insight</p>
+                    <!-- <p>Sales Insight</p> -->
+                    <p>セールスインサイト</p>
                   </div>
                 </div>
               </a>
@@ -153,15 +168,17 @@
       <!-- <div class="slide"> -->
       <div class="section">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 stage-container">
-          <h2>Bottom of Funnel</h2>
+          <!-- <h2>Bottom of Funnel</h2> -->
+          <h2>ボトムオブファネル</h2>
           <div class="row">
             <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1">
-              <a href="#" class="deeplink" target="_blank" deeplink="email-insights">
+              <a data-toggle="modal" data-target="#email-insights-options">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
                   </div>
-                  <p>Email Insights</p>
+                  <!-- <p>Email Insights</p> -->
+                  <p>Eメールインサイト</p>
                 </div>
               </a>
             </div>
@@ -170,7 +187,8 @@
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
-                    <p>Program Analysis</p>
+                    <!-- <p>Program Analysis</p> -->
+                    <p>プログラム分析</p>
                   </div>
                 </div>
               </a>
@@ -182,7 +200,8 @@
                 <div class="circle circle-second-row">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='flexible-reporting-guide-option-img-purp.png') }}">
-                    <p>Flexible Reporting</p>
+                    <!-- <p>Flexible Reporting</p> -->
+                    <p>レポーティング</p>
                   </div>
                 </div>
               </a>
@@ -194,7 +213,8 @@
                     <img class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-purp.png') }}">
                     <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-orange.png') }}">
                   </div>
-                  <p>Marketing Calendar</p>
+                  <!-- <p>Marketing Calendar</p> -->
+                  <p>マーケティングカレンダー</p>
                 </div>
               </a>
             </div>
@@ -204,6 +224,79 @@
     <!-- </div> -->
   </div>
 <!-- </div> -->
+  <div id="diy-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- <h4 class="modal-title" id="gridSystemModalLabel">Choose Your Editor</h4> -->
+        <h4 class="modal-title" id="gridSystemModalLabel">エディタを選択</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1">        
+            <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
+                  <!-- <p>Classic Editor</p> -->
+                  <p>クラシックエディタ</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-5">
+            <a href="#" class="deeplink" target="_blank" deeplink="email-experience">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email_deliver.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='funnel-analysis-guide-option-img-orange.png') }}">
+                </div>
+                <!-- <p><strong><em>NEW</em></strong> Email Experience</p> -->
+                <p>新規メール</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  <div id="email-insights-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Choose Your Email Insights Demo</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1">        
+            <a href="#" class="deeplink" target="_blank" deeplink="email-insights-summit-demo-1">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
+                  <p>Summit Demo 1</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-5">
+            <a href="#" class="deeplink" target="_blank" deeplink="email-insights-summit-demo-2">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
+                </div>
+                <p>Exploration Scenario</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {% endblock %}
 
 
