@@ -83,7 +83,7 @@ var b2b = {
 	section2: [
 	{"header": "検索の最適化", "description": "Marketo SEOは、マーケターがSEOの専門的な知識がなくても、教育機関のWebサイト、ランディングページへ質の高いトラッフィク、潜在的な学生を増やすことをサポートします。", "bp":"1% 0%"},
 	{"header": "志願者の獲得", "description": "関心を引きつけるランディングページと登録フォームで志願者をより多く獲得します", "bp":"50% 0%"},
-	{"header": "ソーシャルプロモーション", "description": "Marketo offers truly integrated social marketing that supports every aspect of your marketing strategy.  Marketo helps you find new applicants, turn applicants into students and turn students into advocates.", "bp":"100% 0%"}
+	{"header": "ソーシャルプロモーション", "description": "Marketoはマーケティング戦略の様々な局面で活用できる統合されたソーシャルマーケティングを提供しています。Marketoは貴社のサービスに関心のある顧客を見つけ、長期的な顧客へと変化させ関係を維持することをサポートします。", "bp":"100% 0%"}
 	],
 	section3: [
 	{"header": "メールマーケティング", "description": "Marketoのメール機能ならマーケターがベストプラクティスに則って即座にメールによる施策を実行に移すことを可能にします。パーソナライズされた体験を提供することで、学校の志願者や卒業生とのエンゲージメントをより深いものへ進めることができます", "bp":"0% 0%"},
