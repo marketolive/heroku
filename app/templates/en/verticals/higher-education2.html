@@ -6,6 +6,9 @@
 
     <link href="{{ url_for('static', filename='higher-education.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css') }}">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-deep_orange.min.css" />
+    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Marketo Higher Education</title>
     {% endblock %}
 
@@ -76,7 +79,6 @@
             
             <div class="section container" dynId="page2-content">
 
-                <hr>
                 <div class="arrow-container-up">
                     <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
                 </div>
@@ -85,54 +87,52 @@
 
                 <!-- Begining of Section 2 -->
                 <div class="row indent">
-                    <div class="col-md-6 col-lg-6 col-xs-12">
-
-                        <hr>                 
-                        <div class="section2-image-container">
-                            <!--  -->
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-6 col-xs-12">        
-
-                        <hr>
-
-                        <h3 class="text-center" id="section2-header" dynsub="header">Search Optimization</h3>
-
-                        <p class="section2-copy" dynsub="description">Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential students to their website and landing pages.</p>
-
-                        <div class="col-lg-12 col-md-12 col-xs-12 mt-10">   
-
-                            <div class="col-lg-4 col-md-4 col-xs-4">
-                               <div data-order="section2-0" class="section2-options purple-background">
-                                <a href="#" class="deeplink" target="_blank" deeplink="search-optimization">    
-                                    <h5 class="text-center" dynsublink="1">Search Optimization</h5>
-                                </a>   
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                      <div class="mdl-tabs__tab-bar">
+                          <a href="#searchOpt" class="mdl-tabs__tab is-active">Search Optimization</a>
+                          <a href="#captureApp" class="mdl-tabs__tab">Capture Applicants</a>
+                          <a href="#socialPro" class="mdl-tabs__tab">Social Promotions</a>
+                      </div>
+                    
+                      <div class="mdl-tabs__panel is-active" id="searchOpt">
+                        <div class="col-md-6 col-lg-6 col-xs-12">          
+                            <div class="section2-image-container" style="background-position:1% 0%;height:100%;max-height: 450px;">
                             </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xs-12">
 
+                            <h3 class="text-center" id="section2-header">Search Optimization</h3>
+                            <p class="section2-copy">Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential students</p>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-xs-4">
-                          <div data-order="section2-1" class="section2-options">
-                            <a href="#" class="deeplink" target="_blank" deeplink="he-capture-applicants"> 
-                                <h5 class="text-center" dynsublink="2">Capture Applicants</h5>
-                            </a>  
+                      </div>
+                      <div class="mdl-tabs__panel" id="captureApp">
+                        <div class="col-md-6 col-lg-6 col-xs-12">          
+                            <div class="section2-image-container" style="background-position:50% 0%;">
+                            </div>
                         </div>
+                        <div class="col-md-6 col-lg-6 col-xs-12">
 
-                    </div>
+                            <h3 class="text-center" id="section2-header">Capture Applicants</h3>
 
-                    <div class="col-lg-4 col-md-4 col-xs-4">
+                            <p class="section2-copy">Drive and increase applicant conversions with relevant landing pages and forms designed for each school & campaign with a clear call to action</p>
+                        </div>
+                        
+                      </div>
+                      <div class="mdl-tabs__panel" id="socialPro">
+                            <div class="col-md-6 col-lg-6 col-xs-12">          
+                                <div class="section2-image-container" style="background-position:100% 0%;">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xs-12">
 
-                        <div data-order="section2-2" class="section2-options">
-                          <a href="#" class="deeplink" target="_blank" deeplink="he-social-marketing">
-                            <h5 class="text-center" dynsublink="3">Social Promotions</h5>
-                        </a>  
-                    </div>
+                                <h3 class="text-center" id="section2-header" dynsub="header">Social Promotions</h3>
+
+                                <p class="section2-copy" dynsub="description">Marketo offers truly integrated social marketing that supports every aspect of your marketing strategy.  Marketo helps you find new applicants, turn applicants into students and turn students into advocates.</p>
+                            </div>
+                        </div>
+                      </div>
                 </div>
-            </div>
-
-        </div>
-    </div>
 
     <div class="arrow-container-down">
         <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}"/>

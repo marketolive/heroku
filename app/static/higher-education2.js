@@ -1,95 +1,89 @@
 function getOrDefault(data, key1, key2) {
-	console.log("Get or default:");
+	//console.log("Get or default:");
 	var datasub1 = key1 in data ? data[key1] : data["www"];
-	console.log(datasub1);
+	//console.log(datasub1);
 	var datasub2 = key2 in datasub1 ? datasub1[key2] : datasub1["en"];
-	console.log(datasub2);
+	//console.log(datasub2);
 	return (datasub2);
 }
 
 $(document).ready(function(){
 
 	$('#fullpage').fullpage({
-        	anchors:['HigherEducation', 'IncreaseStudentEnrollment', 'BuildLastingRelationships', 'MeasureSuccess'],
-        	verticalCentered: true,
-        	resize: false
-    	});
-	    $('.arrow-container-down').click(function(){
-	      $.fn.fullpage.moveSectionDown();
-	    });
+    	anchors:['HigherEducation', 'IncreaseStudentEnrollment', 'BuildLastingRelationships', 'MeasureSuccess'],
+    	verticalCentered: true,
+    	resize: true,
+    	fitToSection: true
+    });
+    $('.arrow-container-down').click(function(){
+      $.fn.fullpage.moveSectionDown();
+    });
 
-	    $('.arrow-container-up').click(function(){
-	      $.fn.fullpage.moveSectionUp();
-	    });
-	
-	// if($(window).width() > 999) {
-	//     $('#fullpage').fullpage({
- //        	anchors:['HigherEducation', 'IncreaseStudentEnrollment', 'BuildLastingRelationships', 'MeasureSuccess']
- //    	});
-	//     $('.arrow-container-down').click(function(){
-	//       $.fn.fullpage.moveSectionDown();
-	//     });
+    $('.arrow-container-up').click(function(){
+      $.fn.fullpage.moveSectionUp();
+    });
 
-	//     $('.arrow-container-up').click(function(){
-	//       $.fn.fullpage.moveSectionUp();
-	//     });
-	// }
-	$.getJSON('/static/content.json')
+	//get language from url
+  	var splitpath = window.location.pathname.split('/');
+  	var language = splitpath[1];
+  	//console.log(language);
+  	//get page name from url
+  	var page = splitpath[3].split('#')[0];
+  	//console.log(page);
+
+  	//get subdomain
+  	var subdomain = window.location.hostname.split('.')[0];
+
+	$.getJSON('/static/'+page+'.json')
 	  .done(function(data){
-	  	//get language from url
-	  	var splitpath = window.location.pathname.split('/');
-	  	var language = splitpath[1];
-	  	//console.log(language);
-	  	//get page name from url
-	  	var page = splitpath[3].split('#')[0];
-	  	//console.log(page);
 
-	  	//get subdomain
-	  	var subdomain = window.location.hostname.split('.')[0];
+		
 		//console.log(subdomain);
-
 		//console.log(data);	
 
 		// QUESTIONS:
 		// 1) Single json file or 1 per page - 1 Per page
-		// 2) JSON structure
 		// 3) Features to account for, e.g. higher-ed hover pagination
-		// 
-		// 4) Links separate or on page
-
 
 	  	$('[dynId]').each(function(){
 	  		//get dynId name
 	  		var dynId = $(this).attr('dynId');
 	  		//console.log(dynId);
 	  		//get content value from json
-	  		var dynData = data[page][dynId];
+	  		var dynData = data[dynId];
 	  		//console.log(dynData);
+	  		//console.log($(this).get(0).tagName);
 
 	  		if (Array.isArray(dynData)) {
+	  			// If the value of the current key is an array, it's a dynamic section so we apply behavior as well as copy
 	  			var parentElement = $(this);
   				$('[dynsublink]', this).each(function(){
   					var dynsub = +($(this).attr('dynsublink'))-1;
-  					console.log(dynsub);
+  					// console.log(dynsub);
 					var linklabel = dynData[dynsub]["link-label"];
-					$(this).text(getOrDefault(linklabel, subdomain, language));
+					$('h5', this).text(getOrDefault(linklabel, subdomain, language));
 					$(this).hover(function(){
+						// // Set Sibling CSS
+						// $('[dynsublink!='+(dynsub+1)+']', parentElement).css({'background-color':'white', 'color':'black', 'cursor':'pointer'});
+						// // Set Self CSS
+						// $(this).css({'color': 'white', 'background-color': '#5a54a4'});
+						// Set Sprite Position
+						// $('.dynImg', parentElement).css("background-position", dynData[dynsub]['sprite-position']);
+						// Set Copy
 						for (key in dynData[dynsub]) {
-							console.log(key, dynData[dynsub][key])
-							if (key != "link-label") {
-								$('[dynsub="'+key+'"]', parentElement).text(getOrDefault(dynData[dynsub][key], subdomain, language))
-							}
+							// console.log(key, dynData[dynsub][key])
+							if (key != "link-label" && key != 'sprite-position') {
+								$('[dynsub="'+key+'"]', parentElement).text(getOrDefault(dynData[dynsub][key], subdomain, language));
+							} else {}
 						}
 					});
   				});
+	  		} else if ($(this).get(0).tagName=='A') {
+	  			$(this).attr('href', getOrDefault(dynData, subdomain, language));
+	  		} else if ($(this).get(0).tagName=='IMG') {
+	  			$(this).attr('href', getOrDefault(dynData, subdomain, language));
 	  		} else {
-		  		// Ternary operator used below to set default to "www" and/or "en" if an
-		  		// alternate subdomain and/or language cannot be found in the content.json
-		  		var subdomainData = subdomain in dynData ? dynData[subdomain] : dynData["www"];
-		  		console.log(subdomainData);
-		  		var elementData = language in subdomainData ? subdomainData[language] : subdomainData["en"];
-		  		console.log(elementData);
-	        	$(this).text(elementData);
+	        	$(this).text(getOrDefault(dynData, subdomain, language));
 	        }
 	  	});
 	  })
@@ -98,22 +92,25 @@ $(document).ready(function(){
 		console.log( "Request Failed: " + err );
 	  });
 
-	// $('.section2-options, .section3-options, .section4-options, .section5-options').hover(function(){
-	// 	var order = $(this).attr('data-order');
-	// 	order = order.split('-');
-	// 	var section = order[0];
-	// 	order = order[1];
+	$('.section2-options, .section3-options, .section4-options, .section5-options').hover(function(){
+		var order = $(this).attr('data-order');
+		order = order.split('-');
+		var section = order[0];
+		order = order[1];
 
-	// 	$(this).parent().siblings('div').children('div').css({'background-color':'white', 'color':'black', 'cursor':'pointer'})
+	// ******* SET sibling color **********
+		$(this).parent().siblings('div').children('div').css({'background-color':'white', 'color':'black', 'cursor':'pointer'})
 
-		
-	// 	var position = b2b[section][order]["bp"];
-		
-	// 	$(this).css({'color': 'white', 'background-color': '#5a54a4'});
-	// 	$('#'+section+'-header').text(b2b[section][order]["header"]);
-	// 	$('.'+section+'-copy').text(b2b[section][order]["description"]);
-	// 	$('.'+section+'-image-container').css("background-position", position);
-	// });
+		var position = b2b[section][order]["bp"];
+
+	//  ********* SET this colors *********		
+		$(this).css({'color': 'white', 'background-color': '#5a54a4'});
+	// 	********* Set this content *********
+	// $('#'+section+'-header').text(b2b[section][order]["header"]);
+	// $('.'+section+'-copy').text(b2b[section][order]["description"]);
+	//  ********** Set sprite position ******
+		$('.'+section+'-image-container').css("background-position", position);
+	});
 	// }, function(){
 	// 	if ($(this).hasClass("purple-background")){
 	// 		$(this).css('background-color', 'white');
