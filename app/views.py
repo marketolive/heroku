@@ -43,6 +43,10 @@ def before_request():
 		g.name = None
 		g.full_name = None
 		g.email = None
+	if request.url.split('.')[0].split('//')[1]=="partners":
+		g.partners=True
+	else:
+		g.partners=False
 
 @lm.user_loader
 def load_user(id):
@@ -92,11 +96,13 @@ pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketin
 		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2']
 
 @app.route('/')
+@app.route('/', subdomain="partners")
 def no_language():
 	return redirect('/en')
 
 @app.route('/<language>')
 @app.route('/<language>/')
+@app.route('/<language>/', subdomain="partners")
 def index(language):
 	if language in pages:
 		return redirect('/en/' + language)
@@ -110,9 +116,11 @@ def index(language):
 							page='', 
 							path='', 
 							user_email = g.email, 
-							timestamp = g.timestamp)
+							timestamp = g.timestamp,
+							partners=g.partners)
 
 @app.route('/<language>/base')
+@app.route('/<language>/base', subdomain="partners")
 def base(language):
 	if language not in languages:
 		return redirect('/en/base')
@@ -122,7 +130,8 @@ def base(language):
 							full_name = g.full_name,
 							lang=language, 
 							user_email = g.email, 
-							timestamp = g.timestamp)
+							timestamp = g.timestamp,
+							partners=g.partners)
 
 # @app.errorhandler(404)
 # def page_not_found(error):
@@ -135,6 +144,7 @@ def base(language):
 ########################################################
 
 @app.route('/<language>/<category>/<page>')
+@app.route('/<language>/<category>/<page>', subdomain="partners")
 def main_router(language, category, page):
 	if language not in languages:
 		return redirect('/en/%s/%s' % (category, page))
@@ -148,7 +158,8 @@ def main_router(language, category, page):
 							path='%s/' % (category), 
 							page=page, 
 							user_email = g.email, 
-							timestamp = g.timestamp)
+							timestamp = g.timestamp,
+							partners=g.partners)
 
 # @app.route('/', subdomain="partners")
 # def partners_main():
