@@ -35,8 +35,8 @@
                 <a href="#" class="deeplink" target="_blank" deeplink="ad-targeting">
                   <div class="circle">
                     <div class="noun-padding">
-                      <img class="img-responsive" src="{{ url_for('static', filename='ad-targeting-purple.png') }}">
-                      <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='ad-targeting-orange.png') }}">
+                      <img class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-purple.png') }}">
+                      <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-orange.png') }}">
                     </div>
                     <p>Ad Targeting</p>
                   </div>
@@ -86,7 +86,7 @@
           <h2>Engage</h2>
           <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-3 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-              <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+              <a data-toggle="modal" data-target="#diy-options">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
@@ -108,7 +108,7 @@
               </a>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3">
-              <a href="#" class="deeplink" target="_blank" deeplink="*intelligent-nurturing">
+              <a href="#" class="deeplink" target="_blank" deeplink="intelligent-nurturing">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='nurture.png') }}">
@@ -149,7 +149,7 @@
           <h2>Grow</h2>
           <div class="row">
             <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-4 col-sm-offset-2">
-              <a href="#" class="deeplink" target="_blank" deeplink="email-insights">
+              <a data-toggle="modal" data-target="#email-insights-options">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
@@ -195,6 +195,77 @@
         </div>
       </div>
   </div>
+
+    <div id="diy-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Choose Your Editor</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1">        
+            <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
+                  <p>Classic Editor</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-5">
+            <a href="#" class="deeplink" target="_blank" deeplink="email-experience">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email_deliver.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='funnel-analysis-guide-option-img-orange.png') }}">
+                </div>
+                <p><strong><em>NEW</em></strong> Email Experience</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  <div id="email-insights-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Choose Your Email Insights Demo</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1">        
+            <a href="#" class="deeplink" target="_blank" deeplink="email-insights-summit-demo-1">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
+                  <p>Summit Demo 1</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-5">
+            <a href="#" class="deeplink" target="_blank" deeplink="email-insights-summit-demo-2">
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
+                </div>
+                <p>Exploration Scenario</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {% endblock %}
 
 

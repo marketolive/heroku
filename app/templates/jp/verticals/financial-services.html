@@ -1,76 +1,306 @@
 {% extends "jp/base.html" %}
-
+<!DOCTYPE html>
+<html lang="en">
 {% block head %}
 <head>
 
-<link href="{{ url_for('static', filename='business-frontpage.css')}}" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css')}}">
-<title>B2Bマーケティング</title>
-<!-- SEGMENT - MARKETO INTEGRATION TESTING - 3/22 cmpope -->
-<script type="text/javascript">
-!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
-analytics.load("vs8fTbHRY3k8EVpjakYsDGlCe7hYDKtI");
-analytics.page()
-}}();
-</script>
+<link href="{{ url_for('static', filename='financial-services.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css') }}">
+<!-- <title>Financial Services</title> -->
+<title>金融サービス</title>
 {% endblock %}
 
-{% block page_content %}
-<h1 style="text-align:center;">Financial Services - 日本語（日本）</h1>
-<img class="img-responsive" style="display:block; margin-left:auto; margin-right:auto; margin-top: 50px;" src="http://37isppd.com/images/under.gif">
-<div>
-<form class="form-horizontal">
-<fieldset>
+</head>
 
-<!-- Form Name -->
-<legend>My Form</legend>
+<body>
+    {% block page_content %}
+    <div id="fullpage">
+        
+        <header class="business-header section container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <!-- <h1 class="tagline text-center">Commercial Banking Services</h1> -->
+                        <h1 class="tagline text-center">金融サービス</h1>
+                    </div>
+                </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="firstName"></label>  
-  <div class="col-md-4">
-  <input id="firstName" name="firstName" type="text" placeholder="First" class="form-control input-md">
+                <div class="row clearfix mt-10">
+                    <div class="col-lg-4 col-md-4 col-xs-4 pull-bottom">
+                        <!-- <h2 class="subject-tagline">INCREASE PIPELINE</h2>  -->
+                        <h2 class="subject-tagline">パイプラインの増加</h2>                       
+                    </div>  
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <!-- <h2 class="subject-tagline">DRIVE REVENUE</h2> -->
+                        <h2 class="subject-tagline">売上の向上</h2>                        
+                    </div> 
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <!-- <h2 class="subject-tagline">MEASURE SUCCESS</h2> -->
+                        <h2 class="subject-tagline">成功の測定</h2>          
+                    </div>
+                </div>
+
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="row">
+                            <div data-menuanchor="increaseBorrowerPipeline" class= "col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
+                                <div class="subject-tagline-image">
+                                    <a href="#IncreaseBorrowerPipeline"><img class="img-size img-responsive" src= "{{ url_for('static', filename='increaseborrower.png') }}" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="row">
+                            <div class= "col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
+                                <div class=" subject-tagline-image">
+                                    <a href="#DriveLoanRevenue"><img class="img-size img-responsive" src= "{{ url_for('static', filename='driveloanrevenue.png') }}" /></a>
+                                </div>   
+                            </div>
+                        </div>     
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <div class="row">
+                            <div class= "col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
+                                <div class="subject-tagline-image">
+                                    <a href="#MeasureSuccess"><img class="img-size img-responsive" src= "{{ url_for('static', filename='report.png') }}" /></a>
+                                </div>   
+                            </div>
+                        </div>        
+                    </div>
+                </div>                 
+            </div>
+
+            <div class="arrow-container-down mt-5">
+                <img class="inner-arrow-container" src= "{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <!-- <div class="container"> -->
+            
+        <div class="section container">
+
+            <hr>
+            <div class="arrow-container-up">
+                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
+            </div>
+
+            <!-- <h2 class="text-center">Increase Pipeline</h2> -->
+            <h2 class="text-center">パイプラインの増加</h2>
+
+            <!-- Begining of Section 2 -->
+            <div class="row indent">
+                <div class="col-md-6 col-lg-6 col-xs-12">
+
+                    <hr>
+                                    
+                    <div class="section2-image-container">
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-xs-12">             
+                   
+                    <hr>
+
+                    <!-- <h3 class="text-center" id="section2-header">Search Optimization</h3> -->
+                    <h3 class="text-center" id="section2-header">検索の最適化</h3>
+
+                    <!-- <p class="section2-copy">Marketo Search Engine Optimization (SEO) is an easy-to-use tool that helps marketers without specialized knowledge drive more quality traffic and potential borrowers to their website and landing pages.</p> -->
+                    <p class="section2-copy">Marketo SEOは、マーケターがSEOの専門的な知識がなくても、企業のWebサイト、ランディングページへ質の高いトラッフィクを増やすことをサポートします。</p>
+
+                    <div class="col-lg-12 col-md-12 col-xs-12 mt-10">        
+                        <div class="col-lg-4 col-md-4 col-xs-4">
+                            <div data-order="section2-0" class="section2-options purple-background">
+                              <a href="#" class="deeplink" target="_blank" deeplink="search-optimization">
+                                <!-- <h5 class="text-center">Search Optimization</h5> -->
+                                <h5 class="text-center">検索の最適化</h5>
+                              </a>  
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-xs-4">
+                            <div data-order="section2-1" class="section2-options">
+                              <a href="#" class="deeplink" target="_blank" deeplink="fs-capture-interests"> 
+                                <!-- <h5 class="text-center">Capture Interests</h5> -->
+                                <h5 class="text-center">志願者の獲得</h5>
+                              </a>  
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-xs-4">
+                            <div data-order="section2-2" class="section2-options">
+                              <a href="#" class="deeplink" target="_blank" deeplink="fs-social-marketing">
+                                <!-- <h5 class="text-center">Social Promotions</h5> -->
+                                <h5 class="text-center">ソーシャルプロモーション</h5>
+                              </a>  
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+                <div class="arrow-container-down">
+                    <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
+                </div>
+        </div>
+                
+        <!-- End of Section 2 -->            
+
+        <!-- Begining of Section 3 -->
+        <div class="section container">
+            <hr>
+
+            <div class="arrow-container-up">
+                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
+            </div>
+
+            <!-- <h2 class="text-center">Drive Revenue</h2> -->
+            <h2 class="text-center">売上の向上</h2>
+            <div class="row indent">
+
+                <div class="col-md-6 col-xs-12">
+
+                    <hr>
+
+                    <!-- <h3 class="text-center" id="section3-header">Automate</h3> -->
+                    <h3 class="text-center" id="section3-header">自動化</h3>
+
+                    <!-- <p class="section3-copy">With Marketo's email capabilities marketers can put into action an immediate email strategy that incorporates the best email practices.  Provide truly personalized experiences for your applicants that drive more engagement.</p> -->
+                    <p class="section3-copy">Marketoのメール機能ならマーケターがベストプラクティスに則って即座にメールによる施策を実行に移すことを可能にします。パーソナライズされた体験を提供することで、学校の志願者や卒業生とのエンゲージメントをより深いものへ進めることができます</p>
+               
+
+                    <div class="col-md-12 col-xs-12 mb-5">
+                        <div class="col-md-6 col-xs-6">
+                            <div data-order="section3-0" class="section3-options purple-background">
+                              <a href="#" class="deeplink" target="_blank" deeplink="fs-email-marketing">
+                                <!-- <h4 class="text-center font-size-16">Email Marketing</h4> -->
+                                <h4 class="text-center font-size-16">メールマーケティング</h4>
+                              </a>  
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-6">
+                            <div data-order="section3-1" class="section3-options">
+                              <a href="#" class="deeplink" target="_blank" deeplink="fs-retargeting">
+                                <!-- <h4 class="text-center font-size-16">Retargeting</h4> -->
+                                <h4 class="text-center font-size-16">リターゲティング</h4>
+                              </a>  
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-6 col-xs-6 second-row">
+                            <div data-order="section3-2" class="section3-options">
+                              <a href="#" class="deeplink" target="_blank" deeplink="fs-nurturing"> 
+                                <!-- <h4 class="text-center font-size-16">Nurture</h4> -->
+                                <h4 class="text-center font-size-16">ナーチャリング</h4>
+                              </a>  
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-6 second-row">
+                            <div data-order="section3-3" class="section3-options">
+                              <a href="#" class="deeplink" target="_blank" deeplink="marketing-calendar">
+                                <!-- <h4 class="text-center font-size-16">Events</h4> -->
+                                <h4 class="text-center font-size-16">イベント</h4>
+                              </a>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xs-12">  
+
+                    <hr>  
+
+                    <div class="section3-image-container">
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="arrow-container-down">
+                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
+            </div>
+        </div>
+
+        <!-- End of Section 3 -->
+
+        <!-- Begining of Section 4 -->
+
+        <div class="section container">
+            <hr>
+
+            <div class="arrow-container-up">
+                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
+            </div>
+
+            <!-- <h2 class="text-center">Measure Success</h2> -->
+            <h2 class="text-center">効果を測定する</h2>
+
+            <div class="row indent">
+                <div class="col-md-6">
+                    <hr>                
+                    <div class="section4-image-container">
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-6">             
+                   
+                    <hr>
+
+                    <!-- <h3 id="section4-header" class="text-center">Lifetime Engagement</h3> -->
+                    <h3 id="section4-header" class="text-center">ライフタイムエンゲージメント</h3>
+
+                    <!-- <p class="section4-copy">Marketo's unique Engagement Score is a proprietary metric that outputs a single number to give marketers a fast, apples-to-apples method of measuring content performance</p> -->
+
+                    <p class="section4-copy">Marketoのエンゲージメントスコアはマーケターがすぐに、かつ簡単にコンテンツのパフォーマンスを測定するための指標です。</p>
+
+                    <div class="col-md-12 col-xs-12 mt-10">        
+                        <div class="col-md-4 col-xs-4">
+                            <div data-order="section4-0" class="section4-options purple-background">
+                               <a href="#" class="deeplink" target="_blank" deeplink="fs-nurturing-dashboard">
+                                 <!-- <h4 class="text-center">Lifetime Engagement</h4> -->
+                                 <h4 class="text-center">ライフタイムエンゲージメント</h4>
+
+                               </a> 
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xs-4">
+                            <div data-order="section4-1" class="section4-options">
+                               <a href="#" class="deeplink" target="_blank" deeplink="program-analysis">
+                                  <!-- <h4 class="text-center">ROI Analysis</h4> -->
+                                  <h4 class="text-center">ROI分析</h4>
+                               </a> 
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xs-4">
+                            <div data-order="section4-2" class="section4-options">
+                              <a href="#" class="deeplink" target="_blank" deeplink="fs-dashboard">
+                                <!-- <h4 class="text-center">Dashboards & Advanced Analytics</h4> -->
+                                <h4 class="text-center">ダッシュボード&アドバンストアナリティクス</h4>
+                              </a>  
+                            </div>
+                        </div>
+                    </div>                        
+                </div>
+            </div>
+        </div>        
+        <!-- End of Section 4 -->   
     
-  </div>
-</div>
+    {% endblock %}
+    {% block scripts %}
+    <!-- fullPage javascript -->
+    <script src="{{ url_for('static', filename='jquery.fullPage.js') }}"></script>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="lastName"></label>  
-  <div class="col-md-4">
-  <input id="lastName" name="lastName" type="text" placeholder="Last" class="form-control input-md">
-    
-  </div>
-</div>
+    <script src="{{ url_for('static',  filename='financial-services-jp.js') }}"></script>
+    {% endblock %}
+</body>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="emailAddress"></label>  
-  <div class="col-md-4">
-  <input id="emailAddress" name="emailAddress" type="text" placeholder="Email" class="form-control input-md">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="eyeColor"></label>  
-  <div class="col-md-4">
-  <input id="eyeColor" name="eyeColor" type="text" placeholder="Eye Color" class="form-control input-md">
-    
-  </div>
-</div>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
-    <button id="submit" name="submit" class="btn btn-primary">Submit</button>
-  </div>
-</div>
-
-</fieldset>
-</form>
-
-</div>
-{% endblock %}
+</html>

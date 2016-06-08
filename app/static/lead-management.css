@@ -132,6 +132,14 @@ body {
     background: #5A54A4;
 }
 
+.modal-content {
+  background-color: #DCDCDC;
+}
+
+.modal-body {
+  margin-bottom: 3em;
+}
+
 
 @media (max-width: 768px) {
   .circle {
