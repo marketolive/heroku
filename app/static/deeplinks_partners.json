@@ -1,5 +1,5 @@
-,
-	"partners":
+{
+	"en":
 	{
 		"diy-design":"https://app-sj11.marketo.com/#PG4217B2",
 		"powerful-automation":"https://app-sj11.marketo.com/#SC14945A1",
@@ -60,3 +60,4 @@
 		"hc-dashboard":"https://sjrca02.marketo.com/rce2012/Home"
 
 	}
+}

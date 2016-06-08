@@ -88,18 +88,15 @@ languages = ['en', 'jp']
 categories = ['solutions', 'verticals', 'analytics']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
-<<<<<<< HEAD
-		 'financial-services', 'healthcare', 'email-insights', 'test', 'higher-education2']
-=======
-		 'financial-services', 'healthcare', 'email-insights', 'email-insights-summit-demo-1', 'email-insights-summit-demo-2']
->>>>>>> df138b5b04c0f1062848d77261f78e8946d3c366
+		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
+		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2']
 
 @app.route('/')
 def no_language():
 	return redirect('/en')
 
-@app.route('/<language>')
-@app.route('/<language>/')
+@app.route('/<language>', subdomain = "<subdom>")
+@app.route('/<language>/', subdomain = "<subdom>")
 def index(language):
 	if language in pages:
 		return redirect('/en/' + language)
@@ -113,9 +110,10 @@ def index(language):
 							page='', 
 							path='', 
 							user_email = g.email, 
-							timestamp = g.timestamp)
+							timestamp = g.timestamp,
+							subdomain = subdom)
 
-@app.route('/<language>/base')
+@app.route('/<language>/base', subdomain = "<subdom>")
 def base(language):
 	if language not in languages:
 		return redirect('/en/base')
@@ -125,7 +123,8 @@ def base(language):
 							full_name = g.full_name,
 							lang=language, 
 							user_email = g.email, 
-							timestamp = g.timestamp)
+							timestamp = g.timestamp,
+							subdomain = subdom)
 
 # @app.errorhandler(404)
 # def page_not_found(error):
@@ -137,7 +136,7 @@ def base(language):
 #					
 ########################################################
 
-@app.route('/<language>/<category>/<page>')
+@app.route('/<language>/<category>/<page>', subdomain = "<subdom>")
 def main_router(language, category, page):
 	if language not in languages:
 		return redirect('/en/%s/%s' % (category, page))
@@ -151,11 +150,12 @@ def main_router(language, category, page):
 							path='%s/' % (category), 
 							page=page, 
 							user_email = g.email, 
-							timestamp = g.timestamp)
+							timestamp = g.timestamp,
+							subdomain = subdom)
 
-@app.route('/', subdomain="partners")
-def partners_main():
-		return redirect('https://www.medium.com')
+# @app.route('/', subdomain="partners")
+# def partners_main():
+# 		return redirect('https://www.medium.com')
 
 @app.route('/plugin')
 def plugin():
