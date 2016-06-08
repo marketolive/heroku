@@ -95,8 +95,8 @@ pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketin
 def no_language():
 	return redirect('/en')
 
-@app.route('/<language>', subdomain = "<subdom>")
-@app.route('/<language>/', subdomain = "<subdom>")
+@app.route('/<language>')
+@app.route('/<language>/')
 def index(language):
 	if language in pages:
 		return redirect('/en/' + language)
@@ -110,10 +110,9 @@ def index(language):
 							page='', 
 							path='', 
 							user_email = g.email, 
-							timestamp = g.timestamp,
-							subdomain = subdom)
+							timestamp = g.timestamp)
 
-@app.route('/<language>/base', subdomain = "<subdom>")
+@app.route('/<language>/base')
 def base(language):
 	if language not in languages:
 		return redirect('/en/base')
@@ -123,8 +122,7 @@ def base(language):
 							full_name = g.full_name,
 							lang=language, 
 							user_email = g.email, 
-							timestamp = g.timestamp,
-							subdomain = subdom)
+							timestamp = g.timestamp)
 
 # @app.errorhandler(404)
 # def page_not_found(error):
@@ -136,7 +134,7 @@ def base(language):
 #					
 ########################################################
 
-@app.route('/<language>/<category>/<page>', subdomain = "<subdom>")
+@app.route('/<language>/<category>/<page>')
 def main_router(language, category, page):
 	if language not in languages:
 		return redirect('/en/%s/%s' % (category, page))
@@ -150,8 +148,7 @@ def main_router(language, category, page):
 							path='%s/' % (category), 
 							page=page, 
 							user_email = g.email, 
-							timestamp = g.timestamp,
-							subdomain = subdom)
+							timestamp = g.timestamp)
 
 # @app.route('/', subdomain="partners")
 # def partners_main():
