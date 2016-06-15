@@ -38,7 +38,8 @@ def clone_folder(folder_id, restClient, parent=None, name_append=None):
 		if 'result' in browsed and browsed['result']:
 			for item in browsed['result']:
 				if item['id'] == folder_id:
-					parent = item['parent']['id']
+					if not parent:
+						parent = item['parent']['id']
 					old_name = item['name']
 				elif item['folderId']['type'] == 'Program' or item['folderId']['type'] == 'Folder' and item['parent']['id']==folder_id:
 					children.append(item)
