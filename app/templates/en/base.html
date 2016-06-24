@@ -14,6 +14,10 @@
         <!-- Bootstrap Core CSS -->
         <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}"> -->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <!-- Marterial Design Icons and Color Scheme-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-deep_orange.min.css" />
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
@@ -252,6 +256,9 @@
     <!-- Bootstrap Core JavaScript -->
     <!--<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Material Design -->
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <!-- JS for Base -->
     <script src="{{ url_for('static', filename='base.js') }}"></script>
     {% if get_flashed_messages()[0] %}<script type='text/javascript'>$("#signinBtn").trigger("click");</script>{% endif %}
     {% block scripts %}
