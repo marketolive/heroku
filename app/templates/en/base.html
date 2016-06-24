@@ -95,10 +95,16 @@
                         {% endif %}
                     </li> -->
                     <li>
+                        {% if partners %}
+                        <a target="_blank" href="https://nation.marketo.com/community/partners/service-partners/marketolive-partner-pilot/content?sortKey=contentstatus%5Bpublished%5D~subjectAsc&sortOrder=1" class="help-nav-link">
+                            <i id="help-icon" class="material-icons">help_outline</i>
+                        </a>
+                        {% else %}
                         <a data-toggle="modal" data-target="#help-options" class="help-nav-link">
                             <i id="help-icon" class="material-icons">help_outline</i>
                             <!-- <div class="help-icon"></div> -->
                         </a>
+                        {% endif %}
                     </li> 
 
 
