@@ -415,7 +415,7 @@ api.add_resource(ReturnCoupon, '/api/<string:api_key_in>/getcoupon')
 #					
 ########################################################
 
-# This was an example for pope on how to serve robots.txt, we may use it later
-# @app.route('/robots.txt')
-# def sendrobot():
-# 	return app.send_static_file('robots.txt')
+# Robots.txt is currently set to disallow search engine indexing of all pages
+@app.route('/robots.txt')
+def sendrobot():
+	return app.send_static_file('robots.txt')
