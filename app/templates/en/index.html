@@ -16,6 +16,13 @@
       <img class="img-responsive title-img" src="{{ url_for('static', filename='marketo-live-image-white.png') }}">
     </div>
   </div>
+  {% if partners %}
+  <div class="row">
+    <div class="col-sm-12 center-partners">
+      <h1><em>For Partners</em></h1>
+    </div>
+  </div>
+  {% endif %}
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 options">
       <div class="btn-container">
@@ -23,7 +30,7 @@
           <div data-toggle="modal" data-target=".solutions-options" class='button -border center'>Solutions</div>
           <div data-toggle="modal" data-target=".verticals-options" class='button -border center'>Verticals</div>
         </div>
-      <h6 class="center-text"><a target="_blank" href="http://classic.marketolive.com/">Switch to the classic version of MarketoLive</a></h6>
+      <h6 class="center-text {% if partners %} dont-show {% endif %}"><a target="_blank" href="http://classic.marketolive.com/">Switch to the classic version of MarketoLive</a></h6>
       </div>
     </div>
   </div>

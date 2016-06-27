@@ -8,6 +8,13 @@
   margin-top: 2em;
 }
 
+.center-partners {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  color: white;
+}
+
 .center-text a {
   color: white;
 }
@@ -22,6 +29,10 @@
 .options {
   bottom: 100px;
   position: absolute;
+}
+
+.dont-show {
+  display: none;
 }
 
 .solution-circle {
