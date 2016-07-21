@@ -1,1 +1,2 @@
-This is the robots file
+User-agent: *
+Disallow: /

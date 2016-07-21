@@ -94,7 +94,7 @@ categories = ['solutions', 'verticals', 'analytics']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
-		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2']
+		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi']
 
 @app.route('/')
 @app.route('/', subdomain="partners")
@@ -416,7 +416,7 @@ api.add_resource(ReturnCoupon, '/api/<string:api_key_in>/getcoupon')
 #					
 ########################################################
 
-# This was an example for pope on how to serve robots.txt, we may use it later
-# @app.route('/robots.txt')
-# def sendrobot():
-# 	return app.send_static_file('robots.txt')
+# Robots.txt is currently set to disallow search engine indexing of all pages
+@app.route('/robots.txt')
+def sendrobot():
+	return app.send_static_file('robots.txt')

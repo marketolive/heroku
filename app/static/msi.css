@@ -1,0 +1,31 @@
+.salesforce-container,
+.dynamics-container {
+	padding: 1em;
+}
+
+.mdl-dialog {
+	width: 60%;
+	top: 10%;
+}
+
+.mdl-dialog__content {
+	/*padding: 5%;*/
+}
+
+.arrow-container {
+	margin-top: 50%;
+}
+
+.arrow-container .material-icons {
+	font-size: 5em;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+}
+
+.fl-right {
+	float: right;
+}
+
