@@ -34,7 +34,8 @@ except ImportError:
 def before_request():
 	g.loginform=LoginForm()
 	g.user = current_user
-	g.timestamp = floor(datetime.now().timestamp())
+	# g.timestamp = floor(datetime.now().timestamp())
+	g.timestamp = "07-12-16"
 	if current_user.is_authenticated:
 		g.name = g.user.first_name
 		g.full_name = g.user.first_name + ' ' + g.user.last_name
@@ -88,7 +89,7 @@ def login():
 
 # The following should contain a comprehensive list of languages and pages
 # These are used to validate incoming URLs
-languages = ['en', 'jp']
+languages = ['en', 'jp', 'de', 'fr', 'sp']
 categories = ['solutions', 'verticals', 'analytics']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
@@ -150,7 +151,7 @@ def main_router(language, category, page):
 		return redirect('/en/%s/%s' % (category, page))
 	if category not in categories or page not in pages:
 		abort(404)
-	return render_template('%s/%s/%s.html' % (language, category, page), 
+	return render_template('en/%s/%s.html' % (category, page), 
 							form=g.loginform,
 							name=g.name,
 							full_name = g.full_name,

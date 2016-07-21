@@ -1,7 +1,7 @@
 {% extends "en/base.html" %}
 
 {% block full_image %}
-<html lang="en">
+<html lang="en" id="email_marketing">
 {% endblock %}
 
 {% block head %}
@@ -24,36 +24,36 @@
           Attract, Design, & Send
         </div>
         <div class="row">
-          <div class="col-sm-4">        
-            <a href="#" class="deeplink" target="_blank" deeplink="search-optimization">
+          <div id="search_optimization" class="col-sm-4" babel>        
+            <a href="#" class="deeplink" target="_blank">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
                 </div>
-                <p>Search Optimization</p>
+                <p>#</p>
               </div>
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4" id="diy_design" babel>
             <a data-toggle="modal" data-target="#diy-options">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
                 </div>
-                <p>DIY Design</p>
+                <p>#</p>
               </div>
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="powerful-automation">
+          <div class="col-sm-4" id="powerful_automation" babel>
+            <a href="#" class="deeplink" target="_blank">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-orange.png') }}">
                 </div>
-                <p>Powerful Automation</p>
+                <p>#</p>
               </div>
             </a>
           </div>
@@ -72,33 +72,33 @@
           Nurture, Test, & Iterate
         </div>
         <div class="row">
-          <div class="col-sm-4">        
-            <a href="#" class="deeplink" target="_blank" deeplink="intelligent-nurturing">
+          <div class="col-sm-4" id="intelligent_nurturing" babel>        
+            <a href="#" class="deeplink" target="_blank">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='nurture.png') }}">
                 </div>
-                <p>Intelligent Nurturing</p>
+                <p>#</p>
               </div>
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="ab-testing">
+          <div class="col-sm-4" id="ab_testing" babel>
+            <a href="#" class="deeplink" target="_blank">
               <div class="circle circle-second-row">
                 <div class="noun-padding">
                   <img class="img-responsive" src="{{ url_for('static', filename='ab-testing.png') }}">
                 </div>
-                <p>A/B Testing</p>
+                <p>#</p>
               </div>
             </a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4" id="email_insights" babel>
             <a data-toggle="modal" data-target="#email-insights-options">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
                 </div>
-                <p>Email Insights</p>
+                <p>#</p>
               </div>
             </a>
           </div>
@@ -117,36 +117,36 @@
           Promote, Plan, & Measure
         </div>
         <div class="row">
-          <div class="col-sm-4">        
-            <a href="#" class="deeplink" target="_blank" deeplink="social-marketing">
+          <div class="col-sm-4" id="social_marketing" babel>      
+            <a href="#" class="deeplink" target="_blank">
               <div class="circle">
                 <div class="noun-padding">
                   <img class="img-responsive" src="{{ url_for('static', filename='social-promotions-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='social-promotions-orange.png') }}">
                 </div>
-                <p>Social Marketing</p>
+                <p>#</p>
               </div>
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="marketing-calendar">
+          <div class="col-sm-4" id="marketing_calendar" babel>
+            <a href="#" class="deeplink" target="_blank">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-orange.png') }}">
                 </div>
-                <p>Marketing Calendar</p>
+                <p>#</p>
               </div>
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="program-analysis">
+          <div class="col-sm-4" id="program_analysis" babel>
+            <a href="#" class="deeplink" target="_blank">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-orange.png') }}">
                 </div>
-                <p>Program Analysis</p>
+                <p>#</p>
               </div>
             </a>
           </div>
