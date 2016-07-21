@@ -3,16 +3,24 @@
 		"page_meta": {
 			"email_marketing": {
 				"title": {
-					"en": "",
-					"jp": ""
+					"en": "Email Marketing - Marketo",
+					"jp": "メールマーケティング - Marketo"
 				},
 				"h1": {
-					"en": "",
-					"jp": ""
+					"en": "Email Marketing",
+					"jp": "メールマーケティング"
 				},
 				"h2": {
-					"en": "",
-					"jp": ""
+					"en": [
+						"Attract & Design", 
+						"Test, Send, & Nurture", 
+						"Report & Repeat"
+						],
+					"jp": [
+						"喚起,デザイン,送信",
+						"ナーチャリング,テスト,&反復",
+						"プロモート,計画,&測定"
+						]
 				},
 				"h3": {
 					"en": "",
