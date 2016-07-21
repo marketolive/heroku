@@ -34,6 +34,17 @@
                 </a>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+                  <div class="circle">
+                    <div>
+                      <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
+                      <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
+                    </div>
+                    <p>DIY Design</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-3">
                 <a href="#" class="deeplink" target="_blank" deeplink="ad-targeting">
                   <div class="circle">
                     <div class="noun-padding">
@@ -41,14 +52,6 @@
                       <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-orange.png') }}">
                     </div>
                     <p>Ad Targeting</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col-md-3 col-sm-3 col-xs-3">
-                <a href="#" class="deeplink" target="_blank" deeplink="predictive-content">      
-                  <div class="circle">
-                     <img class="img-responsive" src="{{ url_for('static', filename='predictive-content.png') }}">
-                    <p>Predictive Content</p>
                   </div>
                 </a>
                </div>
@@ -66,15 +69,12 @@
               </a>
               </div>
               <div class="col-md-4 col-sm-4">
-              <a href="#" class="deeplink" target="_blank" deeplink="event-management">
-                <div class="circle circle-second-row">
-                  <div>
-                    <img class="img-responsive" src="{{ url_for('static', filename='replicate-success-guide-option-img-purp.png') }}">
-                    <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='replicate-success-guide-option-img-orange.png') }}">
+                <a href="#" class="deeplink" target="_blank" deeplink="predictive-content">      
+                  <div class="circle circle-second-row">
+                     <img class="img-responsive" src="{{ url_for('static', filename='predictive-content.png') }}">
+                    <p>Predictive Content</p>
                   </div>
-                  <p>Event Management</p>
-                </div>
-              </a>
+                </a>
               </div>
             </div>
         </div>
@@ -85,23 +85,22 @@
           <h2>Middle of Funnel</h2>
           <div class="row">
             <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
-              <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
-                <div class="circle">
-                  <div>
-                    <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
-                    <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
-                  </div>
-                  <p>DIY Design</p>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4 col-sm-4">
               <a href="#" class="deeplink" target="_blank" deeplink="powerful-automation">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation.png') }}">
                     <p>Powerful Automation</p>
                   </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <a href="#" class="deeplink" target="_blank" deeplink="ab-testing">
+                <div class="circle">
+                  <div class="noun-padding">
+                    <img class="img-responsive" src="{{ url_for('static', filename='ab-testing.png') }}">
+                  </div>
+                  <p>A/B Testing</p>
                 </div>
               </a>
             </div>
@@ -118,12 +117,13 @@
           </div>
           <div class="row">
             <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
-              <a href="#" class="deeplink" target="_blank" deeplink="ab-testing">
+              <a href="#" class="deeplink" target="_blank" deeplink="event-management">
                 <div class="circle circle-second-row">
-                  <div class="noun-padding">
-                    <img class="img-responsive" src="{{ url_for('static', filename='ab-testing.png') }}">
+                  <div>
+                    <img class="img-responsive" src="{{ url_for('static', filename='replicate-success-guide-option-img-purp.png') }}">
+                    <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='replicate-success-guide-option-img-orange.png') }}">
                   </div>
-                  <p>A/B Testing</p>
+                  <p>Event Management</p>
                 </div>
               </a>
             </div>
