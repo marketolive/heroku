@@ -1,18 +1,18 @@
 {% extends "en/base.html" %}
-
+​
 {% block full_image %}
-<html lang="en" id="email_marketing">
+<html lang="en">
 {% endblock %}
-
+​
 {% block head %}
 <title>Email Marketing - Marketo</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='email-marketing.css') }}">
 {% endblock %}
-
+​
 {% block body_tag %}
 <body class="full">
 {% endblock %}
-
+​
   {% block page_content %}
   <div class="row headline-container">
     <h1 class="headline">Email Marketing</h1>
@@ -24,7 +24,7 @@
           Attract, & Design
         </div>
         <div class="row">
-          <div id="search_optimization" class="col-sm-4" babel>        
+          <div class="col-sm-4" id="search_optimization" babel>        
             <a href="#" class="deeplink" target="_blank">
               <div class="circle">
                 <div>
@@ -36,11 +36,7 @@
             </a>
           </div>
           <div class="col-sm-4" id="diy_design" babel>
-            <a data-toggle="modal" data-target="#diy-options">
-
-          <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
-
+            <a href="#" class="deeplink" target="_blank">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
@@ -50,23 +46,14 @@
               </div>
             </a>
           </div>
-
-          <div class="col-sm-4" id="powerful_automation" babel>
+          <div class="col-sm-4" id="social_marketing" babel>        
             <a href="#" class="deeplink" target="_blank">
-
-          <div class="col-sm-4">        
-            <a href="#" class="deeplink" target="_blank" deeplink="social-marketing">
-
               <div class="circle">
                 <div class="noun-padding">
                   <img class="img-responsive" src="{{ url_for('static', filename='social-promotions-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='social-promotions-orange.png') }}">
                 </div>
-
                 <p>#</p>
-
-                <p>Social Marketing</p>
-
               </div>
             </a>
           </div>
@@ -85,23 +72,14 @@
           Test, Send, & Nurture
         </div>
         <div class="row">
-
-          <div class="col-sm-4" id="intelligent_nurturing" babel>        
+          <div class="col-sm-4" id="powerful_automation" babel>
             <a href="#" class="deeplink" target="_blank">
-
-          <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="powerful-automation">
-
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation-purple.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='powerful-automation-orange.png') }}">
                 </div>
-
                 <p>#</p>
-
-                <p>Powerful Automation</p>
-
               </div>
             </a>
           </div>
@@ -115,22 +93,13 @@
               </div>
             </a>
           </div>
-
-          <div class="col-sm-4" id="email_insights" babel>
-            <a data-toggle="modal" data-target="#email-insights-options">
-
-          <div class="col-sm-4">        
-            <a href="#" class="deeplink" target="_blank" deeplink="intelligent-nurturing">
-
+          <div class="col-sm-4" id="intelligent_nurturing" babel>        
+            <a href="#" class="deeplink" target="_blank" deeplink="intelligent_nurturing">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='nurture.png') }}">
                 </div>
-
                 <p>#</p>
-
-                <p>Intelligent Nurturing</p>
-
               </div>
             </a>
           </div>
@@ -149,62 +118,35 @@
           Report, & Repeat
         </div>
         <div class="row">
-
-          <div class="col-sm-4" id="social_marketing" babel>      
-            <a href="#" class="deeplink" target="_blank">
-
-          <div class="col-sm-4">
+          <div class="col-sm-4" id="email_insights" babel>
             <a data-toggle="modal" data-target="#email-insights-options">
-
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
                 </div>
-
-                <p>#</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-4" id="marketing_calendar" babel>
-            <a href="#" class="deeplink" target="_blank">
-
-                <p>Email Insights</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="program-analysis">
-
-              <div class="circle">
-                <div>
-                  <img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
-                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-orange.png') }}">
-                </div>
-
                 <p>#</p>
               </div>
             </a>
           </div>
           <div class="col-sm-4" id="program_analysis" babel>
             <a href="#" class="deeplink" target="_blank">
-
-                <p>Program Analysis</p>
+              <div class="circle">
+                <div>
+                  <img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
+                  <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-orange.png') }}">
+                </div>
+                <p>#</p>
               </div>
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#" class="deeplink" target="_blank" deeplink="marketing-calendar">
-
+          <div class="col-sm-4" id="marketing_calendar" babel>
+            <a href="#" class="deeplink" target="_blank">
               <div class="circle">
                 <div>
                   <img class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-purp.png') }}">
                   <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-orange.png') }}">
                 </div>
-
                 <p>#</p>
-
-                <p>Marketing Calendar</p>
-
               </div>
             </a>
           </div>
@@ -218,7 +160,7 @@
       </div>
     </div>
   </div>
-
+​
   <div id="email-insights-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -254,7 +196,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
   {% endblock %}
-
+​
 {% block scripts %}
 <script src="{{ url_for('static', filename='icon-toggle.js') }}" type="text/javascript"></script>
 <script src="{{ url_for('static', filename='email-marketing.js') }}" type="text/javascript"></script>
