@@ -1,4 +1,32 @@
 {
+	"navigation": {
+		"solutions": {
+			"title": {
+				"en": "Solutions",
+				"jp": "ソリューション"
+			},
+			"links": {
+				"en": ["Lead Management", "Email Marketing", "Consumer Marketing", "Customer Base Marketing", "Mobile Marketing"],
+				"jp": ["メールマーケティング", "リード管理", "コンシューマーマーケティング", "カスタマーベースマーケティング", "モバイルマーケティング"]
+			}
+		},
+		"verticals": {
+			"title": {
+				"en": "Verticals",
+				"jp": "ソリューション"
+			},
+			"links": {
+				"en": ["Technology", "Higher Education", "Commercial Banking Services", "Healthcare Providers"],
+				"jp": ["技術", "教育", "コンシューマーマーケティング", "ファイナンス", "健康管理"]
+			}
+		},
+		"language": {
+			"title": {
+				"en": "English",
+				"jp": "日本語（日本）"
+			}
+		}
+	},
 	"solutions": { 
 		"page_meta": {
 			"email_marketing": {
@@ -31,18 +59,26 @@
 					"jp": ""
 				}
 			},
-			"lead_managment": {
+			"lead_management": {
 				"title": {
-					"en": "",
-					"jp": ""
+					"en": "Lead Management - Marketo",
+					"jp": "リード管理 - Marketo"
 				},
 				"h1": {
-					"en": "",
-					"jp": ""
+					"en": "Lead Management",
+					"jp": "リード管理"
 				},
 				"h2": {
-					"en": "",
-					"jp": ""
+					"en": [
+						"Top of Funnel", 
+						"Middle of Funnel", 
+						"Bottom of Funnel"
+						],
+					"jp": [
+						"トップオブファネル", 
+						"ミドルオブファネル", 
+						"ボトムオブファネル"
+						]
 				},
 				"h3": {
 					"en": "",
@@ -212,62 +248,62 @@
 			},
 			"ad_targeting": {
 				"href": {
-					"en": "",
-					"jp": ""
+					"en": "http://classic.marketolive.com/m3/apps/adbridge.html",
+					"jp": "http://classic.marketolive.com/jp/apps/adbridge.html"
 				},
 				"p": {
-					"en": "",
-					"jp": ""
+					"en": "Ad Targeting",
+					"jp": "アドターゲティング"
 				}
 			},
 			"predictive_content": {
 				"href": {
-					"en": "",
+					"en": "http://rtpdemo3.marketo.com/",
 					"jp": ""
 				},
 				"p": {
-					"en": "",
-					"jp": ""
+					"en": "Predictive Content",
+					"jp": "プレディクティブコンテンツ"
 				}
 			},
 			"event_management": {
 				"href": {
-					"en": "",
+					"en": "http://classic.marketolive.com/m3/apps/replicate-success.html",
 					"jp": ""
 				},
 				"p": {
-					"en": "",
-					"jp": ""
+					"en": "Event Management",
+					"jp": "イベント管理"
 				}
 			},
 			"lead_scoring": {
 				"href": {
-					"en": "",
+					"en": "https://app-sjp.marketo.com/#PG5122D4",
 					"jp": ""
 				},
 				"p": {
-					"en": "",
-					"jp": ""
+					"en": "Lead Scoring",
+					"jp": "リードスコアリング"
 				}
 			},
 			"sales_insight": {
 				"href": {
-					"en": "",
+					"en": "https://mkto-si.na10.visual.force.com/apex/mkto_si__Dashboard",
 					"jp": ""
 				},
 				"p": {
-					"en": "",
-					"jp": ""
+					"en": "Sales Insight",
+					"jp": "セールスインサイト"
 				}
 			},
 			"flexible_reporting": {
 				"href": {
-					"en": "",
-					"jp": ""
+					"en": "https://app-sjp.marketo.com/#AH0A1ZN17",
+					"jp": "https://app-sjp.marketo.com/#AH0A1ZN19849"
 				},
 				"p": {
-					"en": "",
-					"jp": ""
+					"en": "Flexible Reporting",
+					"jp": "レポーティング"
 				}
 			}
 		}

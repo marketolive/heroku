@@ -54,29 +54,29 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="#"> <span class="sr-only">(current)</span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solutions<span class="caret"></span></a>
+                    <li class="dropdown babeldropdown" babelnav="solutions">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">#<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/{{lang}}/solutions/lead-management">Lead Management</a></li>
-                            <li><a href="/{{lang}}/solutions/email-marketing">Email Marketing</a></li>
-                            <li><a href="/{{lang}}/solutions/consumer-marketing">Consumer Marketing</a></li>
-                            <li><a href="/{{lang}}/solutions/customer-base-marketing">Customer Base Marketing</a></li>
-                            <li><a href="/{{lang}}/solutions/mobile-marketing">Mobile Marketing</a></li>
+                            <li><a href="/{{lang}}/solutions/lead-management">#</a></li>
+                            <li><a href="/{{lang}}/solutions/email-marketing">#</a></li>
+                            <li><a href="/{{lang}}/solutions/consumer-marketing">#</a></li>
+                            <li><a href="/{{lang}}/solutions/customer-base-marketing">#</a></li>
+                            <li><a href="/{{lang}}/solutions/mobile-marketing">#</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Verticals<span class="caret"></span></a>
+                    <li class="dropdown babeldropdown" babelnav="verticals">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">#<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/{{lang}}/verticals/b2b">Technology</a></li>
-                            <li><a href="/{{lang}}/verticals/higher-education">Higher Education</a></li>
-                            <li><a href="/{{lang}}/verticals/financial-services">Commercial Banking Services</a></li>
-                            <li><a href="/{{lang}}/verticals/healthcare">Healthcare Providers</a></li>
+                            <li><a href="/{{lang}}/verticals/b2b">#</a></li>
+                            <li><a href="/{{lang}}/verticals/higher-education">#</a></li>
+                            <li><a href="/{{lang}}/verticals/financial-services">#</a></li>
+                            <li><a href="/{{lang}}/verticals/healthcare">#</a></li>
                         </ul>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle link-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">English<span class="caret"></span></a>
+                <ul class="nav navbar-nav navbar-right" babelnav="language">
+                    <li class="dropdown babeldropdown">
+                        <a href="#" class="dropdown-toggle link-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">#<span class="caret"></span></a>
                         {% block lang_nav %}
                         <ul class="dropdown-menu">
                             <li><a href="/en/{{path}}{{page}}">English</a></li>

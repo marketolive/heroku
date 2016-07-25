@@ -1,11 +1,11 @@
 {% extends "en/base.html" %}
 
 {% block full_image %}
-<html class="full" lang="en">
+<html class="full" lang="en" id="lead_management">
 {% endblock %}
 
 {% block head %}
-<title>Lead Management - Marketo</title>
+<title>#</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lead-management.css') }}">
 {% endblock %}
@@ -13,66 +13,66 @@
 {% block page_content %}
 <div class="col-sm-12 col-md-12 col-lg-12 page-container">
   <div class="row headline-container">
-      <h1 class="headline">Lead Management</h1>
+      <h1 class="headline">#</h1>
   </div>
   <div id="fullpage">
     <!-- <div class="section"> -->
       <!-- <div class="slide"> -->
       <div class="section">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 stage-container">
-          <h2>Top of Funnel</h2>
+          <h2>#</h2>
           <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-3 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                <a href="#" class="deeplink" target="_blank" deeplink="search-optimization">
+            <div class="col-md-3 col-sm-3 col-xs-3 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" id="search_optimization" babel>
+                <a href="#" class="deeplink" target="_blank">
                   <div class="circle">
                     <div>
                       <img class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-purp.png') }}">
                       <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='search-optimization-guide-option-img-orange.png') }}">
-                      <p>Search Optimization</p>
+                      <p>#</p>
                     </div>
                   </div>
                 </a>
               </div>
-              <div class="col-md-4 col-sm-4 col-xs-4">
-                <a href="#" class="deeplink" target="_blank" deeplink="diy-design">
+              <div class="col-md-4 col-sm-4 col-xs-4" id="diy_design" babel>
+                <a href="#" class="deeplink" target="_blank">
                   <div class="circle">
                     <div>
                       <img class="img-responsive" src="{{ url_for('static', filename='diy_design.png') }}">
                       <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='diy_design_orange.png') }}">
                     </div>
-                    <p>DIY Design</p>
+                    <p>#</p>
                   </div>
                 </a>
               </div>
-              <div class="col-md-3 col-sm-3 col-xs-3">
-                <a href="#" class="deeplink" target="_blank" deeplink="ad-targeting">
+              <div class="col-md-3 col-sm-3 col-xs-3" id="ad_targeting" babel>
+                <a href="#" class="deeplink" target="_blank">
                   <div class="circle">
                     <div class="noun-padding">
                       <img class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-purple.png') }}">
                       <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='adbridge-targeting-orange.png') }}">
                     </div>
-                    <p>Ad Targeting</p>
+                    <p>#</p>
                   </div>
                 </a>
                </div>
               </div>
               <div class="row">
-               <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-4 col-sm-offset-2">
-              <a href="#" class="deeplink" target="_blank" deeplink="social-marketing">
+               <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-4 col-sm-offset-2" id="social_marketing" babel>
+              <a href="#" class="deeplink" target="_blank">
                 <div class="circle circle-second-row">
                   <div class="noun-padding">
                     <img class="img-responsive" src="{{ url_for('static', filename='social-promotions-purple.png') }}">
                     <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='social-promotions-orange.png') }}">
                   </div>
-                  <p>Social Marketing</p>
+                  <p>#</p>
                 </div>
               </a>
               </div>
-              <div class="col-md-4 col-sm-4">
-                <a href="#" class="deeplink" target="_blank" deeplink="predictive-content">      
+              <div class="col-md-4 col-sm-4" id="predictive_content" babel>
+                <a href="#" class="deeplink" target="_blank">      
                   <div class="circle circle-second-row">
                      <img class="img-responsive" src="{{ url_for('static', filename='predictive-content.png') }}">
-                    <p>Predictive Content</p>
+                    <p>#</p>
                   </div>
                 </a>
               </div>
@@ -82,67 +82,67 @@
       <!-- <div class="slide"> -->
       <div class="section">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 stage-container">
-          <h2>Middle of Funnel</h2>
+          <h2>#</h2>
           <div class="row">
-            <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
-              <a href="#" class="deeplink" target="_blank" deeplink="powerful-automation">
+            <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1" id="powerful_automation" babel>
+              <a href="#" class="deeplink" target="_blank">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='powerful-automation.png') }}">
-                    <p>Powerful Automation</p>
+                    <p>#</p>
                   </div>
                 </div>
               </a>
             </div>
-            <div class="col-md-4 col-sm-4">
-              <a href="#" class="deeplink" target="_blank" deeplink="ab-testing">
+            <div class="col-md-4 col-sm-4" id="ab_testing" babel>
+              <a href="#" class="deeplink" target="_blank" deeplink="">
                 <div class="circle">
                   <div class="noun-padding">
                     <img class="img-responsive" src="{{ url_for('static', filename='ab-testing.png') }}">
                   </div>
-                  <p>A/B Testing</p>
+                  <p>#</p>
                 </div>
               </a>
             </div>
-            <div class="col-md-3 col-sm-3">
-              <a href="#" class="deeplink" target="_blank" deeplink="intelligent-nurturing">
+            <div class="col-md-3 col-sm-3" id="intelligent_nurturing" babel>
+              <a href="#" class="deeplink" target="_blank">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='nurture.png') }}">
                   </div>
-                  <p>Intelligent Nurturing</p>
+                  <p>#</p>
                 </div>
               </a>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1">
-              <a href="#" class="deeplink" target="_blank" deeplink="event-management">
+            <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1" id="event_management" babel>
+              <a href="#" class="deeplink" target="_blank">
                 <div class="circle circle-second-row">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='replicate-success-guide-option-img-purp.png') }}">
                     <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='replicate-success-guide-option-img-orange.png') }}">
                   </div>
-                  <p>Event Management</p>
+                  <p>#</p>
                 </div>
               </a>
             </div>
-            <div class="col-md-4 col-sm-4">
-              <a href="#" class="deeplink" target="_blank" deeplink="lead-scoring">
+            <div class="col-md-4 col-sm-4" id="lead_scoring" babel>
+              <a href="#" class="deeplink" target="_blank">
                 <div class="circle circle-second-row">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='lead-scoring-purple.png') }}">
-                    <p>Lead Scoring</p>
+                    <p>#</p>
                   </div>
                 </div>
               </a>
             </div>
-            <div class="col-md-3 col-sm-3">
-              <a href="#" class="deeplink" target="_blank" deeplink="sales-insight">
+            <div class="col-md-3 col-sm-3" id="sales_insight" babel>
+              <a href="#" class="deeplink" target="_blank">
                 <div class="circle circle-second-row">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='actionable-insight-img-purp.png') }}">
-                    <p>Sales Insight</p>
+                    <p>#</p>
                   </div>
                 </div>
               </a>
@@ -153,48 +153,48 @@
       <!-- <div class="slide"> -->
       <div class="section">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 stage-container">
-          <h2>Bottom of Funnel</h2>
+          <h2>#</h2>
           <div class="row">
-            <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1">
+            <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1" id="email_insights" babel>
               <a data-toggle="modal" data-target="#email-insights-options">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='email-insights.png') }}">
                   </div>
-                  <p>Email Insights</p>
+                  <p>#</p>
                 </div>
               </a>
             </div>
-            <div class="col-md-4 col-sm-5">
-              <a href="#" class="deeplink" target="_blank" deeplink="program-analysis">
+            <div class="col-md-4 col-sm-5" id="program_analysis" babel>
+              <a href="#" class="deeplink" target="_blank">
                 <div class="circle">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='marketing-roi-guide-option-img-purp.png') }}">
-                    <p>Program Analysis</p>
+                    <p>#</p>
                   </div>
                 </div>
               </a>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1">
-              <a href="#" class="deeplink" target="_blank" deeplink="flexible-reporting">
+            <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1" id="flexible_reporting" babel>
+              <a href="#" class="deeplink" target="_blank">
                 <div class="circle circle-second-row">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='flexible-reporting-guide-option-img-purp.png') }}">
-                    <p>Flexible Reporting</p>
+                    <p>#</p>
                   </div>
                 </div>
               </a>
             </div>
-            <div class="col-md-4 col-sm-5">
-              <a href="#" class="deeplink" target="_blank" deeplink="marketing-calendar">      
+            <div class="col-md-4 col-sm-5" id="marketing_calendar" babel>
+              <a href="#" class="deeplink" target="_blank">      
                 <div class="circle circle-second-row">
                   <div>
                     <img class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-purp.png') }}">
                     <img style="display:none;" class="img-responsive" src="{{ url_for('static', filename='calendar-guide-option-img-orange.png') }}">
                   </div>
-                  <p>Marketing Calendar</p>
+                  <p>#</p>
                 </div>
               </a>
             </div>
@@ -245,5 +245,5 @@
 {% block scripts %}
 <script src="{{ url_for('static', filename='jquery.fullPage.js')}}"></script>
 <script src="{{ url_for('static', filename='consumer-marketing.js') }}" type="text/javascript"></script>
-
+<script src="{{ url_for('static', filename='lead-management.js') }}" type="text/javascript"></script>
 {% endblock %}
