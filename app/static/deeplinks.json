@@ -72,9 +72,9 @@
 		"tech-drip":"https://app-sjp.marketo.com/#SC14945C3",
 		"tech-nurturing":"https://app-sjp.marketo.com/#NP5170B2",
 		"tech-events":"https://app-sjp.marketo.com/#ME1721B2",
-		"request-account":"https://marketoemployee.jiveon.com/community/sales/sc-tools/marketolive",
-		"lite-training-content":"https://marketoemployee.jiveon.com/community/sales/sc-tools/marketolive/content?filterID=contentstatus%5Bpublished%5D~category%5Bmarketolive-official%5D&sortKey=contentstatus%5Bpublished%5D~subjectAsc&sortOrder=1",
-		"advanced-training-content":"https://marketoemployee.jiveon.com/community/sales/sc-tools/marketolive/demo-kits"
+		"request-account":"https://marketoemployee.jiveon.com/community/sales/marketolive/pages/im-new",
+		"lite-training-content":"https://marketoemployee.jiveon.com/community/sales/marketolive/pages/lite-training",
+		"advanced-training-content":"https://marketoemployee.jiveon.com/community/sales/marketolive/pages/pro-training"
 		
 	},
 	"jp":
