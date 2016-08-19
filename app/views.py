@@ -251,10 +251,10 @@ def healthcare(language):
 #					API Code Endpoints
 #					
 ########################################################
-@app.route('/data/form-fill')
-def formFill:
-    formFill.request()
-    return render_template('/en/data/form-fill-results.html')
+@app.route('/en/data/form-fill')
+def form_fill:
+    output = formFill.request()
+    return render_template('/en/data/form-fill-results.html', content=output)
 
 ########################################################
 #

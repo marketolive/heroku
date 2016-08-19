@@ -26,12 +26,9 @@ payload = {
 
 def request:
     rsp = requests.get(url, headers=headers, params=payload)
-    with open("templates/en/data/form-fill-results.html", "w") as file:
-        if error.search(rsp.content.decode("utf-8")):
-            file.write("FAILED: ")
-        else:
-            file.write("SUCCESS: ")
-        
-    with open("templates/en/data/form-fill-results.html", "ab") as file:
-        file.write(rsp.content)
-    return
+    rspContent = rsp.content.decode("utf-8")
+    if error.search(rspContent):
+        output = "FAILED: " + rspContent
+    else:
+        output = "SUCCESS: " + rspContent
+    return output
