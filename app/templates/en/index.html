@@ -27,8 +27,8 @@
     <div class="col-lg-12 col-md-12 col-sm-12 options">
       <div class="btn-container">
         <div class="button-container">
-          <div data-toggle="modal" data-target=".solutions-options" class='button -border center'>Solutions</div>
-          <div data-toggle="modal" data-target=".verticals-options" class='button -border center'>Verticals</div>
+          <div data-toggle="modal" data-target=".solutions-options" babel-id="solutions" babel-type="text" class='button -border center'>#</div>
+          <div data-toggle="modal" data-target=".verticals-options" babel-id="verticals" babel-type="text" class='button -border center'>#</div>
         </div>
       <h6 class="center-text {% if partners %} dont-show {% endif %}"><a target="_blank" href="http://classic.marketolive.com/">Switch to the classic version of MarketoLive</a></h6>
       </div>
@@ -38,13 +38,13 @@
   <div class="modal fade solutions-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <h1>Solutions</h1>
+        <h1 babel-id="solutions" babel-type="text">#</h1>
         <div class="modal-content-container">
           <div class="solution-container">
             <a href="/{{lang}}/solutions/lead-management">
               <div class="solution-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-lead-management.png') }}">
-                <p>Lead Management</p>
+                <p babel-id="lead_management" babel-type="text">#</p>
               </div>
             </a>
           </div>
@@ -52,7 +52,7 @@
             <a href="/{{lang}}/solutions/email-marketing">
               <div class="solution-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-email-marketing.png') }}">
-                <p class="inner-circle">Email Marketing</p>
+                <p class="inner-circle" babel-id="email_marketing" babel-type="text">#</p>
               </div>
             </a>
           </div>
@@ -60,7 +60,7 @@
             <a href="/{{lang}}/solutions/consumer-marketing">
               <div class="solution-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-consumer-marketing.png') }}">
-                <p>Consumer Marketing</p>
+                <p babel-id="consumer_marketing" babel-type="text">#</p>
               </div>
             </a>
           </div>
@@ -68,7 +68,7 @@
             <a href="/{{lang}}/solutions/customer-base-marketing">
               <div class="solution-circle">  
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-customer-base-marketing.png') }}">
-                <p>Customer Base Marketing</p>
+                <p babel-id="customer_base_marketing" babel-type="text">#</p>
               </div>
             </a>
           </div>
@@ -76,7 +76,7 @@
             <a href="/{{lang}}/solutions/mobile-marketing">
               <div class="solution-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='solutions-mobile-marketing.png') }}">
-                <p>Mobile Marketing</p>
+                <p babel-id="mobile_marketing" babel-type="text">#</p>
               </div>
             </a>
           </div>
@@ -88,13 +88,13 @@
   <div class="modal fade verticals-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <h1>Verticals</h1>
+        <h1 babel-id="verticals" babel-type="text">#</h1>
         <div class="modal-content-container">
           <div class="vertical-container">
             <a href="/{{lang}}/verticals/b2b">
               <div id="b2b" class="vertical-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='office-icon-white.png') }}">
-                <p>Technology</p>
+                <p babel-id="technology" babel-type="text">#</p>
               </div>
             </a>
           </div>
@@ -102,7 +102,7 @@
             <a href="/{{lang}}/verticals/higher-education">
               <div id="higher-education" class="vertical-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='education-icon-white.png') }}">
-                <p>Higher Education</p>
+                <p babel-id="higher_education" babel-type="text">#</p>
               </div>
             </a>
           </div>
@@ -110,7 +110,7 @@
             <a href="/{{lang}}/verticals/financial-services">
               <div id="financial-services" class="vertical-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='financial-services-icon-white.png') }}">
-                <p>Commercial Banking Services</p>
+                <p babel-id="commercial_banking_services" babel-type="text">#</p>
               </div>
             </a>
           </div>
@@ -118,7 +118,7 @@
             <a href="/{{lang}}/verticals/healthcare">
               <div id="healthcare" class="vertical-circle">
                 <img class="img-responsive" src="{{ url_for('static', filename='healthcare-icon-white.png') }}">
-                <p>Healthcare Providers</p>
+                <p babel-id="healthcare_providers" babel-type="text">#</p>
               </div>
             </a>
           </div>
@@ -131,5 +131,5 @@
 
 
 {% block scripts %}
-<script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='babel.js') }}"></script>
 {% endblock %}

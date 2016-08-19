@@ -54,29 +54,29 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="#"> <span class="sr-only">(current)</span></a></li>
-                    <li class="dropdown babeldropdown" babelnav="solutions">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">#<span class="caret"></span></a>
+                    <li class="dropdown babeldropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" babel-id="solutions_nav" babel-type="text">#<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/{{lang}}/solutions/lead-management">#</a></li>
-                            <li><a href="/{{lang}}/solutions/email-marketing">#</a></li>
-                            <li><a href="/{{lang}}/solutions/consumer-marketing">#</a></li>
-                            <li><a href="/{{lang}}/solutions/customer-base-marketing">#</a></li>
-                            <li><a href="/{{lang}}/solutions/mobile-marketing">#</a></li>
+                            <li><a href="/{{lang}}/solutions/lead-management" babel-id="lead_management" babel-type="text">#</a></li>
+                            <li><a href="/{{lang}}/solutions/email-marketing" babel-id="email_marketing" babel-type="text">#</a></li>
+                            <li><a href="/{{lang}}/solutions/consumer-marketing" babel-id="consumer_marketing" babel-type="text">#</a></li>
+                            <li><a href="/{{lang}}/solutions/customer-base-marketing" babel-id="customer_base_marketing" babel-type="text">#</a></li>
+                            <li><a href="/{{lang}}/solutions/mobile-marketing" babel-id="mobile_marketing" babel-type="text">#</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown babeldropdown" babelnav="verticals">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">#<span class="caret"></span></a>
+                    <li class="dropdown babeldropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" babel-id="verticals_nav" babel-type="text">#<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/{{lang}}/verticals/b2b">#</a></li>
-                            <li><a href="/{{lang}}/verticals/higher-education">#</a></li>
-                            <li><a href="/{{lang}}/verticals/financial-services">#</a></li>
-                            <li><a href="/{{lang}}/verticals/healthcare">#</a></li>
+                            <li><a href="/{{lang}}/verticals/b2b" babel-id="technology" babel-type="text">#</a></li>
+                            <li><a href="/{{lang}}/verticals/higher-education" babel-id="higher_education" babel-type="text">#</a></li>
+                            <li><a href="/{{lang}}/verticals/financial-services" babel-id="commercial_banking_services" babel-type="text">#</a></li>
+                            <li><a href="/{{lang}}/verticals/healthcare" babel-id="healthcare_providers" babel-type="text">#</a></li>
                         </ul>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right" babelnav="language">
+                <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown babeldropdown">
-                        <a href="#" class="dropdown-toggle link-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">#<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle link-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" babel-id="language" babel-type="text">#<span class="caret"></span></a>
                         {% block lang_nav %}
                         <ul class="dropdown-menu">
                             <li><a href="/en/{{path}}{{page}}">English</a></li>
@@ -263,7 +263,7 @@
     <!-- Material Design -->
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     <!-- JS for Base -->
-    <script src="{{ url_for('static', filename='base.js') }}"></script>
+    <script src="{{ url_for('static', filename='babel.js') }}"></script>
     {% if get_flashed_messages()[0] %}<script type='text/javascript'>$("#signinBtn").trigger("click");</script>{% endif %}
     {% block scripts %}
 

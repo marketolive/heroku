@@ -1,326 +1,215 @@
 {
-	"navigation": {
-		"solutions": {
-			"title": {
-				"en": "Solutions",
-				"jp": "ソリューション"
-			},
-			"links": {
-				"en": ["Lead Management", "Email Marketing", "Consumer Marketing", "Customer Base Marketing", "Mobile Marketing"],
-				"jp": ["メールマーケティング", "リード管理", "コンシューマーマーケティング", "カスタマーベースマーケティング", "モバイルマーケティング"]
-			}
+	"text" : {
+		"solutions_nav" : {
+			"en" : "Solutions <span class='caret'></span>",
+			"jp" : "ソリューション <span class='caret'></span>"
 		},
-		"verticals": {
-			"title": {
-				"en": "Verticals",
-				"jp": "ソリューション"
-			},
-			"links": {
-				"en": ["Technology", "Higher Education", "Commercial Banking Services", "Healthcare Providers"],
-				"jp": ["技術", "教育", "コンシューマーマーケティング", "ファイナンス", "健康管理"]
-			}
+		"verticals_nav" : {
+			"en" : "Verticals <span class='caret'></span>",
+			"jp" : "産業 <span class='caret'></span>"
 		},
-		"language": {
-			"title": {
-				"en": "English",
-				"jp": "日本語（日本）"
-			}
+		"solutions" : {
+			"en" : "Solutions",
+			"jp" : "ソリューション"
+		},
+		"lead_management_title" : {
+			"en" : "Lead Management - Marketo",
+			"jp" : "リード管理 - Marketo"
+		},
+		"verticals" : {
+			"en" : "Verticals",
+			"jp" : "産業"
+		},
+		"top_of_funnel" : {
+			"en" : "Top of Funnel",
+			"jp" : "トップオブファネル"
+		},
+		"middle_of_funnel" : {
+			"en" : "Middle of Funnel",
+			"jp" : "ミドルオブファネル"
+		},
+		"bottom_of_funnel" : {
+			"en" : "Bottom of Funnel",
+			"jp" : "ボトムオブファネル"
+		},
+		"email_marketing" : {
+			"en" : "Email Marketing",
+			"jp" : "メールマーケティング"
+		},
+		"lead_management" : {
+			"en" : "Lead Management",
+			"jp" : "メールマーケティング"
+		},
+		"attract_design" : {
+			"en" : "Attract & Design",
+			"jp" : "喚起,デザイン,送信"
+		},
+		"test_send_nurture" : {
+			"en" : "Test, Send, & Nurture",
+			"jp" : "ナーチャリング,テスト,&反復"
+		},
+		"report_repeat" : {
+			"en" : "Report & Repeat",
+			"jp" : "プロモート,計画,&測定"
+		},
+		"email_marketing_marketo" : {
+			"en" : "Email Marketing - Marketo",
+			"jp" : "メールマーケティング - Marketo"
+		},
+		"search_optimization": {
+			"en": "Search Optimization",
+			"jp": "検索の最適化"		
+		},
+		"diy_design": {
+			"en": "DIY Design",
+			"jp": "アセットの作成"	
+		},
+		"powerful_automation": {
+			"en": "Powerful Automation",
+			"jp": "ワークフロー"
+		},
+		"intelligent_nurturing": {
+				"en": "Intelligent Nurturing",
+				"jp": "ナーチャリング"
+		},
+		"ab_testing": {
+			"en": "A/B Testing",
+			"jp": "A/Bテスト"
+		},
+		"email_insights": {
+			"en": "Email Insights",
+			"jp": "Eメールインサイト"
+		},
+		"social_marketing": {
+			"en": "Social Marketing",
+			"jp": "ソーシャルマーケティング"
+		},
+		"marketing_calendar": {
+			"en": "Marketing Calendar",
+			"jp": "マーケティングカレンダー"
+		},
+		"program_analysis": {
+			"en": "Program Analysis",
+			"jp": "プログラム分析"
+		},
+		"ad_targeting": {
+			"en": "Ad Targeting",
+			"jp": "アドターゲティング"
+		},
+		"predictive_content": {
+			"en": "Predictive Content",
+			"jp": "プレディクティブコンテンツ"
+		},
+		"event_management": {
+			"en": "Event Management",
+			"jp": "イベント管理"
+		},
+		"lead_scoring": {
+			"en": "Lead Scoring",
+			"jp": "リードスコアリング"
+		},
+		"sales_insight": {
+			"en": "Sales Insight",
+			"jp": "セールスインサイト"
+		},
+		"flexible_reporting": {
+			"en": "Flexible Reporting",
+			"jp": "レポーティング"
+		},
+		"customer_base_marketing" : {
+			"en" : "Customer Base Marketing",
+			"jp" : "カスタマーベースマーケティング"
+		},
+		"mobile_marketing" : {
+			"en" : "Mobile Marketing",
+			"jp" : "モバイルマーケティング"
+		},
+		"consumer_marketing" : {
+			"en" : "Consumer Marketing",
+			"jp" : "コンシューマーマーケティング"
+		},
+		"technology" : {
+			"en" : "Technology",
+			"jp" : "技術"
+		},
+		"higher_education" : {
+			"en" : "Higher Education",
+			"jp" : "教育"
+		},
+		"commercial_banking_services" : {
+			"en" : "Commercial Banking Services",
+			"jp" : "ファイナンス"
+		},
+		"healthcare_providers" : {
+			"en" : "Healthcare Providers",
+			"jp" : "健康管理"
+		},
+		"language" : {
+			"en" : "English <span class='caret'></span>",
+			"jp" : "日本語（日本) <span class='caret'></span>"
 		}
 	},
-	"solutions": { 
-		"page_meta": {
-			"email_marketing": {
-				"title": {
-					"en": "Email Marketing - Marketo",
-					"jp": "メールマーケティング - Marketo"
-				},
-				"h1": {
-					"en": "Email Marketing",
-					"jp": "メールマーケティング"
-				},
-				"h2": {
-					"en": [
-						"Attract & Design", 
-						"Test, Send, & Nurture", 
-						"Report & Repeat"
-						],
-					"jp": [
-						"喚起,デザイン,送信",
-						"ナーチャリング,テスト,&反復",
-						"プロモート,計画,&測定"
-						]
-				},
-				"h3": {
-					"en": "",
-					"jp": ""
-				},
-				"h4": {
-					"en": "",
-					"jp": ""
-				}
-			},
-			"lead_management": {
-				"title": {
-					"en": "Lead Management - Marketo",
-					"jp": "リード管理 - Marketo"
-				},
-				"h1": {
-					"en": "Lead Management",
-					"jp": "リード管理"
-				},
-				"h2": {
-					"en": [
-						"Top of Funnel", 
-						"Middle of Funnel", 
-						"Bottom of Funnel"
-						],
-					"jp": [
-						"トップオブファネル", 
-						"ミドルオブファネル", 
-						"ボトムオブファネル"
-						]
-				},
-				"h3": {
-					"en": "",
-					"jp": ""
-				},
-				"h4": {
-					"en": "",
-					"jp": ""
-				}
-			},
-			"consumer_marketing": {
-				"title": {
-					"en": "",
-					"jp": ""
-				},
-				"h1": {
-					"en": "",
-					"jp": ""
-				},
-				"h2": {
-					"en": "",
-					"jp": ""
-				},
-				"h3": {
-					"en": "",
-					"jp": ""
-				},
-				"h4": {
-					"en": "",
-					"jp": ""
-				}
-			},
-			"customer_base_marketing": {
-				"title": {
-					"en": "",
-					"jp": ""
-				},
-				"h1": {
-					"en": "",
-					"jp": ""
-				},
-				"h2": {
-					"en": "",
-					"jp": ""
-				},
-				"h3": {
-					"en": "",
-					"jp": ""
-				},
-				"h4": {
-					"en": "",
-					"jp": ""
-				}
-			},
-			"mobile_marketing": {
-				"title": {
-					"en": "",
-					"jp": ""
-				},
-				"h1": {
-					"en": "",
-					"jp": ""
-				},
-				"h2": {
-					"en": "",
-					"jp": ""
-				},
-				"h3": {
-					"en": "",
-					"jp": ""
-				},
-				"h4": {
-					"en": "",
-					"jp": ""
-				}
-			}
-		}, 
-		"use_cases": {
-			"search_optimization": {
-				"href": {
-					"en": "https://seo.marketo.com/",
-					"jp": "https://seo.marketo.com/"
-				},			"p": {
-					"en": "Search Optimization",
-					"jp": "検索の最適化"
-				}
-			},
-			"diy_design": {
-				"href": {
-					"en": "https://app-sjp.marketo.com/#PG4217B2",
-					"jp": "https://app-sjp.marketo.com/#PG6235B2"
-				},
-				"p": {
-					"en": "DIY Design",
-					"jp": "アセットの作成"
-				}
-			},
-			"powerful_automation": {
-				"href": {
-					"en": "https://app-sjp.marketo.com/#SC14945A1",
-					"jp": "https://app-sjp.marketo.com/#SC22359A1"
-				},
-				"p": {
-					"en": "Powerful Automation",
-					"jp": "ワークフロー"
-				}
-			},
-			"intelligent_nurturing": {
-				"href": {
-					"en": "https://app-sjp.marketo.com/#NP5170A1",
-					"jp": "https://app-sjp.marketo.com/#NP6238B2"
-				},
-				"p": {
-					"en": "Intelligent Nurturing",
-					"jp": "ナーチャリング"
-				}
-			},
-			"ab_testing": {
-				"href": {
-					"en": "https://app-sjp.marketo.com/m#CCE481-TS",
-					"jp": ""
-				},
-				"p": {
-					"en": "A/B Testing",
-					"jp": "A/Bテスト"
-				}
-			},
-			"email_insights": {
-				"href": {
-					"en": "http://www.marketolive.com/en/analytics/email-insights",
-					"jp": ""
-				},
-				"p": {
-					"en": "Email Insights",
-					"jp": "Eメールインサイト"
-				}
-			},
-			"social_marketing": {
-				"href": {
-					"en": "https://app-sjp.marketo.com/#SOA586B2LA1",
-					"jp": ""
-				},
-				"p": {
-					"en": "Social Marketing",
-					"jp": "ソーシャルマーケティング"
-				}
-			},
-			"marketing_calendar": {
-				"href": {
-					"en": "https://app-sjp.marketo.com/#CAL0-eyJlZGl0IjoxLCJkdCI6IjIwMTUwNDE4IiwiY3QiOjEsInRhZ3MiOnsic3lzLkVudHJ5U3VidHlwZSI6WyJlbWFpbCIsIndlYmluYXIiLCJudXJ0dXJlX3J1biIsImVtYWlsX3Rlc3QiLCJjYW1wYWlnbl9ydW4iLCJub25lIiwiYjMxYmE2YTYtMDk5Ni00ODMyLWJhZjQtNzk5ODQ3ZGY4YmM4IiwiZXZlbnQiLCIwNWVlZmQ0Yy05OGZiLTRhYjctOTFjZS1hYTE2NWNhZDI0YjkiLCIyNDQ2ODg5MC0yNjEwLTRkMjctYjZlYy05ODVlYjQxNzViOTUiLCI0MTU0MmJiNy1jMzQ0LTQ3NGItODU4Zi1mNGM5YWM1MzcwZjciLCJkZWVjMDkwZC1iY2U0LTQ1MjYtYjYwMy1iMmRhOTc5MzMwNmIiLCIxMzhlZmM1OS02MjU0LTRkNDYtYjdmYi0zZWVjNzA2YTU3ZTMiLCI3YmZiOThkNS05M2IzLTQxMjUtODE5Yy0xZDlkYjMxMzEwYjAiLCI2NDRjOWNiNS0yMjU2LTRlNmMtYjI1YS04ODEzNTE3NGM2MTIiLCI1ZTU4NGQ1Yi04NGI0LTQ2YTctYWIzNi1mMGJmYTE0ZWQ2YzQiLCJiMmY4YTJkMy0xMjQ1LTRkMjctYmRkZi04NjczMTExNTEwOGEiLCJlbWFpbF9jYW1wYWlnbl9ydW4iXSwic3lzLldvcmtzcGFjZUlkIjpbIjEiXX19",
-					"jp": ""
-				},
-				"p": {
-					"en": "Marketing Calendar",
-					"jp": "マーケティングカレンダー"
-				}
-			},
-			"program_analysis": {
-				"href": {
-					"en": "https://app-sjp.marketo.com/#AR4132A1",
-					"jp": ""
-				},
-				"p": {
-					"en": "Program Analysis",
-					"jp": "プログラム分析"
-				}
-			},
-			"ad_targeting": {
-				"href": {
-					"en": "http://classic.marketolive.com/m3/apps/adbridge.html",
-					"jp": "http://classic.marketolive.com/jp/apps/adbridge.html"
-				},
-				"p": {
-					"en": "Ad Targeting",
-					"jp": "アドターゲティング"
-				}
-			},
-			"predictive_content": {
-				"href": {
-					"en": "http://rtpdemo3.marketo.com/",
-					"jp": ""
-				},
-				"p": {
-					"en": "Predictive Content",
-					"jp": "プレディクティブコンテンツ"
-				}
-			},
-			"event_management": {
-				"href": {
-					"en": "http://classic.marketolive.com/m3/apps/replicate-success.html",
-					"jp": ""
-				},
-				"p": {
-					"en": "Event Management",
-					"jp": "イベント管理"
-				}
-			},
-			"lead_scoring": {
-				"href": {
-					"en": "https://app-sjp.marketo.com/#PG5122D4",
-					"jp": ""
-				},
-				"p": {
-					"en": "Lead Scoring",
-					"jp": "リードスコアリング"
-				}
-			},
-			"sales_insight": {
-				"href": {
-					"en": "https://mkto-si.na10.visual.force.com/apex/mkto_si__Dashboard",
-					"jp": ""
-				},
-				"p": {
-					"en": "Sales Insight",
-					"jp": "セールスインサイト"
-				}
-			},
-			"flexible_reporting": {
-				"href": {
-					"en": "https://app-sjp.marketo.com/#AH0A1ZN17",
-					"jp": "https://app-sjp.marketo.com/#AH0A1ZN19849"
-				},
-				"p": {
-					"en": "Flexible Reporting",
-					"jp": "レポーティング"
-				}
-			}
+
+	"link" : {
+		"search_optimization" : {
+			"en" : "https://seo.marketo.com/",
+			"jp" : "https://seo.marketo.com/"
+		},
+		"social_marketing" : {
+			"en" : "https://app-sjp.marketo.com/#SOA586B2LA1",
+			"jp" : ""
+		},
+		"powerful_automation" : {
+			"en": "https://app-sjp.marketo.com/#SC14945A1",
+			"jp": "https://app-sjp.marketo.com/#SC22359A1"
+		},
+		"intelligent_nurturing": {
+			"en": "https://app-sjp.marketo.com/#NP5170A1",
+			"jp": "https://app-sjp.marketo.com/#NP6238B2"
+		},
+		"ab_testing": {
+			"en": "https://app-sjp.marketo.com/m#CCE481-TS",
+			"jp": ""
+		},
+		"email_insights": {
+			"en": "http://www.marketolive.com/en/analytics/email-insights",
+			"jp": ""
+		},
+		"marketing_calendar": {
+			"en": "https://app-sjp.marketo.com/#CAL0-eyJlZGl0IjoxLCJkdCI6IjIwMTUwNDE4IiwiY3QiOjEsInRhZ3MiOnsic3lzLkVudHJ5U3VidHlwZSI6WyJlbWFpbCIsIndlYmluYXIiLCJudXJ0dXJlX3J1biIsImVtYWlsX3Rlc3QiLCJjYW1wYWlnbl9ydW4iLCJub25lIiwiYjMxYmE2YTYtMDk5Ni00ODMyLWJhZjQtNzk5ODQ3ZGY4YmM4IiwiZXZlbnQiLCIwNWVlZmQ0Yy05OGZiLTRhYjctOTFjZS1hYTE2NWNhZDI0YjkiLCIyNDQ2ODg5MC0yNjEwLTRkMjctYjZlYy05ODVlYjQxNzViOTUiLCI0MTU0MmJiNy1jMzQ0LTQ3NGItODU4Zi1mNGM5YWM1MzcwZjciLCJkZWVjMDkwZC1iY2U0LTQ1MjYtYjYwMy1iMmRhOTc5MzMwNmIiLCIxMzhlZmM1OS02MjU0LTRkNDYtYjdmYi0zZWVjNzA2YTU3ZTMiLCI3YmZiOThkNS05M2IzLTQxMjUtODE5Yy0xZDlkYjMxMzEwYjAiLCI2NDRjOWNiNS0yMjU2LTRlNmMtYjI1YS04ODEzNTE3NGM2MTIiLCI1ZTU4NGQ1Yi04NGI0LTQ2YTctYWIzNi1mMGJmYTE0ZWQ2YzQiLCJiMmY4YTJkMy0xMjQ1LTRkMjctYmRkZi04NjczMTExNTEwOGEiLCJlbWFpbF9jYW1wYWlnbl9ydW4iXSwic3lzLldvcmtzcGFjZUlkIjpbIjEiXX19",
+			"jp": ""
+		},
+		"program_analysis": {
+			"en": "https://app-sjp.marketo.com/#AR4132A1",
+			"jp": ""
+		},
+		"ad_targeting": {
+			"en": "http://classic.marketolive.com/m3/apps/adbridge.html",
+			"jp": "http://classic.marketolive.com/jp/apps/adbridge.html"
+		},
+		"predictive_content": {
+			"en": "http://rtpdemo3.marketo.com/",
+			"jp": ""
+		},
+		"event_management": {
+			"en": "http://classic.marketolive.com/m3/apps/replicate-success.html",
+			"jp": ""
+		},
+		"lead_scoring": {
+			"en": "https://app-sjp.marketo.com/#PG5122D4",
+			"jp": ""
+		},
+		"sales_insight": {
+			"en": "https://mkto-si.na10.visual.force.com/apex/mkto_si__Dashboard",
+			"jp": ""
+		},
+		"flexible_reporting": {
+			"en": "https://app-sjp.marketo.com/#AH0A1ZN17",
+			"jp": "https://app-sjp.marketo.com/#AH0A1ZN19849"
+		},
+		"diy_design" : {
+			"en" : "https://app-sjp.marketo.com/#PG4217B2",
+			"jp" : "https://app-sjp.marketo.com/#PG6235B2"
 		}
-	},
-	"verticals": { 
-		"page_meta": {
-			"title": "",
-			"h1": "",
-			"h2": "",
-			"h3": "",
-			"h4": ""
-		}, 
-		"use_cases": {
-			"technology": {},
-			"higher_education": {},
-			"commercial_bankding_services": {},
-			"healthcare_providers": {}
-		}
-	}	
+	}
 }

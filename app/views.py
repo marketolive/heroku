@@ -109,7 +109,7 @@ def index(language):
 		return redirect('/en/' + language)
 	if language not in languages:
 		return redirect('/en')
-	return render_template(language + '/index.html', 
+	return render_template('en/index.html',
 							form=g.loginform, 
 							name=g.name,
 							full_name = g.full_name, 
@@ -125,7 +125,7 @@ def index(language):
 def base(language):
 	if language not in languages:
 		return redirect('/en/base')
-	return render_template(language+'/base.html', 
+	return render_template('en/base.html', 
 							form=g.loginform, 
 							name=g.name, 
 							full_name = g.full_name,
