@@ -254,7 +254,7 @@ def healthcare(language):
 @app.route('/en/data/form-fill')
 def form_fill():
     output = formFill.request()
-    return render_template('/en/data/form-fill-results.html', content=output)
+    return render_template('en/data/form-fill-results.html', content=output)
 
 ########################################################
 #
