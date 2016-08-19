@@ -24,7 +24,7 @@ payload = {
     "_mktoReferrer" : "http://na-sjp.marketo.com/lp/026-COU-482/Loyalty-Profile-Registration.html"
 }
 
-def request:
+def request():
     rsp = requests.get(url, headers=headers, params=payload)
     rspContent = rsp.content.decode("utf-8")
     if error.search(rspContent):
