@@ -1,9 +1,9 @@
-from app import app, api, mktorest, models, lm, db, formFill
+from app import app, api, mktorest, models, lm, db
 from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask import render_template, flash, request, redirect, g, abort, make_response
 from .forms import LoginForm
-import os
+import os, formFill
 from datetime import datetime
 from math import floor
 
