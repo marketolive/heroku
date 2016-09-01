@@ -1,4 +1,4 @@
-from app import app, api, mktorest, models, lm, db, formFill
+from app import app, api, mktorest, models, lm, db
 from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask import render_template, flash, request, redirect, g, abort, make_response
@@ -245,17 +245,6 @@ def healthcare(language):
 		return redirect('/en/verticals/' + page)
 	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
 '''
-
-########################################################
-#
-#					API Code Endpoints
-#					
-########################################################
-@app.route('/en/data/form-fill')
-def form_fill():
-    output = formFill.request()
-    return render_template('en/data/form-fill-results.html', content=output)
-
 ########################################################
 #
 #					API Endpoints
