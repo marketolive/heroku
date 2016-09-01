@@ -251,11 +251,7 @@ def healthcare(language):
 #					API Code Endpoints
 #					
 ########################################################
-<<<<<<< HEAD
-@app.route('/data/form-fill')
-=======
 @app.route('/en/data/form-fill')
->>>>>>> parent of fa03395... Web Visit Test
 def form_fill():
     output = formFill.request()
     return render_template('en/data/form-fill-results.html', content=output)
