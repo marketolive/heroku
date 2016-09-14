@@ -169,6 +169,15 @@ def main_router(language, category, page):
 def plugin():
 	return redirect('https://chrome.google.com/webstore/detail/marketolive/onibnnoghllldiecboelbpcaeggfiohl')
 
+########################################################
+#
+#					Data Endpoints
+#					
+########################################################
+@app.route('/data/web-visit')
+def web_visit():
+    return redirect('/en/data/web-visit.html')
+    
 '''
 Will delete this once we are fully confident in the above
 
@@ -249,7 +258,7 @@ def healthcare(language):
 #
 #					API Endpoints
 #					
-########################################################	
+########################################################
 
 #
 # Create Folders
