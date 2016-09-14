@@ -176,7 +176,7 @@ def plugin():
 ########################################################
 @app.route('/data/web-visit')
 def web_visit():
-    return redirect('/en/data/web-visit.html')
+    return render_template('/en/data/web-visit.html')
     
 '''
 Will delete this once we are fully confident in the above
