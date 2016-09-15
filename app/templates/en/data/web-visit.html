@@ -99,7 +99,7 @@
                         "/top5-digital-engagement-themes.html",
                         "/reboot-europe-tech-industry.html"
                     ],
-                urlStr = urllist[Math.floor(Math.random() * urllist.length)];
+                    urlStr = urllist[Math.floor(Math.random() * urllist.length)];
 
                 Munchkin.munchkinFunction("associateLead", {Email: leadIdx["email"]}, leadIdx["hash"]);
                 Munchkin.munchkinFunction("visitWebPage", {url : urlStr});
