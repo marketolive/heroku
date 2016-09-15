@@ -7,7 +7,6 @@
         <meta name="description" content="">
         <meta name="author" content="">
         
-        <!-- Marketo Munchkin Code -->
         <script type="text/javascript">
             (function() {
                 var didInit = false,
@@ -16,10 +15,8 @@
                 function initMunchkin() {
                     if (didInit === false) {
                         didInit = true;
-                        Munchkin.init("487-HAG-489", {cookieLifeDays : 1, cookieAnon : false});
+                        Munchkin.init("026-COU-482", {cookieLifeDays : 1, cookieAnon : false});
                         webVisit();
-                        console.log("Cookied");
-
                     }
                 }
                 
@@ -106,6 +103,7 @@
 
                 Munchkin.munchkinFunction("associateLead", {Email: leadIdx["email"]}, leadIdx["hash"]);
                 Munchkin.munchkinFunction("visitWebPage", {url : urlStr});
+                console.log("Sent > Visit Web Page > " + leadIdx["email"] + " > " + urlStr);
             }
         </script>
     </head>
