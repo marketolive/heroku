@@ -8,6 +8,9 @@
         <meta name="author" content="">
         
         <script type="text/javascript">
+            var getCookie,
+                webVisit;
+            
             (function() {
                 var didInit = false,
                     s;
@@ -15,6 +18,9 @@
                 function initMunchkin() {
                     if (didInit === false) {
                         didInit = true;
+                        if (getCookie("_mkto_trk")) {
+                            document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
+                        }
                         Munchkin.init("026-COU-482", {cookieLifeDays : 1, cookieAnon : false});
                         webVisit();
                     }
@@ -33,7 +39,24 @@
                 document.getElementsByTagName("head")[0].appendChild(s);
             })();
 
-            var webVisit = function() {
+            getCookie = function(cookieName) {
+                console.log("Content > Getting: Cookie " + cookieName);
+                
+                var name = cookieName + '=',
+                    cookies = document.cookie.split(';'),
+                    currCookie;
+                
+                for (var ii = 0; ii < cookies.length; ii++) {
+                    currCookie = cookies[ii].trim();
+                    if (currCookie.indexOf(name) == 0) {
+                        return currCookie.substring(name.length, currCookie.length);
+                    }
+                }
+                console.log("Content > Getting: Cookie " + cookieName + " not found");
+                return null;
+            }
+            
+            webVisit = function() {
                 var leads = [
                         {hash : "e91fea75734eeee375a1c0ad4c14bb16703aa0d0", email : "mktodemosvcs+1130@gmail.com"},
                         {hash : "3740cb0137c946959027f48be1b62df72601243f", email : "mktodemosvcs+1131@gmail.com"},
