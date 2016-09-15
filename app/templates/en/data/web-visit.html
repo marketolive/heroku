@@ -8,6 +8,35 @@
         <meta name="author" content="">
         
         <script type="text/javascript">
+            (function() {
+                var didInit = false,
+                    s;
+                
+                function initMunchkin() {
+                    if (didInit === false) {
+                        didInit = true;
+                        if (getCookie("_mkto_trk")) {
+                            console.log("Removing > Cookie : _mkto_trk");
+                            document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
+                        }
+                        Munchkin.init("026-COU-482", {cookieLifeDays : 1, cookieAnon : false});
+                        webVisit();
+                    }
+                }
+                
+                s = document.createElement("script");
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = "//munchkin.marketo.net/munchkin.js";
+                s.onreadystatechange = function() {
+                    if (this.readyState == "complete" || this.readyState == "loaded") {
+                        initMunchkin();
+                    }
+                };
+                s.onload = initMunchkin;
+                document.getElementsByTagName("head")[0].appendChild(s);
+            })();
+            
             var getCookie,
                 webVisit;
             
@@ -105,35 +134,6 @@
                 Munchkin.munchkinFunction("visitWebPage", {url : urlStr});
                 console.log("Sent > Visit Web Page : " + leadIdx["email"] + " : " + urlStr);
             }
-            
-            (function() {
-                var didInit = false,
-                    s;
-                
-                function initMunchkin() {
-                    if (didInit === false) {
-                        didInit = true;
-                        if (getCookie("_mkto_trk")) {
-                            console.log("Removing > Cookie : _mkto_trk");
-                            document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
-                        }
-                        Munchkin.init("026-COU-482", {cookieLifeDays : 1, cookieAnon : false});
-                        webVisit();
-                    }
-                }
-                
-                s = document.createElement("script");
-                s.type = "text/javascript";
-                s.async = true;
-                s.src = "//munchkin.marketo.net/munchkin.js";
-                s.onreadystatechange = function() {
-                    if (this.readyState == "complete" || this.readyState == "loaded") {
-                        initMunchkin();
-                    }
-                };
-                s.onload = initMunchkin;
-                document.getElementsByTagName("head")[0].appendChild(s);
-            })();
         </script>
     </head>
     <body>
