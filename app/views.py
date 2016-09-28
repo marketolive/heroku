@@ -89,11 +89,11 @@ def login():
 # The following should contain a comprehensive list of languages and pages
 # These are used to validate incoming URLs
 languages = ['en', 'jp']
-categories = ['solutions', 'verticals', 'analytics']
+categories = ['solutions', 'verticals', 'analytics', 'update']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
-		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi']
+		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'plugin-update']
 
 @app.route('/')
 @app.route('/', subdomain="partners")

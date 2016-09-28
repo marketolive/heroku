@@ -1,0 +1,18 @@
+.update {
+  	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	bottom: 0px;
+	width: 100%;
+  	background-color: white;
+  	opacity: 0.9;  	
+}
+
+.unstyled {
+	list-style: none;
+}
+
+.panel-title:hover {
+	color: #5A54A4;
+}
