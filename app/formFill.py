@@ -1,7 +1,7 @@
 import requests, re
 from fake_useragent import UserAgent
 
-def request():
+def request(numOfFormFills, firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer):
     if numOfFormFills:
         numOfFormFills = int(numOfFormFills)
         if numOfFormFills < 0:
