@@ -29,7 +29,7 @@
         
         <script>
         function getCookie (cookieName) {
-            console.log("MarketoLive > Getting: Cookie " + cookieName);
+            console.log("Getting: Cookie " + cookieName);
             
             var name = cookieName + '=',
             cookies = document.cookie.split(';'),
@@ -41,7 +41,7 @@
                     return currCookie.substring(name.length, currCookie.length);
                 }
             }
-            console.log("MarketoLive > Getting: Cookie " + cookieName + " not found");
+            console.log("Getting: Cookie " + cookieName + " not found");
             return null;
         }
         
@@ -61,7 +61,7 @@
         
         if (oneLoginFirstName
              && oneLoginLastName) {
-            console.log("Marketo App > Heap Analytics ID: " + oneLoginFirstName + " " + oneLoginLastName);
+            console.log("Heap Analytics ID: " + oneLoginFirstName + " " + oneLoginLastName);
             
             heap.addUserProperties({
                 Name : oneLoginFirstName + " " + oneLoginLastName
