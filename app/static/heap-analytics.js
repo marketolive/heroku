@@ -43,8 +43,6 @@ heap.load(env);
 
 if (oneLoginEmail) {
     heap.identify(oneLoginEmail);
-} else {
-    heap.identify();
 }
 
 if (oneLoginFirstName
