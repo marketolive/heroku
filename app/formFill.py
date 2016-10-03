@@ -1,14 +1,7 @@
 import requests, re
 from fake_useragent import UserAgent
 
-def request(numOfFormFills, firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer):
-    if numOfFormFills:
-        numOfFormFills = int(numOfFormFills)
-        if numOfFormFills < 0:
-            numOfFormFills = 1
-    else:
-        numOfFormFills = 1
-    
+def request(firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer, numOfFormFills):
     if not firstName:
         firstName = "MarketoLive"
     
@@ -20,6 +13,13 @@ def request(numOfFormFills, firstName, lastName, email, domain, formId, subId, f
     
     if not mktoReferrer:
         mktoReferrer = "http://www.marketolive.com"
+    
+    if not numOfFormFills:
+        numOfFormFills = 1
+    else:
+        numOfFormFills = int(numOfFormFills)
+        if numOfFormFills < 0:
+            numOfFormFills = 1
     
     if domain and formId and subId and formVid and lpId and munchkinId:
         error = re.compile("error")

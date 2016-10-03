@@ -180,7 +180,6 @@ def web_visit():
 
 @app.route('/data/form-fill')
 def form_fill():
-    numOfFormFills = request.args.get('numOfFormFills')
     firstName = request.args.get('firstName')
     lastName = request.args.get('lastName')
     email = request.args.get('email')
@@ -191,7 +190,8 @@ def form_fill():
     lpId = request.args.get('lpId')
     munchkinId = request.args.get('munchkinId')
     mktoReferrer= request.args.get('mktoReferrer')
-    output = formFill.request(numOfFormFills, firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer)
+    numOfFormFills = request.args.get('numOfFormFills')
+    output = formFill.request(firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer, numOfFormFills)
     return render_template('en/data/form-fill-results.html', content=output)
     
 '''
