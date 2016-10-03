@@ -1,4 +1,4 @@
-from app import app, api, mktorest, models, lm, db
+from app import app, api, mktorest, models, lm, db, formFill
 from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask import render_template, flash, request, redirect, g, abort, make_response
