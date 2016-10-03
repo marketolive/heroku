@@ -190,8 +190,7 @@ def form_fill():
     lpId = request.args.get('lpId')
     munchkinId = request.args.get('munchkinId')
     mktoReferrer= request.args.get('mktoReferrer')
-    numOfFormFills = request.args.get('numOfFormFills')
-    output = formFill.request(firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer, numOfFormFills)
+    output = formFill.request(firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer)
     return render_template('en/data/form-fill-results.html', content=output)
     
 '''
