@@ -174,6 +174,38 @@ def plugin():
 #					Data Endpoints
 #					
 ########################################################
+@app.route('/info/why-us')
+def info_why_us():
+    return render_template('/en/info/skeleton-page.html', content="Why Us")
+
+@app.route('/info/integrations')
+def info_integrations():
+    return render_template('/en/info/skeleton-page.html', content="Integrations")
+
+@app.route('/info/contact-us')
+def info_contact_us():
+    return render_template('/en/info/skeleton-page.html', content="Contact Us")
+
+@app.route('/info/community')
+def info_community():
+    return render_template('/en/info/skeleton-page.html', content="Community")
+
+@app.route('/info/live-event')
+def info_live_event():
+    return render_template('/en/info/skeleton-page.html', content="Live Event")
+
+@app.route('/info/webinar')
+def info_webinar():
+    return render_template('/en/info/skeleton-page.html', content="Webinar")
+
+@app.route('/info/products')
+def info_products():
+    return render_template('/en/info/skeleton-page.html', content="Products")
+
+@app.route('/info/pricing')
+def info_pricing():
+    return render_template('/en/info/skeleton-page.html', content="Pricing")
+
 @app.route('/data/web-visit')
 def web_visit():
     return render_template('/en/data/web-visit.html')
