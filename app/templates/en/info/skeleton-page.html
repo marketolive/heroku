@@ -37,22 +37,34 @@
                         var oneLoginUsername = getCookie("onelogin_username");
                         didInit = true;
                         
-                        if (getCookie("_mkto_trk")) {
-                            console.log("Removing > Cookie : _mkto_trk");
-                            document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
-                        }
-                        
-                        Munchkin.init("685-BTN-772", {
-                            cookieLifeDays : 365,
-                            cookieAnon : false
-                        });
-                        
                         if (oneLoginUsername) {
-                            var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com";
-                            Munchkin.munchkinFunction("associateLead", {Email: email}, sha1("123123123" + email));
+                            var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com",
+                            isAssociateLeadCompleted,
+                            completed = false;
+                            
+                            if (getCookie("_mkto_trk")) {
+                                console.log("Removing > Cookie : _mkto_trk");
+                                document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
+                            }
+                            
+                            Munchkin.init("685-BTN-772", {
+                                cookieLifeDays : 365,
+                                cookieAnon : false,
+                                disableClickDelay : true
+                            });
+                            
+                            completed = Munchkin.munchkinFunction("associateLead", {
+                                    Email : email
+                                }, sha1("123123123" + email));
                             console.log("Associating > Lead : " + email);
+                            
+                            isAssociateLeadCompleted = window.setInterval(function () {
+                                    if (completed != false) {
+                                        window.clearInterval(isAssociateLeadCompleted);
+                                        window.close();
+                                    }
+                                }, 0);
                         }
-                        window.close();
                     }
                 }
                 
