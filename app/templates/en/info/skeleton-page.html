@@ -50,6 +50,7 @@
                         if (oneLoginUsername) {
                             var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com";
                             Munchkin.munchkinFunction("associateLead", {Email: email}, sha1("123123123" + email));
+                            console.log("Associating > Lead : " + email);
                         }
                         window.close();
                     }
