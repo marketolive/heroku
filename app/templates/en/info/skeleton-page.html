@@ -7,19 +7,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <!--
+        <!--{% block scripts %}
+        <script type="text/javascript" src="{{ url_for('static', filename='sha1.min.js') }}"></script>
+        {% endblock %}
         <script type="text/javascript">
             (function () {
                 var didInit = false,
                 s;
                 
+                function getCookie(cookieName) {
+                    console.log("Getting > Cookie : " + cookieName);
+                    
+                    var name = cookieName + '=',
+                    cookies = document.cookie.split(';'),
+                    currCookie;
+                    
+                    for (var ii = 0; ii < cookies.length; ii++) {
+                        currCookie = cookies[ii].trim();
+                        if (currCookie.indexOf(name) == 0) {
+                            return currCookie.substring(name.length, currCookie.length);
+                        }
+                    }
+                    console.log("Getting > Cookie : " + cookieName + " not found");
+                    return null;
+                }
+                
                 function initMunchkin() {
                     if (didInit === false) {
+                        var oneLoginUsername = getCookie("onelogin_username");
                         didInit = true;
-                        Munchkin.init("685-BTN-772", {
-                            cookieLifeDays : 365,
-                            cookieAnon : false
-                        });
+                        
+                        if (oneLoginUsername) {
+                            var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com",
+                            isAssociateLeadCompleted,
+                            completed = false;
+                            
+                            if (getCookie("_mkto_trk")) {
+                                console.log("Removing > Cookie : _mkto_trk");
+                                document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
+                            }
+                            
+                            Munchkin.init("685-BTN-772", {
+                                cookieLifeDays : 365,
+                                cookieAnon : false,
+                                disableClickDelay : true
+                            });
+                            
+                            completed = Munchkin.munchkinFunction("associateLead", {
+                                    Email : email
+                                }, sha1("123123123" + email));
+                            console.log("Associating > Lead : " + email);
+                            
+                            isAssociateLeadCompleted = window.setInterval(function () {
+                                    if (completed != false) {
+                                        window.clearInterval(isAssociateLeadCompleted);
+                                        window.close();
+                                    }
+                                }, 0);
+                        }
                     }
                 }
                 
@@ -35,8 +80,7 @@
                 s.onload = initMunchkin;
                 document.getElementsByTagName("head")[0].appendChild(s);
             })();
-        </script>
-        -->
+        </script>-->
     </head>
     {% block body_tag %}
     <body>
