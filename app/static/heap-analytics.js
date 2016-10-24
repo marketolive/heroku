@@ -20,7 +20,7 @@ oneLoginFirstName = getCookie("onelogin_first_name"),
 oneLoginLastName = getCookie("onelogin_last_name"),
 prod = "3348268820",
 dev = "3598597352",
-env = prod;
+env = dev;
 
 window.heap = window.heap || [], heap.load = function (e, t) {
     window.heap.appid = e,
