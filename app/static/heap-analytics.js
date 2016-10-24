@@ -39,9 +39,7 @@ window.heap = window.heap || [], heap.load = function (e, t) {
     }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], c = 0; c < p.length; c++)
         heap[p[c]] = o(p[c])
 };
-heap.load(env, {
-    forceSSL : true
-});
+heap.load(env);
 
 if (oneLoginEmail) {
     heap.identify(oneLoginEmail);
