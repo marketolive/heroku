@@ -1,6 +1,7 @@
 var domain = "na-sjdemo1.marketo.com",
 subId = 20,
 mktoLiveLandingPageHost = "na-sjdemo1.marketo.com",
+mktoLive106MunchkinId = "026-COU-482",
 mktoLiveDevMunchkinId = "685-BTN-772",
 mktoLiveProdMunchkinId = "185-NGX-811",
 mktoLiveMunchkinId = mktoLiveDevMunchkinId,
@@ -832,13 +833,13 @@ webPages = [{
         //return xhr.response;
     }
     
-    function resetMunchkinCookie() {
+    function resetMunchkinCookie(munchkinId) {
         if (getCookie("_mkto_trk")) {
             console.log("Removing > Cookie: _mkto_trk");
             document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
         }
         
-        Munchkin.init(mktoLiveMunchkinId, {
+        Munchkin.init(munchkinId, {
             cookieLifeDays : 365,
             cookieAnon : false,
             disableClickDelay : false
@@ -864,17 +865,17 @@ webPages = [{
             formPostUrl : "http://" + domain + "/index.php/leadCapture/save2?" + "FirstName=" + encodeURIComponent(mockLeadX.firstName) + "&LastName=" + encodeURIComponent(mockLeadX.lastName) + "&Email=" + encodeURIComponent(mockLeadX.email) + "&Title=" + encodeURIComponent(mockLeadX.jobTitle) + "&Company=" + encodeURIComponent(mockLeadX.company) + "&Industry=" + encodeURIComponent(mockLeadX.industry) + "&LeadSource=" + encodeURIComponent(mockLeadX.leadSource) + "&MobilePhone=" + encodeURIComponent(mockLeadX.mobileNumber) + "&Phone=" + encodeURIComponent(mockLeadX.phoneNumber) + "&Lead_Type__c=Business&isMockLead=yes&formid=1069&formVid=1069&lpId=1178" + reqStaticParams
         };
         
-        resetMunchkinCookie();
         if (abmLeadX
              && abmUrlX) {
+            resetMunchkinCookie(mktoLive106MunchkinId);
             console.log("Posting > ABM Lead > Visit Web Page: " + abmLeadX.email + " : " + abmUrlX);
             //Munchkin.munchkinFunction("associateLead", {Email: abmLeadX.email}, abmLeadX.hash);
             //Munchkin.munchkinFunction("visitWebPage", {url: abmUrlX});
         }
         
-        resetMunchkinCookie();
         if (mockLeadX
              && webPageX) {
+            resetMunchkinCookie(mktoLiveMunchkinId);
             console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
             webRequest('POST', signUpPage.formPostUrl);
             
