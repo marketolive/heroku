@@ -803,7 +803,9 @@ webPages = [{
 
 (function () {
     var didInit = false,
-    s;
+    s,
+    origMunchkinInit,
+    origMunchkinFunction;
     
     function getCookie(cookieName) {
         console.log("Getting > Cookie: " + cookieName);
@@ -834,16 +836,20 @@ webPages = [{
     }
     
     function resetMunchkinCookie(munchkinId) {
+        var result;
+        
         if (getCookie("_mkto_trk")) {
             console.log("Removing > Cookie: _mkto_trk");
             document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
         }
         
-        Munchkin.init(munchkinId, {
+        result = Munchkin.init(munchkinId, {
             cookieLifeDays : 365,
             cookieAnon : false,
             disableClickDelay : false
         });
+        
+        return result;
     }
     
     function submitLeadData() {
@@ -852,7 +858,17 @@ webPages = [{
         mockLeadX = mockLeads[Math.floor(Math.random() * mockLeads.length)],
         webPageX = webPages[Math.floor(Math.random() * webPages.length)],
         webPageXvisitationRate = webPageX.visitationRate * webPages.length,
-        signUpPage;
+        signUpPage,
+        isAbmMunchkinReset,
+        isAbmAssociateLead,
+        isAbmVisitWebPage,
+        abmResetMunchkinResult = abmAssociateLeadResult = abmVisitWebPageResult = false,
+        isMockFormPost,
+        isMockMunchkinReset,
+        isMockAssociateLead,
+        isMockVisitWebPage,
+        mockFormPostResult,
+        mockResetMunchkinResult = mockAssociateLeadResult = mockVisitWebPageResult = false;
         
         if (mockLeadX.mobileNumber == null) {
             mockLeadX.mobileNumber = "";
@@ -865,31 +881,58 @@ webPages = [{
             formPostUrl : "http://" + domain + "/index.php/leadCapture/save2?" + "FirstName=" + encodeURIComponent(mockLeadX.firstName) + "&LastName=" + encodeURIComponent(mockLeadX.lastName) + "&Email=" + encodeURIComponent(mockLeadX.email) + "&Title=" + encodeURIComponent(mockLeadX.jobTitle) + "&Company=" + encodeURIComponent(mockLeadX.company) + "&Industry=" + encodeURIComponent(mockLeadX.industry) + "&LeadSource=" + encodeURIComponent(mockLeadX.leadSource) + "&MobilePhone=" + encodeURIComponent(mockLeadX.mobileNumber) + "&Phone=" + encodeURIComponent(mockLeadX.phoneNumber) + "&Lead_Type__c=Business&isMockLead=yes&formid=1069&formVid=1069&lpId=1178" + reqStaticParams
         };
         
-        if (abmLeadX
-             && abmUrlX) {
-            resetMunchkinCookie(mktoLive106MunchkinId);
-            console.log("Posting > ABM Lead > Visit Web Page: " + abmLeadX.email + " : " + abmUrlX);
-            Munchkin.munchkinFunction("associateLead", {Email: abmLeadX.email}, abmLeadX.hash);
-            Munchkin.munchkinFunction("visitWebPage", {url: abmUrlX});
-        }
+        abmResetMunchkinResult = resetMunchkinCookie(mktoLive106MunchkinId);
+        isAbmMunchkinReset = window.setInterval(function () {
+                if (abmResetMunchkinResult != false) {
+                    console.log("Associating > ABM Lead: " + abmLeadX.email + " : " + abmUrlX);
+                    window.clearInterval(isAbmMunchkinReset);
+                    
+                    abmAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {Email : abmLeadX.email}, abmLeadX.hash);
+                    isAbmAssociateLead = window.setInterval(function () {
+                            if (abmAssociateLeadResult != false) {
+                                console.log("Posting > ABM Lead > Visit Web Page: " + abmLeadX.email + " : " + abmUrlX);
+                                window.clearInterval(isAbmAssociateLead);
+                                
+                                abmVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {url : abmUrlX});
+                            }
+                        }, 0);
+                }
+            }, 0);
         
-        if (mockLeadX
-             && webPageX) {
-            resetMunchkinCookie(mktoLiveMunchkinId);
-            console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
-            webRequest('POST', signUpPage.formPostUrl);
-            
-            console.log("Associating > Mock Lead: " + mockLeadX.email);
-            Munchkin.munchkinFunction("associateLead", {Email: mockLeadX.email}, mockLeadX.hash);
-            
-            if (webPageXvisitationRate >= 1.0
-                 || (Math.random()) <= webPageXvisitationRate) {
-                console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX.urlPath);
-                Munchkin.munchkinFunction("visitWebPage", {url: webPageX.urlPath});
-            } else {
-                console.log("NOT Posting > Mock Lead > Visit Web Page: " + webPageX.urlPath + " due to web page visitation rate (" + webPageXvisitationRate + ")");
-            }
-        }
+        console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
+        mockFormPostResult = webRequest('POST', signUpPage.formPostUrl);
+        isMockFormPost = window.setInterval(function () {
+                if (mockFormPostResult == "OK") {
+                    window.clearInterval(isMockFormPost);
+                    isAbmVisitWebPage = window.setInterval(function () {
+                            if (abmVisitWebPageResult != false) {
+                                window.clearInterval(isAbmVisitWebPage);
+                                
+                                mockResetMunchkinResult = resetMunchkinCookie(mktoLiveMunchkinId);
+                                isMockMunchkinReset = window.setInterval(function () {
+                                        if (mockResetMunchkinResult != false) {
+                                            console.log("Associating > Mock Lead: " + mockLeadX.email);
+                                            window.clearInterval(isMockMunchkinReset);
+                                            
+                                            mockAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {Email : mockLeadX.email}, mockLeadX.hash);
+                                            isMockAssociateLead = window.setInterval(function () {
+                                                    if (mockAssociateLeadResult != false) {
+                                                        window.clearInterval(isMockAssociateLead);
+                                                        if (webPageXvisitationRate >= 1.0
+                                                             || (Math.random()) <= webPageXvisitationRate) {
+                                                            console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX.urlPath);
+                                                            mockVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {url : webPageX.urlPath});
+                                                        } else {
+                                                            console.log("NOT Posting > Mock Lead > Visit Web Page: " + webPageX.urlPath + " due to web page visitation rate (" + webPageXvisitationRate + ")");
+                                                        }
+                                                    }
+                                                }, 0);
+                                        }
+                                    }, 0);
+                            }
+                        }, 0);
+                }
+            }, 0);
     }
     
     function initMunchkin() {
