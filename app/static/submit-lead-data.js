@@ -1,11 +1,11 @@
-var domain = "na-sjp.marketo.com",
-subId = formVid = 20,
+var domain = "na-sjdemo1.marketo.com",
+subId = 20,
 mktoLiveLandingPageHost = "na-sjdemo1.marketo.com",
 mktoLiveDevMunchkinId = "685-BTN-772",
 mktoLiveProdMunchkinId = "185-NGX-811",
 mktoLiveMunchkinId = mktoLiveDevMunchkinId,
-mktoReferrer = "http://www.marketolive.com",
-reqStaticParams = "&subId="+subId+"&formVid="+formVid+"&munchkinId="+mktoLiveMunchkinId+"&_mktoReferrer="+mktoReferrer,
+mktoReferrer = "http%3A%2F%2Fwww.marketolive.com",
+reqStaticParams = "&subId="+subId+"&munchkinId="+mktoLiveMunchkinId+"&_mktoReferrer="+mktoReferrer,
 abmLeads,
 abmUrls,
 mockLeads,
@@ -851,8 +851,17 @@ webPages = [{
         mockLeadX = mockLeads[Math.floor(Math.random() * mockLeads.length)],
         webPageX = webPages[Math.floor(Math.random() * webPages.length)],
         webPageXvisitationRate = webPageX.visitationRate * webPages.length,
+        signUpPage;
+        
+        if (mockLeadX.mobileNumber == null) {
+            mockLeadX.mobileNumber = "";
+        }
+        if (mockLeadX.phoneNumber == null) {
+            mockLeadX.phoneNumber = "";
+        }
+        
         signUpPage = {
-            formPostUrl : "http://" + domain + "/index.php/leadCapture/save2?" + "FirstName=" + mockLeadX.firstName + "&LastName=" + mockLeadX.lastName + "&Email=" + mockLeadX.email + "&Title=" + mockLeadX.jobTitle + "&Company=" + mockLeadX.company + "&Industry=" + mockLeadX.industry + "&LeadSource=" + mockLeadX.leadSource + "&MobilePhone=" + mockLeadX.mobileNumber + "&Phone=" + mockLeadX.phoneNumber + "&Lead_Type__c=Business&isMockLead=yes&formid=1069&lpId=1178" + reqStaticParams
+            formPostUrl : "http://" + domain + "/index.php/leadCapture/save2?" + "FirstName=" + encodeURIComponent(mockLeadX.firstName) + "&LastName=" + encodeURIComponent(mockLeadX.lastName) + "&Email=" + encodeURIComponent(mockLeadX.email) + "&Title=" + encodeURIComponent(mockLeadX.jobTitle) + "&Company=" + encodeURIComponent(mockLeadX.company) + "&Industry=" + encodeURIComponent(mockLeadX.industry) + "&LeadSource=" + encodeURIComponent(mockLeadX.leadSource) + "&MobilePhone=" + encodeURIComponent(mockLeadX.mobileNumber) + "&Phone=" + encodeURIComponent(mockLeadX.phoneNumber) + "&Lead_Type__c=Business&isMockLead=yes&formid=1069&formVid=1069&lpId=1178" + reqStaticParams
         };
         
         resetMunchkinCookie();
