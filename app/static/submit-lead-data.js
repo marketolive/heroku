@@ -863,7 +863,6 @@ webPages = [{
         isAbmAssociateLead,
         isAbmVisitWebPage,
         abmResetMunchkinResult = abmAssociateLeadResult = abmVisitWebPageResult = false,
-        isMockFormPost,
         isMockMunchkinReset,
         isMockAssociateLead,
         isMockVisitWebPage,
@@ -881,52 +880,48 @@ webPages = [{
             formPostUrl : "http://" + domain + "/index.php/leadCapture/save2?" + "FirstName=" + encodeURIComponent(mockLeadX.firstName) + "&LastName=" + encodeURIComponent(mockLeadX.lastName) + "&Email=" + encodeURIComponent(mockLeadX.email) + "&Title=" + encodeURIComponent(mockLeadX.jobTitle) + "&Company=" + encodeURIComponent(mockLeadX.company) + "&Industry=" + encodeURIComponent(mockLeadX.industry) + "&LeadSource=" + encodeURIComponent(mockLeadX.leadSource) + "&MobilePhone=" + encodeURIComponent(mockLeadX.mobileNumber) + "&Phone=" + encodeURIComponent(mockLeadX.phoneNumber) + "&Lead_Type__c=Business&isMockLead=yes&formid=1069&formVid=1069&lpId=1178" + reqStaticParams
         };
         
+        console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
+        mockFormPostResult = webRequest('POST', signUpPage.formPostUrl);
+        
         abmResetMunchkinResult = resetMunchkinCookie(mktoLive106MunchkinId);
         isAbmMunchkinReset = window.setInterval(function () {
                 if (abmResetMunchkinResult != false) {
                     console.log("Associating > ABM Lead: " + abmLeadX.email + " : " + abmUrlX);
                     window.clearInterval(isAbmMunchkinReset);
                     
-                    abmAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {Email : abmLeadX.email}, abmLeadX.hash);
+                    abmAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {Email: abmLeadX.email}, abmLeadX.hash);
                     isAbmAssociateLead = window.setInterval(function () {
                             if (abmAssociateLeadResult != false) {
                                 console.log("Posting > ABM Lead > Visit Web Page: " + abmLeadX.email + " : " + abmUrlX);
                                 window.clearInterval(isAbmAssociateLead);
                                 
-                                abmVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {url : abmUrlX});
+                                abmVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {url: abmUrlX});
                             }
                         }, 0);
                 }
             }, 0);
         
-        console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
-        mockFormPostResult = webRequest('POST', signUpPage.formPostUrl);
-        isMockFormPost = window.setInterval(function () {
-                if (mockFormPostResult == "OK") {
-                    window.clearInterval(isMockFormPost);
-                    isAbmVisitWebPage = window.setInterval(function () {
-                            if (abmVisitWebPageResult != false) {
-                                window.clearInterval(isAbmVisitWebPage);
+        isAbmVisitWebPage = window.setInterval(function () {
+                if (abmVisitWebPageResult != false) {
+                    window.clearInterval(isAbmVisitWebPage);
+                    
+                    mockResetMunchkinResult = resetMunchkinCookie(mktoLiveMunchkinId);
+                    isMockMunchkinReset = window.setInterval(function () {
+                            if (mockResetMunchkinResult != false) {
+                                console.log("Associating > Mock Lead: " + mockLeadX.email);
+                                window.clearInterval(isMockMunchkinReset);
                                 
-                                mockResetMunchkinResult = resetMunchkinCookie(mktoLiveMunchkinId);
-                                isMockMunchkinReset = window.setInterval(function () {
-                                        if (mockResetMunchkinResult != false) {
-                                            console.log("Associating > Mock Lead: " + mockLeadX.email);
-                                            window.clearInterval(isMockMunchkinReset);
-                                            
-                                            mockAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {Email : mockLeadX.email}, mockLeadX.hash);
-                                            isMockAssociateLead = window.setInterval(function () {
-                                                    if (mockAssociateLeadResult != false) {
-                                                        window.clearInterval(isMockAssociateLead);
-                                                        if (webPageXvisitationRate >= 1.0
-                                                             || (Math.random()) <= webPageXvisitationRate) {
-                                                            console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX.urlPath);
-                                                            mockVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {url : webPageX.urlPath});
-                                                        } else {
-                                                            console.log("NOT Posting > Mock Lead > Visit Web Page: " + webPageX.urlPath + " due to web page visitation rate (" + webPageXvisitationRate + ")");
-                                                        }
-                                                    }
-                                                }, 0);
+                                mockAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {Email: mockLeadX.email}, mockLeadX.hash);
+                                isMockAssociateLead = window.setInterval(function () {
+                                        if (mockAssociateLeadResult != false) {
+                                            window.clearInterval(isMockAssociateLead);
+                                            if (webPageXvisitationRate >= 1.0
+                                                 || (Math.random()) <= webPageXvisitationRate) {
+                                                console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX.urlPath);
+                                                mockVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {url: webPageX.urlPath});
+                                            } else {
+                                                console.log("NOT Posting > Mock Lead > Visit Web Page: " + webPageX.urlPath + " due to web page visitation rate (" + webPageXvisitationRate + ")");
+                                            }
                                         }
                                     }, 0);
                             }
