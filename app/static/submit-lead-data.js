@@ -882,7 +882,7 @@ webPages = [{
         
         console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
         mockFormPostResult = webRequest('POST', signUpPage.formPostUrl);
-        /*
+        
         abmResetMunchkinResult = resetMunchkinCookie(mktoLive106MunchkinId);
         isAbmMunchkinReset = window.setInterval(function () {
                 if (abmResetMunchkinResult != false) {
@@ -928,7 +928,6 @@ webPages = [{
                         }, 0);
                 }
             }, 0);
-        */
     }
     
     function initMunchkin() {
