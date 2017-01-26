@@ -186,10 +186,6 @@ def info_integrations():
 def info_contact_us():
     return render_template('/en/info/skeleton-page.html', content="Contact Us")
 
-@app.route('/info/community')
-def info_community():
-    return render_template('/en/info/skeleton-page.html', content="Community")
-
 @app.route('/info/live-event')
 def info_live_event():
     return render_template('/en/info/skeleton-page.html', content="Live Event")
@@ -205,6 +201,18 @@ def info_products():
 @app.route('/info/pricing')
 def info_pricing():
     return render_template('/en/info/skeleton-page.html', content="Pricing")
+    
+@app.route('/info/analyst-reports')
+def info_analyst_reports():
+    return render_template('/en/info/skeleton-page.html', content="Analyst Reports")
+
+@app.route('/info/community')
+def info_community():
+    return render_template('/en/info/skeleton-page.html', content="Community")
+
+@app.route('/info/whitepapers')
+def info_whitepapers():
+    return render_template('/en/info/skeleton-page.html', content="Whitepapers")
 
 @app.route('/data/web-visit')
 def web_visit():
