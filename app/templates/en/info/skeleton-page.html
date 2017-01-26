@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <!--{% block scripts %}
+        {% block scripts %}
         <script type="text/javascript" src="{{ url_for('static', filename='sha1.min.js') }}"></script>
         {% endblock %}
         <script type="text/javascript">
@@ -80,7 +80,7 @@
                 s.onload = initMunchkin;
                 document.getElementsByTagName("head")[0].appendChild(s);
             })();
-        </script>-->
+        </script>
     </head>
     {% block body_tag %}
     <body>
