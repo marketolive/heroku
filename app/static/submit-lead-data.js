@@ -1,10 +1,9 @@
-var domain = "na-sjdemo1.marketo.com",
-subId = 20,
+var subId = 20,
 mktoLiveLandingPageHost = "na-sjdemo1.marketo.com",
 mktoLive106MunchkinId = "026-COU-482",
 mktoLiveDevMunchkinId = "685-BTN-772",
 mktoLiveProdMunchkinId = "185-NGX-811",
-mktoLiveMunchkinId = mktoLiveDevMunchkinId,
+mktoLiveMunchkinId = mktoLiveProdMunchkinId,
 mktoReferrer = "http%3A%2F%2Fwww.marketolive.com",
 reqStaticParams = "&subId=" + subId + "&munchkinId=" + mktoLiveMunchkinId + "&_mktoReferrer=" + mktoReferrer,
 webPages = [
@@ -11436,7 +11435,7 @@ abmLeads = [{
         formPostUrlParams = "FirstName=" + encodeURIComponent(mockLeadX.firstName) + "&LastName=" + encodeURIComponent(mockLeadX.lastName) + "&Email=" + encodeURIComponent(mockLeadX.email) + "&Title=" + encodeURIComponent(mockLeadX.jobTitle) + "&Company=" + encodeURIComponent(mockLeadX.company) + "&Industry=" + encodeURIComponent(mockLeadX.industry) + "&LeadSource=" + encodeURIComponent(mockLeadX.leadSource) + "&MobilePhone=" + encodeURIComponent(mockLeadX.mobileNumber) + "&Phone=" + encodeURIComponent(mockLeadX.phoneNumber) + "&Lead_Type__c=Business&isMockLead=yes&utmTerm=" + encodeURIComponent(utmTermX) + "&utmMedium=" + encodeURIComponent(utmMediumX) + "&utmCampaign=" + encodeURIComponent(utmCampaignX) + "&formid=" + acquirePageX.formid + "&formVid=" + acquirePageX.formVid + "&lpId=" + acquirePageX.lpId + reqStaticParams;
         
         console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
-        mockFormPostResult = webRequest("http://" + domain + "/index.php/leadCapture/save2", formPostUrlParams, "POST", false, null, function (response) {
+        mockFormPostResult = webRequest("http://" + mktoLiveLandingPageHost + "/index.php/leadCapture/save2", formPostUrlParams, "POST", false, null, function (response) {
                 console.log("Posted > Mock Lead > Form Fill: " + response)
             });
         
