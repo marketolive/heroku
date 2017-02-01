@@ -11343,6 +11343,7 @@ abmLeads = [{
     }
     
     function webRequest(url, params, method, async, responseType, callback) {
+        console.log("Web Request > " + url "\n\t" + params);
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function () {
             if (callback
@@ -11394,7 +11395,6 @@ abmLeads = [{
         isMockMunchkinReset,
         isMockAssociateLead,
         isMockVisitWebPage,
-        mockFormPostResult,
         mockResetMunchkinResult = mockAssociateLeadResult = mockVisitWebPageResult = false;
         
         if (mockLeadX.mobileNumber == null) {
@@ -11407,9 +11407,9 @@ abmLeads = [{
         formPostUrlParams = "FirstName=" + encodeURIComponent(mockLeadX.firstName) + "&LastName=" + encodeURIComponent(mockLeadX.lastName) + "&Email=" + encodeURIComponent(mockLeadX.email) + "&Title=" + encodeURIComponent(mockLeadX.jobTitle) + "&Company=" + encodeURIComponent(mockLeadX.company) + "&Industry=" + encodeURIComponent(mockLeadX.industry) + "&LeadSource=" + encodeURIComponent(mockLeadX.leadSource) + "&MobilePhone=" + encodeURIComponent(mockLeadX.mobileNumber) + "&Phone=" + encodeURIComponent(mockLeadX.phoneNumber) + "&Lead_Type__c=Business&isMockLead=yes&utmTerm=" + encodeURIComponent(utmTermX) + "&utmMedium=" + encodeURIComponent(utmMediumX) + "&utmCampaign=" + encodeURIComponent(utmCampaignX) + "&formid=" + acquirePageX.formid + "&formVid=" + acquirePageX.formVid + "&lpId=" + acquirePageX.lpId + reqStaticParams;
         
         console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
-        mockFormPostResult = webRequest("http://" + mktoLiveLandingPageHost + "/index.php/leadCapture/save2", formPostUrlParams, "POST", false, null, function (response) {
-                console.log("Posted > Mock Lead > Form Fill: " + response)
-            });
+        webRequest("http://" + mktoLiveLandingPageHost + "/index.php/leadCapture/save2", formPostUrlParams, "POST", false, null, function (response) {
+            console.log("Posted > Mock Lead > Form Fill: " + response)
+        });
         
         abmResetMunchkinResult = resetMunchkinCookie(mktoLive106MunchkinId);
         isAbmMunchkinReset = window.setInterval(function () {
