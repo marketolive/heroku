@@ -11,6 +11,10 @@
         <script type="text/javascript" src="{{ url_for('static', filename='sha1.min.js') }}"></script>
         {% endblock %}
         <script type="text/javascript">
+            var mktoLiveDevMunchkinId = "685-BTN-772",
+            mktoLiveProdMunchkinId = "185-NGX-811",
+            mktoLiveMunchkinId = mktoLiveProdMunchkinId;
+            
             (function () {
                 var didInit = false,
                 s;
@@ -47,7 +51,7 @@
                                 document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
                             }
                             
-                            Munchkin.init("685-BTN-772", {
+                            Munchkin.init(mktoLiveMunchkinId, {
                                 cookieLifeDays : 365,
                                 cookieAnon : false,
                                 disableClickDelay : true
