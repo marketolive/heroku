@@ -11343,7 +11343,7 @@ abmLeads = [{
     }
     
     function webRequest(url, params, method, async, responseType, callback) {
-        console.log("Web Request > " + url + "\n\t" + params);
+        console.log("Web Request > " + url + "\n" + params);
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function () {
             if (callback
