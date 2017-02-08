@@ -396,7 +396,7 @@ abmLeads = [{
         isMockVisitWebPage,
         mockResetMunchkinResult = mockAssociateLeadResult = mockVisitWebPageResult = false;
         
-        webRequest(mockLeadEndpoint, null, 'GET', false, '', function (response) {mockLeadX = response;});
+        webRequest(mockLeadEndpoint, null, 'GET', false, '', function (response) {mockLeadX = JSON.parse(response);});
         if (mockLeadX.mobileNumber == null) {
             mockLeadX.mobileNumber = "";
         }
