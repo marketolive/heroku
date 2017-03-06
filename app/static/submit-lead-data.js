@@ -1,4 +1,4 @@
-var URL_PATH = "m3-dev",
+var URL_PATH = "m3",
 numOfVerticals = 2,
 mktoLiveDevSubId = 20,
 mktoLiveProdSubId = 69,
