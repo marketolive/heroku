@@ -68,10 +68,12 @@ webPages = [
     }
     
     function resetMunchkinCookie(munchkinId) {
-        var result;
+        var currCookie = getCookie("_mkto_trk"), 
+        result;
         
-        if (getCookie("_mkto_trk")) {
-            origCookie = getCookie("_mkto_trk");
+        if (currCookie != null
+             && currCookie != "") {
+            origCookie = currCookie;
         }
         document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
         console.log("Removed > Cookie: _mkto_trk");
@@ -87,13 +89,16 @@ webPages = [
     }
     
     function resetOrigMunchkinCookie(origCookie) {
-        var date = new Date(),
-        expiresInDays = 365;
-        
-        date.setTime(date.getTime() + (expiresInDays * 24 * 60 * 60 * 1000));
-        document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=" + date.toGMTString();
-        console.log("Reset > Cookie: _mkto_trk");
-        return getCookie("_mkto_trk");
+        if (origCookie != null
+             && origCookie != "") {
+            var date = new Date(),
+            expiresInDays = 365;
+            
+            date.setTime(date.getTime() + (expiresInDays * 24 * 60 * 60 * 1000));
+            document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=" + date.toGMTString();
+            console.log("Reset > Cookie: _mkto_trk");
+            return getCookie("_mkto_trk");
+        }
     }
     
     function submitLeadData() {
