@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+{% block html %}
+{% block full_image %}
+<html lang="en">
+  {% endblock %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='marketo-live-circle-logo.png') }}">
+    <!-- Bootstrap Core CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}"> -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Marterial Design Icons and Color Scheme-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="{{ url_for('static',  filename='heap-analytics.js') }}"></script>
+    {% block head %}
+    {% endblock %}
+  </head>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <div class="logo-nav-container">
+        <a class="navbar-brand" href="/">
+        <img class="logo-nav" alt="Marketo Live" src="{{ url_for('static', filename='marketo-live-circle-logo.png') }}">
+        </a>
+      </div>
+      <div class="logo-nav-container">
+        <a class="navbar-brand" href="/">
+        <img class="logo-nav" alt="Marketo Live" src="{{ url_for('static', filename='marketo-live-circle-orange-logo.png') }}">
+        </a>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#"> <span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solutions<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/{{lang}}/solutions/lead-management">Lead Management</a></li>
+            <li><a href="/{{lang}}/solutions/email-marketing">Email Marketing</a></li>
+            <li><a href="/{{lang}}/solutions/consumer-marketing">Consumer Marketing</a></li>
+            <li><a href="/{{lang}}/solutions/customer-base-marketing">Customer Base Marketing</a></li>
+            <li><a href="/{{lang}}/solutions/mobile-marketing">Mobile Marketing</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Verticals<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/{{lang}}/verticals/b2b">Technology</a></li>
+            <li><a href="/{{lang}}/verticals/higher-education">Higher Education</a></li>
+            <li><a href="/{{lang}}/verticals/financial-services">Commercial Banking Services</a></li>
+            <li><a href="/{{lang}}/verticals/healthcare">Healthcare Providers</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle link-padding" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">English<span class="caret"></span></a>
+          {% block lang_nav %}
+          <ul class="dropdown-menu">
+            <li><a href="/en/{{path}}{{page}}">English</a></li>
+            <li><a href="/jp/{{path}}{{page}}">日本語（日本）</a></li>
+          </ul>
+          {% endblock %}
+        </li>
+        <!--                     <li>
+          {% if name %}
+          <button type="button" id='loggedinBtn' class="btn btn-default navbar-btn sign-in-btn" data-toggle="modal" data-target=".logout-modal">{{ name }}</button>
+          {% else %}
+          <button type="button" id='signinBtn' class="btn btn-default navbar-btn sign-in-btn" data-toggle="modal" data-target=".bs-example-modal-lg">Sign In</button>
+          {% endif %}
+          </li> -->
+        <li>
+          {% if partners %}
+          <a target="_blank" href="https://nation.marketo.com/community/partners/service-partners/marketolive-partner-pilot/content?sortKey=contentstatus%5Bpublished%5D~subjectAsc&sortOrder=1" class="help-nav-link">
+          <i id="help-icon" class="material-icons">help_outline</i>
+          </a>
+          {% else %}
+          <a data-toggle="modal" data-target="#help-options" class="help-nav-link">
+            <i id="help-icon" class="material-icons">help_outline</i>
+            <!-- <div class="help-icon"></div> -->
+          </a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% block navbar %}
+  {% endblock %}
+  {% block content %}
+  {% block body_tag %}
+  <body>
+    {% endblock %}
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5TWXTV"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5TWXTV');
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Page Content -->
+    <!-- <div class="container"> -->
+    <div class="modal fade logout-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <a href="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <form class="form-horizontal" method="Post" action="/login">
+            <div class="form-group">
+              {{ form.hidden_tag() }}
+              <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                {{ form.inputEmail(class_="form-control", placeholder="Email") }}
+                <!--<input type="email" class="form-control" id="inputEmail" placeholder="Email">-->
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                {% if get_flashed_messages()[0] %}
+                <p>{{get_flashed_messages()[0]}}</p>
+                {% endif %}
+                <button type="submit"  class="btn btn-default sign-in-btn-form">Sign In</button>
+              </div>
+            </div>
+            <div class="col-sm-offset-2">
+              Need an account? <a class="white-link" target="_blank" href="https://marketoemployee.jiveon.com/community/sales/sc-tools/marketolive">Sign Up</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% block body_content %}
+    {% endblock %}
+    <div class="container-fluid container-custom">
+      {% block page_content %}
+      {% endblock %}
+    </div>
+    <!-- </div> -->
+    <div id="help-options" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="gridSystemModalLabel">What Do You Need Help With?</h4>
+          </div>
+          <div class="modal-body help-modal-body">
+            <div class="row">
+              <div class="col-sm-4">
+                <a href="#" class="deeplink" target="_blank" deeplink="request-account">
+                  <div class="md-icon">
+                    <div>
+                      <i class="material-icons md-dark md-130">person_add</i>
+                      <p>Request an Account</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-sm-4">
+                <a href="#" class="deeplink" target="_blank" deeplink="lite-training-content">
+                  <div class="md-icon">
+                    <div>
+                      <i class="material-icons md-dark md-130">ondemand_video</i>
+                    </div>
+                    <p>Lite Training Content</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-sm-4">
+                <a href="#" class="deeplink" target="_blank" deeplink="advanced-training-content">
+                  <div class="md-icon">
+                    <div>
+                      <i class="material-icons md-dark md-130">video_library</i>
+                    </div>
+                    <p>Pro Training Content</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- /.container -->
+  </body>
+  {% endblock %}
+  <!-- jQuery -->
+  <!--<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <!--<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- Material Design -->
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <!-- JS for Base -->
+  <script src="{{ url_for('static', filename='base.js') }}"></script>
+  {% if get_flashed_messages()[0] %}<script type='text/javascript'>$("#signinBtn").trigger("click");</script>{% endif %}
+  {% block scripts %}
+  {% endblock %}
+  <!-- Footer -->
+  <footer>
+    {% block footer %}
+    {% endblock %}
+  </footer>
+</html>
+{% endblock %}
