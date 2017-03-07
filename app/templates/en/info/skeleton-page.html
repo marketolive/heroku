@@ -46,14 +46,12 @@
                             isAssociateLeadCompleted,
                             completed = false;
                             
-                            if (getCookie("_mkto_trk")) {
-                                console.log("Removing > Cookie : _mkto_trk");
-                                document.cookie.replace(/;{0,1} {0,1}_mkto_trk=[^;]*/, "");
-                            }
+                            document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+                            console.log("Removed > Cookie: _mkto_trk");
                             
                             Munchkin.init(mktoLiveMunchkinId, {
                                 cookieLifeDays : 365,
-                                cookieAnon : false,
+                                cookieAnon : true,
                                 disableClickDelay : true
                             });
                             
