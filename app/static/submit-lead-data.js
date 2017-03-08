@@ -1,4 +1,4 @@
-var URL_PATH = "m3-dev",
+var URL_PATH = "m3",
 numOfVerticals = 2,
 mktoLiveDevSubId = 20,
 mktoLiveProdSubId = 69,
@@ -88,16 +88,28 @@ webPages = [
         return result;
     }
     
-    function resetOrigMunchkinCookie(origCookie) {
-        if (origCookie != null
-             && origCookie != "") {
-            var date = new Date(),
-            expiresInDays = 365;
+    function resetMasterMunchkinCookie() {
+        var oneLoginUsername = getCookie("onelogin_username");
+        
+        if (oneLoginUsername) {
+            var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com",
+            result = false;
             
-            date.setTime(date.getTime() + (expiresInDays * 24 * 60 * 60 * 1000));
-            document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=" + date.toGMTString();
-            console.log("Reset > Cookie: _mkto_trk");
-            return getCookie("_mkto_trk");
+            document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+            console.log("Removed > Cookie: _mkto_trk");
+            
+            Munchkin.init(munchkinId, {
+                cookieLifeDays: 365,
+                cookieAnon: false,
+                disableClickDelay: false
+            });
+            
+            result = Munchkin.munchkinFunction("associateLead", {
+                    Email: email
+                }, sha1("123123123" + email));
+            console.log("Associating > Lead : " + email);
+            
+            return result;
         }
     }
     
@@ -195,7 +207,7 @@ webPages = [
                                                 if (mockVisitWebPageResult != false) {
                                                     window.clearInterval(isMockVisitWebPage);
                                                     
-                                                    console.log(resetOrigMunchkinCookie(origCookie));
+                                                    resetMasterMunchkinCookie();
                                                 }
                                             }, 0);
                                     }
