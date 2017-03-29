@@ -1,0 +1,203 @@
+{% extends "en/base.html" %}
+
+{% block full_image %}
+<html class="full" lang="en">
+{% endblock %}
+
+{% block head %}
+<title>MarketoLive Updates</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugin-update.css') }}">
+<style type="text/css">
+  .update {
+    padding: 15px 75px;
+    bottom: inherit;
+  }
+</style>
+{% endblock %}
+
+{% block page_content %}
+  <div class="row update">
+    <!-- New to MarketoLive Extension Section -->
+    <div class="col-lg-4 col-md-4 col-sm-4 ">
+      <h4>New to MarketoLive Extension v5.0.0</h4>
+      <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion1_heading1">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse1" aria-expanded="false" aria-controls="accordion1_collapse1">
+                Extension is Out of Date Notification
+              </a>
+            </h4>
+          </div>
+          <div id="accordion1_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading1">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='marketolive-old-extension.jpg') }}"><br><br>
+              If you receive this notification you will not be able to use the MarketoLive instance until you update the extension. Simply click on the <i>'Update Extension'</i> button to open the Chrome Extensions page in order to resolve the issue.
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion1_heading2">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse2" aria-expanded="false" aria-controls="accordion1_collapse2">
+                Extension Update Pending Notification
+              </a>
+            </h4>
+          </div>
+          <div id="accordion1_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading2">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='marketolive-update-extension.jpg') }}"><br><br>
+              In the future you will receive this message anytime a new extension update is available. Simply click on the <i>'Approve Update',</i> button to apply the update if it doesn't require any permission changes, otherwise you will need to manually approve the update.
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion1_heading3">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse3" aria-expanded="false" aria-controls="accordion1_collapse3">
+                Bad Extension Notification
+              </a>
+            </h4>
+          </div>
+          <div id="accordion1_collapse3" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading3">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='marketolive-bad-extension-error.jpg') }}"><br><br>
+              If you receive this notification you will not be able to use the MarketoLive instance until the bad extension is uninstalled. Simply click on the <i>'Uninstall Bad Extension'</i> button to resolve the issue.
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- New to MarketoLive Instance Section -->
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <h4>New to MarketoLive Instance</h4>
+      <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion2_heading1">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse1" aria-expanded="false" aria-controls="accordion2_collapse1">
+                Email Insights Update
+              </a>
+            </h4>
+          </div>
+          <div id="accordion2_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion2_heading1">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='email-insights-tile.jpg') }}"><br><br>
+              You can now <u>demo live data</u> within Email Insights rather than the previous static app. If you would still like to demo the static app, please use the link below.<br>
+              <a href="http://www.marketolive.com/en/analytics/email-insights-summit-demo-1">http://www.marketolive.com/en/analytics/email-insights-summit-demo-1</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion2_heading2">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse2" aria-expanded="false" aria-controls="accordion2_collapse2">
+                Saving & Approving Landing Page Templates
+              </a>
+            </h4>
+          </div>
+          <div id="accordion2_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion2_heading2">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='edit-draft-toolbar-button.jpg') }}"><br><br>
+              Due to an bug with how Landing Page Templates load in the editor, the only way you can now <i>Save or Approve</i> templates within your user folder in <i>My Workspace</i> is to first <i>Preview</i> the template then switch to the editor via the <i>Edit Draft</i> toolbar button in the previewer.
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Coming Soon to MarketoLive Section -->
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <h4>Coming Soon to MarketoLive</h4>
+      <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion3_heading1">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse1" aria-expanded="false" aria-controls="accordion3_collapse1">
+                Update Grace Period
+              </a>
+            </h4>
+          </div>
+          <div id="accordion3_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading1">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='demo-extension-dialog-window.jpg') }}"><br><br>
+              <b>There will be a grace period of 1 week in which to update the extension to the latest version (5.0.0)</b>, after which any user who does not have the latest version installed will not be able to use the MarketoLive instance and will receive the dialog window above.
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion3_heading2">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse2" aria-expanded="false" aria-controls="accordion3_collapse2">
+                MarketoLive Reloaded
+              </a>
+            </h4>
+          </div>
+          <div id="accordion3_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading2">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='marketo-live-circle-logo.png') }}"><br><br>
+              In the coming weeks the Demo Services Team will be providing access to the next generation demo environment, code named <b>MarketoLive Reloaded</b>, to Solution Consultants.<br><br>
+              This demo environment will enable you to demo the full capabilities of our solutions with real and organic demo data, no more static data or dummy dashboard data. It will enable you to demo in the way that is best for you and your deal, either from a functionality or journey perspective. Additionally, you will be able to demo the entire Admin section safely.
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion3_heading3">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse3" aria-expanded="false" aria-controls="accordion3_collapse3">
+                Web Personalization Demo Site Updates
+              </a>
+            </h4>
+          </div>
+          <div id="accordion3_collapse3" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading3">
+            <div class="panel-body">
+              We will be updating our Web Personalization demo site (<a href="http://verticals.marketolive.com">http://verticals.marketolive.com</a>) in order to make it easier to choose the persona, geo, industry, display type, or retargeting ads you wish to demo. In the meantime, continue to use the links below.<br><br>
+              
+              <u>Country Based</u><br>
+              <a href="http://verticals.marketolive.com/predictive-content?geo=us">http://verticals.marketolive.com/predictive-content?geo=us (United States)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?geo=ca">http://verticals.marketolive.com/predictive-content?geo=ca (Canada)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?geo=uk">http://verticals.marketolive.com/predictive-content?geo=uk (United Kingdom)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?geo=fr">http://verticals.marketolive.com/predictive-content?geo=fr (France)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?geo=de">http://verticals.marketolive.com/predictive-content?geo=de (Germany)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?geo=au">http://verticals.marketolive.com/predictive-content?geo=au (Australia)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?geo=jp">http://verticals.marketolive.com/predictive-content?geo=jp (Japan)</a><br><br>
+              
+              <u>Industry Based</u><br>
+              <a href="http://verticals.marketolive.com/predictive-content?industry=technology">http://verticals.marketolive.com/predictive-content?industry=technology (Technology)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?industry=higher-education">http://verticals.marketolive.com/predictive-content?industry=higher-education (Higher Education)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?industry=manufacturing">http://verticals.marketolive.com/predictive-content?industry=manufacturing (Manufacturing)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?industry=travel">http://verticals.marketolive.com/predictive-content?industry=travel (Travel & Leisure)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?industry=financial-services">http://verticals.marketolive.com/predictive-content?industry=financial-services (Financial Services)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?industry=healthcare">http://verticals.marketolive.com/predictive-content?industry=healthcare (Healthcare)</a><br><br>
+              
+              <u>Display Based</u><br>
+              <a href="http://verticals.marketolive.com/predictive-content?display=dialog">http://verticals.marketolive.com/predictive-content?display=dialog (Dialog)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?display=widget">http://verticals.marketolive.com/predictive-content?display=widget (Widget)</a><br>
+              <a href="http://verticals.marketolive.com/predictive-content?display=form">http://verticals.marketolive.com/predictive-content?display=form (Form)</a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+{% endblock %}

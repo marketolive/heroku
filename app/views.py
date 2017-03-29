@@ -93,7 +93,7 @@ categories = ['solutions', 'verticals', 'analytics', 'update']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
-		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy']
+		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension']
 
 @app.route('/')
 @app.route('/', subdomain="partners")
@@ -196,7 +196,19 @@ def form_fill():
     mktoReferrer= request.args.get('mktoReferrer')
     output = formFill.request(firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer)
     return render_template('en/data/form-fill-results.html', content=output)
-    
+
+@app.route('/en/update/plugin-update')
+def plugin_update():
+    return render_template('/en/update/extension.html',
+        form = g.loginform,
+        name = g.name,
+        full_name = g.full_name,
+        lang = 'en',
+        path = '%s/update',
+        page = 'extension',
+        user_email = g.email,
+        timestamp = g.timestamp,
+        partners = g.partners)
 '''
 Will delete this once we are fully confident in the above
 

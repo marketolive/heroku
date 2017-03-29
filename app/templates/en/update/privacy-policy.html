@@ -9,21 +9,15 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-home.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugin-update.css') }}">
+<style type="text/css">
+  .update {
+    padding: 15px 75px;
+    bottom: inherit;
+  }
+</style>
 {% endblock %}
 
 {% block page_content %}
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page-title">
-      <img class="img-responsive title-img" src="{{ url_for('static', filename='marketo-live-image-white.png') }}">
-    </div>
-  </div>
-  {% if partners %}
-  <div class="row">
-    <div class="col-sm-12 center-partners">
-      <h1><em>For Partners</em></h1>
-    </div>
-  </div>
-  {% endif %}
   <h5 class= "text-center">The Demo Services Team invites you to read the MarketoLive privacy policy below. If you have any questions please email <a href="mailto:marketolive@marketo.com?Subject=MarketoLive%20Privacy%20Policy">MarketoLive</a>.</h5>
   <div class="row update">
     
@@ -38,7 +32,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
               We are now tracking users uniquely in order to identify which programs, assets, and reports are being utilized.
             </div>
@@ -53,7 +47,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+          <div id="collapseSix" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingSix">
             <div class="panel-body">
               This tracking is explicitly for the purposes of prioritizing resources for the creation and maintenance of assets within the MarketoLive instance.
             </div>
@@ -68,7 +62,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div id="collapseTwo" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <ul class="unstyled">
                 <li>Asset Name &nbsp;&nbsp;&nbsp;&nbsp; [Email (Modular)]</li>
@@ -91,7 +85,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div id="collapseThree" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingThree">
             <div class="panel-body">
               All users of the MarketoLive extension (aka plugin)
             </div>
@@ -106,30 +100,17 @@
               </a>
             </h4>
           </div>
-          <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+          <div id="collapseFour" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingFour">
             <div class="panel-body">
-              ONLY on our MarketoLive instance (mktodemoaccount106)
+              ONLY on our MarketoLive instances:<br><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;mktodemoaccount106 (Internal)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;mktodemoaccount106d (Partner)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;mktodemolivemaster (Reloaded - New Internal &amp; Partner)
             </div>
           </div>
         </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingFive">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                When is this change taking effect?
-              </a>
-            </h4>
-          </div>
-          <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-            <div class="panel-body">
-              Immediately
-            </div>
-          </div>
-        </div>
-
+        
       </div>
-      
     </div>
 
     <!-- Background Demo Data Submission Section-->
@@ -144,7 +125,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div id="collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
               We are now leveraging user information to create people (aka lead) records within our MarketoLive instance.
             </div>
@@ -159,7 +140,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div id="collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <p>In order to meet the folowing demo data requirements:</p>
               <ul class="unstyled">
@@ -187,7 +168,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div id="collapse3" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingThree">
             <div class="panel-body">
               <ul class="unstyled">
                 <li>First Name &nbsp; [Brian]</li>
@@ -206,9 +187,9 @@
               </a>
             </h4>
           </div>
-          <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+          <div id="collapse4" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingFour">
             <div class="panel-body">
-              All INTERNAL users of the MarketoLive extension (this excludes partners).
+              All INTERNAL users of the MarketoLive extension and Marketo's OneLogin app (this excludes partners).
             </div>
           </div>
         </div>
@@ -217,34 +198,18 @@
           <div class="panel-heading" role="tab" id="headingFive">
             <h4 class="panel-title">
               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse5" aria-expanded="false" aria-controls="collapseFive">
-                Where is this information shared??
+                Where is this information shared?
               </a>
             </h4>
           </div>
-          <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+          <div id="collapse5" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="headingFive">
             <div class="panel-body">
-              ONLY with our MarketoLive instance people (aka lead) database.
-            </div>
-          </div>
-        </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingSix">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse6" aria-expanded="false" aria-controls="collapseSix">
-                When is this change taking effect?
-              </a>
-            </h4>
-          </div>
-          <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
-            <div class="panel-body">
-              Immediately
+              ONLY within our MarketoLive instance people (aka lead) database.
             </div>
           </div>
         </div>
         
       </div>
-      
     </div>
     
   </div>
