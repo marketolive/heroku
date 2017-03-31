@@ -1,0 +1,61 @@
+{% extends "en/base.html" %}
+
+{% block full_image %}
+<html class="full" lang="en">
+{% endblock %}
+
+{% block head %}
+<title>MarketoLive Update Available</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugin-update.css') }}">
+<style type="text/css">
+  .update {
+    padding: 25px 600px;
+    bottom: inherit;
+  }
+  .col-lg-4 {
+    width: 100%;
+  }
+</style>
+{% endblock %}
+
+{% block page_content %}
+  <h5 class= "text-center">
+    <img src="{{ url_for('static', filename='chrome-extension-new-permissions.png') }}">
+    The MarketoLive Extension v5.0.0 requires new permissions, please approve by clicking on the blue <u>Re-enable</u> button, or by enabling it in the Chrome extensions page chrome://extensions/
+  </h5>
+  <div class="row update">
+    
+    <div class="col-lg-4 col-md-4 col-sm-4 ">
+      <!-- <h4>MarketoLive Extension</h4> -->
+      <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion1_heading1">
+            <h4 class="panel-title text-center">
+              <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse1" aria-expanded="false" aria-controls="accordion1_collapse1">
+                Approve the New Permissions
+              </a>
+            </h4>
+          </div>
+          <div id="accordion1_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading1">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='marketolive-new-permissions.jpg') }}"><br><br>
+              When you receive this Chrome alert you will not be able to use the MarketoLive instance until you approve the new permissions. Simply click on the <img src="{{ url_for('static', filename='chrome-extension-new-permissions.png') }}"> button to open up the <u>Re-enable</u> dialog window.<br><br>
+              <img src="{{ url_for('static', filename='marketolive-approve-new-permissions.jpg') }}"><br><br>
+              Click on the blue <u>Re-enable</u> button in order to approve the new permissions.
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+{% endblock %}
