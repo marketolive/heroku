@@ -1,5 +1,5 @@
 var URL_PATH = "m3",
-numOfVerticals = 2,
+numOfVerticals = 3,
 mktoLiveDevSubId = 20,
 mktoLiveProdSubId = 69,
 mktoLiveSubId = mktoLiveProdSubId,
@@ -146,6 +146,9 @@ webPages = [
             case 1:
                 currVertical = "tech";
                 break;
+            case 2:
+                currVertical = "mfg";
+                break;
             }
             
             verticalAcquirePages = webRequest('https://marketolive.com/' + URL_PATH + '/pluginv3/data/' + currVertical + '-pages-acquire.json', null, 'GET', false, '', function (response) {
@@ -172,7 +175,7 @@ webPages = [
                 }
                 
                 console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
-                webRequest("http://" + mktoLiveLandingPageHost + "/index.php/leadCapture/save2", params, "POST", false, null, function (response) {
+                webRequest("http://" + mktoLiveLandingPageHost + "/index.php/leadCapture/save2", params, "POST", true, null, function (response) {
                     console.log("Posted > Mock Lead > Form Fill: " + response)
                 });
             }
