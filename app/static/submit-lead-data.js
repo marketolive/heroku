@@ -233,7 +233,7 @@ webPages = [
                                                                             var resetMasterMunchkinCookieResult = false,
                                                                             isResetMasterMunchkinCookie;
                                                                             
-                                                                            resetMasterMunchkinCookie();
+                                                                            resetMasterMunchkinCookieResult = resetMasterMunchkinCookie();
                                                                             
                                                                             isResetMasterMunchkinCookie = window.setInterval(function () {
                                                                                 if (resetMasterMunchkinCookieResult != false) {
