@@ -239,11 +239,13 @@ webPages = [
                                                                                 if (resetMasterMunchkinCookieResult != false) {
                                                                                     window.clearInterval(isResetMasterMunchkinCookie);
                                                                                     
-                                                                                    var followUp = getUrlParam("followUp");
-                                                                                    
-                                                                                    if (followUp == "true") {
-                                                                                        window.close();
-                                                                                    }
+                                                                                    window.setTimeout(function () {
+                                                                                        var followUp = getUrlParam("followUp");
+                                                                                        
+                                                                                        if (followUp == "true") {
+                                                                                            window.close();
+                                                                                        }
+                                                                                    }, 1000);
                                                                                 }
                                                                             }, 0);
                                                                         }
