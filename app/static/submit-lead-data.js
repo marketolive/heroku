@@ -25,9 +25,7 @@ webPages = [
 
 (function () {
     var didInit = false,
-    s,
-    origMunchkinInit,
-    origMunchkinFunction;
+    s;
     
     function getCookie(cookieName) {
         console.log("Getting > Cookie: " + cookieName);
@@ -114,111 +112,110 @@ webPages = [
     }
     
     function submitLeadData() {
-        var mockLeadX;
-        
-        mockLeadX = webRequest(mockLeadEndpoint, null, 'GET', false, '', function (response) {
-                return JSON.parse(response);
-            });
-        if (mockLeadX) {
-            var dayOfMonth = new Date().getDate(),
-            mktoLiveMunchkinResetResult = false,
-            currVerticalIndex,
-            verticalAcquirePages,
-            origCookie,
-            isMktoLiveMunchkinReset;
+        webRequest(mockLeadEndpoint, null, 'GET', true, '', function (response) {
+            var mockLeadX = JSON.parse(response);
             
-            if (mockLeadX.mobileNumber == null) {
-                mockLeadX.mobileNumber = "";
-            }
-            if (mockLeadX.phoneNumber == null) {
-                mockLeadX.phoneNumber = "";
-            }
-            
-            if (dayOfMonth > numOfVerticals) {
-                currVerticalIndex = (dayOfMonth - 1) % numOfVerticals;
-            } else {
-                currVerticalIndex = dayOfMonth - 1;
-            }
-            switch (currVerticalIndex) {
-            case 0:
-                currVertical = "coe";
-                break;
-            case 1:
-                currVertical = "tech";
-                break;
-            case 2:
-                currVertical = "mfg";
-                break;
-            }
-            
-            verticalAcquirePages = webRequest('https://marketolive.com/' + URL_PATH + '/pluginv3/data/' + currVertical + '-pages-acquire.json', null, 'GET', false, '', function (response) {
-                    return JSON.parse(response);
-                });
-            if (verticalAcquirePages) {
-                var verticalAcquirePageX = verticalAcquirePages[Math.floor(Math.random() * verticalAcquirePages.length)],
-                params,
-                utm;
+            if (mockLeadX) {
+                var dayOfMonth = new Date().getDate(),
+                currVerticalIndex;
                 
-                params = "FirstName=" + encodeURIComponent(mockLeadX.firstName) + "&LastName=" + encodeURIComponent(mockLeadX.lastName) + "&Email=" + encodeURIComponent(mockLeadX.email) + "&Title=" + encodeURIComponent(mockLeadX.jobTitle) + "&Company=" + encodeURIComponent(mockLeadX.company) + "&Industry=" + encodeURIComponent(mockLeadX.industry) + "&LeadSource=" + encodeURIComponent(mockLeadX.leadSource) + "&MobilePhone=" + encodeURIComponent(mockLeadX.mobileNumber) + "&Phone=" + encodeURIComponent(mockLeadX.phoneNumber) + "&Lead_Type__c=Business&isMockLead=yes";
-                
-                params += "&formid=" + verticalAcquirePageX.formid + "&formVid=" + verticalAcquirePageX.formid + "&lpId=" + verticalAcquirePageX.lpId + reqStaticParams;
-                
-                utm = webRequest('https://marketolive.com/' + URL_PATH + '/pluginv3/data/' + currVertical + '-utm-values.json', null, 'GET', false, '', function (response) {
-                        return JSON.parse(response);
-                    });
-                if (utm) {
-                    var utmTermX = utm.terms[Math.floor(Math.random() * utm.terms.length)],
-                    utmMediumX = utm.mediums[Math.floor(Math.random() * utm.mediums.length)],
-                    utmCampaignX = utm.campaigns[Math.floor(Math.random() * utm.campaigns.length)];
-                    
-                    params += "&utmTerm=" + encodeURIComponent(utmTermX) + "&utmMedium=" + encodeURIComponent(utmMediumX) + "&utmCampaign=" + encodeURIComponent(utmCampaignX);
+                if (mockLeadX.mobileNumber == null) {
+                    mockLeadX.mobileNumber = "";
+                }
+                if (mockLeadX.phoneNumber == null) {
+                    mockLeadX.phoneNumber = "";
                 }
                 
-                console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
-                webRequest("http://" + mktoLiveLandingPageHost + "/index.php/leadCapture/save2", params, "POST", true, null, function (response) {
-                    console.log("Posted > Mock Lead > Form Fill: " + response)
+                if (dayOfMonth > numOfVerticals) {
+                    currVerticalIndex = (dayOfMonth - 1) % numOfVerticals;
+                } else {
+                    currVerticalIndex = dayOfMonth - 1;
+                }
+                switch (currVerticalIndex) {
+                case 0:
+                    currVertical = "coe";
+                    break;
+                case 1:
+                    currVertical = "tech";
+                    break;
+                case 2:
+                    currVertical = "mfg";
+                    break;
+                }
+                
+                webRequest('https://marketolive.com/' + URL_PATH + '/pluginv3/data/' + currVertical + '-pages-acquire.json', null, 'GET', true, '', function (response) {
+                    var verticalAcquirePages = JSON.parse(response);
+                    
+                    if (verticalAcquirePages) {
+                        var verticalAcquirePageX = verticalAcquirePages[Math.floor(Math.random() * verticalAcquirePages.length)],
+                        params;
+                        
+                        params = "FirstName=" + encodeURIComponent(mockLeadX.firstName) + "&LastName=" + encodeURIComponent(mockLeadX.lastName) + "&Email=" + encodeURIComponent(mockLeadX.email) + "&Title=" + encodeURIComponent(mockLeadX.jobTitle) + "&Company=" + encodeURIComponent(mockLeadX.company) + "&Industry=" + encodeURIComponent(mockLeadX.industry) + "&LeadSource=" + encodeURIComponent(mockLeadX.leadSource) + "&MobilePhone=" + encodeURIComponent(mockLeadX.mobileNumber) + "&Phone=" + encodeURIComponent(mockLeadX.phoneNumber) + "&Lead_Type__c=Business&isMockLead=yes";
+                        
+                        params += "&formid=" + verticalAcquirePageX.formid + "&formVid=" + verticalAcquirePageX.formid + "&lpId=" + verticalAcquirePageX.lpId + reqStaticParams;
+                        
+                        webRequest('https://marketolive.com/' + URL_PATH + '/pluginv3/data/' + currVertical + '-utm-values.json', null, 'GET', true, '', function (response) {
+                            var utm = JSON.parse(response);
+                            
+                            if (utm) {
+                                var utmTermX = utm.terms[Math.floor(Math.random() * utm.terms.length)],
+                                utmMediumX = utm.mediums[Math.floor(Math.random() * utm.mediums.length)],
+                                utmCampaignX = utm.campaigns[Math.floor(Math.random() * utm.campaigns.length)];
+                                
+                                params += "&utmTerm=" + encodeURIComponent(utmTermX) + "&utmMedium=" + encodeURIComponent(utmMediumX) + "&utmCampaign=" + encodeURIComponent(utmCampaignX);
+                            }
+                            
+                            console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
+                            webRequest("http://" + mktoLiveLandingPageHost + "/index.php/leadCapture/save2", params, "POST", true, null, function (response) {
+                                var mktoLiveMunchkinResetResult = false,
+                                isMktoLiveMunchkinReset,
+                                origCookie;
+                                
+                                console.log("Posted > Mock Lead > Form Fill: " + response)
+                                mktoLiveMunchkinResetResult = resetMunchkinCookie(mktoLiveMunchkinId);
+                                isMktoLiveMunchkinReset = window.setInterval(function () {
+                                        if (mktoLiveMunchkinResetResult != false) {
+                                            window.clearInterval(isMktoLiveMunchkinReset);
+                                            
+                                            if (mockLeadX.email) {
+                                                var mockAssociateLeadResult = false;
+                                                console.log("Associating > Mock Lead: " + mockLeadX.email);
+                                                
+                                                mockAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {
+                                                        Email: mockLeadX.email
+                                                    }, sha1("123123123" + mockLeadX.email));
+                                                
+                                                var isMockAssociateLead = window.setInterval(function () {
+                                                        if (mockAssociateLeadResult != false) {
+                                                            window.clearInterval(isMockAssociateLead);
+                                                            
+                                                            var webPageX = webPages[Math.floor(Math.random() * webPages.length)],
+                                                            mockVisitWebPageResult = false,
+                                                            isMockVisitWebPage;
+                                                            console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX);
+                                                            
+                                                            mockVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {
+                                                                    url: webPageX
+                                                                });
+                                                            
+                                                            isMockVisitWebPage = window.setInterval(function () {
+                                                                    if (mockVisitWebPageResult != false) {
+                                                                        window.clearInterval(isMockVisitWebPage);
+                                                                        
+                                                                        resetMasterMunchkinCookie();
+                                                                    }
+                                                                }, 0);
+                                                        }
+                                                    }, 0);
+                                            }
+                                        }
+                                    }, 0);
+                            });
+                        });
+                    }
                 });
             }
-            
-            mktoLiveMunchkinResetResult = resetMunchkinCookie(mktoLiveMunchkinId);
-            isMktoLiveMunchkinReset = window.setInterval(function () {
-                    if (mktoLiveMunchkinResetResult != false) {
-                        window.clearInterval(isMktoLiveMunchkinReset);
-                        
-                        if (mockLeadX.email) {
-                            var mockAssociateLeadResult = false;
-                            console.log("Associating > Mock Lead: " + mockLeadX.email);
-                            
-                            mockAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {
-                                    Email: mockLeadX.email
-                                }, sha1("123123123" + mockLeadX.email));
-                            
-                            var isMockAssociateLead = window.setInterval(function () {
-                                    if (mockAssociateLeadResult != false) {
-                                        window.clearInterval(isMockAssociateLead);
-                                        
-                                        var webPageX = webPages[Math.floor(Math.random() * webPages.length)],
-                                        mockVisitWebPageResult = false,
-                                        isMockVisitWebPage;
-                                        console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX);
-                                        
-                                        mockVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {
-                                                url: webPageX
-                                            });
-                                        
-                                        isMockVisitWebPage = window.setInterval(function () {
-                                                if (mockVisitWebPageResult != false) {
-                                                    window.clearInterval(isMockVisitWebPage);
-                                                    
-                                                    resetMasterMunchkinCookie();
-                                                }
-                                            }, 0);
-                                    }
-                                }, 0);
-                        }
-                    }
-                }, 0);
-        }
+        });
     }
     
     function initMunchkin() {
