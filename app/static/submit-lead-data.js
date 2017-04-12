@@ -108,6 +108,8 @@ webPages = [
             console.log("Associating > Lead : " + email);
             
             return result;
+        } else {
+            return true;
         }
     }
     
