@@ -108,7 +108,34 @@ webPages = [
             console.log("Associating > Lead : " + email);
             
             return result;
+        } else {
+            return true;
         }
+    }
+    
+    function getUrlParam(param) {
+        console.log("Getting > URL Parameter: " + param);
+        
+        var paramString = window.location.href.split("?")[1];
+        
+        if (paramString) {
+            var params = paramString.split("&"),
+            paramPair,
+            paramName,
+            paramValue;
+            
+            for (var ii = 0; ii < params.length; ii++) {
+                paramPair = params[ii].split("=");
+                paramName = paramPair[0];
+                paramValue = paramPair[1];
+                
+                if (paramName == param) {
+                    console.log("Retrieved > URL Parameter: " + paramName + " = " + paramValue);
+                    return paramValue;
+                }
+            }
+        }
+        return false;
     }
     
     function submitLeadData() {
@@ -203,7 +230,22 @@ webPages = [
                                                                         if (mockVisitWebPageResult != false) {
                                                                             window.clearInterval(isMockVisitWebPage);
                                                                             
-                                                                            resetMasterMunchkinCookie();
+                                                                            var resetMasterMunchkinCookieResult = false,
+                                                                            isResetMasterMunchkinCookie;
+                                                                            
+                                                                            resetMasterMunchkinCookieResult = resetMasterMunchkinCookie();
+                                                                            
+                                                                            isResetMasterMunchkinCookie = window.setInterval(function () {
+                                                                                if (resetMasterMunchkinCookieResult != false) {
+                                                                                    window.clearInterval(isResetMasterMunchkinCookie);
+                                                                                    
+                                                                                    var followUp = getUrlParam("followUp");
+                                                                                    
+                                                                                    if (followUp == "true") {
+                                                                                        window.close();
+                                                                                    }
+                                                                                }
+                                                                            }, 0);
                                                                         }
                                                                     }, 0);
                                                             }
