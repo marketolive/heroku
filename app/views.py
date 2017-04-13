@@ -197,6 +197,10 @@ def form_fill():
     output = formFill.request(firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer)
     return render_template('en/data/form-fill-results.html', content=output)
 
+@app.route('/data/mock-lead')
+def mock_lead():
+    return render_template('/en/data/submit-mock-lead.html')
+
 @app.route('/en/update/plugin-update')
 def plugin_update():
     return render_template('/en/update/extension.html',
