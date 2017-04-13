@@ -28,7 +28,9 @@ webPages = [
 
 (function () {
     var didInit = false,
-    s;
+    s,
+    origMunchkinInit,
+    origMunckinFunction;
     
     function getCookie(cookieName) {
         console.log("Getting > Cookie: " + cookieName);
@@ -68,9 +70,24 @@ webPages = [
         return result;
     }
     
+    function overloadMunchkinInit() {
+        Munchkin.init = function (b, a, callback) {
+            origMunchkinInit.apply(this, arguments);
+            console.log("Loaded > Munchkin Tag");
+            callback();
+        };
+    }
+    
+    function overloadMunchkinFunction() {
+        Munchkin.munchkinFunction = function (b, a, c, callback) {
+            origMunckinFunction.apply(this, arguments);
+            console.log("Completed > Munchkin Function");
+            callback();
+        };
+    }
+    
     function resetMunchkinCookie(munchkinId, callback) {
-        var currCookie = getCookie("_mkto_trk"), 
-        result;
+        var currCookie = getCookie("_mkto_trk");
         
         if (currCookie != null
              && currCookie != "") {
@@ -79,25 +96,24 @@ webPages = [
         document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
         console.log("Removed > Cookie: _mkto_trk");
         
-        result = Munchkin.init(munchkinId, {
-                cookieLifeDays: 365,
-                cookieAnon: false,
-                disableClickDelay: false
-            }, callback);
-        
-        return result;
+        overloadMunchkinInit();
+        Munchkin.init(munchkinId, {
+            cookieLifeDays: 365,
+            cookieAnon: false,
+            disableClickDelay: false
+        }, callback);
     }
     
     function resetMasterMunchkinCookie(callback) {
         var oneLoginUsername = getCookie("onelogin_username");
         
         if (oneLoginUsername) {
-            var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com",
-            result = false;
+            var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com";
             
             document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
             console.log("Removed > Cookie: _mkto_trk");
             
+            overloadMunchkinInit();
             Munchkin.init('185-NGX-811', {
                 cookieLifeDays: 365,
                 cookieAnon: false,
@@ -105,14 +121,11 @@ webPages = [
             }, function () {
                 console.log("Associating > Lead : " + email);
                 
-                result = Munchkin.munchkinFunction("associateLead", {
-                        Email: email
-                    }, sha1("123123123" + email), callback);
+                overloadMunchkinFunction();
+                Munchkin.munchkinFunction("associateLead", {
+                    Email: email
+                }, sha1("123123123" + email), callback);
             });
-            
-            return result;
-        } else {
-            return true;
         }
     }
     
@@ -205,6 +218,7 @@ webPages = [
                                         window.setTimeout(function () {
                                             console.log("Associating > Mock Lead: " + mockLeadX.email);
                                             
+                                            overloadMunchkinFunction();
                                             Munchkin.munchkinFunction("associateLead", {
                                                 Email: mockLeadX.email
                                             }, sha1("123123123" + mockLeadX.email), function () {
@@ -245,24 +259,14 @@ webPages = [
             didInit = true;
             
             var isMunchkinLoaded = window.setInterval(function () {
+                    console.log("Waiting > Munchkin to Load");
                     if (typeof(Munchkin) == "object"
                          && typeof(Munchkin.munchkinFunction) == "function"
                          && typeof(Munchkin.init) == "function") {
                         window.clearInterval(isMunchkinLoaded);
                         
-                        var origMunchkinInit = Munchkin.init,
+                        origMunchkinInit = Munchkin.init;
                         origMunckinFunction = Munchkin.munchkinFunction;
-                        
-                        Munchkin.init = function (b, a, callback) {
-                            origMunchkinInit.apply(this, arguments);
-                            console.log("Loaded > Munchkin Tag");
-                            callback();
-                        };
-                        Munchkin.munchkinFunction = function (b, a, c, callback) {
-                            origMunckinFunction.apply(this, arguments);
-                            console.log("Completed > Munchkin Function");
-                            callback();
-                        };
                         submitLeadData();
                     }
                 });
