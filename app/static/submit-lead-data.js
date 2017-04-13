@@ -238,7 +238,13 @@ webPages = [
                                                     url: webPageX
                                                 }, null, function () {
                                                     resetMasterMunchkinCookie(function () {
-                                                        var followUp = getUrlParam("followUp");
+                                                        var followUp;
+                                                        
+                                                        if (window.location.pathname == "/en/") {
+                                                            followUp = getUrlParam("followUp");
+                                                        } else {
+                                                            followUp = "true";
+                                                        }
                                                         
                                                         if (followUp == "true") {
                                                             window.setTimeout(function () {
