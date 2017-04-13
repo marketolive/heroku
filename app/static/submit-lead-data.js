@@ -247,7 +247,7 @@ webPages = [
             origMunckinFunction = Munchkin.munchkinFunction;
             
             Munchkin.init = function (b, a, callback) {origMunchkinInit.apply(this, arguments); console.log("Loaded > Munchkin Tag"); callback();};
-            Munchkin.munchkinFunction = function (b, a, c) {origMunckinFunction.apply(this, arguments); console.log("Completed > Munchkin Function"); callback();};
+            Munchkin.munchkinFunction = function (b, a, c, callback) {origMunckinFunction.apply(this, arguments); console.log("Completed > Munchkin Function"); callback();};
             submitLeadData();
         }
     }
