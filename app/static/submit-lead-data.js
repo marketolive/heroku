@@ -1,7 +1,7 @@
 var URL_PATH = "m3",
 devExtensionId = "aahhkppadknlakhbppohbeolcfdhmocf",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
-extensionId = devExtensionId,
+extensionId = prodExtensionId,
 numOfVerticals = 3,
 mktoLiveDevSubId = 20,
 mktoLiveProdSubId = 69,
