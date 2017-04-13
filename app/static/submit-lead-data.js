@@ -97,11 +97,10 @@ webPages = [
     function resetMunchkinCookie(munchkinId, callback) {
         var currCookie = getCookie("_mkto_trk");
         
-        if (currCookie != null
-             && currCookie != "") {
+        if (currCookie) {
             origCookie = currCookie;
         }
-        document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        document.cookie = "_mkto_trk=;domain=" + window.location.host.match(/\.marketolive(-dev)?\.com/)[0] + ";path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
         console.log("Removed > Cookie: _mkto_trk");
         
         overloadMunchkinInit();
@@ -118,7 +117,7 @@ webPages = [
         if (oneLoginUsername) {
             var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com";
             
-            document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+            document.cookie = "_mkto_trk=;domain=" + window.location.host.match(/\.marketolive(-dev)?\.com/)[0] + ";path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
             console.log("Removed > Cookie: _mkto_trk");
             
             overloadMunchkinInit();
@@ -135,6 +134,11 @@ webPages = [
                 }, sha1("123123123" + email), callback);
             });
         } else {
+            if (origCookie) {
+                document.cookie = "_mkto_trk=" + origCookie + ";domain=" + window.location.host.match(/\.marketolive(-dev)?\.com/)[0] + ";path=/;expires=" + new Date(new Date().getTime() + (365 * 24 * 60 * 60 * 1000)).toUTCString();
+                console.log("Restored > Cookie: _mkto_trk = " + origCookie);
+                console.log("Restored > Cookie: _mkto_trk = " + getCookie("_mkto_trk"));
+            }
             callback();
         }
     }
