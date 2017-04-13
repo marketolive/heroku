@@ -1,4 +1,7 @@
 var URL_PATH = "m3",
+devExtensionId = "aahhkppadknlakhbppohbeolcfdhmocf",
+prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
+extensionId = devExtensionId,
 numOfVerticals = 3,
 mktoLiveDevSubId = 20,
 mktoLiveProdSubId = 69,
@@ -25,7 +28,9 @@ webPages = [
 
 (function () {
     var didInit = false,
-    s;
+    s,
+    origMunchkinInit,
+    origMunckinFunction;
     
     function getCookie(cookieName) {
         console.log("Getting > Cookie: " + cookieName);
@@ -65,51 +70,76 @@ webPages = [
         return result;
     }
     
-    function resetMunchkinCookie(munchkinId) {
-        var currCookie = getCookie("_mkto_trk"), 
-        result;
-        
-        if (currCookie != null
-             && currCookie != "") {
-            origCookie = currCookie;
+    function overloadMunchkinInit() {
+        if (typeof(origMunchkinInit) !== "function") {
+           origMunchkinInit = Munchkin.init;
         }
-        document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
-        console.log("Removed > Cookie: _mkto_trk");
         
-        result = Munchkin.init(munchkinId, {
-                cookieLifeDays: 365,
-                cookieAnon: false,
-                disableClickDelay: false
-            });
-        console.log("Loaded > Munchkin Tag");
-        
-        return result;
+        Munchkin.init = function (b, a, callback) {
+            origMunchkinInit.apply(this, arguments);
+            console.log("Loaded > Munchkin Tag");
+            callback();
+        };
     }
     
-    function resetMasterMunchkinCookie() {
+    function overloadMunchkinFunction() {
+        if (typeof(origMunckinFunction) !== "function") {
+            origMunckinFunction = Munchkin.munchkinFunction;
+        }
+        
+        Munchkin.munchkinFunction = function (b, a, c, callback) {
+            origMunckinFunction.apply(this, arguments);
+            console.log("Completed > Munchkin Function");
+            callback();
+        };
+    }
+    
+    function resetMunchkinCookie(munchkinId, callback) {
+        var currCookie = getCookie("_mkto_trk");
+        
+        if (currCookie) {
+            origCookie = currCookie;
+        }
+        document.cookie = "_mkto_trk=;domain=" + window.location.host.match(/\.marketolive(-dev)?\.com/)[0] + ";path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        console.log("Removed > Cookie: _mkto_trk");
+        
+        overloadMunchkinInit();
+        Munchkin.init(munchkinId, {
+            cookieLifeDays: 365,
+            cookieAnon: false,
+            disableClickDelay: false
+        }, callback);
+    }
+    
+    function resetMasterMunchkinCookie(callback) {
         var oneLoginUsername = getCookie("onelogin_username");
         
         if (oneLoginUsername) {
-            var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com",
-            result = false;
+            var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com";
             
-            document.cookie = "_mkto_trk=;domain=.marketolive.com;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+            document.cookie = "_mkto_trk=;domain=" + window.location.host.match(/\.marketolive(-dev)?\.com/)[0] + ";path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
             console.log("Removed > Cookie: _mkto_trk");
             
+            overloadMunchkinInit();
             Munchkin.init('185-NGX-811', {
                 cookieLifeDays: 365,
                 cookieAnon: false,
                 disableClickDelay: false
-            });
-            
-            result = Munchkin.munchkinFunction("associateLead", {
+            }, function () {
+                console.log("Associating > Lead : " + email);
+                
+                overloadMunchkinFunction();
+                Munchkin.munchkinFunction("associateLead", {
                     Email: email
-                }, sha1("123123123" + email));
-            console.log("Associating > Lead : " + email);
-            
-            return result;
+                }, sha1("123123123" + email), callback);
+            });
         } else {
-            return true;
+            if (origCookie) {
+                document.cookie = "_mkto_trk=" + origCookie + ";domain=" + window.location.host.match(/\.marketolive(-dev)?\.com/)[0] + ";path=/;expires=" + new Date(new Date().getTime() + (365 * 24 * 60 * 60 * 1000)).toUTCString();
+                console.log("Restored > Cookie: _mkto_trk = " + origCookie);
+                console.log("Restored > Cookie: _mkto_trk = " + getCookie("_mkto_trk"));
+            }
+            callback();
         }
     }
     
@@ -194,68 +224,66 @@ webPages = [
                             
                             console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
                             webRequest("http://" + mktoLiveLandingPageHost + "/index.php/leadCapture/save2", params, "POST", true, null, function (response) {
-                                var mktoLiveMunchkinResetResult = false,
-                                isMktoLiveMunchkinReset,
-                                origCookie;
+                                var origCookie;
                                 
                                 console.log("Posted > Mock Lead > Form Fill: " + response)
-                                mktoLiveMunchkinResetResult = resetMunchkinCookie(mktoLiveMunchkinId);
-                                isMktoLiveMunchkinReset = window.setInterval(function () {
-                                        if (mktoLiveMunchkinResetResult != false) {
-                                            window.clearInterval(isMktoLiveMunchkinReset);
+                                resetMunchkinCookie(mktoLiveMunchkinId, function () {
+                                    if (mockLeadX.email) {
+                                        window.setTimeout(function () {
+                                            console.log("Associating > Mock Lead: " + mockLeadX.email);
                                             
-                                            if (mockLeadX.email) {
-                                                var mockAssociateLeadResult = false;
-                                                console.log("Associating > Mock Lead: " + mockLeadX.email);
+                                            overloadMunchkinFunction();
+                                            Munchkin.munchkinFunction("associateLead", {
+                                                Email: mockLeadX.email
+                                            }, sha1("123123123" + mockLeadX.email), function () {
+                                                var webPageX = webPages[Math.floor(Math.random() * webPages.length)];
+                                                console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX);
                                                 
-                                                window.setTimeout(function () {
-                                                    mockAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {
-                                                            Email: mockLeadX.email
-                                                        }, sha1("123123123" + mockLeadX.email));
-                                                    
-                                                    var isMockAssociateLead = window.setInterval(function () {
-                                                            if (mockAssociateLeadResult != false) {
-                                                                window.clearInterval(isMockAssociateLead);
-                                                                
-                                                                var webPageX = webPages[Math.floor(Math.random() * webPages.length)],
-                                                                mockVisitWebPageResult = false,
-                                                                isMockVisitWebPage;
-                                                                console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX);
-                                                                
-                                                                mockVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {
-                                                                        url: webPageX
+                                                overloadMunchkinFunction();
+                                                Munchkin.munchkinFunction("visitWebPage", {
+                                                    url: webPageX
+                                                }, null, function () {
+                                                    resetMasterMunchkinCookie(function () {
+                                                        if (window.location.pathname.search(/^\/info\/.+/) != -1) {
+                                                            console.log("Posting > Real Lead > Visit Web Page: " + window.location.pathname);
+                                                            
+                                                            overloadMunchkinFunction();
+                                                            Munchkin.munchkinFunction("visitWebPage", {
+                                                                url: window.location.pathname
+                                                            }, null, function () {
+                                                                window.setTimeout(function () {
+                                                                    chrome.runtime.sendMessage(extensionId, {
+                                                                        action: "demoDataPage",
+                                                                        tabAction: "remove",
+                                                                        currUrl: window.location.href
                                                                     });
-                                                                
-                                                                isMockVisitWebPage = window.setInterval(function () {
-                                                                        if (mockVisitWebPageResult != false) {
-                                                                            window.clearInterval(isMockVisitWebPage);
-                                                                            
-                                                                            var resetMasterMunchkinCookieResult = false,
-                                                                            isResetMasterMunchkinCookie;
-                                                                            
-                                                                            resetMasterMunchkinCookieResult = resetMasterMunchkinCookie();
-                                                                            
-                                                                            isResetMasterMunchkinCookie = window.setInterval(function () {
-                                                                                if (resetMasterMunchkinCookieResult != false) {
-                                                                                    window.clearInterval(isResetMasterMunchkinCookie);
-                                                                                    
-                                                                                    window.setTimeout(function () {
-                                                                                        var followUp = getUrlParam("followUp");
-                                                                                        
-                                                                                        if (followUp == "true") {
-                                                                                            window.close();
-                                                                                        }
-                                                                                    }, 1000);
-                                                                                }
-                                                                            }, 0);
-                                                                        }
-                                                                    }, 0);
+                                                                }, 1000);
+                                                            });
+                                                        } else {
+                                                            var followUp;
+                                                            
+                                                            if (window.location.pathname == "/en/") {
+                                                                followUp = getUrlParam("followUp");
+                                                            } else {
+                                                                followUp = "true";
                                                             }
-                                                        }, 0);
-                                                }, 1000);
-                                            }
-                                        }
-                                    }, 0);
+                                                            
+                                                            if (followUp == "true") {
+                                                                window.setTimeout(function () {
+                                                                    chrome.runtime.sendMessage(extensionId, {
+                                                                        action: "demoDataPage",
+                                                                        tabAction: "remove",
+                                                                        currUrl: window.location.href
+                                                                    });
+                                                                }, 1000);
+                                                            }
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        }, 1000);
+                                    }
+                                });
                             });
                         });
                     }

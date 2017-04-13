@@ -176,7 +176,7 @@ def plugin():
 ########################################################
 @app.route('/info/<page>')
 def info_page(page):
-  return render_template('/en/info/skeleton-page.html', content=page)
+  return render_template('/en/data/submit-mock-lead.html', content=page)
 
 @app.route('/data/web-visit')
 def web_visit():
@@ -196,6 +196,10 @@ def form_fill():
     mktoReferrer= request.args.get('mktoReferrer')
     output = formFill.request(firstName, lastName, email, domain, formId, subId, formVid, lpId, munchkinId, mktoReferrer)
     return render_template('en/data/form-fill-results.html', content=output)
+
+@app.route('/data/mock-lead')
+def mock_lead():
+    return render_template('/en/data/submit-mock-lead.html', content="Submitting Mock Lead Data")
 
 @app.route('/en/update/plugin-update')
 def plugin_update():
