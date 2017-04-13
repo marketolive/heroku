@@ -228,7 +228,8 @@ webPages = [
                                                 overloadMunchkinFunction();
                                                 Munchkin.munchkinFunction("visitWebPage", {
                                                     url: webPageX
-                                                }, resetMasterMunchkinCookie(function () {
+                                                }, null, function () {
+                                                    resetMasterMunchkinCookie(function () {
                                                         var followUp = getUrlParam("followUp");
                                                         
                                                         if (followUp == "true") {
@@ -240,7 +241,8 @@ webPages = [
                                                                 });
                                                             }, 1000);
                                                         }
-                                                    }));
+                                                    });
+                                                });
                                             });
                                         }, 1000);
                                     }
@@ -256,19 +258,9 @@ webPages = [
     function initMunchkin() {
         if (didInit === false) {
             didInit = true;
-            
-            var isMunchkinLoaded = window.setInterval(function () {
-                    console.log("Waiting > Munchkin to Load");
-                    if (typeof(Munchkin) == "object"
-                         && typeof(Munchkin.munchkinFunction) == "function"
-                         && typeof(Munchkin.init) == "function") {
-                        window.clearInterval(isMunchkinLoaded);
-                        
-                        origMunchkinInit = Munchkin.init;
-                        origMunckinFunction = Munchkin.munchkinFunction;
-                        submitLeadData();
-                    }
-                });
+            origMunchkinInit = Munchkin.init;
+            origMunckinFunction = Munchkin.munchkinFunction;
+            submitLeadData();
         }
     }
     
