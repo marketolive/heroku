@@ -134,6 +134,8 @@ webPages = [
                     Email: email
                 }, sha1("123123123" + email), callback);
             });
+        } else {
+            callback();
         }
     }
     
