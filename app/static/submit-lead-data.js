@@ -244,22 +244,37 @@ webPages = [
                                                     url: webPageX
                                                 }, null, function () {
                                                     resetMasterMunchkinCookie(function () {
-                                                        var followUp;
-                                                        
-                                                        if (window.location.pathname == "/en/") {
-                                                            followUp = getUrlParam("followUp");
+                                                        if (window.location.pathname.search(/^\/info\/.+/) != -1) {
+                                                            overloadMunchkinFunction();
+                                                            Munchkin.munchkinFunction("visitWebPage", {
+                                                                url: window.location.pathname
+                                                            }, null, function () {
+                                                                window.setTimeout(function () {
+                                                                    chrome.runtime.sendMessage(extensionId, {
+                                                                        action: "demoDataPage",
+                                                                        tabAction: "remove",
+                                                                        currUrl: window.location.href
+                                                                    });
+                                                                }, 1000);
+                                                            });
                                                         } else {
-                                                            followUp = "true";
-                                                        }
-                                                        
-                                                        if (followUp == "true") {
-                                                            window.setTimeout(function () {
-                                                                chrome.runtime.sendMessage(extensionId, {
-                                                                    action: "demoDataPage",
-                                                                    tabAction: "remove",
-                                                                    currUrl: window.location.href
-                                                                });
-                                                            }, 1000);
+                                                            var followUp;
+                                                            
+                                                            if (window.location.pathname == "/en/") {
+                                                                followUp = getUrlParam("followUp");
+                                                            } else {
+                                                                followUp = "true";
+                                                            }
+                                                            
+                                                            if (followUp == "true") {
+                                                                window.setTimeout(function () {
+                                                                    chrome.runtime.sendMessage(extensionId, {
+                                                                        action: "demoDataPage",
+                                                                        tabAction: "remove",
+                                                                        currUrl: window.location.href
+                                                                    });
+                                                                }, 1000);
+                                                            }
                                                         }
                                                     });
                                                 });
