@@ -245,6 +245,8 @@ webPages = [
                                                 }, null, function () {
                                                     resetMasterMunchkinCookie(function () {
                                                         if (window.location.pathname.search(/^\/info\/.+/) != -1) {
+                                                            console.log("Posting > Real Lead > Visit Web Page: " + window.location.pathname);
+                                                            
                                                             overloadMunchkinFunction();
                                                             Munchkin.munchkinFunction("visitWebPage", {
                                                                 url: window.location.pathname
