@@ -240,47 +240,47 @@ webPages = [
                                                                 });
                                                             }, 1000);
                                                         }
-                                                    });
-                                                });
-                                            }, 1000);
-                                        }
-                                    });
+                                                    }));
+                                            });
+                                        }, 1000);
+                                    }
                                 });
                             });
-                        }
-                    });
-                }
-            });
-        }
-        
-        function initMunchkin() {
-            if (didInit === false) {
-                didInit = true;
-                
-                var isMunchkinLoaded = window.setInterval(function () {
-                        console.log("Waiting > Munchkin to Load");
-                        if (typeof(Munchkin) == "object"
-                             && typeof(Munchkin.munchkinFunction) == "function"
-                             && typeof(Munchkin.init) == "function") {
-                            window.clearInterval(isMunchkinLoaded);
-                            
-                            origMunchkinInit = Munchkin.init;
-                            origMunckinFunction = Munchkin.munchkinFunction;
-                            submitLeadData();
-                        }
-                    });
+                        });
+                    }
+                });
             }
+        });
+    }
+    
+    function initMunchkin() {
+        if (didInit === false) {
+            didInit = true;
+            
+            var isMunchkinLoaded = window.setInterval(function () {
+                    console.log("Waiting > Munchkin to Load");
+                    if (typeof(Munchkin) == "object"
+                         && typeof(Munchkin.munchkinFunction) == "function"
+                         && typeof(Munchkin.init) == "function") {
+                        window.clearInterval(isMunchkinLoaded);
+                        
+                        origMunchkinInit = Munchkin.init;
+                        origMunckinFunction = Munchkin.munchkinFunction;
+                        submitLeadData();
+                    }
+                });
         }
-        
-        s = document.createElement("script");
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "//munchkin.marketo.net/munchkin.js";
-        s.onreadystatechange = function () {
-            if (this.readyState == "complete" || this.readyState == "loaded") {
-                initMunchkin();
-            }
-        };
-        s.onload = initMunchkin;
-        document.getElementsByTagName("head")[0].appendChild(s);
-    })();
+    }
+    
+    s = document.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "//munchkin.marketo.net/munchkin.js";
+    s.onreadystatechange = function () {
+        if (this.readyState == "complete" || this.readyState == "loaded") {
+            initMunchkin();
+        }
+    };
+    s.onload = initMunchkin;
+    document.getElementsByTagName("head")[0].appendChild(s);
+})();
