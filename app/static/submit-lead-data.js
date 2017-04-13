@@ -1,4 +1,7 @@
 var URL_PATH = "m3",
+devExtensionId = "aahhkppadknlakhbppohbeolcfdhmocf",
+prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
+extensionId = devExtensionId,
 numOfVerticals = 3,
 mktoLiveDevSubId = 20,
 mktoLiveProdSubId = 69,
@@ -65,7 +68,7 @@ webPages = [
         return result;
     }
     
-    function resetMunchkinCookie(munchkinId) {
+    function resetMunchkinCookie(munchkinId, callback) {
         var currCookie = getCookie("_mkto_trk"), 
         result;
         
@@ -80,13 +83,12 @@ webPages = [
                 cookieLifeDays: 365,
                 cookieAnon: false,
                 disableClickDelay: false
-            });
-        console.log("Loaded > Munchkin Tag");
+            }, callback);
         
         return result;
     }
     
-    function resetMasterMunchkinCookie() {
+    function resetMasterMunchkinCookie(callback) {
         var oneLoginUsername = getCookie("onelogin_username");
         
         if (oneLoginUsername) {
@@ -100,12 +102,13 @@ webPages = [
                 cookieLifeDays: 365,
                 cookieAnon: false,
                 disableClickDelay: false
+            }, function () {
+                console.log("Associating > Lead : " + email);
+                
+                result = Munchkin.munchkinFunction("associateLead", {
+                        Email: email
+                    }, sha1("123123123" + email), callback);
             });
-            
-            result = Munchkin.munchkinFunction("associateLead", {
-                    Email: email
-                }, sha1("123123123" + email));
-            console.log("Associating > Lead : " + email);
             
             return result;
         } else {
@@ -194,68 +197,41 @@ webPages = [
                             
                             console.log("Posting > Mock Lead > Form Fill:\n" + JSON.stringify(mockLeadX, null, 2));
                             webRequest("http://" + mktoLiveLandingPageHost + "/index.php/leadCapture/save2", params, "POST", true, null, function (response) {
-                                var mktoLiveMunchkinResetResult = false,
-                                isMktoLiveMunchkinReset,
-                                origCookie;
+                                var origCookie;
                                 
                                 console.log("Posted > Mock Lead > Form Fill: " + response)
-                                mktoLiveMunchkinResetResult = resetMunchkinCookie(mktoLiveMunchkinId);
-                                isMktoLiveMunchkinReset = window.setInterval(function () {
-                                        if (mktoLiveMunchkinResetResult != false) {
-                                            window.clearInterval(isMktoLiveMunchkinReset);
+                                resetMunchkinCookie(mktoLiveMunchkinId, function () {
+                                    if (mockLeadX.email) {
+                                        window.setTimeout(function () {
+                                            console.log("Associating > Mock Lead: " + mockLeadX.email);
                                             
-                                            if (mockLeadX.email) {
-                                                var mockAssociateLeadResult = false;
-                                                console.log("Associating > Mock Lead: " + mockLeadX.email);
+                                            Munchkin.munchkinFunction("associateLead", {
+                                                Email: mockLeadX.email
+                                            }, sha1("123123123" + mockLeadX.email), function () {
+                                                var webPageX = webPages[Math.floor(Math.random() * webPages.length)];
+                                                console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX);
                                                 
-                                                window.setTimeout(function () {
-                                                    mockAssociateLeadResult = Munchkin.munchkinFunction("associateLead", {
-                                                            Email: mockLeadX.email
-                                                        }, sha1("123123123" + mockLeadX.email));
-                                                    
-                                                    var isMockAssociateLead = window.setInterval(function () {
-                                                            if (mockAssociateLeadResult != false) {
-                                                                window.clearInterval(isMockAssociateLead);
-                                                                
-                                                                var webPageX = webPages[Math.floor(Math.random() * webPages.length)],
-                                                                mockVisitWebPageResult = false,
-                                                                isMockVisitWebPage;
-                                                                console.log("Posting > Mock Lead > Visit Web Page: " + mockLeadX.email + " : " + webPageX);
-                                                                
-                                                                mockVisitWebPageResult = Munchkin.munchkinFunction("visitWebPage", {
-                                                                        url: webPageX
-                                                                    });
-                                                                
-                                                                isMockVisitWebPage = window.setInterval(function () {
-                                                                        if (mockVisitWebPageResult != false) {
-                                                                            window.clearInterval(isMockVisitWebPage);
-                                                                            
-                                                                            var resetMasterMunchkinCookieResult = false,
-                                                                            isResetMasterMunchkinCookie;
-                                                                            
-                                                                            resetMasterMunchkinCookieResult = resetMasterMunchkinCookie();
-                                                                            
-                                                                            isResetMasterMunchkinCookie = window.setInterval(function () {
-                                                                                if (resetMasterMunchkinCookieResult != false) {
-                                                                                    window.clearInterval(isResetMasterMunchkinCookie);
-                                                                                    
-                                                                                    window.setTimeout(function () {
-                                                                                        var followUp = getUrlParam("followUp");
-                                                                                        
-                                                                                        if (followUp == "true") {
-                                                                                            window.close();
-                                                                                        }
-                                                                                    }, 1000);
-                                                                                }
-                                                                            }, 0);
-                                                                        }
-                                                                    }, 0);
-                                                            }
-                                                        }, 0);
-                                                }, 1000);
-                                            }
-                                        }
-                                    }, 0);
+                                                Munchkin.munchkinFunction("visitWebPage", {
+                                                    url: webPageX
+                                                }, function () {
+                                                    resetMasterMunchkinCookie(function () {
+                                                        var followUp = getUrlParam("followUp");
+                                                        
+                                                        if (followUp == "true") {
+                                                            window.setTimeout(function () {
+                                                                chrome.runtime.sendMessage(extensionId, {
+                                                                    action: "demoDataPage",
+                                                                    tabAction: "remove",
+                                                                    currUrl: window.location.href
+                                                                });
+                                                            }, 1000);
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        }, 1000);
+                                    }
+                                });
                             });
                         });
                     }
@@ -267,6 +243,11 @@ webPages = [
     function initMunchkin() {
         if (didInit === false) {
             didInit = true;
+            var origMunchkinInit = Munchkin.init,
+            origMunckinFunction = Munchkin.munchkinFunction;
+            
+            Munchkin.init = function (b, a, callback) {origMunchkinInit.apply(this, arguments); console.log("Loaded > Munchkin Tag"); callback();};
+            Munchkin.munchkinFunction = function (b, a, c) {origMunckinFunction.apply(this, arguments); console.log("Completed > Munchkin Function"); callback();};
             submitLeadData();
         }
     }
