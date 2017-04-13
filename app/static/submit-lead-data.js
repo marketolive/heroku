@@ -71,6 +71,10 @@ webPages = [
     }
     
     function overloadMunchkinInit() {
+        if (typeof(origMunchkinInit) !== "function") {
+           origMunchkinInit = Munchkin.init;
+        }
+        
         Munchkin.init = function (b, a, callback) {
             origMunchkinInit.apply(this, arguments);
             console.log("Loaded > Munchkin Tag");
@@ -79,6 +83,10 @@ webPages = [
     }
     
     function overloadMunchkinFunction() {
+        if (typeof(origMunckinFunction) !== "function") {
+            origMunckinFunction = Munchkin.munchkinFunction;
+        }
+        
         Munchkin.munchkinFunction = function (b, a, c, callback) {
             origMunckinFunction.apply(this, arguments);
             console.log("Completed > Munchkin Function");
@@ -258,8 +266,6 @@ webPages = [
     function initMunchkin() {
         if (didInit === false) {
             didInit = true;
-            origMunchkinInit = Munchkin.init;
-            origMunckinFunction = Munchkin.munchkinFunction;
             submitLeadData();
         }
     }
