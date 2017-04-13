@@ -243,12 +243,29 @@ webPages = [
     function initMunchkin() {
         if (didInit === false) {
             didInit = true;
-            var origMunchkinInit = Munchkin.init,
-            origMunckinFunction = Munchkin.munchkinFunction;
             
-            Munchkin.init = function (b, a, callback) {origMunchkinInit.apply(this, arguments); console.log("Loaded > Munchkin Tag"); callback();};
-            Munchkin.munchkinFunction = function (b, a, c, callback) {origMunckinFunction.apply(this, arguments); console.log("Completed > Munchkin Function"); callback();};
-            submitLeadData();
+            var isMunchkinLoaded = window.setInterval(function () {
+                    if (typeof(Munchkin) == "object"
+                         && typeof(Munchkin.munchkinFunction) == "function"
+                         && typeof(Munchkin.init) == "function") {
+                        window.clearInterval(isMunchkinLoaded);
+                        
+                        var origMunchkinInit = Munchkin.init,
+                        origMunckinFunction = Munchkin.munchkinFunction;
+                        
+                        Munchkin.init = function (b, a, callback) {
+                            origMunchkinInit.apply(this, arguments);
+                            console.log("Loaded > Munchkin Tag");
+                            callback();
+                        };
+                        Munchkin.munchkinFunction = function (b, a, c, callback) {
+                            origMunckinFunction.apply(this, arguments);
+                            console.log("Completed > Munchkin Function");
+                            callback();
+                        };
+                        submitLeadData();
+                    }
+                });
         }
     }
     
