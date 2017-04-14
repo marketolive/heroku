@@ -1,0 +1,176 @@
+{% extends "en/base.html" %}
+
+{% block full_image %}
+<html class="full" lang="en">
+{% endblock %}
+
+{% block head %}
+<title>Marketo Summit 2017</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='summit-17.css') }}">
+
+{% endblock %}
+
+{% block page_content %}
+  <h1 class="text-center">Marketo Apps</h1>
+
+  <ul class="ch-grid">
+   <li data-toggle="modal" data-target="#modal-LM">
+	  <div class="ch-item ch-img-1">        
+		<div class="ch-info">
+		  <h3>Go To Lead Management in Marketolive</h3>          
+		</div>        
+	  </div>
+	  <p class="h3">Lead Management</p>
+   </li>
+   <li data-toggle="modal" data-target="#modal-ABM">
+	<div class="ch-item ch-img-2">
+	  <div class="ch-info">
+	   <h3>ABM for Marketing and Sales</h3>          
+	  </div>
+	</div>
+	<p class="h3">ABM</p>
+   </li>
+   <li data-toggle="modal" data-target="#modal-Analytics">
+	<div class="ch-item ch-img-3">
+	  <div class="ch-info">
+	   <h3>Analytics</h3>
+	  </div>
+	</div>
+	<p class="h3">Analytics</p>
+   </li>
+  </ul>
+
+  <ul class="ch-grid">
+   <li data-toggle="modal" data-target="#modal-MarketoLive">
+	  <div class="ch-item ch-img-4">        
+		<div class="ch-info">
+		  <h3>Web Personalization</h3>          
+		</div>        
+	  </div>
+   </li>
+   <li>
+	<div class="ch-item ch-img-5">
+	  <div class="ch-info">
+	   <h3>Predictive Content</h3>          
+	  </div>
+	</div>
+   </li>
+   <li>
+	<div class="ch-item ch-img-6">
+	  <div class="ch-info">
+	   <h3>Engagement Marketing</h3>
+	  </div>
+	</div>
+   </li>
+  </ul>
+
+  <h1 class="text-center">New Capabilities</h1>
+
+  <ul class="ch-grid">
+   <li data-toggle="modal" data-target="#modal-MarketoLive">
+	  <div class="ch-item ch-img-7">        
+		<div class="ch-info">
+		  <h3>Project Mercury</h3>          
+		</div>        
+	  </div>
+   </li>
+   <li>
+	<div class="ch-item ch-img-8">
+	  <div class="ch-info">
+	   <h3>Engagement Platform</h3>
+	  </div>
+	</div>
+   </li>
+  </ul>
+
+
+  <!-- Lead Management Modal -->
+
+  <div class="modal fade" id="modal-LM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog modal-sm" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+	   <h4 class="modal-title" id="myModalLabel">Lead Management</h4>
+	  </div>
+	  <div class="modal-body">
+	  <div class="flex">
+		<img class="mlive-icon" src="../../static/marketo-live-circle-logo.png" alt="Marketolive logo" />
+		<button type="button" class="btn btn-default btn-block "><a href="http://www.marketolive.com">Go to MarketoLive</a></button>
+	  </div>
+
+	  <div class="flex">
+		<img class="linkedin" src="../../static/linkedin.png" alt="">
+		<button type="button" class="btn btn-default btn-block"><a href="#">See LinkedIn Use Case!</a></button>
+	  </div>
+	   
+	   
+	  </div>
+	  <div class="modal-footer">        
+	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	  </div>
+	</div>
+   </div>
+  </div>
+
+  <!-- ABM Modal -->
+  <div class="modal fade" id="modal-ABM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+		   <h4 class="modal-title" id="myModalLabel">Account Based Marketing</h4>
+		  </div>
+		  <div class="modal-body">
+			<div class="flex">
+			  <img class="mlive-icon" src="../../static/marketo-live-circle-logo.png" alt="Marketolive logo" />
+			  <button type="button" class="btn btn-default btn-block "><a href="http://www.marketolive.com">Go to MarketoLive</a></button>
+			</div>
+			<div class="flex">
+			  <img src="../../static/invision.png" alt="" class="invision">
+			  <button type="button" class="btn btn-default btn-block">For Marketers- Demo</button>
+			</div>
+			<div class="flex">
+			  <img src="../../static/invision.png" alt="" class="invision">
+			  <button type="button" class="btn btn-default btn-block">For Sales- Demo</button>
+			</div> 
+			<div class="flex">
+			  <img src="../../static/invision.png" alt="" class="invision">
+			  <button type="button" class="btn btn-default btn-block">ABM Roadmap</button>
+			</div>         
+		  </div>             
+		  
+		  <div class="modal-footer">        
+		  	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+   	</div>
+  </div>
+
+
+  <!-- Analytics Modal -->
+
+  <div class="modal fade" id="modal-Analytics" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog modal-sm" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+	   <h4 class="modal-title" id="myModalLabel">Analytics</h4>
+	  </div>
+	  <div class="modal-body">
+	   <button type="button" class="btn btn-default btn-block "><a href="http://www.marketolive.com">Go to MarketoLive</a></button>
+	   <button type="button" class="btn btn-default btn-block btn-outline-purple">Go to Demo!</button>
+	  </div>
+	  <div class="modal-footer">        
+	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	  </div>
+	</div>
+   </div>
+  </div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+{% endblock %}
