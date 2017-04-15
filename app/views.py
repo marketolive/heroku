@@ -312,7 +312,7 @@ class CreateFolders(Resource):
 		else:
 			results = []
 			foldername = new_email.split('@')[0].lower()
-			for parentId in [19802,19801,19799,19797,19798,19794,19795,19791,19790]:
+			for parentId in [19802,19801,19799,19797,19798,19794,19795,19791,19790,19796,19792,19806]:
 				trialcounter=0
 				while trialcounter<3:
 					try:
