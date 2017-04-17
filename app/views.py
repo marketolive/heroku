@@ -143,6 +143,23 @@ def base(language):
 #					
 ########################################################
 
+@app.route('/<category>/<page>')
+def main_lo_lang_router(category, page):
+	if category in categories and page in pages:
+		return redirect('/en/%s/%s' % (category, page))
+	else
+		abort(404)
+	return render_template('%s/%s/%s.html' % (language, category, page), 
+							form=g.loginform,
+							name=g.name,
+							full_name = g.full_name,
+							lang=language, 
+							path='%s/' % (category), 
+							page=page, 
+							user_email = g.email, 
+							timestamp = g.timestamp,
+							partners=g.partners)
+
 @app.route('/<language>/<category>/<page>')
 @app.route('/<language>/<category>/<page>', subdomain="partners")
 def main_router(language, category, page):
