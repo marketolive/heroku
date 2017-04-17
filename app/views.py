@@ -147,7 +147,7 @@ def base(language):
 def main_lo_lang_router(category, page):
 	if category in categories and page in pages:
 		return redirect('/en/%s/%s' % (category, page))
-	else
+	else:
 		abort(404)
 	return render_template('%s/%s/%s.html' % (language, category, page), 
 							form=g.loginform,
