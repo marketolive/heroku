@@ -144,7 +144,7 @@ def base(language):
 ########################################################
 
 @app.route('/<category>/<page>')
-def main_no_lang_router(category, page):
+def no_lang_main_router(category, page):
 	if category in categories and page in pages:
 		return redirect('/en/%s/%s' % (category, page))
 	else:
