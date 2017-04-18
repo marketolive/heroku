@@ -143,13 +143,6 @@ def base(language):
 #					
 ########################################################
 
-@app.route('/<category>/<page>')
-def no_lang_main_router(category, page):
-	if category in categories and page in pages:
-		return redirect('/en/%s/%s' % (category, page))
-	else:
-		abort(404)
-
 @app.route('/<language>/<category>/<page>')
 @app.route('/<language>/<category>/<page>', subdomain="partners")
 def main_router(language, category, page):
@@ -167,6 +160,13 @@ def main_router(language, category, page):
 							user_email = g.email, 
 							timestamp = g.timestamp,
 							partners=g.partners)
+
+@app.route('/<category>/<page>')
+def no_lang_main_router(category, page):
+	if category in categories and page in pages:
+		return redirect('/en/%s/%s' % (category, page))
+	else:
+		abort(404)
 
 # @app.route('/', subdomain="partners")
 # def partners_main():
