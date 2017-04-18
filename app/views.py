@@ -89,11 +89,11 @@ def login():
 # The following should contain a comprehensive list of languages and pages
 # These are used to validate incoming URLs
 languages = ['en', 'jp']
-categories = ['solutions', 'verticals', 'analytics', 'update']
+categories = ['solutions', 'verticals', 'analytics', 'update', 'events']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
-		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update']
+		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'summit-17']
 
 @app.route('/')
 @app.route('/', subdomain="partners")
@@ -160,6 +160,13 @@ def main_router(language, category, page):
 							user_email = g.email, 
 							timestamp = g.timestamp,
 							partners=g.partners)
+
+@app.route('/<category>/<page>')
+def no_lang_main_router(category, page):
+	if category in categories and page in pages:
+		return redirect('/en/%s/%s' % (category, page))
+	else:
+		abort(404)
 
 # @app.route('/', subdomain="partners")
 # def partners_main():
@@ -312,7 +319,7 @@ class CreateFolders(Resource):
 		else:
 			results = []
 			foldername = new_email.split('@')[0].lower()
-			for parentId in [19802,19801,19799,19797,19798,19794,19795,19791,19790]:
+			for parentId in [19802,19801,19799,19797,19798,19794,19795,19791,19790,19796,19792,19806]:
 				trialcounter=0
 				while trialcounter<3:
 					try:
