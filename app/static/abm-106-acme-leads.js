@@ -17,7 +17,8 @@ webPages = [
     var didInit = false,
     s,
     origMunchkinInit,
-    origMunckinFunction;
+    origMunckinFunction,
+    origCookie;
     
     function getCookie(cookieName) {
         console.log("Getting > Cookie: " + cookieName);
@@ -141,8 +142,6 @@ webPages = [
             
             if (acmeLeadX
                  && acmeLeadX.email) {
-                var origCookie;
-                
                 resetMunchkinCookie(mktoLive106MunchkinId, function () {
                     window.setTimeout(function () {
                         console.log("Associating > Mock Lead: " + acmeLeadX.email);
