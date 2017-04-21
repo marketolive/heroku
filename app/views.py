@@ -185,6 +185,10 @@ def plugin():
 def info_page(page):
   return render_template('/en/data/submit-mock-lead.html', content=page)
 
+@app.route('/data/abm-106-acme-leads')
+def abm_106_acme_leads():
+    return render_template('/en/data/abm-106-acme-leads.html')
+
 @app.route('/data/web-visit')
 def web_visit():
     return render_template('/en/data/web-visit.html')
