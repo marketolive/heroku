@@ -1,5 +1,4 @@
 var mktoLive106MunchkinId = "026-COU-482",
-abm106AcmeLeadEndpoint = "https://www.mockaroo.com/974b8ed0/download?count=1&key=7d30cdf0",
 webPages = [
     "/info/community",
     "/info/contact-us",
@@ -10,7 +9,85 @@ webPages = [
     "/info/products",
     "/info/webinar",
     "/info/whitepapers",
-    "/info/why-us"
+    "/info/why-us",
+    "/are-you-abm-ready.html",
+    "/top5-abm-themes.html",
+    "/marketers-can-benefit-from-abm.html",
+    "/sirius-abm-2016-state.html",
+    "/account-based-nurturing.html",
+    "/get-it-right-with-abm.html",
+    "/blog/accelerate-your-sales.html",
+    "/solutions/lead-management.html",
+    "/solutions/abm.html",
+    "/blog/digital-marketing-financial",
+    "/top5-digital-engagement-themes.html",
+    "/reboot-europe-tech-industry.html"
+],
+abm106AcmeLeads = [
+    "mktodemosvcs+1142@gmail.com",
+    "mktodemosvcs+1143@gmail.com",
+    "mktodemosvcs+1144@gmail.com",
+    "mktodemosvcs+1145@gmail.com",
+    "mktodemosvcs+1146@gmail.com",
+    "mktodemosvcs+1147@gmail.com",
+    "mktodemosvcs+1148@gmail.com",
+    "mktodemosvcs+1149@gmail.com",
+    "mktodemosvcs+1150@gmail.com",
+    "mktodemosvcs+1151@gmail.com",
+    "mktodemosvcs+1152@gmail.com",
+    "mktodemosvcs+1153@gmail.com",
+    "mktodemosvcs+1154@gmail.com",
+    "mktodemosvcs+1155@gmail.com",
+    "mktodemosvcs+1156@gmail.com",
+    "mktodemosvcs+1157@gmail.com",
+    "mktodemosvcs+1158@gmail.com",
+    "mktodemosvcs+1159@gmail.com",
+    "mktodemosvcs+1160@gmail.com",
+    "mktodemosvcs+1161@gmail.com",
+    "mktodemosvcs+1162@gmail.com",
+    "mktodemosvcs+1163@gmail.com",
+    "mktodemosvcs+1164@gmail.com",
+    "mktodemosvcs+1165@gmail.com",
+    "mktodemosvcs+1166@gmail.com",
+    "mktodemosvcs+1167@gmail.com",
+    "mktodemosvcs+1168@gmail.com",
+    "mktodemosvcs+1169@gmail.com",
+    "mktodemosvcs+1170@gmail.com",
+    "mktodemosvcs+1171@gmail.com",
+    "mktodemosvcs+1172@gmail.com",
+    "mktodemosvcs+1173@gmail.com",
+    "mktodemosvcs+1174@gmail.com",
+    "mktodemosvcs+1175@gmail.com",
+    "mktodemosvcs+1176@gmail.com",
+    "mktodemosvcs+1177@gmail.com",
+    "mktodemosvcs+1178@gmail.com",
+    "mktodemosvcs+1179@gmail.com",
+    "mktodemosvcs+1180@gmail.com",
+    "mktodemosvcs+1181@gmail.com",
+    "mktodemosvcs+1182@gmail.com",
+    "mktodemosvcs+1183@gmail.com",
+    "mktodemosvcs+1184@gmail.com",
+    "mktodemosvcs+1185@gmail.com",
+    "mktodemosvcs+1186@gmail.com",
+    "mktodemosvcs+1187@gmail.com",
+    "mktodemosvcs+1188@gmail.com",
+    "mktodemosvcs+1189@gmail.com",
+    "mktodemosvcs+1190@gmail.com",
+    "mktodemosvcs+1191@gmail.com",
+    "mktodemosvcs+1192@gmail.com",
+    "mktodemosvcs+1193@gmail.com",
+    "mktodemosvcs+1194@gmail.com",
+    "mktodemosvcs+1195@gmail.com",
+    "mktodemosvcs+1196@gmail.com",
+    "mktodemosvcs+1197@gmail.com",
+    "mktodemosvcs+1198@gmail.com",
+    "mktodemosvcs+1199@gmail.com",
+    "mktodemosvcs+1200@gmail.com",
+    "mktodemosvcs+1201@gmail.com",
+    "mktodemosvcs+1111@gmail.com",
+    "jerry.smith@marketolive.com",
+    "rob.lam@marketolive.com",
+    "mktodemosvcs+1203@gmail.com"
 ];
 
 (function () {
@@ -60,7 +137,7 @@ webPages = [
     
     function overloadMunchkinInit() {
         if (typeof(origMunchkinInit) !== "function") {
-           origMunchkinInit = Munchkin.init;
+            origMunchkinInit = Munchkin.init;
         }
         
         Munchkin.init = function (b, a, callback) {
@@ -137,37 +214,34 @@ webPages = [
     }
     
     function submitLeadData() {
-        webRequest(abm106AcmeLeadEndpoint, null, 'GET', true, '', function (response) {
-            var acmeLeadX = JSON.parse(response);
-            
-            if (acmeLeadX
-                 && acmeLeadX.email) {
-                resetMunchkinCookie(mktoLive106MunchkinId, function () {
-                    window.setTimeout(function () {
-                        console.log("Associating > Mock Lead: " + acmeLeadX.email);
+        var acmeLeadX = abm106AcmeLeads[Math.floor(Math.random() * abm106AcmeLeads.length)];
+        
+        if (acmeLeadX) {
+            resetMunchkinCookie(mktoLive106MunchkinId, function () {
+                window.setTimeout(function () {
+                    console.log("Associating > Mock Lead: " + acmeLeadX);
+                    
+                    overloadMunchkinFunction();
+                    Munchkin.munchkinFunction("associateLead", {
+                        Email: acmeLeadX
+                    }, sha1("123123123" + acmeLeadX), function () {
+                        var webPageX = webPages[Math.floor(Math.random() * webPages.length)];
+                        console.log("Posting > Mock Lead > Visit Web Page: " + acmeLeadX + " : " + webPageX);
                         
                         overloadMunchkinFunction();
-                        Munchkin.munchkinFunction("associateLead", {
-                            Email: acmeLeadX.email
-                        }, sha1("123123123" + acmeLeadX.email), function () {
-                            var webPageX = webPages[Math.floor(Math.random() * webPages.length)];
-                            console.log("Posting > Mock Lead > Visit Web Page: " + acmeLeadX.email + " : " + webPageX);
-                            
-                            overloadMunchkinFunction();
-                            Munchkin.munchkinFunction("visitWebPage", {
-                                url: webPageX
-                            }, null, function () {
-                                resetMasterMunchkinCookie(function () {
-                                    window.setTimeout(function () {
-                                        window.location.reload();
-                                    }, 5000);
-                                });
+                        Munchkin.munchkinFunction("visitWebPage", {
+                            url: webPageX
+                        }, null, function () {
+                            resetMasterMunchkinCookie(function () {
+                                window.setTimeout(function () {
+                                    window.location.reload();
+                                }, 5000);
                             });
                         });
-                    }, 1000);
-                });
-            }
-        });
+                    });
+                }, 1000);
+            });
+        }
     }
     
     function initMunchkin() {
