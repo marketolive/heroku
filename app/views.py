@@ -3,7 +3,7 @@ from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask import render_template, flash, request, redirect, g, abort, make_response
 from .forms import LoginForm
-import os
+import os, re
 from datetime import datetime
 from math import floor
 
@@ -47,6 +47,18 @@ def before_request():
 		g.partners=True
 	else:
 		g.partners=False
+
+@app.after_request
+def add_header(response):
+  if (re.search('/?javascript;?', response.headers['Content-Type'])):
+    response.headers['Cache-Control'] = 'public, max-age=28800'
+  elif (re.search('^text/(html|css);?', response.headers['Content-Type'])):
+    response.headers['Cache-Control'] = 'public, max-age=43200'
+  elif (re.search('^image/', response.headers['Content-Type'])):
+    response.headers['Cache-Control'] = 'public, max-age=86400'
+  else:
+    response.headers['Cache-Control'] = 'public, max-age=86400'
+  return response
 
 @lm.user_loader
 def load_user(id):
