@@ -109,12 +109,6 @@ var isMktoForm = window.setInterval(function () {
                     //alert(JSON.stringify(form.vals(), null, 2));
                 });
                 
-                form.onSubmit(function () {
-                    form.vals({
-                        _mkt_trk: ""
-                    });
-                });
-                
                 form.onSuccess(function (values, followUpUrl) {
                     window.location.href = "http://www.marketolive.com";
                     return false;
