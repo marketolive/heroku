@@ -5,9 +5,9 @@ var isMktoForm = window.setInterval(function () {
             window.clearInterval(isMktoForm);
             
             MktoForms2.whenReady(function (form) {
-                var firstNameCookieName = "onelogin_first_name",
-                lastNameCookieName = "onelogin_last_name",
-                emailCookieName = "onelogin_email";
+                var firstName = getCookie("onelogin_first_name"),
+                lastName = getCookie("onelogin_last_name"),
+                email = getCookie("onelogin_email");
                 
                 function getUrlParam(param) {
                     console.log("Getting: URL Parameter: " + param);
@@ -52,60 +52,61 @@ var isMktoForm = window.setInterval(function () {
                 }
                 
                 form.onValidate(function () {
-                    var email = form.getValues().Email.toLowerCase(),
+                    var email = form.getValues().Email.toLowerCase().trim(),
+                    localPart = email.split("@")[0],
                     domain = email.split("@")[1],
                     role = form.getValues().LeadRole;
+                    
+                    if (email.search(/["\(\),:;<>\[\]\\ ]/) != -1) {
+                        form.showErrorMessage('Must be a valid email.<br>example@yourdomain.com', form.getFormElem().find("#Email"));
+                        form.submittable(false);
+                        return false;
+                    } else if (localPart.search(/(^\.|\.$|\.\.)/) != -1) {
+                        form.submittable(false);
+                        form.showErrorMessage('Must be a valid email.<br>example@yourdomain.com', form.getFormElem().find("#Email"));
+                        return false;
+                    }
                     
                     if (domain == "marketo.com"
                          && role == "Partner") {
                         form.submittable(false);
-                        form.showErrorMessage('Do not select <i>Partner</i> for your Role if your email is <u>@marketo.com</u>!', form.getFormElem().find("#LeadRole"));
+                        form.showErrorMessage('Do not select <i>Partner</i> for your role if your email is <u>@marketo.com</u>', form.getFormElem().find("#LeadRole"));
+                        return false;
                     } else if (domain != "marketo.com"
                         && role != "Partner") {
                         form.submittable(false);
-                        form.showErrorMessage('Select <i>Partner</i> for your Role if your email is not <u>@marketo.com</u>!', form.getFormElem().find("#LeadRole"));
-                    } else {
-                        form.submittable(true);
+                        form.showErrorMessage('Select <i>Partner</i> for your role if your email is not <u>@marketo.com</u>', form.getFormElem().find("#LeadRole"));
+                        return false;
                     }
-                });
-                
-                form.onSubmit(function () {
-                    var email = form.getValues().Email.toLowerCase(),
-                    shortName = email.split("@")[0],
-                    domain = email.split("@")[1];
                     
                     form.vals({
-                        Email: email
+                        FirstName: form.getValues().FirstName.trim(),
+                        LastName: form.getValues().LastName.trim(),
+                        Email: form.getValues().Email.toLowerCase().trim(),
+                        domain: domain
                     });
                     
-                    if (typeof(form.getValues().domain) != "undefined") {
+                    if (domain == "marketo.com") {
                         form.vals({
-                            domain: domain
+                            userId: localPart + "@marketolive.com"
                         });
-                    }
-                    
-                    if (typeof(form.getValues().userId) != "undefined") {
-                        if (domain == "marketo.com") {
+                    } else if (form.getValues().LeadRole == "Partner") {
+                        if (localPart.search(/\./) != -1) {
+                            var firstLetter = localPart.charAt(0),
+                            lastName = localPart.substring(localPart.lastIndexOf(".") + 1);
+                            
                             form.vals({
-                                userId: shortName + "@marketolive.com";
+                                userId: firstLetter + lastName + "." + domain.split(".")[0] + "@marketolive.com"
                             });
-                        } else if (form.getValues().LeadRole == "Partner") {
-                            if (email.search(/\./) != -1) {
-                                var firstLetter = shortName.charAt(0),
-                                lastName = shortName.substring(shortName.lastIndexOf(/\./) + 1);
-                                
-                                form.vals({
-                                    userId: firstLetter + lastName + "." + domain.split(".")[0] + "@marketolive.com";
-                                });
-                            } else {
-                                form.vals({
-                                    userId: shortName + "." + domain.split(".")[0] + "@marketolive.com";
-                                });
-                            }
+                        } else {
+                            form.vals({
+                                userId: localPart + "." + domain.split(".")[0] + "@marketolive.com"
+                            });
                         }
                     }
                     
-                    alert(JSON.stringify(form.vals(), null, 2));
+                    //form.submittable(false);
+                    //alert(JSON.stringify(form.vals(), null, 2));
                 });
                 
                 form.onSuccess(function (values, followUpUrl) {
@@ -113,39 +114,23 @@ var isMktoForm = window.setInterval(function () {
                     return false;
                 });
                 
-                if (typeof(form.getValues().Email) != "undefined") {
-                    var email = getCookie(emailCookieName);
-                    
-                    if (email != null) {
-                        form.vals({
-                            Email: email
-                        });
-                    } else {
-                        return null;
-                    }
+                if (firstName != null) {
+                    form.vals({
+                        FirstName: firstName
+                    });
                 }
                 
-                if (typeof(form.getValues().FirstName) != "undefined") {
-                    var firstName = getCookie(firstNameCookieName);
-                    
-                    if (firstName != null) {
-                        form.vals({
-                            FirstName: firstName
-                        });
-                    }
+                if (lastName != null) {
+                    form.vals({
+                        LastName: lastName
+                    });
                 }
                 
-                if (typeof(form.getValues().LastName) != "undefined") {
-                    var lastName = getCookie(lastNameCookieName);
-                    
-                    if (lastName != null) {
-                        form.vals({
-                            LastName: lastName
-                        });
-                    }
+                if (email != null) {
+                    form.vals({
+                        Email: email
+                    });
                 }
-                
-                //console.log(JSON.stringify(form.vals(), null, 2));
             });
         }
     }, 0);
