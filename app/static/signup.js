@@ -83,7 +83,8 @@ var isMktoForm = window.setInterval(function () {
                         FirstName: form.getValues().FirstName.trim(),
                         LastName: form.getValues().LastName.trim(),
                         Email: form.getValues().Email.toLowerCase().trim(),
-                        domain: domain
+                        domain: domain,
+                        _mkt_trk: ""
                     });
                     
                     if (domain == "marketo.com") {
@@ -105,7 +106,7 @@ var isMktoForm = window.setInterval(function () {
                         }
                     }
                     
-                    //form.submittable(false);
+                    form.submittable(true);
                     //alert(JSON.stringify(form.vals(), null, 2));
                 });
                 
