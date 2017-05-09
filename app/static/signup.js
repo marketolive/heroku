@@ -105,7 +105,7 @@ var isMktoForm = window.setInterval(function () {
                         }
                     }
                     
-                    //form.submittable(false);
+                    form.submittable(true);
                     //alert(JSON.stringify(form.vals(), null, 2));
                 });
                 
