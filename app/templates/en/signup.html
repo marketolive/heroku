@@ -1,0 +1,55 @@
+{% extends "en/base-for-index.html" %}
+
+{% block full_image %}
+<html class="full" lang="en">
+{% endblock %}
+
+{% block head %}
+<title>Marketo Live | Signup</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-home.css') }}">
+<script src="//app-sj08.marketo.com/js/forms2/js/forms2.min.js"></script>
+{% endblock %}
+
+{% block page_content %}
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page-title">
+      <img class="img-responsive title-img" src="{{ url_for('static', filename='marketo-live-image-white.png') }}">
+    </div>
+  </div>
+  {% if partners %}
+  <div class="row">
+    <div class="col-sm-12 center-partners">
+      <h1><em>For Partners</em></h1>
+    </div>
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 options">
+      <div class="btn-container">
+        <div class="button-container">
+          <div data-toggle="modal" data-target=".solutions-options" class='button -border center'>New User Signup</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade solutions-options" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <h1>Request an Account</h1>
+        <div class="modal-content-container">
+          <div class="solution-container">
+            <form id="mktoForm_1256"></form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+<script>MktoForms2.loadForm("//app-sj08.marketo.com", "226-FBL-320", 1256);</script>
+<script type="text/javascript" src="{{ url_for('static', filename='signup.js') }}"></script>
+{% endblock %}
