@@ -236,6 +236,23 @@ def plugin_update():
         user_email = g.email,
         timestamp = g.timestamp,
         partners = g.partners)
+
+@app.route('/en/signup')
+def signup():
+    if (request.args.get('key') == 'newUserRequest'):
+        return render_template('/en/signup.html',
+            form = g.loginform,
+            name = g.name,
+            full_name = g.full_name,
+            lang = 'en',
+            path = '%s/',
+            page = 'signup',
+            user_email = g.email,
+            timestamp = g.timestamp,
+            partners = g.partners)
+    else:
+        abort(404)
+
 '''
 Will delete this once we are fully confident in the above
 
