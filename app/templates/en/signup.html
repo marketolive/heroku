@@ -9,6 +9,28 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-home.css') }}">
 <script src="//app-sj08.marketo.com/js/forms2/js/forms2.min.js"></script>
+<script type="text/javascript">
+(function() {
+  var didInit = false;
+  function initMunchkin() {
+    if(didInit === false) {
+      didInit = true;
+      Munchkin.init('226-FBL-320');
+    }
+  }
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//munchkin.marketo.net/munchkin-beta.js';
+  s.onreadystatechange = function() {
+    if (this.readyState == 'complete' || this.readyState == 'loaded') {
+      initMunchkin();
+    }
+  };
+  s.onload = initMunchkin;
+  document.getElementsByTagName('head')[0].appendChild(s);
+})();
+</script>
 {% endblock %}
 
 {% block page_content %}
