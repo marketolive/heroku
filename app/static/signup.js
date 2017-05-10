@@ -110,7 +110,10 @@ var isMktoForm = window.setInterval(function () {
                 });
                 
                 form.onSuccess(function (values, followUpUrl) {
-                    window.location.href = "http://www.marketolive.com";
+                    var message = document.getElementById("theForm");
+                    
+                    form.getFormElem().hide();
+                    message.innerHTML = "<br><div align='center'>Thank You! <br>You will receive your login account in 24 - 48 hours.</div>";
                     return false;
                 });
                 
