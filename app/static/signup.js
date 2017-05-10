@@ -110,10 +110,14 @@ var isMktoForm = window.setInterval(function () {
                 });
                 
                 form.onSuccess(function (values, followUpUrl) {
-                    var message = document.getElementById("theForm");
+                    var title = document.getElementById("modalTitle"),
+                    message = document.getElementById("theForm");
                     
                     form.getFormElem().hide();
-                    message.innerHTML = "<br><div align='center'>Thank You! <br>You will receive your login account in 24 - 48 hours.</div>";
+                    message.innerHTML = "<br><div align='center'>You will receive your login account in 24 - 48 hours.</div>";
+                    if (title) {
+                        title.innerHTML = "Account Requested"
+                    }
                     return false;
                 });
                 
