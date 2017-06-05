@@ -194,11 +194,18 @@ sendAdInfoMsg = function () {
     };
     
     if (googleSearchButton.checked) {
+        var adSearchQuery = encodeURIComponent(googleSearchQuery.value).replace(/%20/g, "+");
+        
         msg.adType = "googleSearch";
-        msg.adInfo = encodeURIComponent(googleSearchQuery.value).replace(/%20/g, "+") + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value;
+        msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value;
+        msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
     } else if (facebookButton.checked) {
+        var adTitleValue = encodeURIComponent(adTitle.value);
+        
         msg.adType = "facebook";
-        msg.adInfo = adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
+        msg.adInfo = ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
+        msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue;
+        msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeURIComponent(adLink.value) + "&linkText=" + encodeURIComponent(adLinkText.value) + "&text=" + encodeURIComponent(adText.value) + "&image=" + encodeURIComponent(selectImgSrc).replace(/%20/g, "+");
     }
     
     chrome.runtime.sendMessage(extensionId, msg, function (response) {
@@ -273,19 +280,25 @@ document.onkeyup = function (e) {
 };
 
 if (adInfo) {
-    var adImage = adInfo.split(",,")[4],
-    adImageRes = adInfo.split(",,")[5],
+    var adInfoSplit = adInfo.split(",,"),
+    adImage = adInfoSplit[5],
+    adImageRes = adInfoSplit[6],
     itemResult = document.createElement("div"),
     itemImg = document.createElement("img"),
     itemImgText = document.createElement("div");
     
+    googleSearchQuery.value = decodeURIComponent(adInfoSplit[0]).replace(/\+/g, " ");
+    adTitle.value = adInfoSplit[1];
+    adLink.value = adInfoSplit[2];
+    adLinkText.value = adInfoSplit[3];
+    adText.value = adInfoSplit[4];
     itemResult.className = "search_result";
     itemImg.className = "search_result_image";
     itemImg.src = adImage;
     itemImg.isSelected = true;
     selectImgSrc = adImage;
     itemImgText.className = "search_result_text";
-    itemImgText.innerText = adImageRes;
+    itemImgText.innerText = adImageRes + " / AR " + Math.round(adImageRes.split(" × ")[0] / adImageRes.split(" × ")[1]) / 100;
     itemImg.onclick = function () {
         if (!this.isSelected) {
             this.isSelected = true;
