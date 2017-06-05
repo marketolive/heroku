@@ -280,7 +280,10 @@ googleSearchButton.onclick = function () {
     adText.style.display = "block";
     searchBox.style.display = "none";
     searchButton.style.display = "none";
+    prevButton.style.display = "none";
+    nextButton.style.display = "none";
     idealFacebookImageInfo.style.display = "none";
+    searchResults.style.display = "none";
     openAdButton.style.display = "inline-block";
 };
 
@@ -296,7 +299,15 @@ facebookButton.onclick = function () {
     searchBox.style.display = "inline-block";
     searchButton.style.display = "inline-block";
     idealFacebookImageInfo.style.display = "block";
+    searchResults.style.display = "block";
     openAdButton.style.display = "inline-block";
+    
+    if (searchResults.childNodes.length > 0) {
+        nextButton.style.display = "inline-block";
+        if (startIndex > 1) {
+            prevButton.style.display = "inline-block";
+        }
+    }
 };
 
 searchButton.onclick = function (startIndex) {
