@@ -1,0 +1,82 @@
+{% extends "en/base-for-index.html" %}
+
+{% block full_image %}
+<html class="full" lang="en">
+{% endblock %}
+
+{% block head %}
+<title>MarketoLive | Ad Targeting</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ad-targeting.css') }}">
+{% endblock %}
+
+{% block page_content %}
+  <div class="body_container">
+    <div class="main_container">
+      <div class="main_text">
+        Ad Targeting
+      </div>
+      <div class="options_container">
+        <div class="options_inner_container">
+          <input type="radio" id="googleSearchButton" name="ad_type" value="" >
+            <div class="ad_type_text">
+              Google Search
+            </div>
+          <input type="radio" id="facebookButton" name="ad_type" value="">
+            <div class="ad_type_text">
+              Facebook
+            </div>
+        </div>
+      </div>
+      <div class="options_container">
+        <div class="options_inner_container">
+          <input id="googleSearchQuery" type="text" placeholder="Google Search Term ...">
+          <input id="adTitle" type="text" placeholder="Ad Title ...">
+          <input id="adLink" type="text" placeholder="Ad Link ...">
+          <input id="adLinkText" type="text" placeholder="Ad Link Text (Optional) ...">
+          <input id="adText" type="text" placeholder="Ad Main Text ...">
+          <button id="prevButton" value="Previous" type="submit">
+            <span class="button_text">
+              < Prev
+            </span>
+          </button>
+          <input id="searchBox" type="text" placeholder="Search for an Image ...">
+          <button id="searchButton" value="Search" type="submit">
+            <span class="search_button_icon">
+              <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+              </svg>
+            </span>
+          </button>
+          <button id="nextButton" value="Next" type="submit">
+            <span class="button_text">
+              > Next
+            </span>
+          </button>
+          <div id="idealFacebookImageInfo">
+            <u>Ideal Resolution / Aspect Ratio</u><br>
+            284 × 149 / AR 1.91
+          </div>
+        </div>
+      </div>
+      <div id="searchResults"></div>
+      <div class="options_container">
+        <div class="options_inner_container">
+          <div id="openAdButton">
+            Open Ad
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="heap_badge">
+      <a href="https://heapanalytics.com/?utm_source=badge">
+        <img class="heap_badge" src="//heapanalytics.com/img/badge.png" alt="Heap | Mobile and Web Analytics" />
+      </a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='ad-targeting.js') }}"></script>
+{% endblock %}
