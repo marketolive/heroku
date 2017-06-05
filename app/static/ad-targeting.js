@@ -128,7 +128,7 @@ function resultsHandler(response) {
 }
 
 setIfBlank = function (field, value) {
-    if (!field) {
+    if (!field.value) {
         field.value = value;
     }
 };
