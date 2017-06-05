@@ -286,6 +286,7 @@ facebookButton.onclick = function () {
     getAndSetAdInfo("facebook");
     submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
     submitOnEnterInFields([searchBox], searchButton.onclick);
+    submitOnEnterInFields([selectImg], openAdButton.onclick);
     googleSearchQuery.style.display = "none";
     adTitle.style.display = "block";
     adLink.style.display = "block";
@@ -306,9 +307,7 @@ facebookButton.onclick = function () {
 };
 
 searchButton.onclick = function (startIndex) {
-    if (!Number.isInteger(startIndex)) {
-        startIndex = 1;
-    }
+    startIndex = 1;
     searchResults.innerHTML = null;
     loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
 };
@@ -332,8 +331,14 @@ sendAdInfoMsg = function (action) {
             
             msg.adType = "facebook";
             msg.adInfo = adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
-            msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue;
+            msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&*";
             msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
+        }
+    } else {
+        if (googleSearchButton.checked) {
+            msg.adType = "googleSearch";
+        } else if (facebookButton.checked) {
+            msg.adType = "facebook";
         }
     }
     
@@ -378,8 +383,12 @@ clearAdButton.onclick = function () {
 };
 
 document.onkeyup = function (e) {
-    if (e.which == 13) {
-        startIndex = 1;
-        openAdButton.click();
+    switch (e.which) {
+    37:
+        prevButton.click();
+        break;
+    39:
+        nextButton.click();
+        break;
     }
 };
