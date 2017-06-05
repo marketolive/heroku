@@ -150,10 +150,10 @@
   border: 2px solid transparent;
   border-radius: 5px;
 }
-#openAdButton {
+#openAdButton, #clearAdButton {
   display: none;
   cursor: pointer;
-  width: 300px;
+  width: 200px;
   height: 40px;
   padding-top: 7px;
   color: #fff;
@@ -161,4 +161,5 @@
   background-color: #5a54a4;
   box-shadow: 1px 1px 1px #505050;
   border-radius: 5px;
+  margin-right: 3px;
 }
