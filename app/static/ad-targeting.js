@@ -169,7 +169,7 @@ getAndSetAdInfo = function (adType) {
                 itemImg.isSelected = true;
                 selectImgSrc = adImage;
                 itemImgText.className = "search_result_text";
-                itemImgText.innerText = adImageRes + " / AR " + Math.round(parseInt(adImageRes.split(" × ")[0]) / parseInt(adImageRes.split(" × ")[1])) / 100;
+                itemImgText.innerText = adImageRes + " / AR " + Math.round(parseInt(adImageRes.split(" × ")[0]) / parseInt(adImageRes.split(" × ")[1]) * 100) / 100;
                 itemImg.onclick = function () {
                     if (!this.isSelected) {
                         this.isSelected = true;
