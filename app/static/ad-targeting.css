@@ -1,0 +1,162 @@
+.body_container {
+  width: 100%;
+  height: 964px;
+  background-color: #f2f2f2;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}
+.main_container {
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+}
+.main_text {
+  font-size: 50px;
+  font-weight: 200;
+  text-transform: uppercase;
+  color: #505050;
+}
+.options_container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 12px 0px;
+}
+.options_inner_container {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ad_type_text {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  padding-right: 15px;
+}
+.button_text {
+  display: inline-block;
+  fill: #fff;
+  vertical-align: middle;
+}
+.search_button_icon {
+  display: inline-block;
+  fill: #fff;
+  height: 24px;
+  line-height: 24px;
+  position: relative;
+  width: 24px;
+  vertical-align: middle;
+}
+.search_result {
+  transition: all .3s ease-in-out;
+}
+.search_result:hover {
+  transform: scale(1.25);
+  z-index: 1;
+}
+.search_result, .search_result_image, .search_result_text {
+  max-width: 363px;
+  max-height: 219px;
+}
+.search_result, .search_result_text {
+  margin: 0 12px 12px 0;
+}
+.search_result {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+.search_result_text {
+  display: block;
+  background: rgba(51, 51, 51, 0.8);
+  margin: 0;
+  text-align: left;
+  position: absolute;
+  padding: 2px 4px;
+  right: 0;
+  bottom: 0;
+  -webkit-box-sizing: border-box;
+  color: #fff;
+  font: normal 11px arial,sans-serif;
+  line-height: 100%;
+  white-space: nowrap;
+  width: 100%;
+}
+.heap_badge {
+  width: 108px;
+  height: 41px;
+}
+#googleSearchButton, #facebookButton {
+  cursor: pointer;
+}
+#searchBox, #googleSearchQuery, #adTitle, #adLink, #adLinkText, #adText {
+  background-color: #fff;
+  margin: 0 2px;
+  cursor: pointer;
+  color: #000;
+  border: none;
+  border-bottom: 2px solid #c2c2c2;
+  font-size: 20px;
+  outline: 0;
+  padding: 0 0 0 5px;
+  transition: all .3s ease-in-out;
+  border-radius: 5px;
+}
+#googleSearchQuery, #adTitle, #adLink, #adLinkText, #adText {
+  display: none;
+  width: 406px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+#searchBox {
+  display: none;
+  width: 350px;
+  height: 48px;
+}
+#searchBox:focus {
+  border-bottom: 2px solid #5a54a4;
+}
+#searchButton, #prevButton, #nextButton {
+  background-color: #5a54a4;
+  margin: 0 2px;
+  padding: 0;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+#searchButton {
+  display: none;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 2px;
+}
+#prevButton, #nextButton {
+  display: none;
+  width: 70px;
+  height: 35px;
+  font-size: 15px;
+  color: #fff;
+}
+#idealFacebookImageInfo {
+  display: none;
+  vertical-align: middle;
+  font-size: 18px;
+  margin-top: 8px;
+}
+#searchResults {
+  padding: 10px;
+}
+#openAdButton {
+  display: none;
+  cursor: pointer;
+  width: 300px;
+  height: 40px;
+  padding-top: 7px;
+  color: #fff;
+  font-size: 18px;
+  background-color: #5a54a4;
+  box-shadow: 1px 1px 1px #505050;
+  border-radius: 5px;
+}
