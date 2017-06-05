@@ -105,6 +105,7 @@ function resultsHandler(response) {
                 selectImgSrc = this.src;
                 selectImgRes = this.naturalWidth + " × " + this.naturalHeight;
                 this.parentElement.style.opacity = null;
+                submitOnEnterInFields([this], openAdButton.onclick);
                 for (var jj = 0; jj < imgs.length; jj++) {
                     if (imgs[jj].src != this.src) {
                         imgs[jj].isSelected = false;
@@ -286,7 +287,6 @@ facebookButton.onclick = function () {
     getAndSetAdInfo("facebook");
     submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
     submitOnEnterInFields([searchBox], searchButton.onclick);
-    submitOnEnterInFields([selectImg], openAdButton.onclick);
     googleSearchQuery.style.display = "none";
     adTitle.style.display = "block";
     adLink.style.display = "block";
