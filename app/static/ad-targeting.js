@@ -21,6 +21,7 @@ key = "AIzaSyC9pdVq6GfquP_MtHCS_izS6Vijdv1ZfNc",
 cx = "014680826408884315290:pmyltjjihus",
 startIndex = 1,
 setIfBlank,
+encodeText,
 getAndSetAdInfo,
 submitOnEnterInFields,
 flashBorder,
@@ -132,6 +133,10 @@ setIfBlank = function (field, value) {
     if (!field.value) {
         field.value = value;
     }
+};
+
+encodeText = function (text) {
+    return encodeURIComponent(text).replace(/%20/g, "+");
 };
 
 getAndSetAdInfo = function (adType) {
@@ -317,18 +322,18 @@ sendAdInfoMsg = function (action) {
     
     if (action != "removeAdInfo") {
         if (googleSearchButton.checked) {
-            var adSearchQuery = encodeURIComponent(googleSearchQuery.value).replace(/%20/g, "+");
+            var adSearchQuery = encodeText(googleSearchQuery.value);
             
             msg.adType = "googleSearch";
             msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value;
             msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
         } else if (facebookButton.checked) {
-            var adTitleValue = encodeURIComponent(adTitle.value);
+            var adTitleValue = encodeText(adTitle.value);
             
             msg.adType = "facebook";
             msg.adInfo = adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
             msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue;
-            msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeURIComponent(adLink.value) + "&linkText=" + encodeURIComponent(adLinkText.value) + "&text=" + encodeURIComponent(adText.value) + "&image=" + encodeURIComponent(selectImgSrc).replace(/%20/g, "+");
+            msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
         }
     }
     
