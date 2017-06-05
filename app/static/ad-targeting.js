@@ -16,6 +16,7 @@ nextButton = document.getElementById("nextButton"),
 idealFacebookImageInfo = document.getElementById("idealFacebookImageInfo"),
 searchResults = document.getElementById("searchResults"),
 openAdButton = document.getElementById("openAdButton"),
+clearAdButton = document.getElementById("clearAdButton"),
 key = "AIzaSyC9pdVq6GfquP_MtHCS_izS6Vijdv1ZfNc",
 cx = "014680826408884315290:pmyltjjihus",
 startIndex = 1,
@@ -144,6 +145,8 @@ getAndSetAdInfo = function (adType) {
             setIfBlank(adLink, adInfoSplit[2]);
             setIfBlank(adLinkText, adInfoSplit[3]);
             setIfBlank(adText, adInfoSplit[4]);
+            
+            clearAdButton.style.display = "inline-block";
         }
         break;
     
@@ -168,6 +171,7 @@ getAndSetAdInfo = function (adType) {
                 itemImg.src = adImage;
                 itemImg.isSelected = true;
                 selectImgSrc = adImage;
+                selectImgRes = adImageRes;
                 itemImgText.className = "search_result_text";
                 itemImgText.innerText = adImageRes + " / AR " + Math.round(parseInt(adImageRes.split(" × ")[0]) / parseInt(adImageRes.split(" × ")[1]) * 100) / 100;
                 itemImg.onclick = function () {
@@ -187,7 +191,10 @@ getAndSetAdInfo = function (adType) {
                 itemResult.appendChild(itemImgText);
                 searchResults.appendChild(itemResult);
             }
+            
+            clearAdButton.style.display = "inline-block";
         }
+        break;
     }
 };
 
@@ -253,34 +260,6 @@ validateFields = function (fields) {
     }
 };
 
-sendAdInfoMsg = function () {
-    var msg = {
-        action: "setAdInfo",
-        adType: "",
-        adInfo: ""
-    };
-    
-    if (googleSearchButton.checked) {
-        var adSearchQuery = encodeURIComponent(googleSearchQuery.value).replace(/%20/g, "+");
-        
-        msg.adType = "googleSearch";
-        msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value;
-        msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
-    } else if (facebookButton.checked) {
-        var adTitleValue = encodeURIComponent(adTitle.value);
-        
-        msg.adType = "facebook";
-        msg.adInfo = adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
-        msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue;
-        msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeURIComponent(adLink.value) + "&linkText=" + encodeURIComponent(adLinkText.value) + "&text=" + encodeURIComponent(adText.value) + "&image=" + encodeURIComponent(selectImgSrc).replace(/%20/g, "+");
-    }
-    
-    chrome.runtime.sendMessage(extensionId, msg, function (response) {
-        console.log("Receiving: Message Response from Background: " + response);
-        //window.close();
-    });
-};
-
 googleSearchButton.onclick = function () {
     getAndSetAdInfo("googleSearch");
     submitOnEnterInFields([googleSearchQuery, adTitle, adLink, adLinkText, adText], openAdButton.onclick);
@@ -329,6 +308,36 @@ searchButton.onclick = function (startIndex) {
     loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
 };
 
+sendAdInfoMsg = function (action) {
+    var msg = {
+        action: "setAdInfo",
+        adType: "",
+        adInfo: ""
+    };
+    
+    if (action != "removeAdInfo") {
+        if (googleSearchButton.checked) {
+            var adSearchQuery = encodeURIComponent(googleSearchQuery.value).replace(/%20/g, "+");
+            
+            msg.adType = "googleSearch";
+            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value;
+            msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
+        } else if (facebookButton.checked) {
+            var adTitleValue = encodeURIComponent(adTitle.value);
+            
+            msg.adType = "facebook";
+            msg.adInfo = adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
+            msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue;
+            msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeURIComponent(adLink.value) + "&linkText=" + encodeURIComponent(adLinkText.value) + "&text=" + encodeURIComponent(adText.value) + "&image=" + encodeURIComponent(selectImgSrc).replace(/%20/g, "+");
+        }
+    }
+    
+    chrome.runtime.sendMessage(extensionId, msg, function (response) {
+        console.log("Receiving: Message Response from Background: " + response);
+        //window.close();
+    });
+};
+
 openAdButton.onclick = function () {
     if (googleSearchButton.checked) {
         if (!validateFields([googleSearchQuery, adTitle, adLink, adText])) {
@@ -338,18 +347,29 @@ openAdButton.onclick = function () {
         if (!validateFields([adTitle, adLink, adText])) {
             return;
         }
-    }
-    
-    if (selectImgSrc
-         && selectImgRes) {
-        sendAdInfoMsg();
-    } else {
-        if (searchResults.childNodes.length > 0) {
-            flashBorder(searchResults, 3, 500);
-        } else {
-            flashBorder(searchBox, 3, 500);
+        
+        if (!selectImgSrc
+             || !selectImgRes) {
+            if (searchResults.childNodes.length > 0) {
+                flashBorder(searchResults, 3, 500);
+            } else {
+                flashBorder(searchBox, 3, 500);
+            }
+            return;
         }
     }
+    
+    sendAdInfoMsg();
+    clearAdButton.style.display = "inline-block";
+};
+
+clearAdButton.onclick = function () {
+    googleSearchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = selectImg = selectImgSrc = selectImgRes = null;
+    prevButton.style.display = "none";
+    nextButton.style.display = "none";
+    searchResults.style.display = "none";
+    sendAdInfoMsg("removeAdInfo");
+    clearAdButton.style.display = "none";
 };
 
 document.onkeyup = function (e) {
