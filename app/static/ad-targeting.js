@@ -383,11 +383,11 @@ clearAdButton.onclick = function () {
 };
 
 document.onkeyup = function (e) {
-    switch (e.which) {
-    37:
+    switch (e.which.toString()) {
+    "37":
         prevButton.click();
         break;
-    39:
+    "39":
         nextButton.click();
         break;
     }
