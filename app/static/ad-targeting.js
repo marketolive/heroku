@@ -2,6 +2,7 @@ var devExtensionId = "dokkjhbgengdlccldgjnbilajdbjlnhm",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
 extensionId = devExtensionId,
 adInfo = getCookie("ad_info"),
+top = document.getElementById("top"),
 googleSearchButton = document.getElementById("googleSearchButton"),
 facebookButton = document.getElementById("facebookButton"),
 googleSearchQuery = document.getElementById("googleSearchQuery"),
@@ -309,7 +310,7 @@ searchButton.onclick = function (startIndex) {
     }
     searchResults.innerHTML = null;
     loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
-    window.location.hash = "openAdButton";
+    openAdButton.scrollIntoView();
 };
 
 sendAdInfoMsg = function (action) {
@@ -374,7 +375,7 @@ clearAdButton.onclick = function () {
     searchResults.style.display = "none";
     sendAdInfoMsg("removeAdInfo");
     clearAdButton.style.display = "none";
-    window.location.hash = "top";
+    top.scrollIntoView();
 };
 
-window.location.hash = "top";
+top.scrollIntoView();
