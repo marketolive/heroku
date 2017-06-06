@@ -1,8 +1,7 @@
 var devExtensionId = "dokkjhbgengdlccldgjnbilajdbjlnhm",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
 extensionId = devExtensionId,
-googleAdInfo = getCookie("ad_info_google"),
-facebookAdInfo = getCookie("ad_info_facebook"),
+adInfo = getCookie("ad_info"),
 googleSearchButton = document.getElementById("googleSearchButton"),
 facebookButton = document.getElementById("facebookButton"),
 googleSearchQuery = document.getElementById("googleSearchQuery"),
@@ -141,11 +140,11 @@ encodeText = function (text) {
 };
 
 getAndSetAdInfo = function (adType) {
-    switch (adType) {
-    case "googleSearch":
-        if (googleAdInfo) {
-            var adInfoSplit = googleAdInfo.split(",,");
-            
+    if (adInfo) {
+        var adInfoSplit = adInfo.split(",,");
+        
+        switch (adType) {
+        case "googleSearch":
             setIfBlank(googleSearchQuery, decodeURIComponent(adInfoSplit[0]).replace(/\+/g, " "));
             setIfBlank(adTitle, adInfoSplit[1]);
             setIfBlank(adLink, adInfoSplit[2]);
@@ -153,13 +152,9 @@ getAndSetAdInfo = function (adType) {
             setIfBlank(adText, adInfoSplit[4]);
             
             clearAdButton.style.display = "inline-block";
-        }
-        break;
-    
-    case "facebook":
-        if (facebookAdInfo) {
-            var adInfoSplit = facebookAdInfo.split(",,");
-            
+            break;
+        
+        case "facebook":
             setIfBlank(adTitle, adInfoSplit[0]);
             setIfBlank(adLink, adInfoSplit[1]);
             setIfBlank(adLinkText, adInfoSplit[2]);
@@ -199,8 +194,8 @@ getAndSetAdInfo = function (adType) {
             }
             
             clearAdButton.style.display = "inline-block";
+            break;
         }
-        break;
     }
 };
 
@@ -307,7 +302,9 @@ facebookButton.onclick = function () {
 };
 
 searchButton.onclick = function (startIndex) {
-    startIndex = 1;
+    if (!Number.isInteger(startIndex)) {
+        startIndex = 1;
+    }
     searchResults.innerHTML = null;
     loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
 };
@@ -326,19 +323,15 @@ sendAdInfoMsg = function (action) {
             msg.adType = "googleSearch";
             msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value;
             msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
+            msg.urlRegEx = "^https://www\.google\.com/search\?dynamicAd=true&q=" + adSearchQuery;
         } else if (facebookButton.checked) {
             var adTitleValue = encodeText(adTitle.value);
             
             msg.adType = "facebook";
             msg.adInfo = adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
             msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&*";
+            msg.urlRegEx = "^https://www\/facebook\.com/\?dynamicAd=true" + "&title=" + adTitleValue + "&";
             msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
-        }
-    } else {
-        if (googleSearchButton.checked) {
-            msg.adType = "googleSearch";
-        } else if (facebookButton.checked) {
-            msg.adType = "facebook";
         }
     }
     
@@ -380,15 +373,4 @@ clearAdButton.onclick = function () {
     searchResults.style.display = "none";
     sendAdInfoMsg("removeAdInfo");
     clearAdButton.style.display = "none";
-};
-
-document.onkeyup = function (e) {
-    switch (e.which) {
-    case 37:
-        prevButton.click();
-        break;
-    case 39:
-        nextButton.click();
-        break;
-    }
 };
