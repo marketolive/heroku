@@ -22,6 +22,7 @@ cx = "014680826408884315290:pmyltjjihus",
 startIndex = 1,
 setIfBlank,
 encodeText,
+showSelectedAdImage,
 getAndSetAdInfo,
 submitOnEnterInFields,
 flashBorder,
@@ -140,6 +141,40 @@ encodeText = function (text) {
     return encodeURIComponent(text).replace(/%20/g, "+");
 };
 
+showSelectedAdImage = function (adImage, adImageRes) {
+    var itemResult = document.createElement("div"),
+    itemImg = document.createElement("img"),
+    itemImgText = document.createElement("div");
+    
+    itemResult.className = "search_result";
+    itemImg.className = "search_result_image";
+    itemImg.src = adImage;
+    itemImg.isSelected = true;
+    selectImgSrc = adImage;
+    selectImgRes = adImageRes;
+    itemImgText.className = "search_result_text";
+    itemImgText.innerText = adImageRes + " / AR " + Math.round(parseInt(adImageRes.split(" × ")[0]) / parseInt(adImageRes.split(" × ")[1]) * 100) / 100;
+    itemImg.onclick = function () {
+        if (!this.isSelected) {
+            this.isSelected = true;
+            this.parentElement.style.opacity = null;
+            selectImgSrc = adImage;
+            console.log("Ad Image: " + selectImgSrc);
+        } else {
+            this.isSelected = false;
+            this.parentElement.style.opacity = "0.5";
+            selectImgSrc = selectImgRes = null;
+        }
+    };
+    
+    itemResult.appendChild(itemImg);
+    itemResult.appendChild(itemImgText);
+    searchResults.appendChild(itemResult);
+    }
+    
+    clearAdButton.style.display = "inline-block";
+};
+
 getAndSetAdInfo = function (adType) {
     if (adInfo) {
         var adInfoSplit = adInfo.split(",,");
@@ -164,39 +199,7 @@ getAndSetAdInfo = function (adType) {
             if (searchResults.childNodes.length == 0
                  && adInfoSplit[5]
                  && adInfoSplit[6]) {
-                var adImage = adInfoSplit[5],
-                adImageRes = adInfoSplit[6],
-                itemResult = document.createElement("div"),
-                itemImg = document.createElement("img"),
-                itemImgText = document.createElement("div");
-                
-                itemResult.className = "search_result";
-                itemImg.className = "search_result_image";
-                itemImg.src = adImage;
-                itemImg.isSelected = true;
-                selectImgSrc = adImage;
-                selectImgRes = adImageRes;
-                itemImgText.className = "search_result_text";
-                itemImgText.innerText = adImageRes + " / AR " + Math.round(parseInt(adImageRes.split(" × ")[0]) / parseInt(adImageRes.split(" × ")[1]) * 100) / 100;
-                itemImg.onclick = function () {
-                    if (!this.isSelected) {
-                        this.isSelected = true;
-                        this.parentElement.style.opacity = null;
-                        selectImgSrc = adImage;
-                        console.log("Ad Image: " + selectImgSrc);
-                    } else {
-                        this.isSelected = false;
-                        this.parentElement.style.opacity = "0.5";
-                        selectImgSrc = selectImgRes = null;
-                    }
-                };
-                
-                itemResult.appendChild(itemImg);
-                itemResult.appendChild(itemImgText);
-                searchResults.appendChild(itemResult);
-            }
-            
-            clearAdButton.style.display = "inline-block";
+                showSelectedAdImage(adInfoSplit[5], adInfoSplit[6]);
             break;
         }
     }
@@ -305,12 +308,18 @@ facebookButton.onclick = function () {
 };
 
 searchButton.onclick = function (startIndex) {
-    if (!Number.isInteger(startIndex)) {
-        startIndex = 1;
+    if (searchBox.value.search(/^http(s)?:\/\/.+\.(jpg|jpeg|jfif|png|bmp|gif|tiff|exif)/i) == -1) {
+        if (!Number.isInteger(startIndex)) {
+            startIndex = 1;
+        }
+        searchResults.innerHTML = null;
+        loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
+        openAdButton.scrollIntoView();
+    } else {
+        var urlImage = document.createElement("img");
+        urlImage.src = searchBox.value;
+        showSelectedAdImage(searchBox.value, urlImage.naturalWidth + " × " + urlImage.naturalHeight);
     }
-    searchResults.innerHTML = null;
-    loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
-    openAdButton.scrollIntoView();
 };
 
 sendAdInfoMsg = function (action) {
@@ -369,7 +378,7 @@ openAdButton.onclick = function () {
 };
 
 clearAdButton.onclick = function () {
-    googleSearchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = selectImgRes = null;
+    adInfo = googleSearchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = selectImgRes = null;
     prevButton.style.display = "none";
     nextButton.style.display = "none";
     searchResults.style.display = "none";
