@@ -141,7 +141,7 @@ encodeText = function (text) {
     return encodeURIComponent(text).replace(/%20/g, "+");
 };
 
-showSelectedAdImage = function (adImage, adImageRes) {
+showSelectedAdImage = function (adImage) {
     var itemResult = document.createElement("div"),
     itemImg = document.createElement("img"),
     itemImgText = document.createElement("div");
@@ -151,9 +151,9 @@ showSelectedAdImage = function (adImage, adImageRes) {
     itemImg.src = adImage;
     itemImg.isSelected = true;
     selectImgSrc = adImage;
-    selectImgRes = adImageRes;
+    selectImgRes = itemImg.naturalWidth + " × " + itemImg.naturalHeight;
     itemImgText.className = "search_result_text";
-    itemImgText.innerText = adImageRes + " / AR " + Math.round(parseInt(adImageRes.split(" × ")[0]) / parseInt(adImageRes.split(" × ")[1]) * 100) / 100;
+    itemImgText.innerText = adImageRes + " / AR " + Math.round(itemImg.naturalWidth / itemImg.naturalHeight * 100) / 100;
     itemImg.onclick = function () {
         if (!this.isSelected) {
             this.isSelected = true;
@@ -196,9 +196,8 @@ getAndSetAdInfo = function (adType) {
             setIfBlank(adText, adInfoSplit[4]);
             
             if (searchResults.childNodes.length == 0
-                 && adInfoSplit[5]
-                 && adInfoSplit[6]) {
-                showSelectedAdImage(adInfoSplit[5], adInfoSplit[6]);
+                 && adInfoSplit[5]) {
+                showSelectedAdImage(adInfoSplit[5]);
             }
             break;
         }
@@ -316,9 +315,7 @@ searchButton.onclick = function (startIndex) {
         loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
         openAdButton.scrollIntoView();
     } else {
-        var urlImage = document.createElement("img");
-        urlImage.src = searchBox.value;
-        showSelectedAdImage(searchBox.value, urlImage.naturalWidth + " × " + urlImage.naturalHeight);
+        showSelectedAdImage(searchBox.value);
     }
 };
 
@@ -340,7 +337,7 @@ sendAdInfoMsg = function (action) {
             var adTitleValue = encodeText(adTitle.value);
             
             msg.adType = "facebook";
-            msg.adInfo = ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
+            msg.adInfo = ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc;
             msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&*";
             msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
         }
