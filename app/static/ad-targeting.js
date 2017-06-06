@@ -155,14 +155,16 @@ getAndSetAdInfo = function (adType) {
             break;
         
         case "facebook":
-            setIfBlank(adTitle, adInfoSplit[0]);
-            setIfBlank(adLink, adInfoSplit[1]);
-            setIfBlank(adLinkText, adInfoSplit[2]);
-            setIfBlank(adText, adInfoSplit[3]);
+            setIfBlank(adTitle, adInfoSplit[1]);
+            setIfBlank(adLink, adInfoSplit[2]);
+            setIfBlank(adLinkText, adInfoSplit[3]);
+            setIfBlank(adText, adInfoSplit[4]);
             
-            if (searchResults.childNodes.length == 0) {
-                var adImage = adInfoSplit[4],
-                adImageRes = adInfoSplit[5],
+            if (searchResults.childNodes.length == 0
+                 && adInfoSplit[5]
+                 && adInfoSplit[6]) {
+                var adImage = adInfoSplit[5],
+                adImageRes = adInfoSplit[6],
                 itemResult = document.createElement("div"),
                 itemImg = document.createElement("img"),
                 itemImgText = document.createElement("div");
@@ -307,6 +309,7 @@ searchButton.onclick = function (startIndex) {
     }
     searchResults.innerHTML = null;
     loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
+    window.location.hash = "openAdButton";
 };
 
 sendAdInfoMsg = function (action) {
@@ -323,14 +326,12 @@ sendAdInfoMsg = function (action) {
             msg.adType = "googleSearch";
             msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value;
             msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
-            msg.urlRegEx = "^https://www\.google\.com/search\?dynamicAd=true&q=" + adSearchQuery;
         } else if (facebookButton.checked) {
             var adTitleValue = encodeText(adTitle.value);
             
             msg.adType = "facebook";
-            msg.adInfo = adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
+            msg.adInfo = ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + selectImgRes;
             msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&*";
-            msg.urlRegEx = "^https://www\/facebook\.com/\?dynamicAd=true" + "&title=" + adTitleValue + "&";
             msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
         }
     }
@@ -367,10 +368,13 @@ openAdButton.onclick = function () {
 };
 
 clearAdButton.onclick = function () {
-    googleSearchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = selectImg = selectImgSrc = selectImgRes = null;
+    googleSearchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = selectImgRes = null;
     prevButton.style.display = "none";
     nextButton.style.display = "none";
     searchResults.style.display = "none";
     sendAdInfoMsg("removeAdInfo");
     clearAdButton.style.display = "none";
+    window.location.hash = "top";
 };
+
+window.location.hash = "top";
