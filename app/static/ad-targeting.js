@@ -2,7 +2,7 @@ var devExtensionId = "dokkjhbgengdlccldgjnbilajdbjlnhm",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
 extensionId = devExtensionId,
 adInfo = getCookie("ad_info"),
-top = document.getElementById("top"),
+mainText = document.getElementById("mainText"),
 googleSearchButton = document.getElementById("googleSearchButton"),
 facebookButton = document.getElementById("facebookButton"),
 googleSearchQuery = document.getElementById("googleSearchQuery"),
@@ -375,7 +375,7 @@ clearAdButton.onclick = function () {
     searchResults.style.display = "none";
     sendAdInfoMsg("removeAdInfo");
     clearAdButton.style.display = "none";
-    top.scrollIntoView();
+    mainText.scrollIntoView();
 };
 
-top.scrollIntoView();
+mainText.scrollIntoView();
