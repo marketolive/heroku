@@ -170,7 +170,6 @@ showSelectedAdImage = function (adImage, adImageRes) {
     itemResult.appendChild(itemImg);
     itemResult.appendChild(itemImgText);
     searchResults.appendChild(itemResult);
-    }
     
     clearAdButton.style.display = "inline-block";
 };
@@ -200,6 +199,7 @@ getAndSetAdInfo = function (adType) {
                  && adInfoSplit[5]
                  && adInfoSplit[6]) {
                 showSelectedAdImage(adInfoSplit[5], adInfoSplit[6]);
+            }
             break;
         }
     }
