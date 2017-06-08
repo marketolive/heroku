@@ -139,6 +139,9 @@ showSelectedAdImage = function (adImage) {
     itemImg = document.createElement("img"),
     itemImgText = document.createElement("div");
     
+    prevButton.style.display = nextButton.style.display = "none";
+    searchResults.innerHTML = null;
+    
     itemResult.className = "search_result";
     itemImg.className = "search_result_image";
     itemImg.src = adImage;
@@ -308,7 +311,6 @@ searchButton.onclick = function (startIndex) {
         loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
         openAdButton.scrollIntoView();
     } else {
-        searchResults.innerHTML = null;
         showSelectedAdImage(searchBox.value);
         openAdButton.scrollIntoView();
     }
@@ -364,8 +366,6 @@ openAdButton.onclick = function () {
             return;
         }
         
-        searchResults.innerHTML = null;
-        prevButton.style.display = nextButton.style.display = "none";
         showSelectedAdImage(selectImgSrc);
     }
     
