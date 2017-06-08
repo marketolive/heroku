@@ -145,7 +145,7 @@ showSelectedAdImage = function (adImage) {
     itemImg.isSelected = true;
     selectImgSrc = adImage;
     itemImgText.className = "search_result_text";
-    itemImgText.innerText = adImageRes + " / AR " + Math.round(itemImg.naturalWidth / itemImg.naturalHeight * 100) / 100;
+    itemImgText.innerText = itemImg.naturalWidth + " × " + itemImg.naturalHeight + " / AR " + Math.round(itemImg.naturalWidth / itemImg.naturalHeight * 100) / 100;
     itemImg.onclick = function () {
         if (!this.isSelected) {
             this.isSelected = true;
@@ -365,6 +365,7 @@ openAdButton.onclick = function () {
         }
         
         searchResults.innerHTML = null;
+        prevButton.style.display = nextButton.style.display = "none";
         showSelectedAdImage(selectImgSrc);
     }
     
