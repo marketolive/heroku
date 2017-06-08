@@ -13,63 +13,75 @@
 
 {% block page_content %}
   <div class="body_container">
-    <div class="main_container">
-      <div id="mainText" class="main_text">
+    <div class="section">
+      <div id="heading" class="heading">
         Ad Targeting
       </div>
-      <div class="options_container">
-        <div class="options_inner_container">
-          <input type="radio" id="googleSearchButton" name="ad_type" value="" >
-            <div class="ad_type_text">
-              Google Search
-            </div>
-          <input type="radio" id="facebookButton" name="ad_type" value="">
-            <div class="ad_type_text">
-              Facebook
-            </div>
-        </div>
+      <input type="radio" id="googleSearchButton" class="radio_button" name="ad_type" value="" >
+      <div class="radio_button_text">
+        Google Search
       </div>
-      <div class="options_container">
-        <div class="options_inner_container">
-          <input id="googleSearchQuery" type="text" placeholder="Google Search Term ...">
-          <input id="adTitle" type="text" placeholder="Ad Title ...">
-          <input id="adLink" type="text" placeholder="Ad Link ...">
-          <input id="adLinkText" type="text" placeholder="Ad Link Text (Optional) ...">
-          <input id="adText" type="text" placeholder="Ad Main Text ...">
-          <button id="prevButton" value="Previous" type="submit">
+      <input type="radio" id="facebookButton" class="radio_button" name="ad_type" value="">
+      <div class="radio_button_text">
+        Facebook
+      </div>
+    </div>
+    <div class="section">
+      <div id="adForm" class="field_group">
+        <div id="searchQueryContainer" class="field_container">
+          <div class="field_label">Search Term:</div>
+          <input id="searchQuery" class="field_input" type="text" placeholder="marketing automation">
+        </div>
+        <div class="field_container">
+          <div class="field_label">Title:</div>
+          <input id="adTitle" class="field_input" type="text" placeholder="Marketo - Engage Your Customers">
+        </div>
+        <div class="field_container">
+          <div class="field_label">Link:</div>
+          <input id="adLink" class="field_input" type="text" placeholder="https://www.marketo.com/solutions">
+        </div>
+        <div class="field_container">
+          <div class="field_label field_label_optional">Link Text:</div>
+          <input id="adLinkText" class="field_input" type="text" placeholder="marketo.com/solutions">
+        </div>
+        <div class="field_container">
+          <div class="field_label">Main Text:</div>
+          <input id="adText" class="field_input" type="text" placeholder="Gain the power and flexibility you need to engage customers at scale.">
+        </div>
+        <div id="searchContainer" class="field_container">
+          <button id="prevButton" class="button_style" value="Previous" type="submit">
             <span class="button_text">
               < Prev
             </span>
           </button>
-          <input id="searchBox" type="text" placeholder="Search for an Image / URL of an Image ...">
-          <button id="searchButton" value="Search" type="submit">
+          <div class="field_label">Search/URL Image:</div>
+          <input id="searchBox" class="search_input" type="text" placeholder="Search for an Image / URL of an Image ...">
+          <button id="searchButton" class="button_style" value="Search" type="submit">
             <span class="search_button_icon">
               <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
               </svg>
             </span>
           </button>
-          <button id="nextButton" value="Next" type="submit">
+          <button id="nextButton" class="button_style" value="Next" type="submit">
             <span class="button_text">
               > Next
             </span>
           </button>
-          <div id="idealFacebookImageInfo">
-            <u>Ideal Resolution / Aspect Ratio</u><br>
-            284 × 149 / AR 1.91
-          </div>
+        </div>
+        <div id="idealFacebookImageInfo" class="idealImageInfo">
+          <u>Ideal Resolution / Aspect Ratio</u><br>
+          284 × 149 / AR 1.91
         </div>
       </div>
-      <div id="searchResults"></div>
-      <div class="options_container">
-        <div class="options_inner_container">
-          <div id="openAdButton">
-            Open Ad
-          </div>
-          <div id="clearAdButton">
-            Clear Ad
-          </div>
-        </div>
+    </div>
+    <div id="searchResults"></div>
+    <div class="section">
+      <div id="openAdButton" class="button_style">
+        Open Ad
+      </div>
+      <div id="clearAdButton" class="button_style">
+        Clear Ad
       </div>
     </div>
     <div class="heap_badge">

@@ -2,13 +2,16 @@ var devExtensionId = "dokkjhbgengdlccldgjnbilajdbjlnhm",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
 extensionId = devExtensionId,
 adInfo = getCookie("ad_info"),
-mainText = document.getElementById("mainText"),
+heading = document.getElementById("heading"),
 googleSearchButton = document.getElementById("googleSearchButton"),
 facebookButton = document.getElementById("facebookButton"),
-googleSearchQuery = document.getElementById("googleSearchQuery"),
+adForm = document.getElementById("adForm"),
+searchQueryContainer = document.getElementById("searchQueryContainer"),
+searchQuery = document.getElementById("searchQuery"),
 adTitle = document.getElementById("adTitle"),
 adLink = document.getElementById("adLink"),
 adText = document.getElementById("adText"),
+searchContainer = document.getElementById("searchContainer"),
 searchBox = document.getElementById("searchBox"),
 searchButton = document.getElementById("searchButton"),
 prevButton = document.getElementById("prevButton"),
@@ -27,19 +30,11 @@ getAndSetAdInfo,
 submitOnEnterInFields,
 flashBorder,
 validateFields,
+loadScript,
 sendAdInfoMsg,
 selectImg,
 selectImgSrc,
 selectImgRes;
-
-function loadScript(scriptSrc) {
-    console.log("Loading: Script: " + scriptSrc);
-    
-    var scriptElement = document.createElement("script");
-    scriptElement.async = true;
-    scriptElement.src = scriptSrc;
-    document.getElementsByTagName("head")[0].appendChild(scriptElement);
-}
 
 function getCookie(cookieName) {
     console.log("Getting: Cookie " + cookieName);
@@ -180,7 +175,7 @@ getAndSetAdInfo = function (adType) {
         
         switch (adType) {
         case "googleSearch":
-            setIfBlank(googleSearchQuery, decodeURIComponent(adInfoSplit[0]).replace(/\+/g, " "));
+            setIfBlank(searchQuery, decodeURIComponent(adInfoSplit[0]).replace(/\+/g, " "));
             setIfBlank(adTitle, adInfoSplit[1]);
             setIfBlank(adLink, adInfoSplit[2]);
             setIfBlank(adLinkText, adInfoSplit[3]);
@@ -188,7 +183,7 @@ getAndSetAdInfo = function (adType) {
             
             clearAdButton.style.display = "inline-block";
             break;
-        
+            
         case "facebook":
             setIfBlank(adTitle, adInfoSplit[1]);
             setIfBlank(adLink, adInfoSplit[2]);
@@ -254,7 +249,7 @@ validateFields = function (fields) {
         var field = fields[ii];
         
         if (!field.value) {
-            flashBorder(field, 3, 500);
+            flashBorder(field, 3, 667);
             isValid = false;
         }
     }
@@ -268,16 +263,11 @@ validateFields = function (fields) {
 
 googleSearchButton.onclick = function () {
     getAndSetAdInfo("googleSearch");
-    submitOnEnterInFields([googleSearchQuery, adTitle, adLink, adLinkText, adText], openAdButton.onclick);
-    googleSearchQuery.style.display = "block";
-    adTitle.style.display = "block";
-    adLink.style.display = "block";
-    adLinkText.style.display = "block";
-    adText.style.display = "block";
-    searchBox.style.display = "none";
-    searchButton.style.display = "none";
-    prevButton.style.display = "none";
-    nextButton.style.display = "none";
+    submitOnEnterInFields([searchQuery, adTitle, adLink, adLinkText, adText], openAdButton.onclick);
+    
+    searchQueryContainer.style.display = "flex";
+    adForm.style.display = "inline-block";
+    searchContainer.style.display = "none";
     idealFacebookImageInfo.style.display = "none";
     searchResults.style.display = "none";
     openAdButton.style.display = "inline-block";
@@ -287,13 +277,10 @@ facebookButton.onclick = function () {
     getAndSetAdInfo("facebook");
     submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
     submitOnEnterInFields([searchBox], searchButton.onclick);
-    googleSearchQuery.style.display = "none";
-    adTitle.style.display = "block";
-    adLink.style.display = "block";
-    adLinkText.style.display = "block";
-    adText.style.display = "block";
-    searchBox.style.display = "inline-block";
-    searchButton.style.display = "inline-block";
+    
+    searchQueryContainer.style.display = "none";
+    adForm.style.display = "inline-block";
+    searchContainer.style.display = "flex";
     idealFacebookImageInfo.style.display = "block";
     searchResults.style.display = "block";
     openAdButton.style.display = "inline-block";
@@ -306,6 +293,15 @@ facebookButton.onclick = function () {
     }
 };
 
+loadScript = function (scriptSrc) {
+    console.log("Loading: Script: " + scriptSrc);
+    
+    var scriptElement = document.createElement("script");
+    scriptElement.async = true;
+    scriptElement.src = scriptSrc;
+    document.getElementsByTagName("head")[0].appendChild(scriptElement);
+};
+
 searchButton.onclick = function (startIndex) {
     if (searchBox.value.search(/^http(s)?:\/\/.+\.(jpg|jpeg|jfif|png|bmp|gif|tiff|exif)/i) == -1) {
         if (!Number.isInteger(startIndex)) {
@@ -315,7 +311,9 @@ searchButton.onclick = function (startIndex) {
         loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
         openAdButton.scrollIntoView();
     } else {
+        searchResults.innerHTML = null;
         showSelectedAdImage(searchBox.value);
+        openAdButton.scrollIntoView();
     }
 };
 
@@ -328,16 +326,17 @@ sendAdInfoMsg = function (action) {
     
     if (action != "removeAdInfo") {
         if (googleSearchButton.checked) {
-            var adSearchQuery = encodeText(googleSearchQuery.value);
+            var adSearchQuery = encodeText(searchQuery.value);
             
             msg.adType = "googleSearch";
             msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value;
             msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
         } else if (facebookButton.checked) {
-            var adTitleValue = encodeText(adTitle.value);
+            var adSearchQuery = encodeText(searchQuery.value),
+            adTitleValue = encodeText(adTitle.value);
             
             msg.adType = "facebook";
-            msg.adInfo = ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc;
+            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc;
             msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&*";
             msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
         }
@@ -351,7 +350,7 @@ sendAdInfoMsg = function (action) {
 
 openAdButton.onclick = function () {
     if (googleSearchButton.checked) {
-        if (!validateFields([googleSearchQuery, adTitle, adLink, adText])) {
+        if (!validateFields([searchQuery, adTitle, adLink, adText])) {
             return;
         }
     } else if (facebookButton.checked) {
@@ -362,9 +361,9 @@ openAdButton.onclick = function () {
         if (!selectImgSrc
              || !selectImgRes) {
             if (searchResults.childNodes.length > 0) {
-                flashBorder(searchResults, 3, 500);
+                flashBorder(searchResults, 3, 667);
             } else {
-                flashBorder(searchBox, 3, 500);
+                flashBorder(searchBox, 3, 667);
             }
             return;
         }
@@ -375,13 +374,12 @@ openAdButton.onclick = function () {
 };
 
 clearAdButton.onclick = function () {
-    adInfo = googleSearchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = selectImgRes = null;
+    adInfo = searchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = selectImgRes = null;
     prevButton.style.display = "none";
     nextButton.style.display = "none";
-    searchResults.style.display = "none";
     sendAdInfoMsg("removeAdInfo");
     clearAdButton.style.display = "none";
-    mainText.scrollIntoView();
+    heading.scrollIntoView();
 };
 
-mainText.scrollIntoView();
+heading.scrollIntoView();
