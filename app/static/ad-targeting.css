@@ -147,6 +147,12 @@
   height: 41px;
 }
 
+#logo {
+  visibility: hidden;
+  width: 50px;
+  length: 50px;
+  margin-left: 10px;
+}
 #searchContainer {
   padding-top: 10px;
 }

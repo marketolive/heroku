@@ -25,6 +25,10 @@
       <div class="radio_button_text">
         Facebook
       </div>
+      <input type="radio" id="linkedinButton" class="radio_button" name="ad_type" value="">
+      <div class="radio_button_text">
+        LinkedIn
+      </div>
     </div>
     <div class="section">
       <div id="adForm" class="field_group">
@@ -48,6 +52,11 @@
           <div class="field_label">Main Text:</div>
           <input id="adText" class="field_input" type="text" placeholder="Gain the power and flexibility you need to engage customers at scale.">
         </div>
+        <div id="logoContainer" class="field_container">
+          <div class="field_label">Company Domain:</div>
+          <input id="adLogo" class="search_input" type="text" placeholder="marketo.com">
+          <img id="logo" src="">
+        </div>
         <div id="searchContainer" class="field_container">
           <div class="field_label">Search/URL Image:</div>
           <input id="searchBox" class="search_input" type="text" placeholder="Search for an Image / URL of an Image ...">
@@ -68,6 +77,10 @@
           <div id="idealFacebookImageInfo" class="idealImageInfo">
             <u>Ideal Resolution / Aspect Ratio</u><br>
             284 × 149 / AR 1.91
+          </div>
+          <div id="idealLinkedinImageInfo" class="idealImageInfo">
+            <u>Ideal Resolution / Aspect Ratio</u><br>
+            520 x 272 / AR 1.91
           </div>
           <button id="nextButton" class="button_style" value="Next" type="submit">
             <span class="button_text">

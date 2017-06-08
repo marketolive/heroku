@@ -5,18 +5,23 @@ adInfo = getCookie("ad_info"),
 heading = document.getElementById("heading"),
 googleSearchButton = document.getElementById("googleSearchButton"),
 facebookButton = document.getElementById("facebookButton"),
+linkedinButton = document.getElementById("linkedinButton"),
 adForm = document.getElementById("adForm"),
 searchQueryContainer = document.getElementById("searchQueryContainer"),
 searchQuery = document.getElementById("searchQuery"),
 adTitle = document.getElementById("adTitle"),
 adLink = document.getElementById("adLink"),
 adText = document.getElementById("adText"),
+logoContainer = document.getElementById("logoContainer"),
+adLogo = document.getElementById("adLogo"),
+logo = document.getElementById("logo"),
 searchContainer = document.getElementById("searchContainer"),
 searchBox = document.getElementById("searchBox"),
 searchButton = document.getElementById("searchButton"),
 prevButton = document.getElementById("prevButton"),
 nextButton = document.getElementById("nextButton"),
 idealFacebookImageInfo = document.getElementById("idealFacebookImageInfo"),
+idealLinkedinImageInfo = document.getElementById("idealLinkedinImageInfo"),
 searchResults = document.getElementById("searchResults"),
 openAdButton = document.getElementById("openAdButton"),
 clearAdButton = document.getElementById("clearAdButton"),
@@ -195,6 +200,18 @@ getAndSetAdInfo = function (adType) {
                 showSelectedAdImage(adInfoSplit[5]);
             }
             break;
+        
+        case "linkedin":
+            setIfBlank(adTitle, adInfoSplit[1]);
+            setIfBlank(adLink, adInfoSplit[2]);
+            setIfBlank(adLinkText, adInfoSplit[3]);
+            setIfBlank(adText, adInfoSplit[4]);
+            
+            if (searchResults.childNodes.length == 0
+                 && adInfoSplit[5]) {
+                showSelectedAdImage(adInfoSplit[5]);
+            }
+            break;
         }
     }
 };
@@ -266,11 +283,8 @@ googleSearchButton.onclick = function () {
     submitOnEnterInFields([searchQuery, adTitle, adLink, adLinkText, adText], openAdButton.onclick);
     
     searchQueryContainer.style.display = "flex";
-    adForm.style.display = "inline-block";
-    searchContainer.style.display = "none";
-    idealFacebookImageInfo.style.display = "none";
-    searchResults.style.display = "none";
-    openAdButton.style.display = "inline-block";
+    logoContainer.style.display = searchContainer.style.display = idealFacebookImageInfo.style.display = idealLinkedinImageInfo.style.display = searchResults.style.display = "none";
+    adForm.style.display = openAdButton.style.display = "inline-block";
 };
 
 facebookButton.onclick = function () {
@@ -278,18 +292,55 @@ facebookButton.onclick = function () {
     submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
     submitOnEnterInFields([searchBox], searchButton.onclick);
     
-    searchQueryContainer.style.display = "none";
-    adForm.style.display = "inline-block";
+    searchQueryContainer.style.display = logoContainer.style.display = idealLinkedinImageInfo.style.display = "none";
     searchContainer.style.display = "flex";
-    idealFacebookImageInfo.style.display = "block";
-    searchResults.style.display = "block";
-    openAdButton.style.display = "inline-block";
+    idealFacebookImageInfo.style.display = searchResults.style.display = "block";
+    adForm.style.display = openAdButton.style.display = "inline-block";
     
     if (searchResults.childNodes.length > 1) {
         nextButton.style.display = "inline-block";
         if (startIndex > 1) {
             prevButton.style.display = "inline-block";
         }
+    }
+};
+
+linkedinButton.onclick = function () {
+    getAndSetAdInfo("linkedin");
+    submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
+    submitOnEnterInFields([searchBox], searchButton.onclick);
+    
+    searchQueryContainer.style.display = idealFacebookImageInfo.style.display = "none";
+    logoContainer.style.display = searchContainer.style.display = "flex";
+    idealLinkedinImageInfo.style.display = searchResults.style.display = "block";
+    adForm.style.display = openAdButton.style.display = "inline-block";
+    
+    if (searchResults.childNodes.length > 1) {
+        nextButton.style.display = "inline-block";
+        if (startIndex > 1) {
+            prevButton.style.display = "inline-block";
+        }
+    }
+};
+
+adLogo.onblur = function () {
+    if (this.value) {
+        var companyDomain = this.value.toLowerCase();
+        
+        if (companyDomain.search("\\.[a-z0-9-]+$") == -1) {
+            if (companyDomain.search("\\.$") == -1) {
+                companyDomain = companyDomain + ".com";
+            } else {
+                companyDomain = companyDomain + "com";
+            }
+        }
+        
+        logo.crossOrigin = "https://logo.clearbit.com/*";
+        logo.src = "https://logo.clearbit.com/" + companyDomain + "?size=50";
+        logo.style.visibility = "visible";
+    } else {
+        logo.style.visibility = "hidden";
+        logo.innerHTML = null;
     }
 };
 
@@ -324,20 +375,22 @@ sendAdInfoMsg = function (action) {
     };
     
     if (action != "removeAdInfo") {
+        var adSearchQuery = encodeText(searchQuery.value),
+        adTitleValue = encodeText(adTitle.value);
+        
         if (googleSearchButton.checked) {
-            var adSearchQuery = encodeText(searchQuery.value);
-            
             msg.adType = "googleSearch";
-            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value;
+            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + logo.src;
             msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
         } else if (facebookButton.checked) {
-            var adSearchQuery = encodeText(searchQuery.value),
-            adTitleValue = encodeText(adTitle.value);
-            
             msg.adType = "facebook";
-            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc;
+            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + logo.src;
             msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&*";
             msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
+        } else if (linkedinButton.checked) {
+            msg.adType = "linkedin";
+            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + logo.src;
+            msg.urlMatch = msg.urlCreate = "https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
         }
     }
     
@@ -367,6 +420,21 @@ openAdButton.onclick = function () {
         }
         
         showSelectedAdImage(selectImgSrc);
+    } else if (linkedinButton.checked) {
+        if (!validateFields([adTitle, adLink, adText])) {
+            return;
+        }
+        
+        if (!selectImgSrc) {
+            if (searchResults.childNodes.length > 0) {
+                flashBorder(searchResults, 3, 667);
+            } else {
+                flashBorder(searchBox, 3, 667);
+            }
+            return;
+        }
+        
+        showSelectedAdImage(selectImgSrc);
     }
     
     sendAdInfoMsg();
@@ -374,7 +442,7 @@ openAdButton.onclick = function () {
 };
 
 clearAdButton.onclick = function () {
-    adInfo = searchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = null;
+    adInfo = searchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = adLogo.value = logo.innerHTML = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = null;
     prevButton.style.display = "none";
     nextButton.style.display = "none";
     sendAdInfoMsg("removeAdInfo");
