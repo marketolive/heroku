@@ -269,18 +269,6 @@ googleSearchButton.onclick = function () {
     adForm.style.display = "inline-block";
     searchContainer.style.display = "none";
     idealFacebookImageInfo.style.display = "none";
-    /*
-    searchQuery.style.display = "inline-block";
-    adTitle.style.display = "inline-block";
-    adLink.style.display = "inline-block";
-    adLinkText.style.display = "inline-block";
-    adText.style.display = "inline-block";
-    searchBox.style.display = "none";
-    searchButton.style.display = "none";
-    prevButton.style.display = "none";
-    nextButton.style.display = "none";
-    idealFacebookImageInfo.style.display = "none";
-    */
     searchResults.style.display = "none";
     openAdButton.style.display = "inline-block";
 };
@@ -294,16 +282,6 @@ facebookButton.onclick = function () {
     adForm.style.display = "inline-block";
     searchContainer.style.display = "flex";
     idealFacebookImageInfo.style.display = "block";
-    /*
-    searchQuery.style.display = "none";
-    adTitle.style.display = "inline-block";
-    adLink.style.display = "inline-block";
-    adLinkText.style.display = "inline-block";
-    adText.style.display = "inline-block";
-    searchBox.style.display = "inline-block";
-    searchButton.style.display = "inline-block";
-    idealFacebookImageInfo.style.display = "block";
-    */
     searchResults.style.display = "block";
     openAdButton.style.display = "inline-block";
     
