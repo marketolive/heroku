@@ -33,8 +33,7 @@ validateFields,
 loadScript,
 sendAdInfoMsg,
 selectImg,
-selectImgSrc,
-selectImgRes;
+selectImgSrc;
 
 function getCookie(cookieName) {
     console.log("Getting: Cookie " + cookieName);
@@ -99,7 +98,6 @@ function resultsHandler(response) {
                 this.isSelected = true;
                 selectImg = this;
                 selectImgSrc = this.src;
-                selectImgRes = this.naturalWidth + " × " + this.naturalHeight;
                 this.parentElement.style.opacity = null;
                 submitOnEnterInFields([this], openAdButton.onclick);
                 for (var jj = 0; jj < imgs.length; jj++) {
@@ -111,7 +109,7 @@ function resultsHandler(response) {
                 console.log("Ad Image: " + selectImgSrc);
             } else {
                 this.isSelected = false;
-                selectImg = selectImgSrc = selectImgRes = null;
+                selectImg = selectImgSrc = null;
                 for (var jj = 0; jj < imgs.length; jj++) {
                     imgs[jj].parentElement.style.opacity = null;
                 }
@@ -146,7 +144,6 @@ showSelectedAdImage = function (adImage) {
     itemImg.src = adImage;
     itemImg.isSelected = true;
     selectImgSrc = adImage;
-    selectImgRes = itemImg.naturalWidth + " × " + itemImg.naturalHeight;
     itemImgText.className = "search_result_text";
     itemImgText.innerText = adImageRes + " / AR " + Math.round(itemImg.naturalWidth / itemImg.naturalHeight * 100) / 100;
     itemImg.onclick = function () {
@@ -158,7 +155,7 @@ showSelectedAdImage = function (adImage) {
         } else {
             this.isSelected = false;
             this.parentElement.style.opacity = "0.5";
-            selectImgSrc = selectImgRes = null;
+            selectImgSrc = null;
         }
     };
     
@@ -358,8 +355,7 @@ openAdButton.onclick = function () {
             return;
         }
         
-        if (!selectImgSrc
-             || !selectImgRes) {
+        if (!selectImgSrc) {
             if (searchResults.childNodes.length > 0) {
                 flashBorder(searchResults, 3, 667);
             } else {
@@ -367,6 +363,9 @@ openAdButton.onclick = function () {
             }
             return;
         }
+        
+        searchResults.innerHTML = null;
+        showSelectedAdImage(selectImgSrc);
     }
     
     sendAdInfoMsg();
@@ -374,7 +373,7 @@ openAdButton.onclick = function () {
 };
 
 clearAdButton.onclick = function () {
-    adInfo = searchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = selectImgRes = null;
+    adInfo = searchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = null;
     prevButton.style.display = "none";
     nextButton.style.display = "none";
     sendAdInfoMsg("removeAdInfo");
