@@ -150,7 +150,7 @@
 #searchButton {
   width: 50px;
   height: 50px;
-  margin: 0 10px;
+  margin-left: 10px;
   padding-bottom: 2px;
 }
 #prevButton, #nextButton {
@@ -158,6 +158,7 @@
   width: 70px;
   height: 35px;
   font-size: 15px;
+  padding: 0 10px;
 }
 #searchResults {
   padding: 0 10px 20px 10px;
