@@ -1,6 +1,6 @@
 .body_container {
   width: 100%;
-  height: 1106px;
+  height: 1154px;
   background-color: #f2f2f2;
   font-size: 18px;
   font-weight: 300;
@@ -170,7 +170,7 @@
   margin: 0 20px;
 }
 #searchResults {
-  padding: 0 10px 20px 10px;
+  padding: 10px 10px 0px 10px;
   border: 2px solid transparent;
   border-radius: 5px;
 }
