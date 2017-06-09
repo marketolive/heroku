@@ -35,6 +35,7 @@ getAndSetAdInfo,
 submitOnEnterInFields,
 flashBorder,
 validateFields,
+adLogoSubmit,
 loadScript,
 sendAdInfoMsg,
 selectImg,
@@ -150,28 +151,37 @@ showSelectedAdImage = function (adImage) {
     itemResult.className = "search_result";
     itemImg.className = "search_result_image";
     itemImg.src = adImage;
-    itemImg.isSelected = true;
-    selectImgSrc = adImage;
-    itemImgText.className = "search_result_text";
-    itemImgText.innerText = itemImg.naturalWidth + " × " + itemImg.naturalHeight + " / AR " + Math.round(itemImg.naturalWidth / itemImg.naturalHeight * 100) / 100;
-    itemImg.onclick = function () {
-        if (!this.isSelected) {
-            this.isSelected = true;
-            this.parentElement.style.opacity = null;
-            selectImgSrc = adImage;
-            console.log("Ad Image: " + selectImgSrc);
-        } else {
-            this.isSelected = false;
-            this.parentElement.style.opacity = "0.5";
-            selectImgSrc = null;
-        }
+    
+    itemImg.onload = function () {
+        itemImg.isSelected = true;
+        selectImgSrc = adImage;
+        itemImgText.className = "search_result_text";
+        itemImgText.innerText = itemImg.naturalWidth + " × " + itemImg.naturalHeight + " / AR " + Math.round(itemImg.naturalWidth / itemImg.naturalHeight * 100) / 100;
+        itemImg.onclick = function () {
+            if (!this.isSelected) {
+                this.isSelected = true;
+                this.parentElement.style.opacity = null;
+                selectImgSrc = adImage;
+                console.log("Ad Image: " + selectImgSrc);
+            } else {
+                this.isSelected = false;
+                this.parentElement.style.opacity = "0.5";
+                selectImgSrc = null;
+            }
+        };
+        
+        itemResult.appendChild(itemImg);
+        itemResult.appendChild(itemImgText);
+        searchResults.appendChild(itemResult);
+        
+        clearAdButton.style.display = "inline-block";
+        openAdButton.scrollIntoView();
     };
     
-    itemResult.appendChild(itemImg);
-    itemResult.appendChild(itemImgText);
-    searchResults.appendChild(itemResult);
-    
-    clearAdButton.style.display = "inline-block";
+    itemImg.onerror = function () {
+        searchResults.innerHTML = null;
+        flashBorder(searchBox, 3, 667);
+    };
 };
 
 getAndSetAdInfo = function (adType) {
@@ -308,7 +318,7 @@ facebookButton.onclick = function () {
 linkedinButton.onclick = function () {
     getAndSetAdInfo("linkedin");
     submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
-    submitOnEnterInFields([adLogo], adLogo.onblur);
+    submitOnEnterInFields([adLogo], adLogoSubmit);
     submitOnEnterInFields([searchBox], searchButton.onclick);
     
     searchQueryContainer.style.display = idealFacebookImageInfo.style.display = "none";
@@ -324,9 +334,25 @@ linkedinButton.onclick = function () {
     }
 };
 
-adLogo.onblur = function () {
-    if (this.value) {
-        var companyDomain = this.value.toLowerCase();
+logo.onload = function () {
+    logo.style.visibility = "visible";
+};
+
+logo.onerror = function () {
+    logo.style.visibility = "hidden";
+    flashBorder(adLogo, 3, 667);
+};
+
+adLogoSubmit = function (value, isBlur) {
+    if (value
+    || !isBlur) {
+        var companyDomain;
+        
+        if (value) {
+            companyDomain = value.toLowerCase();
+        } else {
+            companyDomain = adLogo.value;
+        }
         
         if (companyDomain.search("\\.[a-z0-9-]+$") == -1) {
             if (companyDomain.search("\\.$") == -1) {
@@ -338,11 +364,14 @@ adLogo.onblur = function () {
         
         logo.crossOrigin = "https://logo.clearbit.com/*";
         logo.src = "https://logo.clearbit.com/" + companyDomain + "?size=50";
-        logo.style.visibility = "visible";
-    } else {
+    } else if (isBlur) {
         logo.style.visibility = "hidden";
         logo.src = null;
     }
+};
+
+adLogo.onblur = function () {
+    adLogoSubmit(this.value, true);
 };
 
 loadScript = function (scriptSrc) {
@@ -364,7 +393,6 @@ searchButton.onclick = function (startIndex) {
         openAdButton.scrollIntoView();
     } else {
         showSelectedAdImage(searchBox.value);
-        openAdButton.scrollIntoView();
     }
 };
 
