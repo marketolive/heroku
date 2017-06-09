@@ -2,7 +2,6 @@ var devExtensionId = "dokkjhbgengdlccldgjnbilajdbjlnhm",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
 extensionId = devExtensionId,
 adInfo = getCookie("ad_info"),
-heading = document.getElementById("heading"),
 googleSearchButton = document.getElementById("googleSearchButton"),
 googleButtonText = document.getElementById("googleButtonText"),
 facebookButton = document.getElementById("facebookButton"),
@@ -132,6 +131,14 @@ function resultsHandler(response) {
         searchResults.appendChild(itemResult);
     }
 }
+
+document.onreadystatechange = function () {
+    if (document.readyState === "complete") {
+        window.setTimeout(function () {
+            document.body.scrollTop = 0;
+        }, 500);
+    }
+};
 
 setIfBlank = function (field, value) {
     if (!field.value) {
@@ -458,7 +465,7 @@ openAdButton.onclick = function () {
         }
         
         showSelectedAdImage(selectImgSrc);
-        heading.scrollIntoView();
+        document.body.scrollTop = 0;
     } else if (linkedinButton.checked) {
         if (!validateFields([adTitle, adLink, adText, adLogo])) {
             return;
@@ -474,7 +481,7 @@ openAdButton.onclick = function () {
         }
         
         showSelectedAdImage(selectImgSrc);
-        heading.scrollIntoView();
+        document.body.scrollTop = 0;
     }
     
     sendAdInfoMsg();
@@ -486,7 +493,5 @@ clearAdButton.onclick = function () {
     logo.style.visibility = "hidden";
     prevButton.style.display = nextButton.style.display = clearAdButton.style.display = "none";
     sendAdInfoMsg("removeAdInfo");
-    heading.scrollIntoView();
+    document.body.scrollTop = 0;
 };
-
-heading.scrollIntoView();
