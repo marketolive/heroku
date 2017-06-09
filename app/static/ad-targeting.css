@@ -24,8 +24,10 @@
 }
 .radio_button_text {
   display: inline-block;
+  cursor: pointer;
   vertical-align: middle;
   font-size: 18px;
+  font-weight: normal;
   margin-right: 15px;
 }
 .field_group {

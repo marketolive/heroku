@@ -4,8 +4,11 @@ extensionId = devExtensionId,
 adInfo = getCookie("ad_info"),
 heading = document.getElementById("heading"),
 googleSearchButton = document.getElementById("googleSearchButton"),
+googleButtonText = document.getElementById("googleButtonText"),
 facebookButton = document.getElementById("facebookButton"),
+facebookButtonText = document.getElementById("facebookButtonText"),
 linkedinButton = document.getElementById("linkedinButton"),
+linkedinButtonText = document.getElementById("linkedinButtonText"),
 adForm = document.getElementById("adForm"),
 searchQueryContainer = document.getElementById("searchQueryContainer"),
 searchQuery = document.getElementById("searchQuery"),
@@ -288,7 +291,8 @@ validateFields = function (fields) {
     }
 };
 
-googleSearchButton.onclick = function () {
+googleSearchButton.onclick = googleButtonText.onclick = function () {
+    googleSearchButton.checked = true;
     getAndSetAdInfo("googleSearch");
     submitOnEnterInFields([searchQuery, adTitle, adLink, adLinkText, adText], openAdButton.onclick);
     
@@ -297,7 +301,8 @@ googleSearchButton.onclick = function () {
     adForm.style.display = openAdButton.style.display = "inline-block";
 };
 
-facebookButton.onclick = function () {
+facebookButton.onclick = facebookButtonText.onclick = function () {
+    facebookButton.checked = true;
     getAndSetAdInfo("facebook");
     submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
     submitOnEnterInFields([searchBox], searchButton.onclick);
@@ -315,7 +320,8 @@ facebookButton.onclick = function () {
     }
 };
 
-linkedinButton.onclick = function () {
+linkedinButton.onclick = linkedinButtonText.onclick = function () {
+    linkedinButton.checked = true;
     getAndSetAdInfo("linkedin");
     submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
     submitOnEnterInFields([adLogo], adLogoSubmit);
