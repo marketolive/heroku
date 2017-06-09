@@ -308,6 +308,7 @@ facebookButton.onclick = function () {
 linkedinButton.onclick = function () {
     getAndSetAdInfo("linkedin");
     submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
+    submitOnEnterInFields([adLogo], adLogo.onblur);
     submitOnEnterInFields([searchBox], searchButton.onclick);
     
     searchQueryContainer.style.display = idealFacebookImageInfo.style.display = "none";
@@ -340,7 +341,7 @@ adLogo.onblur = function () {
         logo.style.visibility = "visible";
     } else {
         logo.style.visibility = "hidden";
-        logo.innerHTML = null;
+        logo.src = null;
     }
 };
 
@@ -421,7 +422,7 @@ openAdButton.onclick = function () {
         
         showSelectedAdImage(selectImgSrc);
     } else if (linkedinButton.checked) {
-        if (!validateFields([adTitle, adLink, adText])) {
+        if (!validateFields([adTitle, adLink, adText, adLogo])) {
             return;
         }
         
@@ -442,11 +443,10 @@ openAdButton.onclick = function () {
 };
 
 clearAdButton.onclick = function () {
-    adInfo = searchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = adLogo.value = logo.innerHTML = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = null;
-    prevButton.style.display = "none";
-    nextButton.style.display = "none";
+    adInfo = searchQuery.value = adTitle.value = adLink.value = adLinkText.value = adText.value = adLogo.value = logo.src = searchBox.value = searchResults.innerHTML = selectImg = selectImgSrc = null;
+    logo.style.visibility = "hidden";
+    prevButton.style.display = nextButton.style.display = clearAdButton.style.display = "none";
     sendAdInfoMsg("removeAdInfo");
-    clearAdButton.style.display = "none";
     heading.scrollIntoView();
 };
 
