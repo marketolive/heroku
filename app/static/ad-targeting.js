@@ -143,7 +143,7 @@ encodeText = function (text) {
     return encodeURIComponent(text).replace(/%20/g, "+");
 };
 
-showSelectedAdImage = function (adImage) {
+showSelectedAdImage = function (adImage, scrollInView) {
     var itemResult = document.createElement("div"),
     itemImg = document.createElement("img"),
     itemImgText = document.createElement("div");
@@ -178,7 +178,10 @@ showSelectedAdImage = function (adImage) {
         searchResults.appendChild(itemResult);
         
         clearAdButton.style.display = "inline-block";
-        openAdButton.scrollIntoView();
+        
+        if (scrollInView) {
+            openAdButton.scrollIntoView();
+        }
     };
     
     itemImg.onerror = function () {
@@ -398,7 +401,7 @@ searchButton.onclick = function (startIndex) {
         loadScript("https://www.googleapis.com/customsearch/v1?key=" + key + "&cx=" + cx + "&fields=queries(request/startIndex,previousPage/startIndex,nextPage/startIndex),items(link,image/height,image/width)&filter=1&num=10&searchType=image&imgType=photo&callback=resultsHandler&q=" + encodeURIComponent(searchBox.value) + "&start=" + startIndex);
         openAdButton.scrollIntoView();
     } else {
-        showSelectedAdImage(searchBox.value);
+        showSelectedAdImage(searchBox.value, true);
     }
 };
 
@@ -455,6 +458,7 @@ openAdButton.onclick = function () {
         }
         
         showSelectedAdImage(selectImgSrc);
+        heading.scrollIntoView();
     } else if (linkedinButton.checked) {
         if (!validateFields([adTitle, adLink, adText, adLogo])) {
             return;
@@ -470,6 +474,7 @@ openAdButton.onclick = function () {
         }
         
         showSelectedAdImage(selectImgSrc);
+        heading.scrollIntoView();
     }
     
     sendAdInfoMsg();
