@@ -219,8 +219,8 @@ getAndSetAdInfo = function (adType) {
             setIfBlank(adText, adInfoSplit[4]);
             
             if (searchResults.childNodes.length == 0
-                 && adInfoSplit[5]) {
-                showSelectedAdImage(adInfoSplit[5]);
+                 && adInfoSplit[6]) {
+                showSelectedAdImage(adInfoSplit[6]);
             }
             break;
         
@@ -230,9 +230,15 @@ getAndSetAdInfo = function (adType) {
             setIfBlank(adLinkText, adInfoSplit[3]);
             setIfBlank(adText, adInfoSplit[4]);
             
-            if (searchResults.childNodes.length == 0
+            if (!logo.src
                  && adInfoSplit[5]) {
-                showSelectedAdImage(adInfoSplit[5]);
+                logo.src = adInfoSplit[5];
+                setIfBlank(adLogo, adInfoSplit[5].split("https://logo.clearbit.com/")[1].split("?")[0]);
+            }
+            
+            if (searchResults.childNodes.length == 0
+                 && adInfoSplit[6]) {
+                showSelectedAdImage(adInfoSplit[6]);
             }
             break;
         }
@@ -425,16 +431,16 @@ sendAdInfoMsg = function (action) {
         
         if (googleSearchButton.checked) {
             msg.adType = "googleSearch";
-            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + logo.src;
+            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc;
             msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
         } else if (facebookButton.checked) {
             msg.adType = "facebook";
-            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + logo.src;
+            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc;
             msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&*";
             msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
         } else if (linkedinButton.checked) {
             msg.adType = "linkedin";
-            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + selectImgSrc + ",," + logo.src;
+            msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc;
             msg.urlMatch = msg.urlCreate = "https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
         }
     }
