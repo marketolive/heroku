@@ -3,7 +3,7 @@ from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask import render_template, flash, request, redirect, g, abort, make_response
 from .forms import LoginForm
-import os
+import os, re
 from datetime import datetime
 from math import floor
 
@@ -48,6 +48,18 @@ def before_request():
 	else:
 		g.partners=False
 
+@app.after_request
+def add_header(response):
+  if (re.search('/?javascript;?', response.headers['Content-Type'])):
+    response.headers['Cache-Control'] = 'public, max-age=28800'
+  elif (re.search('^text/(html|css);?', response.headers['Content-Type'])):
+    response.headers['Cache-Control'] = 'public, max-age=43200'
+  elif (re.search('^image/', response.headers['Content-Type'])):
+    response.headers['Cache-Control'] = 'public, max-age=86400'
+  else:
+    response.headers['Cache-Control'] = 'public, max-age=86400'
+  return response
+
 @lm.user_loader
 def load_user(id):
     return models.User.query.get(int(id))
@@ -89,11 +101,11 @@ def login():
 # The following should contain a comprehensive list of languages and pages
 # These are used to validate incoming URLs
 languages = ['en', 'jp']
-categories = ['solutions', 'verticals', 'analytics', 'update', 'events']
+categories = ['solutions', 'verticals', 'analytics', 'update', 'events', 'tools']
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
-		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'summit-17']
+		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'summit-17', 'ad-targeting']
 
 @app.route('/')
 @app.route('/', subdomain="partners")
@@ -185,6 +197,10 @@ def plugin():
 def info_page(page):
   return render_template('/en/data/submit-mock-lead.html', content=page)
 
+@app.route('/data/abm-106-acme-leads')
+def abm_106_acme_leads():
+    return render_template('/en/data/abm-106-acme-leads.html')
+
 @app.route('/data/web-visit')
 def web_visit():
     return render_template('/en/data/web-visit.html')
@@ -220,6 +236,23 @@ def plugin_update():
         user_email = g.email,
         timestamp = g.timestamp,
         partners = g.partners)
+
+@app.route('/en/signup')
+def signup():
+    if (request.args.get('key') == 'newUserRequest'):
+        return render_template('/en/signup.html',
+            form = g.loginform,
+            name = g.name,
+            full_name = g.full_name,
+            lang = 'en',
+            path = '%s/',
+            page = 'signup',
+            user_email = g.email,
+            timestamp = g.timestamp,
+            partners = g.partners)
+    else:
+        abort(404)
+
 '''
 Will delete this once we are fully confident in the above
 
