@@ -48,31 +48,12 @@ APP.heapIdentify = function () {
                 
                 window.clearInterval(isHeapAnalyticsForMarketoLive);
                 
-                var mktoLiveDomainMatch = "http://www.marketolive.com/*",
-                mktoUserId = APP.getCookie({
-                        url: mktoLiveDomainMatch,
-                        name: "mkto_user_id"
-                    }),
-                oneLoginEmail = APP.getCookie({
-                        url: mktoLiveDomainMatch,
-                        name: "onelogin_email"
-                    }),
-                oneLoginFirstName = APP.getCookie({
-                        url: mktoLiveDomainMatch,
-                        name: "onelogin_first_name"
-                    }),
-                oneLoginLastName = APP.getCookie({
-                        url: mktoLiveDomainMatch,
-                        name: "onelogin_last_name"
-                    }),
-                mktoName = APP.getCookie({
-                        url: mktoLiveDomainMatch,
-                        name: "mkto_name"
-                    }),
-                mktoRole = APP.getCookie({
-                        url: mktoLiveDomainMatch,
-                        name: "mkto_role"
-                    });
+                var mktoUserId = APP.getCookie("mkto_user_id"),
+                oneLoginEmail = APP.getCookie("onelogin_email"),
+                oneLoginFirstName = APP.getCookie("onelogin_first_name"),
+                oneLoginLastName = APP.getCookie("onelogin_last_name"),
+                mktoName = APP.getCookie("mkto_name"),
+                mktoRole = APP.getCookie("mkto_role");
                 
                 if (mktoUserId) {
                     heap.identify(mktoUserId);
