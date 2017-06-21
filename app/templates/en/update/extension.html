@@ -11,7 +11,11 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugin-update.css') }}">
 <style type="text/css">
   .update {
-    padding: 15px 75px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 15px 25px;
     bottom: inherit;
   }
 </style>
@@ -19,7 +23,7 @@
 
 {% block page_content %}
   <h5 class= "text-center">
-    <b><u>Latest MarketoLive Extension v5.1.0</u></b>
+    <b><u>Latest MarketoLive Extension v5.1.2</u></b>
   </h5>
   <div class="row update">
     <!-- New to MarketoLive Extension Section -->
@@ -31,11 +35,28 @@
           <div class="panel-heading" role="tab" id="accordion0_heading1">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#accordion0_collapse1" aria-expanded="false" aria-controls="accordion0_collapse1">
-                Clear Your Cache Easily
+                Minimum Required Version
               </a>
             </h4>
           </div>
           <div id="accordion0_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion0_heading1">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='demo-extension-dialog-window.jpg') }}"><br><br>
+              <img src="{{ url_for('static', filename='marketolive-old-extension.jpg') }}"><br><br>
+              <b>We are now enforcing a minimium required version of 5.0.0</b>, any user who has an older version installed will not be able to use the MarketoLive instance and will receive the dialog window and the Chrome notification shown above.
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion0_heading2">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#accordion0_collapse2" aria-expanded="false" aria-controls="accordion0_collapse2">
+                Clear Your Cache Easily
+              </a>
+            </h4>
+          </div>
+          <div id="accordion0_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion0_heading2">
             <div class="panel-body">
               <img src="{{ url_for('static', filename='marketolive-extension-clear-cache.png') }}"><br><br>
               Fix basic issues by clearing your cache easily in 3 simple clicks:<br>
@@ -68,27 +89,11 @@
           <div class="panel-heading" role="tab" id="accordion1_heading2">
             <h4 class="panel-title">
               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse2" aria-expanded="false" aria-controls="accordion1_collapse2">
-                Extension is Disabled Notification
-              </a>
-            </h4>
-          </div>
-          <div id="accordion1_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading2">
-            <div class="panel-body">
-              <img src="{{ url_for('static', filename='marketolive-extension-disabled.jpg') }}"><br><br>
-              In the future you will receive this notification anytime a new extension update requires new permissions. You will not be able to use the MarketoLive instance until you re-enable the extension. Simply click on the <i>'Re-enable Extension'</i> button to approve the new permissions.
-            </div>
-          </div>
-        </div>
-        
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="accordion1_heading3">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse3" aria-expanded="false" aria-controls="accordion1_collapse3">
                 Bad Extension Notification
               </a>
             </h4>
           </div>
-          <div id="accordion1_collapse3" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading3">
+          <div id="accordion1_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading2">
             <div class="panel-body">
               <img src="{{ url_for('static', filename='marketolive-bad-extension-error.jpg') }}"><br><br>
               If you receive this notification you will not be able to use the MarketoLive instance until the bad extension is uninstalled. Simply click on the <i>'Uninstall Bad Extension'</i> button to resolve the issue.
@@ -137,6 +142,24 @@
           </div>
         </div>
         
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion2_heading3">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse3" aria-expanded="false" aria-controls="accordion2_collapse3">
+                MarketoLive Reloaded
+              </a>
+            </h4>
+          </div>
+          <div id="accordion2_collapse3" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion2_heading3">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='marketo-live-circle-logo.png') }}"><br><br>
+              All Solutions Consultants now have access to the next generation demo environment, code named <b>MarketoLive Reloaded</b>.<br><br>
+              To login, your user ID is {email}@marketolive.com (e.g. bfisher@marketo.com --> bfisher@marketolive.com)<br><br>
+              This demo environment will enable you to demo the full capabilities of our solutions with real and organic demo data, no more static data or dummy dashboard data. It will enable you to demo in the way that is best for you and your deal, either from a functionality or journey perspective. Additionally, you will be able to demo the entire Admin section safely.
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
     
@@ -149,45 +172,11 @@
           <div class="panel-heading" role="tab" id="accordion3_heading1">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse1" aria-expanded="false" aria-controls="accordion3_collapse1">
-                Update Grace Period
-              </a>
-            </h4>
-          </div>
-          <div id="accordion3_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading1">
-            <div class="panel-body">
-              <img src="{{ url_for('static', filename='demo-extension-dialog-window.jpg') }}"><br><br>
-              <img src="{{ url_for('static', filename='marketolive-old-extension.jpg') }}"><br><br>
-              <b>There will be a grace period of 1 week in which to update the extension to the latest version (5.1.0)</b>, after which any user who does not have the latest version installed will not be able to use the MarketoLive instance and will receive the dialog window and the Chrome notification shown above.
-            </div>
-          </div>
-        </div>
-        
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="accordion3_heading2">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse2" aria-expanded="false" aria-controls="accordion3_collapse2">
-                MarketoLive Reloaded
-              </a>
-            </h4>
-          </div>
-          <div id="accordion3_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading2">
-            <div class="panel-body">
-              <img src="{{ url_for('static', filename='marketo-live-circle-logo.png') }}"><br><br>
-              In the coming weeks the Demo Services Team will be providing access to the next generation demo environment, code named <b>MarketoLive Reloaded</b>, to Solution Consultants.<br><br>
-              This demo environment will enable you to demo the full capabilities of our solutions with real and organic demo data, no more static data or dummy dashboard data. It will enable you to demo in the way that is best for you and your deal, either from a functionality or journey perspective. Additionally, you will be able to demo the entire Admin section safely.
-            </div>
-          </div>
-        </div>
-        
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="accordion3_heading3">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse3" aria-expanded="false" aria-controls="accordion3_collapse3">
                 Web Personalization Demo Site Updates
               </a>
             </h4>
           </div>
-          <div id="accordion3_collapse3" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading3">
+          <div id="accordion3_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading1">
             <div class="panel-body">
               We will be updating our Web Personalization demo site (<a href="https://verticals.marketolive.com">https://verticals.marketolive.com</a>) in order to make it easier to choose the persona, geo, industry, display type, or retargeting ads you wish to demo. In the meantime, continue to use the links below.<br><br>
               
