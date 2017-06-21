@@ -11,7 +11,11 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugin-update.css') }}">
 <style type="text/css">
   .update {
-    padding: 15px 75px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 15px 25px;
     bottom: inherit;
   }
 </style>
@@ -30,7 +34,7 @@
           <div class="panel-heading" role="tab" id="accordion1_heading1">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse1" aria-expanded="true" aria-controls="accordion1_collapse1">
-                What is changing?
+                What is instance tracking?
               </a>
             </h4>
           </div>
@@ -45,7 +49,7 @@
           <div class="panel-heading" role="tab" id="accordion1_heading2">
             <h4 class="panel-title">
               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse2" aria-expanded="true" aria-controls="accordion1_collapse2">
-                Why are we making this change?
+                How is this tracking data being used?
               </a>
             </h4>
           </div>
@@ -83,7 +87,7 @@
           <div class="panel-heading" role="tab" id="accordion1_heading4">
             <h4 class="panel-title">
               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse4" aria-expanded="true" aria-controls="accordion1_collapse4">
-                Who is this going to affect?
+                Who is being tracked?
               </a>
             </h4>
           </div>
@@ -126,7 +130,7 @@
           <div class="panel-heading" role="tab" id="accordion2_heading1">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse1" aria-expanded="true" aria-controls="accordion2_collapse1">
-                What is changing?
+                What is background demo data submission?
               </a>
             </h4>
           </div>
@@ -141,7 +145,7 @@
           <div class="panel-heading" role="tab" id="accordion2_heading2">
             <h4 class="panel-title">
               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse2" aria-expanded="true" aria-controls="accordion2_collapse2">
-                Why are we making this change?
+                How is this demo data being used?
               </a>
             </h4>
           </div>
@@ -169,7 +173,7 @@
           <div class="panel-heading" role="tab" id="accordion2_heading3">
             <h4 class="panel-title">
               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse3" aria-expanded="true" aria-controls="accordion2_collapse3">
-                What information is being leveraged?
+                What personal information is being leveraged?
               </a>
             </h4>
           </div>
@@ -188,7 +192,7 @@
           <div class="panel-heading" role="tab" id="accordion2_heading4">
             <h4 class="panel-title">
               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse4" aria-expanded="true" aria-controls="accordion2_collapse4">
-                Who is the going to affect?
+                Who is contributing this demo data?
               </a>
             </h4>
           </div>
@@ -226,7 +230,7 @@
           <div class="panel-heading" role="tab" id="accordion3_heading1">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse1" aria-expanded="true" aria-controls="accordion3_collapse1">
-                What is changing?
+                What is extension tracking?
               </a>
             </h4>
           </div>
@@ -241,7 +245,7 @@
           <div class="panel-heading" role="tab" id="accordion3_heading2">
             <h4 class="panel-title">
               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse2" aria-expanded="true" aria-controls="accordion3_collapse2">
-                Why are we making this change?
+                How is this tracking data being used?
               </a>
             </h4>
           </div>
@@ -285,7 +289,7 @@
           <div class="panel-heading" role="tab" id="accordion3_heading4">
             <h4 class="panel-title">
               <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse4" aria-expanded="true" aria-controls="accordion3_collapse4">
-                Who is this going to affect?
+                Who is being tracked?
               </a>
             </h4>
           </div>
@@ -334,21 +338,25 @@
                 <li>Interact with the browser's tab system to create, modify, and rearrange tabs</li>
                 <li>Query and modify cookies, and to be notified when they change</li>
                 <li>Temporary access to the currently active tab when the user invokes the extension</li>
-                <li>Create rich notifications and show these notifications to users in the system tray</li><br>
+                <li>Create rich notifications and show these notifications to users in the system tray</li>
+                <li>Remove browsing data from a user's local profile</li><br>
                 <p><u>Only for the following hosts</u></p>
                 <ul>
                   <li>*.marketo.com/*</li>
                   <li>*.marketodesigner.com/*</li>
                   <li>pages.marketolive.com/*</li>
-                  <li>pages-dev.marketolive.com/*</li>
+                  <li>dev.pages.marketolive.com/*</li>
                   <li>marketolive.com/*</li>
                   <li>www.marketolive.com/*</li>
-                  <li>www.marketolive-dev.com/*</li>
+                  <li>dev.marketolive.com/*</li>
                   <li>verticals.marketolive.com/*</li>
-                  <li>verticals-dev.marketolive.com/*</li>
+                  <li>dev.verticals.marketolive.com/*</li>
                   <li>250ok.com/*</li>
                   <li>marketo.invisionapp.com/*</li>
                   <li>marketo.onelogin.com/*</li>
+                  <li>www.google.com/search?dynamicAd=true&*</li>
+                  <li>www.facebook.com/?dynamicAd=true&*</li>
+                  <li>www.linkedin.com/feed/?dynamicAd=true&*</li>
               </ul>
             </div>
           </div>
