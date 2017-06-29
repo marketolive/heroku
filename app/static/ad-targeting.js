@@ -222,7 +222,8 @@ getAndSetAdInfo = function (adType) {
       setIfBlank(adText, adInfoSplit[4]);
       
       if (searchResults.childNodes.length == 0
-         && adInfoSplit[6]) {
+         && adInfoSplit[6]
+         && adInfoSplit[6] != "undefined") {
         showSelectedAdImage(adInfoSplit[6]);
       }
       break;
@@ -240,7 +241,8 @@ getAndSetAdInfo = function (adType) {
       }
       
       if (searchResults.childNodes.length == 0
-         && adInfoSplit[6]) {
+         && adInfoSplit[6]
+         && adInfoSplit[6] != "undefined") {
         showSelectedAdImage(adInfoSplit[6]);
       }
       break;
@@ -340,7 +342,7 @@ facebookButton.onclick = facebookButtonText.onclick = function () {
   facebookButton.checked = true;
   getAndSetAdInfo("facebook");
   submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
-  //submitOnEnterInFields([searchBox], searchButton.onclick);
+  submitOnEnterInFields([searchBox], searchButton.onclick);
   
   searchQueryContainer.style.display = logoContainer.style.display = idealLinkedinImageInfo.style.display = "none";
   searchContainer.style.display = "flex";
