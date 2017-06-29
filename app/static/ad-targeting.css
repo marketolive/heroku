@@ -184,3 +184,13 @@
   margin-right: 3px;
   padding-top: 7px;
 }
+#clearAdButton {
+  background-color: #fff;
+  vertical-align: middle;
+  color: #5a54a4;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #505050;
+  padding-bottom: 2px;
+}
