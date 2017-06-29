@@ -340,7 +340,7 @@ facebookButton.onclick = facebookButtonText.onclick = function () {
   facebookButton.checked = true;
   getAndSetAdInfo("facebook");
   submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
-  submitOnEnterInFields([searchBox], searchButton.onclick);
+  //submitOnEnterInFields([searchBox], searchButton.onclick);
   
   searchQueryContainer.style.display = logoContainer.style.display = idealLinkedinImageInfo.style.display = "none";
   searchContainer.style.display = "flex";
