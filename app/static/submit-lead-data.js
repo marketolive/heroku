@@ -1,7 +1,7 @@
-var URL_PATH = "m3",
+var URL_PATH = "m3-dev",
 devExtensionId = "aahhkppadknlakhbppohbeolcfdhmocf",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
-extensionId = prodExtensionId,
+extensionId = devExtensionId,
 
 numOfVerticals = 3,
 
