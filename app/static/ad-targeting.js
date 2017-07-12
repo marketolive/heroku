@@ -483,41 +483,42 @@ sendAdInfoMsg = function (action) {
       
       switch (country) {
       case "AU":
-        msg.urlMatch = msg.urlCreate = "https://www." + "google.com.au" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        msg.domain = ".google.com.au";
         break;
       
       case "DE":
-        msg.urlMatch = msg.urlCreate = "https://www." + "google.de" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        msg.domain = ".google.de";
         break;
       
       case "FR":
-        msg.urlMatch = msg.urlCreate = "https://www." + "google.fr" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        msg.domain = ".google.fr";
         break;
       
       case "IE":
-        msg.urlMatch = msg.urlCreate = "https://www." + "google.ie" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        msg.domain = ".google.ie";
         break;
       
       case "IL":
-        msg.urlMatch = msg.urlCreate = "https://www." + "google.co.il" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        msg.domain = ".google.co.il";
         break;
       
       case "JP":
-        msg.urlMatch = msg.urlCreate = "https://www." + "google.co.jp" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        msg.domain = ".google.co.jp";
         break;
       
       case "UK":
-        msg.urlMatch = msg.urlCreate = "https://www." + "google.co.uk" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        msg.domain = ".google.co.uk";
         break;
       
       case "US":
-        msg.urlMatch = msg.urlCreate = "https://www." + "google.com" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        msg.domain = ".google.com";
         break;
       
       default:
-        msg.urlMatch = msg.urlCreate = "https://www." + "google.com" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        msg.domain = ".google.com";
         break;
       }
+      msg.urlMatch = msg.urlCreate = "https://www" + msg.domain + "/search?dynamicAd=true&q=" + adSearchQuery;
     } else if (facebookButton.checked) {
       msg.adType = "facebook";
       msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc;
