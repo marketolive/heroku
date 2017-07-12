@@ -149,6 +149,9 @@
   height: 41px;
 }
 
+#countryButtons {
+  display: none;
+}
 #logo {
   visibility: hidden;
   width: 50px;
