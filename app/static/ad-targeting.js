@@ -13,6 +13,7 @@ facebookButton = document.getElementById("facebookButton"),
 facebookButtonText = document.getElementById("facebookButtonText"),
 linkedinButton = document.getElementById("linkedinButton"),
 linkedinButtonText = document.getElementById("linkedinButtonText"),
+countryButtons = document.getElementById("countryButtons"),
 adForm = document.getElementById("adForm"),
 searchQueryContainer = document.getElementById("searchQueryContainer"),
 searchQuery = document.getElementById("searchQuery"),
@@ -44,7 +45,8 @@ adLogoSubmit,
 loadScript,
 sendAdInfoMsg,
 selectImg,
-selectImgSrc;
+selectImgSrc,
+country;
 
 function getCookie(cookieName) {
   console.log("Getting: Cookie " + cookieName);
@@ -330,6 +332,7 @@ validateFields = function (fields) {
 
 googleSearchButton.onclick = googleButtonText.onclick = function () {
   googleSearchButton.checked = true;
+  countryButtons.style.display = "block";
   getAndSetAdInfo("googleSearch");
   submitOnEnterInFields([searchQuery, adTitle, adLink, adLinkText, adText], openAdButton.onclick);
   
@@ -344,7 +347,7 @@ facebookButton.onclick = facebookButtonText.onclick = function () {
   submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
   submitOnEnterInFields([searchBox], searchButton.onclick);
   
-  searchQueryContainer.style.display = logoContainer.style.display = idealLinkedinImageInfo.style.display = "none";
+  countryButtons.style.display = searchQueryContainer.style.display = logoContainer.style.display = idealLinkedinImageInfo.style.display = "none";
   searchContainer.style.display = "flex";
   idealFacebookImageInfo.style.display = searchResults.style.display = "block";
   adForm.style.display = openAdButton.style.display = "inline-block";
@@ -364,7 +367,7 @@ linkedinButton.onclick = linkedinButtonText.onclick = function () {
   submitOnEnterInFields([adLogo], adLogoSubmit);
   submitOnEnterInFields([searchBox], searchButton.onclick);
   
-  searchQueryContainer.style.display = idealFacebookImageInfo.style.display = "none";
+  countryButtons.style.display = searchQueryContainer.style.display = idealFacebookImageInfo.style.display = "none";
   logoContainer.style.display = searchContainer.style.display = "flex";
   idealLinkedinImageInfo.style.display = searchResults.style.display = "block";
   adForm.style.display = openAdButton.style.display = "inline-block";
@@ -376,6 +379,30 @@ linkedinButton.onclick = linkedinButtonText.onclick = function () {
     }
   }
 };
+
+if (countryButtons
+   && countryButtons.getElementsByTagName("input").length > 0) {
+  var usButton = document.getElementById("us"),
+  countryInputs = countryButtons.getElementsByTagName("input");
+  
+  usButton.checked = true;
+  country = usButton.nextElementSibling.innerText.trim();
+  
+  for (var ii = 0; ii < countryInputs.length; ii++) {
+    var countryButton = countryInputs[ii],
+    countryText = countryButton.nextElementSibling;
+    
+    countryButton.onclick = function () {
+      this.checked = true;
+      country = this.nextElementSibling.innerText.trim();
+    };
+    
+    countryText.onclick = function () {
+      this.previousElementSibling.checked = true;
+      country = this.innerText.trim();
+    };
+  }
+}
 
 logo.onload = function () {
   logo.style.visibility = "visible";
@@ -453,7 +480,44 @@ sendAdInfoMsg = function (action) {
     if (googleSearchButton.checked) {
       msg.adType = "googleSearch";
       msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc;
-      msg.urlMatch = msg.urlCreate = "https://www.google.com/search?dynamicAd=true&q=" + adSearchQuery;
+      
+      switch (country) {
+      case "AU":
+        msg.urlMatch = msg.urlCreate = "https://www." + "google.com.au" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        break;
+      
+      case "DE":
+        msg.urlMatch = msg.urlCreate = "https://www." + "google.de" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        break;
+      
+      case "FR":
+        msg.urlMatch = msg.urlCreate = "https://www." + "google.fr" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        break;
+      
+      case "IE":
+        msg.urlMatch = msg.urlCreate = "https://www." + "google.ie" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        break;
+      
+      case "IL":
+        msg.urlMatch = msg.urlCreate = "https://www." + "google.co.il" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        break;
+      
+      case "JP":
+        msg.urlMatch = msg.urlCreate = "https://www." + "google.co.jp" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        break;
+      
+      case "UK":
+        msg.urlMatch = msg.urlCreate = "https://www." + "google.co.uk" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        break;
+      
+      case "US":
+        msg.urlMatch = msg.urlCreate = "https://www." + "google.com" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        break;
+      
+      default:
+        msg.urlMatch = msg.urlCreate = "https://www." + "google.com" + "/search?dynamicAd=true&q=" + adSearchQuery;
+        break;
+      }
     } else if (facebookButton.checked) {
       msg.adType = "facebook";
       msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc;

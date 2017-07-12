@@ -1,7 +1,7 @@
 {% extends "en/base-for-index.html" %}
 
 {% block head %}
-  <title>MarketoLive | Ad Targeting</title>
+  <title>Ad Targeting - MarketoLive</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ad-targeting.css') }}">
 {% endblock %}
 
@@ -11,7 +11,7 @@
       <div class="heading">
         Ad Targeting
       </div>
-      <input type="radio" id="googleSearchButton" class="radio_button" name="ad_type" value="" >
+      <input type="radio" id="googleSearchButton" class="radio_button" name="ad_type" value="">
       <div id="googleButtonText" class="radio_button_text">
         Google Search
       </div>
@@ -22,6 +22,40 @@
       <input type="radio" id="linkedinButton" class="radio_button" name="ad_type" value="">
       <div id="linkedinButtonText" class="radio_button_text">
         LinkedIn
+      </div>
+    </div>
+    <div id="countryButtons" class="section">
+      <input type="radio" id="au" class="radio_button" name="country" value="">
+      <div id="au-text" class="radio_button_text">
+        AU
+      </div>
+      <input type="radio" id="de" class="radio_button" name="country" value="">
+      <div id="de-text" class="radio_button_text">
+        DE
+      </div>
+      <input type="radio" id="fr" class="radio_button" name="country" value="">
+      <div id="fr-text" class="radio_button_text">
+        FR
+      </div>
+      <input type="radio" id="ie" class="radio_button" name="country" value="">
+      <div id="ie-text" class="radio_button_text">
+        IE
+      </div>
+      <input type="radio" id="il" class="radio_button" name="country" value="">
+      <div id="il-text" class="radio_button_text">
+        IL
+      </div>
+      <input type="radio" id="jp" class="radio_button" name="country" value="">
+      <div id="jp-text" class="radio_button_text">
+        JP
+      </div>
+      <input type="radio" id="uk" class="radio_button" name="country" value="">
+      <div id="uk-text" class="radio_button_text">
+        UK
+      </div>
+      <input type="radio" id="us" class="radio_button" name="country" value="">
+      <div id="us-text" class="radio_button_text">
+        US
       </div>
     </div>
     <div class="section">
