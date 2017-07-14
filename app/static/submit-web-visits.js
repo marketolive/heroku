@@ -1,5 +1,4 @@
-var URL_PATH = "m3-dev",
-devExtensionId = "aahhkppadknlakhbppohbeolcfdhmocf",
+var devExtensionId = "dokkjhbgengdlccldgjnbilajdbjlnhm",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
 extensionId = devExtensionId,
 
@@ -7,9 +6,7 @@ numOfVerticals = 3,
 
 mktoLiveDevMunchkinId = "685-BTN-772",
 mktoLiveProdMunchkinId = "185-NGX-811",
-mktoLiveMunchkinId = mktoLiveProdMunchkinId,
-
-mockLeadEndpoint = "https://www.mockaroo.com/0799ab60/download?count=1&key=7d30cdf0";
+mktoLiveMunchkinId = mktoLiveProdMunchkinId;
 
 (function () {
   var didInit = false,
