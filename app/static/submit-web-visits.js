@@ -6,7 +6,9 @@ numOfVerticals = 3,
 
 mktoLiveDevMunchkinId = "685-BTN-772",
 mktoLiveProdMunchkinId = "185-NGX-811",
-mktoLiveMunchkinId = mktoLiveProdMunchkinId;
+mktoLiveMunchkinId = mktoLiveProdMunchkinId,
+
+origCookie;
 
 (function () {
   var didInit = false,
@@ -175,8 +177,7 @@ mktoLiveMunchkinId = mktoLiveProdMunchkinId;
   }
   
   function submitLeadData() {
-    var mockLeadEmail = getUrlParam("mockLead").replace(/( |%2B)/, "+"),
-    origCookie;
+    var mockLeadEmail = getUrlParam("mockLead").replace(/( |%2B)/, "+");
     
     resetMunchkinCookie(mktoLiveMunchkinId, function () {
       if (mockLeadEmail) {
