@@ -171,7 +171,7 @@ mktoLiveMunchkinId = mktoLiveProdMunchkinId;
         }
       }
     }
-    return;
+    return "";
   }
   
   function submitLeadData() {
