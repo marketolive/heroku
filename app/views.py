@@ -195,7 +195,7 @@ def plugin():
 ########################################################
 @app.route('/info/<page>')
 def info_page(page):
-  return render_template('/en/data/submit-mock-lead.html', content=page)
+  return render_template('/en/data/submit-web-visits.html', content=page)
 
 @app.route('/data/jp-leads-master')
 def jp_leads_master():
