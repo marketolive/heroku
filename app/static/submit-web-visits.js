@@ -177,7 +177,7 @@ mockLeadEndpoint = "https://www.mockaroo.com/0799ab60/download?count=1&key=7d30c
   }
   
   function submitLeadData() {
-    var mockLeadEmail = getUrlParam("mockLead"),
+    var mockLeadEmail = getUrlParam("mockLead").replace(/( |%2B)/, "+"),
     origCookie;
     
     resetMunchkinCookie(mktoLiveMunchkinId, function () {
