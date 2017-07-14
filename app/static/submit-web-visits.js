@@ -37,19 +37,20 @@ mktoLiveMunchkinId = mktoLiveProdMunchkinId;
     result;
     
     xmlHttp.onreadystatechange = function () {
-      if (xmlHttp.readyState == 4
-         && xmlHttp.status == 200) {
-        if (typeof(callback) === "function") {
-          result = callback(xmlHttp.response);
+      if (xmlHttp.readyState == 4) {
+        if (xmlHttp.status == 200) {
+          if (typeof(callback) === "function") {
+            result = callback(xmlHttp.response);
+          } else {
+            result = xmlHttp.response;
+          }
         } else {
-          result = xmlHttp.response;
+          chrome.runtime.sendMessage(extensionId, {
+            action: "demoDataPage",
+            tabAction: "remove",
+            currUrl: window.location.href
+          });
         }
-      } else {
-        chrome.runtime.sendMessage(extensionId, {
-          action: "demoDataPage",
-          tabAction: "remove",
-          currUrl: window.location.href
-        });
       }
     }
     if (async
