@@ -1,8 +1,4 @@
-var devExtensionId = "dokkjhbgengdlccldgjnbilajdbjlnhm",
-prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
-extensionId = devExtensionId,
-
-numOfVerticals = 3,
+var numOfVerticals = 3,
 
 mktoLiveDevMunchkinId = "685-BTN-772",
 mktoLiveProdMunchkinId = "185-NGX-811",
@@ -47,11 +43,7 @@ origCookie;
             result = xmlHttp.response;
           }
         } else {
-          chrome.runtime.sendMessage(extensionId, {
-            action: "demoDataPage",
-            tabAction: "remove",
-            currUrl: window.location.href
-          });
+          window.location.href = "/en/tools/auto-close";
         }
       }
     }
@@ -203,11 +195,7 @@ origCookie;
                     url: window.location.pathname
                   }, null, function () {
                     window.setTimeout(function () {
-                      chrome.runtime.sendMessage(extensionId, {
-                        action: "demoDataPage",
-                        tabAction: "remove",
-                        currUrl: window.location.href
-                      });
+                      window.location.href = "/en/tools/auto-close";
                     }, 1000);
                   });
                 } else {
@@ -221,11 +209,7 @@ origCookie;
                   
                   if (followUp == "true") {
                     window.setTimeout(function () {
-                      chrome.runtime.sendMessage(extensionId, {
-                        action: "demoDataPage",
-                        tabAction: "remove",
-                        currUrl: window.location.href
-                      });
+                      window.location.href = "/en/tools/auto-close";
                     }, 1000);
                   }
                 }
