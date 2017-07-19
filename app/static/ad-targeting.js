@@ -332,7 +332,7 @@ validateFields = function (fields) {
 
 googleSearchButton.onclick = googleButtonText.onclick = function () {
   googleSearchButton.checked = true;
-  //countryButtons.style.display = "block";
+  countryButtons.style.display = "block";
   getAndSetAdInfo("googleSearch");
   submitOnEnterInFields([searchQuery, adTitle, adLink, adLinkText, adText], openAdButton.onclick);
   
