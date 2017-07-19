@@ -1,0 +1,30 @@
+{% extends "en/base-for-index.html" %}
+
+{% block head %}
+  <title>Videos - MarketoLive</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='videos.css') }}">
+{% endblock %}
+
+{% block page_content %}
+  <div class="body_container">
+    <div class="section">
+      <div class="video">
+        <div class="heading">
+          Ad Targeting
+        </div>
+        <script type="text/javascript" id="vidyard_embed_code_wkJsofpWSXbMQB8SkEeke5" src="//play.vidyard.com/wkJsofpWSXbMQB8SkEeke5.js?v=3.1.1&type=lightbox"></script>
+        <div class="outer_vidyard_wrapper">
+          <div class="vidyard_wrapper" onclick="fn_vidyard_wkJsofpWSXbMQB8SkEeke5();">
+            <img width="720" src="//play.vidyard.com/wkJsofpWSXbMQB8SkEeke5.jpg?" alt="AdTargeting">
+            <div class="vidyard_play_button">
+              <a href="javascript:void(0);"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
