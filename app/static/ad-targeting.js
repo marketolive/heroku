@@ -299,7 +299,9 @@ flashBorder = function (el, numOfTimes, ms, color, borderProp) {
         changeBorder(el, borderProp);
       } else if (count == numOfTimes) {
         count++;
-        el.style.setProperty("border-bottom", "2px solid " + color);
+        if (el.tagName == "INPUT") {
+          el.style.setProperty("border-bottom", "2px solid " + color);
+        }
       }
     }, ms);
   };
