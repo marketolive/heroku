@@ -30,6 +30,16 @@
   font-weight: normal;
   margin-right: 15px;
 }
+.drop_down {
+  display: inline-block;
+  cursor: pointer;
+}
+.drop_down_option {
+  cursor: pointer;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: normal;
+}
 .field_group {
   display: none;
 }
@@ -149,7 +159,7 @@
   height: 41px;
 }
 
-#countryButtons {
+#countrySelect {
   display: none;
 }
 #logo {
