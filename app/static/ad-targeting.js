@@ -13,7 +13,7 @@ facebookButton = document.getElementById("facebookButton"),
 facebookButtonText = document.getElementById("facebookButtonText"),
 linkedinButton = document.getElementById("linkedinButton"),
 linkedinButtonText = document.getElementById("linkedinButtonText"),
-countryButtons = document.getElementById("countryButtons"),
+countrySelect = document.getElementById("countrySelect"),
 adForm = document.getElementById("adForm"),
 searchQueryContainer = document.getElementById("searchQueryContainer"),
 searchQuery = document.getElementById("searchQuery"),
@@ -332,13 +332,12 @@ validateFields = function (fields) {
 
 googleSearchButton.onclick = googleButtonText.onclick = function () {
   googleSearchButton.checked = true;
-  countryButtons.style.display = "block";
   getAndSetAdInfo("googleSearch");
   submitOnEnterInFields([searchQuery, adTitle, adLink, adLinkText, adText], openAdButton.onclick);
   
   searchQueryContainer.style.display = "flex";
   logoContainer.style.display = searchContainer.style.display = idealFacebookImageInfo.style.display = idealLinkedinImageInfo.style.display = searchResults.style.display = "none";
-  adForm.style.display = openAdButton.style.display = "inline-block";
+  countrySelect.style.display = adForm.style.display = openAdButton.style.display = "inline-block";
 };
 
 facebookButton.onclick = facebookButtonText.onclick = function () {
@@ -347,7 +346,7 @@ facebookButton.onclick = facebookButtonText.onclick = function () {
   submitOnEnterInFields([adTitle, adLink, adLinkText, adText], openAdButton.onclick);
   submitOnEnterInFields([searchBox], searchButton.onclick);
   
-  countryButtons.style.display = searchQueryContainer.style.display = logoContainer.style.display = idealLinkedinImageInfo.style.display = "none";
+  countrySelect.style.display = searchQueryContainer.style.display = logoContainer.style.display = idealLinkedinImageInfo.style.display = "none";
   searchContainer.style.display = "flex";
   idealFacebookImageInfo.style.display = searchResults.style.display = "block";
   adForm.style.display = openAdButton.style.display = "inline-block";
@@ -367,7 +366,7 @@ linkedinButton.onclick = linkedinButtonText.onclick = function () {
   submitOnEnterInFields([adLogo], adLogoSubmit);
   submitOnEnterInFields([searchBox], searchButton.onclick);
   
-  countryButtons.style.display = searchQueryContainer.style.display = idealFacebookImageInfo.style.display = "none";
+  countrySelect.style.display = searchQueryContainer.style.display = idealFacebookImageInfo.style.display = "none";
   logoContainer.style.display = searchContainer.style.display = "flex";
   idealLinkedinImageInfo.style.display = searchResults.style.display = "block";
   adForm.style.display = openAdButton.style.display = "inline-block";
@@ -380,28 +379,15 @@ linkedinButton.onclick = linkedinButtonText.onclick = function () {
   }
 };
 
-if (countryButtons
-   && countryButtons.getElementsByTagName("input").length > 0) {
-  var usButton = document.getElementById("us"),
-  countryInputs = countryButtons.getElementsByTagName("input");
+if (countrySelect) {
+  var usButton = document.getElementById("us");
   
-  usButton.checked = true;
-  country = usButton.nextElementSibling.innerText.trim();
+  usButton.selected = true;
+  country = usButton.innerText.trim();
   
-  for (var ii = 0; ii < countryInputs.length; ii++) {
-    var countryButton = countryInputs[ii],
-    countryText = countryButton.nextElementSibling;
-    
-    countryButton.onclick = function () {
-      this.checked = true;
-      country = this.nextElementSibling.innerText.trim();
-    };
-    
-    countryText.onclick = function () {
-      this.previousElementSibling.checked = true;
-      country = this.innerText.trim();
-    };
-  }
+  countrySelect.onchange = function () {
+    country = this[this.selectedIndex].innerText.trim();
+  };
 }
 
 logo.onload = function () {
@@ -482,35 +468,35 @@ sendAdInfoMsg = function (action) {
       msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc;
       
       switch (country) {
-      case "AU":
+      case "Australia":
         msg.domain = ".google.com.au";
         break;
       
-      case "DE":
-        msg.domain = ".google.de";
-        break;
-      
-      case "FR":
+      case "France":
         msg.domain = ".google.fr";
         break;
       
-      case "IE":
+      case "Germany":
+        msg.domain = ".google.de";
+        break;
+      
+      case "Ireland":
         msg.domain = ".google.ie";
         break;
       
-      case "IL":
+      case "Israel":
         msg.domain = ".google.co.il";
         break;
       
-      case "JP":
+      case "Japan":
         msg.domain = ".google.co.jp";
         break;
       
-      case "UK":
+      case "United Kingdom":
         msg.domain = ".google.co.uk";
         break;
       
-      case "US":
+      case "United States":
         msg.domain = ".google.com";
         break;
       
