@@ -4,7 +4,13 @@ mktoLiveDevMunchkinId = "685-BTN-772",
 mktoLiveProdMunchkinId = "185-NGX-811",
 mktoLiveMunchkinId = mktoLiveProdMunchkinId,
 
+hostSplit = window.location.host.split("."),
+
 origCookie;
+
+if (!origCookie) {
+  origCookie = getCookie("_mkto_trk");
+}
 
 (function () {
   var didInit = false,
@@ -88,14 +94,6 @@ origCookie;
   }
   
   function resetMunchkinCookie(munchkinId, callback) {
-    var currCookie = getCookie("_mkto_trk"),
-    hostSplit = window.location.host.split(".");
-    
-    if (currCookie
-       && !origCookie) {
-      origCookie = currCookie;
-    }
-    
     document.cookie = "_mkto_trk=;domain=" + hostSplit[hostSplit.length - 2] + "." + hostSplit[hostSplit.length - 1] + ";path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
     console.log("Removed > Cookie: _mkto_trk");
     
@@ -108,8 +106,7 @@ origCookie;
   }
   
   function resetMasterMunchkinCookie(callback) {
-    var oneLoginUsername = getCookie("onelogin_username"),
-    hostSplit = window.location.host.split(".");
+    var oneLoginUsername = getCookie("onelogin_username");
     
     if (oneLoginUsername) {
       var email = "mktodemosvcs+" + oneLoginUsername + "@gmail.com";
@@ -217,6 +214,35 @@ origCookie;
             });
           });
         }, 1000);
+      } else {
+        resetMasterMunchkinCookie(function () {
+          if (window.location.pathname.search(/^\/info\/.+/) != -1) {
+            console.log("Posting > Real Lead > Visit Web Page: " + window.location.pathname);
+            
+            overloadMunchkinFunction();
+            Munchkin.munchkinFunction("visitWebPage", {
+              url: window.location.pathname
+            }, null, function () {
+              window.setTimeout(function () {
+                window.location.href = "/en/tools/auto-close";
+              }, 1000);
+            });
+          } else {
+            var followUp;
+            
+            if (window.location.pathname == "/en/") {
+              followUp = getUrlParam("followUp");
+            } else {
+              followUp = "true";
+            }
+            
+            if (followUp == "true") {
+              window.setTimeout(function () {
+                window.location.href = "/en/tools/auto-close";
+              }, 1000);
+            }
+          }
+        });
       }
     });
   }
