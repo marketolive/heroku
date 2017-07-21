@@ -8,15 +8,15 @@ hostSplit = window.location.host.split("."),
 
 origCookie;
 
-if (!origCookie) {
-  origCookie = getCookie("_mkto_trk");
-}
-
 (function () {
   var didInit = false,
   s,
   origMunchkinInit,
   origMunckinFunction;
+  
+  if (!origCookie) {
+    origCookie = getCookie("_mkto_trk");
+  }
   
   function getCookie(cookieName) {
     console.log("Getting > Cookie: " + cookieName);
