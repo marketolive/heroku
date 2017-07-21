@@ -8,32 +8,32 @@ hostSplit = window.location.host.split("."),
 
 origCookie;
 
-function getCookie(cookieName) {
-  console.log("Getting > Cookie: " + cookieName);
-  
-  var name = cookieName + '=',
-  cookies = document.cookie.split(';'),
-  currCookie;
-  
-  for (var ii = 0; ii < cookies.length; ii++) {
-    currCookie = cookies[ii].trim();
-    if (currCookie.indexOf(name) == 0) {
-      return currCookie.substring(name.length, currCookie.length);
-    }
-  }
-  console.log("Getting > Cookie: " + cookieName + " not found");
-  return null;
-}
-
-if (!origCookie) {
-  origCookie = getCookie("_mkto_trk");
-}
-
 (function () {
   var didInit = false,
   s,
   origMunchkinInit,
   origMunckinFunction;
+  
+  if (!origCookie) {
+    origCookie = getCookie("_mkto_trk");
+  }
+  
+  function getCookie(cookieName) {
+    console.log("Getting > Cookie: " + cookieName);
+    
+    var name = cookieName + '=',
+    cookies = document.cookie.split(';'),
+    currCookie;
+    
+    for (var ii = 0; ii < cookies.length; ii++) {
+      currCookie = cookies[ii].trim();
+      if (currCookie.indexOf(name) == 0) {
+        return currCookie.substring(name.length, currCookie.length);
+      }
+    }
+    console.log("Getting > Cookie: " + cookieName + " not found");
+    return null;
+  }
   
   function webRequest(url, params, method, async, responseType, callback) {
     console.log("Web Request > " + url + "\n" + params);
