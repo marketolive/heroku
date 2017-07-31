@@ -68,13 +68,11 @@ var isMktoForm = window.setInterval(function () {
         }
         
         form.onValidate(function () {
-          var FirstNameSplit = form.getValues().FirstName.trim().split(" "),
-          LastNameSplit = form.getValues().LastName.trim().split(" "),
-          lastSplit
-          email = form.getValues().Email.toLowerCase().trim(),
+          var email = form.getValues().Email.toLowerCase().trim(),
           localPart = email.split("@")[0],
           domain = email.split("@")[1],
-          role = form.getValues().LeadRole;
+          role = form.getValues().LeadRole,
+          company = form.getValues().Company.trim();
           
           if (email.search(/["\(\),:;<>\[\]\\ ]/) != -1) {
             form.showErrorMessage('Must be a valid email.<br>example@yourdomain.com', form.getFormElem().find("#Email"));
@@ -122,6 +120,22 @@ var isMktoForm = window.setInterval(function () {
                 userId: localPart + "." + domain.split(".")[0] + "@marketolive.com"
               });
             }
+          }
+          
+          if (!company) {
+            if (domain == "marketo.com") {
+              form.vals({
+                Company: "Marketo"
+              });
+            } else {
+              form.submittable(false);
+              form.showErrorMessage('Company is required if your role is <i>Partner</i>', form.getFormElem().find("#Company"));
+              return false;
+            }
+          } else {
+            form.vals({
+              Company: capitalizeName(form.getValues().Company)
+            });
           }
           
           form.submittable(true);
