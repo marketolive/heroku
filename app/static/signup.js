@@ -89,7 +89,9 @@ var isMktoForm = window.setInterval(function () {
             form.submittable(false);
             form.showErrorMessage('Do not select <i>Partner</i> for your role if your email is <u>@marketo.com</u>', form.getFormElem().find("#LeadRole"));
             return false;
-          } else if (domain != "marketo.com"
+          }
+          
+          if (domain != "marketo.com"
              && role != "Partner") {
             form.submittable(false);
             form.showErrorMessage('Select <i>Partner</i> for your role if your email is not <u>@marketo.com</u>', form.getFormElem().find("#LeadRole"));
@@ -142,7 +144,7 @@ var isMktoForm = window.setInterval(function () {
           //alert(JSON.stringify(form.vals(), null, 2));
         });
         
-        form.onSuccess(function (values, followUpUrl) {
+        form.onSuccess(function (values, followUpUrl) {ibnfor
           var title = document.getElementById("modalTitle"),
           message = document.getElementById("theForm");
           
