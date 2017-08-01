@@ -1,5 +1,5 @@
 var isMktoForm = window.setInterval(function () {
-    if (typeof(MktoForms2) !== "undefined") {
+    if (MktoForms2) {
       console.log("Getting: Form");
       
       window.clearInterval(isMktoForm);
@@ -52,7 +52,7 @@ var isMktoForm = window.setInterval(function () {
         }
         
         function capitalizeName(name) {
-          var Name = "";
+          var Name = "",
           nameSplit = name.trim().split(" ");
           
           for (var ii = 0; ii < nameSplit.length; ii++) {
@@ -72,7 +72,7 @@ var isMktoForm = window.setInterval(function () {
           localPart = email.split("@")[0],
           domain = email.split("@")[1],
           role = form.getValues().LeadRole,
-          company = form.getValues().Company.trim();
+          company = form.getValues().Company;
           
           if (email.search(/["\(\),:;<>\[\]\\ ]/) != -1) {
             form.showErrorMessage('Must be a valid email.<br>example@yourdomain.com', form.getFormElem().find("#Email"));
@@ -144,14 +144,14 @@ var isMktoForm = window.setInterval(function () {
           //alert(JSON.stringify(form.vals(), null, 2));
         });
         
-        form.onSuccess(function (values, followUpUrl) {ibnfor
+        form.onSuccess(function (values, followUpUrl) {
           var title = document.getElementById("modalTitle"),
           message = document.getElementById("theForm");
           
           form.getFormElem().hide();
           message.innerHTML = "<br><div align='center'>You will receive your login account in 24 - 48 hours.</div>";
           if (title) {
-            title.innerHTML = "Account Requested"
+            title.innerHTML = "Account Requested";
           }
           return false;
         });
