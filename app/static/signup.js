@@ -102,12 +102,14 @@ var isMktoForm = window.setInterval(function () {
             FirstName: capitalizeName(form.getValues().FirstName),
             LastName: capitalizeName(form.getValues().LastName),
             Email: form.getValues().Email.toLowerCase().trim(),
+            Company: capitalizeName(form.getValues().Company),
             domain: domain
           });
           
           if (domain == "marketo.com") {
             form.vals({
-              userId: localPart + "@marketolive.com"
+              userId: localPart + "@marketolive.com",
+              Company: "Marketo"
             });
           } else if (form.getValues().LeadRole == "Partner") {
             if (localPart.search(/\./) != -1) {
@@ -122,22 +124,6 @@ var isMktoForm = window.setInterval(function () {
                 userId: localPart + "." + domain.split(".")[0] + "@marketolive.com"
               });
             }
-          }
-          
-          if (!company) {
-            if (domain == "marketo.com") {
-              form.vals({
-                Company: "Marketo"
-              });
-            } else {
-              form.submittable(false);
-              form.showErrorMessage('Company is required if your role is <i>Partner</i>', form.getFormElem().find("#Company"));
-              return false;
-            }
-          } else {
-            form.vals({
-              Company: capitalizeName(form.getValues().Company)
-            });
           }
           
           form.submittable(true);
@@ -172,6 +158,17 @@ var isMktoForm = window.setInterval(function () {
           form.vals({
             Email: email
           });
+        }
+        
+        if (form.getFormElem().find("#Email").length > 0
+           && form.getFormElem().find("#Company").length > 0) {
+          form.getFormElem().find("#Email")[0].onblur = function () {
+            if (this.value
+               && this.value.split("@").length > 0
+               && this.value.split("@")[1].toLowerCase().trim() == "marketo.com") {
+              form.getFormElem().find("#Company")[0].value = "Marketo";
+            }
+          };
         }
       });
     }
