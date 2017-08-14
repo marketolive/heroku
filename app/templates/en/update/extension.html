@@ -23,7 +23,7 @@
 
 {% block page_content %}
   <h5 class= "text-center">
-    <b><u>Latest MarketoLive Extension v5.1.6</u></b>
+    <b><u>Latest MarketoLive Extension v5.2.0</u></b>
   </h5>
   <div class="row update">
     <!-- New to MarketoLive Extension Section -->
@@ -32,14 +32,30 @@
       <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
         
         <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="accordion0_heading1">
+          <div class="panel-heading" role="tab" id="accordion1_heading0">
             <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#accordion0_collapse1" aria-expanded="false" aria-controls="accordion0_collapse1">
+              <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse0" aria-expanded="true" aria-controls="accordion1_collapse0">
+                ToutApp Toolbar Banner Removed
+              </a>
+            </h4>
+          </div>
+          <div id="accordion1_collapse0" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading0">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='tout-app-toolbar.png') }}"><br><br>
+              We are now removing the ToutApp Toolbar banner in Gmail to prevent disconnecting are shared ToutApp instance with our shared toutapp@gmail.com account.
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion1_heading1">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse1" aria-expanded="true" aria-controls="accordion1_collapse1">
                 Minimum Required Version
               </a>
             </h4>
           </div>
-          <div id="accordion0_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion0_heading1">
+          <div id="accordion1_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading1">
             <div class="panel-body">
               <img src="{{ url_for('static', filename='demo-extension-dialog-window.jpg') }}"><br><br>
               <img src="{{ url_for('static', filename='marketolive-old-extension.jpg') }}"><br><br>
@@ -49,14 +65,14 @@
         </div>
         
         <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="accordion0_heading2">
+          <div class="panel-heading" role="tab" id="accordion1_heading2">
             <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#accordion0_collapse2" aria-expanded="false" aria-controls="accordion0_collapse2">
+              <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse2" aria-expanded="true" aria-controls="accordion1_collapse2">
                 Clear Your Cache Easily
               </a>
             </h4>
           </div>
-          <div id="accordion0_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion0_heading2">
+          <div id="accordion1_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading2">
             <div class="panel-body">
               <img src="{{ url_for('static', filename='marketolive-extension-clear-cache.png') }}"><br><br>
               Fix basic issues by clearing your cache easily in 3 simple clicks:<br>
@@ -70,14 +86,14 @@
         </div>
         
         <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="accordion1_heading1">
+          <div class="panel-heading" role="tab" id="accordion1_heading3">
             <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse1" aria-expanded="false" aria-controls="accordion1_collapse1">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse3" aria-expanded="false" aria-controls="accordion1_collapse3">
                 Changes Are Not Allowed Notification
               </a>
             </h4>
           </div>
-          <div id="accordion1_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading1">
+          <div id="accordion1_collapse3" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="accordion1_heading3">
             <div class="panel-body">
               <img src="{{ url_for('static', filename='marketolive-not-allowed.jpg') }}"><br><br>
               You will receive this notification if you attempt to make changes to the demo environment that aren't allowed, the page will reload automatically as a result.
@@ -86,14 +102,14 @@
         </div>
         
         <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="accordion1_heading2">
+          <div class="panel-heading" role="tab" id="accordion1_heading4">
             <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse2" aria-expanded="false" aria-controls="accordion1_collapse2">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion4" href="#accordion1_collapse4" aria-expanded="false" aria-controls="accordion1_collapse4">
                 Bad Extension Notification
               </a>
             </h4>
           </div>
-          <div id="accordion1_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading2">
+          <div id="accordion1_collapse4" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="accordion1_heading4">
             <div class="panel-body">
               <img src="{{ url_for('static', filename='marketolive-bad-extension-error.jpg') }}"><br><br>
               If you receive this notification you will not be able to use the MarketoLive instance until the bad extension is uninstalled. Simply click on the <i>'Uninstall Bad Extension'</i> button to resolve the issue.
@@ -112,7 +128,7 @@
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="accordion2_heading1">
             <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse1" aria-expanded="false" aria-controls="accordion2_collapse1">
+              <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse1" aria-expanded="true" aria-controls="accordion2_collapse1">
                 Email Insights Update
               </a>
             </h4>
@@ -129,7 +145,7 @@
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="accordion2_heading2">
             <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse2" aria-expanded="false" aria-controls="accordion2_collapse2">
+              <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse2" aria-expanded="true" aria-controls="accordion2_collapse2">
                 Saving & Approving Landing Page Templates
               </a>
             </h4>
@@ -145,7 +161,7 @@
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="accordion2_heading3">
             <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse3" aria-expanded="false" aria-controls="accordion2_collapse3">
+              <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#accordion2_collapse3" aria-expanded="true" aria-controls="accordion2_collapse3">
                 MarketoLive Reloaded
               </a>
             </h4>
@@ -169,14 +185,14 @@
       <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
         
         <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="accordion3_heading0">
+          <div class="panel-heading" role="tab" id="accordion3_heading1">
             <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse0" aria-expanded="false" aria-controls="accordion3_collapse0">
+              <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse1" aria-expanded="true" aria-controls="accordion3_collapse1">
                 Ad Targeting
               </a>
             </h4>
           </div>
-          <div id="accordion3_collapse0" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading0">
+          <div id="accordion3_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading1">
             <div class="panel-body">
               <img src="{{ url_for('static', filename='ad-targeting-example.png') }}"><br><br>
               Now you can quickly capture ad targeting images or demo ad targeting live for Google Search, Facebook, and LinkedIn.<br><br>
@@ -186,14 +202,14 @@
         </div>
         
         <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="accordion3_heading1">
+          <div class="panel-heading" role="tab" id="accordion3_heading2">
             <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse1" aria-expanded="false" aria-controls="accordion3_collapse1">
+              <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#accordion3_collapse2" aria-expanded="true" aria-controls="accordion3_collapse2">
                 Web Personalization Demo Site Updates
               </a>
             </h4>
           </div>
-          <div id="accordion3_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading1">
+          <div id="accordion3_collapse2" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion3_heading2">
             <div class="panel-body">
               We will be updating our Web Personalization demo site (<a href="https://verticals.marketolive.com">https://verticals.marketolive.com</a>) in order to make it easier to choose the persona, geo, industry, display type, or retargeting ads you wish to demo. In the meantime, continue to use the links below.<br><br>
               
