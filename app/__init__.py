@@ -10,4 +10,8 @@ db = SQLAlchemy(app)
 lm = LoginManager()
 lm.init_app(app)
 
+if app.config['FORCE_SSL'] and not app.debug:
+  from flask_sslify import SSLify
+  sslify = SSLify(app)
+
 from app import views, models
