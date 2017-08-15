@@ -1,0 +1,64 @@
+{% extends "en/base.html" %}
+
+{% block full_image %}
+<html class="full" lang="en">
+{% endblock %}
+
+{% block head %}
+<title>MarketoLive Update Available</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bg-img-en-home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugin-update.css') }}">
+<style type="text/css">
+  .update {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 15px 25px;
+    bottom: inherit;
+  }
+  .col-lg-4 {
+    width: 50%;
+  }
+</style>
+{% endblock %}
+
+{% block page_content %}
+  <h5 class= "text-center">
+    <b><u>Latest MarketoLive Extension v5.2.0</u></b>
+  </h5>
+  <div class="row update">
+    <div class="col-lg-4 col-md-4 col-sm-4 ">
+      <!-- <h4>Option 1</h4> -->
+      <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+        
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="accordion1_heading1">
+            <h4 class="panel-title text-center">
+              <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_collapse1" aria-expanded="true" aria-controls="accordion1_collapse1">
+                <u>Clear Your Cache Easily</u>
+              </a>
+            </h4>
+          </div>
+          <div id="accordion1_collapse1" class="panel-collapse collapse in" aria-expanded="true" role="tabpanel" aria-labelledby="accordion1_heading1">
+            <div class="panel-body">
+              <img src="{{ url_for('static', filename='marketolive-extension-clear-cache.png') }}"><br><br>
+              Fix basic issues by clearing your cache easily in 3 simple clicks:<br>
+              1. Click the extension icon in the Chrome toolbar<br>
+              2. Click the gear icon in the extension popup window<br>
+              3. Click the <i>CLEAR CACHE</i> button<br><br>
+              It will automatically clear all your cached images and files from the beginning of time, reload all Marketo or MarketoLive tabs, and then close the popup window.<br>
+              <b>This will NOT clear your cookies, browsing history, or autofill form data.</b>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+{% endblock %}
