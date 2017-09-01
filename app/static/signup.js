@@ -71,7 +71,7 @@ var isMktoForm = window.setInterval(function () {
           var email = form.getValues().Email.toLowerCase().trim(),
           localPart = email.split("@")[0],
           domain = email.split("@")[1],
-          role = form.getValues().LeadRole,
+          role = form.getValues().userRole,
           company = form.getValues().Company;
           
           if (email.search(/["\(\),:;<>\[\]\\ ]/) != -1) {
@@ -87,14 +87,14 @@ var isMktoForm = window.setInterval(function () {
           if (domain == "marketo.com"
              && role == "Partner") {
             form.submittable(false);
-            form.showErrorMessage('Do not select <i>Partner</i> for your role if your email is <u>@marketo.com</u>', form.getFormElem().find("#LeadRole"));
+            form.showErrorMessage('Do not select <i>Partner</i> for your role if your email is <u>@marketo.com</u>', form.getFormElem().find("#userRole"));
             return false;
           }
           
           if (domain != "marketo.com"
              && role != "Partner") {
             form.submittable(false);
-            form.showErrorMessage('Select <i>Partner</i> for your role if your email is not <u>@marketo.com</u>', form.getFormElem().find("#LeadRole"));
+            form.showErrorMessage('Select <i>Partner</i> for your role if your email is not <u>@marketo.com</u>', form.getFormElem().find("#userRole"));
             return false;
           }
           
@@ -107,21 +107,36 @@ var isMktoForm = window.setInterval(function () {
           });
           
           if (domain == "marketo.com") {
-            form.vals({
-              userId: localPart + "@marketolive.com",
-              Company: "Marketo"
-            });
-          } else if (form.getValues().LeadRole == "Partner") {
+            if (role == "SC" 
+               || role == "SA") {
+              form.vals({
+                userId106: localPart + ".demo@marketo.com",
+                userIdMaster: localPart + "@marketolive.com",
+                Company: "Marketo"
+              });
+            } else if (role == "PM"
+               || role == "PMM") {
+              form.vals({
+                userIdMaster: localPart + "@marketolive.com",
+                Company: "Marketo"
+              });
+            } else {
+              form.vals({
+                userId106: localPart + "@marketolive.com",
+                Company: "Marketo"
+              });
+            }
+          } else if (form.getValues().userRole == "Partner") {
             if (localPart.search(/\./) != -1) {
               var firstLetter = localPart.charAt(0),
               lastName = localPart.substring(localPart.lastIndexOf(".") + 1);
               
               form.vals({
-                userId: firstLetter + lastName + "." + domain.split(".")[0] + "@marketolive.com"
+                userIdMaster: firstLetter + lastName + "." + domain.split(".")[0] + "@marketolive.com"
               });
             } else {
               form.vals({
-                userId: localPart + "." + domain.split(".")[0] + "@marketolive.com"
+                userIdMaster: localPart + "." + domain.split(".")[0] + "@marketolive.com"
               });
             }
           }
