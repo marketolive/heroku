@@ -11,12 +11,8 @@ from math import floor
 # setvars.py should be maintained locally containing restcreds dictionary
 try:
 	from app import setvars
-	restClient = mktorest.MarketoWrapper(setvars.restcreds['munchkin_id'], 
-										 setvars.restcreds['client_id'], 
-										 setvars.restcreds['client_secret'])
-  rest_client_mktosolutions = mktorest.MarketoWrapper(setvars.rest_api_mktosolutions['munchkin_id'], 
-										 setvars.rest_api_mktosolutions['client_id'], 
-										 setvars.rest_api_mktosolutions['client_secret'])
+	restClient = mktorest.MarketoWrapper(setvars.restcreds['munchkin_id'], setvars.restcreds['client_id'], setvars.restcreds['client_secret'])
+	rest_client_mktosolutions = mktorest.MarketoWrapper(setvars.rest_api_mktosolutions['munchkin_id'], setvars.rest_api_mktosolutions['client_id'], setvars.rest_api_mktosolutions['client_secret'])
 	apiKey = setvars.apiKey
 except ImportError:
 	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
@@ -402,33 +398,33 @@ class DeleteLead(Resource):
 	def get(self, api_key_in, email):
 		if api_key_in == apiKey and '@' in email:
 			get_lead_results = []
-      delete_lead_results = []
-      try:
-        get_lead_result = rest_client_mktosolutions.get_multiple_leads_by_filter_type('email', [email], [id])
-        print(get_lead_result)
-        if get_lead_result['success']:
-          get_lead_results.append(get_lead_result['result'][0]['id'])
-          lead = '{"id": ' + str(get_lead_result['result'][0]['id']) + '}'
-          try:
-            delete_lead_result = rest_client_mktosolutions.delete_lead(lead)
-            print(delete_lead_result)
-            if delete_lead_result['success']:
-              delete_lead_results.append(delete_lead_result['result'][0]['id'])
-              return {'success': True, 'email': email, 'get_lead_results': get_lead_results, 'delete_lead_results': delete_lead_results}
-            else:
-              delete_lead_results.append(delete_lead_result['errors'])
-              return {'success': False, 'email': email, 'get_lead_results': get_lead_results, 'delete_lead_results': delete_lead_results}
-          except Exception as e:
-            print(e)
-            delete_lead_results.append('Unknown Error')
-        else:
-          get_lead_results.append(get_lead_result['errors'])
-          return {'success': False, 'email': email, 'get_lead_results': get_lead_results}
-      except Exception as e:
-        print(e)
-        get_lead_results.append('Unknown Error')
+			delete_lead_results = []
+			try:
+				get_lead_result = rest_client_mktosolutions.get_multiple_leads_by_filter_type('email', [email], ['id'])
+				print(get_lead_result)
+				if get_lead_result['success']:
+					get_lead_results.append(get_lead_result['result'][0]['id'])
+					lead = [{"id": get_lead_result['result'][0]['id']}]
+					try:
+						delete_lead_result = rest_client_mktosolutions.delete_lead(lead)
+						print(delete_lead_result)
+						if delete_lead_result['success']:
+							delete_lead_results.append(delete_lead_result['result'][0]['id'])
+							return {'success': True, 'email': email, 'get_lead_results': get_lead_results, 'delete_lead_results': delete_lead_results}
+						else:
+							delete_lead_results.append(delete_lead_result['errors'])
+							return {'success': False, 'email': email, 'get_lead_results': get_lead_results, 'delete_lead_results': delete_lead_results}
+					except Exception as e:
+						print(e)
+						print('Unknown Error')
+				else:
+					get_lead_results.append(get_lead_result['errors'])
+					return {'success': False, 'email': email, 'get_lead_results': get_lead_results}
+			except Exception as e:
+				print(e)
+				print('Unknown Error')
 		else:
-      return {'success': False}
+			return {'success': False}
 
 api.add_resource(DeleteLead, '/deleteLead/<string:api_key_in>/<string:email>')
 #

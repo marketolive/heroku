@@ -169,7 +169,6 @@ class MarketoWrapper:
         # Make the API call.
         response, content = self.__http.request("https://"+self.__munchkin+".mktorest.com/"+
                                                     call, method, body=payload, headers=headers)
-        
         # If the call was successful, return the content retrieved from the server.
         if (response.status == 200):
             return json.loads(content.decode("utf-8"))
@@ -651,7 +650,7 @@ class MarketoWrapper:
         call = "rest/v1/leads.json"
         method = "DELETE"
         payload = {"input": leads}
-        return self.__generic_api_call(self, method, payload=json.dumps(payload))
+        return self.__generic_api_call(call, method, payload=json.dumps(payload))
     
     def get_deleted_leads(self, paging_token, batch_size=None):
         """
@@ -2164,7 +2163,7 @@ if __name__ == "__main__":
     marketo = MarketoWrapper(munchkin, client_id, client_secret)
         
 #    print(marketo.get_lead_by_id("5"))
-    print(marketo.get_multiple_leads_by_list_id(1013, batch_size=1))
+#    print(marketo.get_multiple_leads_by_list_id(1013, batch_size=1))
 
 #    print(marketo.get_email_content_by_id(1108))
 
