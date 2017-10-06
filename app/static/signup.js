@@ -115,7 +115,8 @@ var isMktoForm = window.setInterval(function () {
                 Company: "Marketo"
               });
             } else if (role == "PM"
-               || role == "PMM") {
+               || role == "PMM"
+               || role == "Partner Ops") {
               form.vals({
                 userIdMaster: localPart + "@marketolive.com",
                 Company: "Marketo"
