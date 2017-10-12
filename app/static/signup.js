@@ -112,14 +112,16 @@ var isMktoForm = window.setInterval(function () {
               form.vals({
                 userId106: localPart + ".demo@marketo.com",
                 userIdMaster: localPart + "@marketolive.com",
-                Company: "Marketo"
+                Company: "Marketo",
+                hasUserWorkspace: true
               });
             } else if (role == "PM"
                || role == "PMM"
                || role == "Partner Ops") {
               form.vals({
                 userIdMaster: localPart + "@marketolive.com",
-                Company: "Marketo"
+                Company: "Marketo",
+                hasUserWorkspace: true
               });
             } else {
               form.vals({
@@ -128,16 +130,28 @@ var isMktoForm = window.setInterval(function () {
               });
             }
           } else if (form.getValues().userRole == "Partner") {
+            var ownWorkspace = getUrlParam("ownWorkspace");
+            
             if (localPart.search(/\./) != -1) {
               var firstLetter = localPart.charAt(0),
               lastName = localPart.substring(localPart.lastIndexOf(".") + 1);
               
               form.vals({
-                userIdMaster: firstLetter + lastName + "." + domain.split(".")[0] + "@marketolive.com"
+                userIdMaster: firstLetter + lastName + "." + domain.split(".")[0] + "@marketolive.com",
               });
             } else {
               form.vals({
                 userIdMaster: localPart + "." + domain.split(".")[0] + "@marketolive.com"
+              });
+            }
+            
+            if (ownWorkspace == "false") {
+              form.vals({
+                hasUserWorkspace: false
+              });
+            } else {
+              form.vals({
+                hasUserWorkspace: true
               });
             }
           }
