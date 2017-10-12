@@ -190,13 +190,15 @@ var isMktoForm = window.setInterval(function () {
           });
         }
         
-        if (form.getFormElem().find("#Email").length > 0
-           && form.getFormElem().find("#Company").length > 0) {
+        if (form.getFormElem().find("#Email").length > 0) {
           form.getFormElem().find("#Email")[0].onblur = function () {
             if (this.value
-               && this.value.split("@").length > 0
-               && this.value.split("@")[1].toLowerCase().trim() == "marketo.com") {
-              form.getFormElem().find("#Company")[0].value = "Marketo";
+               && this.value.split("@").length > 0) {
+              if (this.value.split("@")[1].toLowerCase().trim() == "marketo.com") {
+                form.getFormElem().find("#Company")[0].value = "Marketo";
+              } else {
+                form.getFormElem().find("#userRole")[0].value = "Partner";
+              }
             }
           };
         }
