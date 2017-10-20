@@ -108,7 +108,8 @@ var isMktoForm = window.setInterval(function () {
           
           if (domain == "marketo.com") {
             if (role == "SC" 
-               || role == "SA") {
+               || role == "SA"
+               || role == "RFP") {
               form.vals({
                 userId106: localPart + ".demo@marketo.com",
                 userIdMaster: localPart + "@marketolive.com",
