@@ -126,10 +126,28 @@ var isMktoForm = window.setInterval(function () {
                 hasUserWorkspace: true
               });
             } else {
-              form.vals({
-                userId106: localPart + "@marketolive.com",
-                Company: "Marketo"
-              });
+							let ownWorkspace = getUrlParam("ownWorkspace");
+              
+							if (ownWorkspace == true) {
+								form.vals({
+									userId106: localPart + ".demo@marketo.com",
+									userIdMaster: localPart + "@marketolive.com",
+									Company: "Marketo",
+									hasUserWorkspace: true
+								});
+							} else if (ownWorkspace == false) {
+								form.vals({
+									userId106: localPart + ".demo@marketo.com",
+									userIdMaster: localPart + "@marketolive.com",
+									Company: "Marketo",
+									hasUserWorkspace: false
+								});
+							} else {
+								form.vals({
+									userId106: localPart + "@marketolive.com",
+									Company: "Marketo"
+								});
+							}
             }
           } else if (form.getValues().userRole == "Partner") {
             var ownWorkspace = getUrlParam("ownWorkspace");
