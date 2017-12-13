@@ -185,7 +185,7 @@ var isMktoForm = window.setInterval(function () {
           message = document.getElementById('theForm');
 
           form.getFormElem().hide();
-          message.innerHTML = '<br><div align='center'>You will receive your login account in 24 - 48 hours.</div>';
+          message.innerHTML = "<br><div align='center'>You will receive your login account in 24 - 48 hours.</div>";
           if (title) {
             title.innerHTML = 'Account Requested';
           }
