@@ -166,7 +166,7 @@ origCookie;
   }
   
   function submitLeadData() {
-    var mockLeadEmail = getUrlParam("mockLead").replace(/( |%2B)/, "+");
+    var mockLeadEmail = getUrlParam("mockLead").replace(/( |%2B)/, "+").replace(/%40/, "@");
     
     resetMunchkinCookie(mktoLiveMunchkinId, function () {
       if (mockLeadEmail) {
