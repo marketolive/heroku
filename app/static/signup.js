@@ -112,7 +112,7 @@ var isMktoForm = window.setInterval(function () {
             if (instance) {
               let ownWorkspace = JSON.parse(getUrlParam('ownWorkspace'));
               
-              switch (instance) {
+              switch (parseInt(instance)) {
               case 1:
                 form.vals({
                   userId106: localPart + '.demo@marketo.com',
