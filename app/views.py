@@ -192,6 +192,7 @@ def plugin():
 #					Data Endpoints
 #					
 ########################################################
+@app.route('/en/info/<page>')
 @app.route('/info/<page>')
 def info_page(page):
   return render_template('/en/data/submit-web-visits.html', content=page)
