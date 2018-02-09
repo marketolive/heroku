@@ -205,6 +205,10 @@ def jp_leads_master():
 def abm_106_acme_leads():
     return render_template('/en/data/abm-106-acme-leads.html')
 
+@app.route('/data/dynamics-lead-web-visit')
+def dynamics_lead_web_visit():
+    return render_template('/en/data/dynamics-lead-web-visit.html')
+
 @app.route('/data/web-visit')
 def web_visit():
     return render_template('/en/data/web-visit.html')
