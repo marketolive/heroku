@@ -1,5 +1,4 @@
 var mktoLiveMunchkinId = '400-TWP-453',
-referrer = 'https://www.marketolive.com',
 webPages = [
   '/info/community',
   '/info/contact-us',
@@ -59,18 +58,6 @@ leads = [
     }
     console.log('Getting > Cookie: ' + cookieName + ' not found');
     return null;
-  }
-  
-  function overloadMunchkinCreateTrackingCookie() {
-    if (typeof(origMunchkinCreateTrackingCookie) !== 'function') {
-      origMunchkinCreateTrackingCookie = Munchkin.createTrackingCookie;
-    }
-    
-    Munchkin.createTrackingCookie = function (b, callback) {
-      origMunchkinCreateTrackingCookie.apply(this, arguments);
-      console.log('Completed > Create Tracking Cookie');
-      callback();
-    };
   }
   
   function overloadMunchkinInit() {
@@ -168,8 +155,7 @@ leads = [
             
             overloadMunchkinFunction();
             Munchkin.munchkinFunction('visitWebPage', {
-              url: webPageX,
-              referrer: referrer
+              url: webPageX
             }, null, function () {
               resetMasterMunchkinCookie(function () {
                 window.setTimeout(function () {
