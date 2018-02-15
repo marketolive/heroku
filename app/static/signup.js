@@ -160,7 +160,8 @@ var isMktoForm = window.setInterval(function () {
             } else if (role == 'PM'
                || role == 'PMM'
                || role == 'Partner Ops'
-               || role == 'VC') {
+               || role == 'VC'
+               || role == 'Exec') {
               form.vals({
                 userIdMaster: localPart + '@marketolive.com',
                 Company: 'Marketo',
