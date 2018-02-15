@@ -145,7 +145,7 @@ leads = [
       resetMunchkinCookie(mktoLiveMunchkinId, function () {
         window.setTimeout(function () {
           console.log('Associating > Mock Lead: ' + leadX);
-          debugger;
+          
           overloadMunchkinFunction();
           Munchkin.munchkinFunction('associateLead', {
             Email: leadX
