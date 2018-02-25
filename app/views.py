@@ -3,7 +3,7 @@ from flask_restful import Resource, reqparse
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask import render_template, flash, request, redirect, g, abort, make_response
 from .forms import LoginForm
-import os, re
+import os, re, json, random
 from datetime import datetime
 from math import floor
 
@@ -105,6 +105,9 @@ pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketin
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
 		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'clear-cache', 'summit-17', 'ad-targeting', 'videos', 'auto-close']
+mpi_getChannel = ''
+mpi_getProgramRank = ''
+mpi_getChannelTrend = ''
 
 @app.route('/')
 @app.route('/', subdomain="partners")
@@ -261,6 +264,86 @@ def signup():
     else:
         abort(404)
 
+@app.route('/mpi')
+@app.route('/performance-insights')
+@app.route('/marketo-performance-insights')
+def mpi_page():
+	global mpi_getChannel, mpi_getProgramRank, mpi_getChannelTrend
+	static_url = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')
+	getChannel_url = os.path.join(static_url, 'mpi.getChannel.json')
+	getProgramRank_url = os.path.join(static_url, 'mpi.getProgramRank.json')
+	getChannelTrend_url = os.path.join(static_url, 'mpi.getChannelTrend.json')
+	mpi_getChannel = json.load(open(getChannel_url))
+	mpi_getProgramRank = json.load(open(getProgramRank_url))
+	mpi_getChannelTrend = json.load(open(getChannelTrend_url))
+	return render_template('/en/analytics/mpi.html')
+
+@app.route('/cmo/v1/metadata/<endpoint>.json')
+def mpi_endpoint(endpoint):
+	if (endpoint in ['getChannel', 'getProgramRank', 'getChannelTrend']):
+		sidebar = request.args.get('sidebar')
+		tab_name = request.args.get('tab_name')
+		top_view_metrics = request.args.get('top_view_metrics')
+		isAttribution = request.args.get('isAttribution')
+		time_period = request.args.get('time_period')
+		mode = request.args.get('mode')
+		settings = request.args.get('settings')
+		
+		abm_account_list = request.args.get('abm_account_list')
+		custom_attribute = request.args.get('custom_attribute')
+		investment_period = request.args.get('investment_period')
+		opportunity_type = request.args.get('opportunity_type')
+		program_tag = request.args.get('program_tag')
+		workspace = request.args.get('workspace')
+		resp = {}
+		
+		if (not mode):
+			mode = 'n/a'
+		if (not settings):
+			settings = '{"Before Opportunity Closed":[]}'
+		
+		if (endpoint == 'getChannel'):
+			resp = mpi_getChannel[sidebar][tab_name][top_view_metrics][isAttribution][time_period][mode][settings]
+		elif (endpoint == 'getProgramRank'):
+			resp = mpi_getProgramRank[sidebar][tab_name][top_view_metrics][isAttribution][time_period][mode][settings]
+		elif (endpoint == 'getChannelTrend'):
+			resp = mpi_getChannelTrend[sidebar][tab_name][top_view_metrics][isAttribution][time_period][mode][settings]
+		
+		if (abm_account_list or custom_attribute or investment_period or opportunity_type or program_tag or workspace):
+			if (endpoint == 'getChannel'):
+				resp['channel'] = random.sample(resp['channel'], floor(len(resp['channel']) * random.randrange(0.33, 0.66, 0.01)))
+			elif (endpoint == 'getProgramRank'):
+				resp['program'] = random.sample(resp['program'], floor(len(resp['program']) * random.randrange(0.33, 0.66, 0.01)))
+			elif (endpoint == 'getChannelTrend'):
+				resp['metric']['channel'] = random.sample(resp['metric']['channel'], floor(len(resp['metric']['channel']) * random.randrange(0.33, 0.66, 0.01)))
+		
+		return json.dumps(resp)
+	elif (endpoint == 'getCustomAttributeName'):
+		name = request.args.get('name')
+		return json.dumps({})
+	elif (endpoint == 'getAbmAccountList'):
+		return json.dumps({})
+	elif (endpoint == 'getProgramTagName'):
+		return json.dumps({})
+	elif (endpoint == 'getProgramTagValue'):
+		name = request.args.get('name')
+		return json.dumps({})
+	elif (endpoint == 'getOpportunityType'):
+		return json.dumps({})
+	elif (endpoint == 'getWorkspace'):
+		return json.dumps({})
+	elif (endpoint == 'quickcharts'):
+		return json.dumps({})
+	elif (endpoint == 'getUser'):
+		return json.dumps({})
+
+#@app.route('/cmo/v1/metadata/getChannel.json')
+#def getChannel():
+#	return app.send_static_file('mpi.getChannel.json')
+#
+#@app.route('/cmo/v1/metadata/getProgramRank.json')
+#def getProgramRank():
+#	return app.send_static_file('mpi.getProgramRank.json')
 '''
 Will delete this once we are fully confident in the above
 
