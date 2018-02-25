@@ -21905,7 +21905,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
       MULTI_TOUCH: "Multi-Touch"
     },
     t.DATE_PICKER_DEFAULT_MONTH_INDEX = 0,
-    t.IS_PRODUCTION = "localhost" !== window.location.hostname);
+    t.IS_PRODUCTION = false);
+    //t.IS_PRODUCTION = "localhost" !== window.location.hostname);
     t.API_SOURCE = n.BACKEND,
     t.API_URL = window.location.origin + "/cmo/v1/",
     t.DEV_COOKIE = "ids_sso_in=A2mzWEFmOeWKovWujoAMSsMXYWBVTOyxwcnykf7maWExl59kb-p45w4cgaYHWjfM6oYVjO8EeJBV3nfB-cGfpTiP0XYscqxAH7KjtvDx_N4:rcaprov2024_user1@marketo.com:14400:1494493255; path=/; domain=marketo.com; secure; httponly"
