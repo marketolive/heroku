@@ -389,6 +389,8 @@ def mpi_endpoint(endpoint):
 		return json.dumps(resp)
 	elif (endpoint == 'getUser'):
 		return json.dumps({"munchkin_id":"000-AAA-000","customer_prefix":"mpi4marketolive","user_id":"mpi@marketolive.com"})
+	elif (endpoint == '150'):
+		return json.dumps({})
 
 #@app.route('/cmo/v1/metadata/getChannel.json')
 #def getChannel():
