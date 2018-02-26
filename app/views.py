@@ -109,6 +109,8 @@ mpi_getChannel = ''
 mpi_getProgramRank = ''
 mpi_getChannelTrend = ''
 mpi_filters = ''
+mpi_quickcharts = ''
+mpi_channel_ids = []
 
 @app.route('/')
 @app.route('/', subdomain="partners")
@@ -269,16 +271,18 @@ def signup():
 @app.route('/performance-insights')
 @app.route('/marketo-performance-insights')
 def mpi_page():
-	global mpi_getChannel, mpi_getProgramRank, mpi_getChannelTrend, mpi_filters
+	global mpi_getChannel, mpi_getProgramRank, mpi_getChannelTrend, mpi_filters, mpi_quickcharts
 	static_url = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')
 	getChannel_url = os.path.join(static_url, 'mpi.getChannel.json')
 	getProgramRank_url = os.path.join(static_url, 'mpi.getProgramRank.json')
 	getChannelTrend_url = os.path.join(static_url, 'mpi.getChannelTrend.json')
 	filters_url = os.path.join(static_url, 'mpi.filters.json')
+	quickcharts_url = os.path.join(static_url, 'mpi.quickcharts.json')
 	mpi_getChannel = json.load(open(getChannel_url))
 	mpi_getProgramRank = json.load(open(getProgramRank_url))
 	mpi_getChannelTrend = json.load(open(getChannelTrend_url))
 	mpi_filters = json.load(open(filters_url))
+	mpi_quickcharts = json.load(open(quickcharts_url))
 	return render_template('/en/analytics/mpi.html')
 
 @app.route('/cmo/v1/metadata/<endpoint>.json')
@@ -293,12 +297,12 @@ def mpi_endpoint(endpoint):
 		settings = request.args.get('settings')
 		channel_id = request.args.get('channel_id')
 		
+		program_tag = request.args.get('program_tag')
+		workspace = request.args.get('workspace')
 		abm_account_list = request.args.get('abm_account_list')
 		custom_attribute = request.args.get('custom_attribute')
 		investment_period = request.args.get('investment_period')
 		opportunity_type = request.args.get('opportunity_type')
-		program_tag = request.args.get('program_tag')
-		workspace = request.args.get('workspace')
 		resp = {}
 		
 		if (not settings):
@@ -314,77 +318,77 @@ def mpi_endpoint(endpoint):
 				for program in mpi_getProgramRank[sidebar][tab_name][top_view_metrics][isAttribution][time_period][settings]['program']:
 					if (program['channelId'] in channel_id):
 						resp['program'].append(program)
-			
-			if (mode == 'bottom'):
-				resp['program'].reverse()
+		
 		elif (endpoint == 'getChannelTrend'):
 			resp = copy.deepcopy(mpi_getChannelTrend[sidebar][tab_name][top_view_metrics][isAttribution][time_period][settings])
 		
-		if (abm_account_list or custom_attribute or investment_period or opportunity_type or program_tag or workspace):
+		if (program_tag or workspace or abm_account_list or custom_attribute or investment_period or opportunity_type):
+			filters = [program_tag, workspace, abm_account_list, custom_attribute, investment_period, opportunity_type]
+			num_of_filters = sum(filter is not None for filter in filters)
+			rand = 1
+			for i in range(num_of_filters):
+				rand *= (random.randint(33, 66) / 100)
+			
 			if (endpoint == 'getChannel'):
-				resp['channel'] = random.sample(resp['channel'], floor(len(resp['channel']) * (random.randint(33, 66) / 100)))
+				global mpi_channel_ids
+				resp['channel'] = []
+				for channel in mpi_getChannel[sidebar][tab_name][top_view_metrics][isAttribution][time_period][settings]['channel']:
+					if (random.random() <= rand):
+						resp['channel'].append(channel)
+				for channel in resp['channel']:
+					mpi_channel_ids.append(channel['id'])
 			elif (endpoint == 'getProgramRank'):
-				resp['program'] = random.sample(resp['program'], floor(len(resp['program']) * (random.randint(33, 66) / 100)))
+				resp['program'] = []
+				for program in mpi_getProgramRank[sidebar][tab_name][top_view_metrics][isAttribution][time_period][settings]['program']:
+					if (program['channelId'] in mpi_channel_ids):
+						resp['program'].append(program)
+					elif (not mpi_channel_ids and random.random() <= rand):
+						resp['program'].append(program)
 			elif (endpoint == 'getChannelTrend'):
-				resp['metric']['channel'] = random.sample(resp['metric']['channel'], floor(len(resp['metric']['channel']) * (random.randint(33, 66) / 100)))
+				resp['metric']['channel'] = []
+				for channelTrend in mpi_getChannelTrend[sidebar][tab_name][top_view_metrics][isAttribution][time_period][settings]['metric']['channel']:
+					if (channelTrend['id'] in mpi_channel_ids):
+						resp['metric']['channel'].append(program)
+					elif (not mpi_channel_ids and random.random() <= rand):
+						resp['metric']['channel'].append(program)
+						
+		if (mode == 'bottom'):
+			resp['program'].reverse()
 		
 		return json.dumps(resp)
-	elif (endpoint in ['getCustomAttributeName', 'getProgramTagName', 'getAbmAccountList', 'getOpportunityType', 'getWorkspace']):
+	elif (endpoint in ['getProgramTagName', 'getWorkspace', 'getAbmAccountList', 'getCustomAttributeName', 'getOpportunityType']):
 		results_array = {
-			'getCustomAttributeName': 'custom_attribute_name',
-			'getCustomAttributeValue': 'custom_attribute_value',
 			'getProgramTagName': 'program_tag_name',
-			'getProgramTagValue': 'program_tag_value',
+			'getWorkspace': 'workspace',
 			'getAbmAccountList': 'abm_account_list',
-			'getOpportunityType': 'opportunity_type',
-			'getWorkspace': 'workspace'
+			'getCustomAttributeName': 'custom_attribute_name',
+			'getOpportunityType': 'opportunity_type'
 		}
 		page = request.args.get('page')
 		resp = copy.deepcopy(mpi_filters[endpoint])
-		'''
-		count = len(resp[results_array[endpoint]])
-		start = 0
-		end = 0
 		
-		if ((int(page) * 10) < count):
-			start = int(page) * 10
-		if ((start + 9) < count):
-			end = start + 9
-		
-		resp[results_array[endpoint]] = resp[results_array[endpoint]][start:end]
-		'''
 		if (page == '0'):
 			return json.dumps(resp)
 		else:
-			return json.dumps({})
-	elif (endpoint in ['getCustomAttributeValue', 'getProgramTagValue']):
+			return json.dumps({'success': 'true', 'count': resp['count']})
+	elif (endpoint in ['getProgramTagValue', 'getCustomAttributeValue']):
 		results_array = {
-			'getCustomAttributeValue': 'custom_attribute_value',
 			'getProgramTagValue': 'program_tag_value',
+			'getCustomAttributeValue': 'custom_attribute_value'
 		}
 		name = request.args.get('name')
 		page = request.args.get('page')
 		resp = copy.deepcopy(mpi_filters[endpoint][name])
-		'''
-		count = len(resp[results_array[endpoint]])
-		start = 0
-		end = 0
 		
-		if ((int(page) * 10) < count):
-			start = int(page) * 10
-		if ((start + 9) < count):
-			end = start + 9
-		
-		resp[results_array[endpoint]] = resp[results_array[endpoint]][start:end]
-		'''
 		if (page == '0'):
 			return json.dumps(resp)
 		else:
-			return json.dumps({})
+			return json.dumps({'success': 'true', 'count': resp['count']})
 	elif (endpoint == 'quickcharts'):
-		return json.dumps({})
+		resp = copy.deepcopy(mpi_quickcharts)
+		return json.dumps(resp)
 	elif (endpoint == 'getUser'):
-		return json.dumps({})
+		return json.dumps({"munchkin_id":"000-AAA-000","customer_prefix":"mpi4marketolive","user_id":"mpi@marketolive.com"})
 
 #@app.route('/cmo/v1/metadata/getChannel.json')
 #def getChannel():
