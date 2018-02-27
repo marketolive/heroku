@@ -30129,10 +30129,13 @@ https://github.com/nodeca/pako/blob/master/LICENSE
         f.getChannelIdsUrl)(e)
           , a = (0,
         f.getTimePeriodString)(e);
-        t += "" + r + n + a,
+        t += "" + r + n + a;//,
+        return d().callServer(t, "xlsx", "POST", e, "text/html")
+        /*
         d().callServer(t).then(function(e) {
           u.default.downloadExcel(t, e.result)
         })
+        */
       },
       getPPT: function(e) {
         var t = (0,
