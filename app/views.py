@@ -24,6 +24,12 @@ except ImportError:
 #						Logins
 #					
 ########################################################
+mpi_getChannel = ''
+mpi_getProgramRank = ''
+mpi_getChannelTrend = ''
+mpi_filters = ''
+mpi_quickcharts = ''
+mpi_channel_ids = []
 
 #
 # We use the flask-login library to manage user logins, see docs to understand these endpoints
@@ -46,6 +52,15 @@ def before_request():
 		g.partners=True
 	else:
 		g.partners=False
+	
+	if (request.path in ['/mpi', '/performance-insights', '/marketo-performance-insights']):
+		global mpi_getChannel, mpi_getProgramRank, mpi_getChannelTrend, mpi_filters, mpi_quickcharts
+		static_url = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')
+		mpi_getChannel = json.load(open(os.path.join(static_url, 'mpi.getChannel.json')))
+		mpi_getProgramRank = json.load(open(os.path.join(static_url, 'mpi.getProgramRank.json')))
+		mpi_getChannelTrend = json.load(open(os.path.join(static_url, 'mpi.getChannelTrend.json')))
+		mpi_filters = json.load(open(os.path.join(static_url, 'mpi.filters.json')))
+		mpi_quickcharts = json.load(open(os.path.join(static_url, 'mpi.quickcharts.json')))
 
 @app.after_request
 def add_header(response):
@@ -105,12 +120,6 @@ pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketin
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
 		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'clear-cache', 'summit-17', 'ad-targeting', 'videos', 'auto-close']
-mpi_getChannel = ''
-mpi_getProgramRank = ''
-mpi_getChannelTrend = ''
-mpi_filters = ''
-mpi_quickcharts = ''
-mpi_channel_ids = []
 
 @app.route('/')
 @app.route('/', subdomain="partners")
@@ -271,21 +280,9 @@ def signup():
 @app.route('/performance-insights')
 @app.route('/marketo-performance-insights')
 def mpi_page():
-	global mpi_getChannel, mpi_getProgramRank, mpi_getChannelTrend, mpi_filters, mpi_quickcharts
-	static_url = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')
-	getChannel_url = os.path.join(static_url, 'mpi.getChannel.json')
-	getProgramRank_url = os.path.join(static_url, 'mpi.getProgramRank.json')
-	getChannelTrend_url = os.path.join(static_url, 'mpi.getChannelTrend.json')
-	filters_url = os.path.join(static_url, 'mpi.filters.json')
-	quickcharts_url = os.path.join(static_url, 'mpi.quickcharts.json')
-	mpi_getChannel = json.load(open(getChannel_url))
-	mpi_getProgramRank = json.load(open(getProgramRank_url))
-	mpi_getChannelTrend = json.load(open(getChannelTrend_url))
-	mpi_filters = json.load(open(filters_url))
-	mpi_quickcharts = json.load(open(quickcharts_url))
 	return render_template('/en/analytics/mpi.html')
 
-@app.route('/cmo/v1/metadata/<endpoint>.json')
+@app.route('/cmo/v1/metadata/<endpoint>.json', methods=['GET','POST'])
 def mpi_endpoint(endpoint):
 	if (endpoint in ['getChannel', 'getProgramRank', 'getChannelTrend']):
 		sidebar = request.args.get('sidebar')
@@ -398,14 +395,12 @@ def mpi_endpoint(endpoint):
 		return json.dumps({"munchkin_id":"000-AAA-000","customer_prefix":"mpi4marketolive","user_id":"mpi@marketolive.com"})
 	elif (endpoint == '150'):
 		return json.dumps({})
+	elif (endpoint == 'export'):
+		return app.send_static_file('MPI - Revenue Won to Cost Ratio (MT) - Previous Year.pptx')
 
-#@app.route('/cmo/v1/metadata/getChannel.json')
-#def getChannel():
-#	return app.send_static_file('mpi.getChannel.json')
-#
-#@app.route('/cmo/v1/metadata/getProgramRank.json')
-#def getProgramRank():
-#	return app.send_static_file('mpi.getProgramRank.json')
+@app.route('/cmo/v1/export/getExcelData.json', methods=['GET','POST'])
+def mpi_export_excel():
+	return app.send_static_file('MPI - Revenue Won to Cost Ratio (MT) - Previous Year.xlsx')
 '''
 Will delete this once we are fully confident in the above
 
