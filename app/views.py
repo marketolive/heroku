@@ -306,7 +306,14 @@ def mpi_endpoint(endpoint):
 		resp = {}
 		
 		if (not settings):
-			settings = '{"Before Opportunity Closed":[]}'
+			settings = '{"Before Opportunity Created":[]}'
+		elif (settings == '{"Before Opportunity Created":["Show First-Touch","Show Multi-Touch"]}'):
+			if (re.search('{"First-Touch":', top_view_metrics)):
+				settings = '{"Before Opportunity Created":["Show Multi-Touch"]}'
+			elif (re.search('{"Multi-Touch":', top_view_metrics)):
+				settings = '{"Before Opportunity Created":["Show First-Touch"]}'
+			else:
+				settings = '{"Before Opportunity Created":[]}'
 		
 		if (endpoint == 'getChannel'):
 			resp = copy.deepcopy(mpi_getChannel[sidebar][tab_name][top_view_metrics][isAttribution][time_period][settings])
