@@ -61,6 +61,11 @@ def before_request():
 		mpi_getChannelTrend = json.load(open(os.path.join(static_url, 'mpi.getChannelTrend.json')))
 		mpi_filters = json.load(open(os.path.join(static_url, 'mpi.filters.json')))
 		mpi_quickcharts = json.load(open(os.path.join(static_url, 'mpi.quickcharts.json')))
+	elif (request.path == '/cmo/v1/metadata/export.json'):
+		return app.send_static_file('MPI - Revenue Won to Cost Ratio (MT) - Previous Year.pptx')
+	elif (request.path == '/cmo/v1/export/getExcelData.json'):
+		return app.send_static_file('MPI - Revenue Won to Cost Ratio (MT) - Previous Year.xlsx')
+		
 
 @app.after_request
 def add_header(response):
@@ -395,12 +400,7 @@ def mpi_endpoint(endpoint):
 		return json.dumps({"munchkin_id":"000-AAA-000","customer_prefix":"mpi4marketolive","user_id":"mpi@marketolive.com"})
 	elif (endpoint == '150'):
 		return json.dumps({})
-	elif (endpoint == 'export'):
-		return app.send_static_file('MPI - Revenue Won to Cost Ratio (MT) - Previous Year.pptx')
 
-@app.route('/cmo/v1/export/getExcelData.json', methods=['GET','POST'])
-def mpi_export_excel():
-	return app.send_static_file('MPI - Revenue Won to Cost Ratio (MT) - Previous Year.xlsx')
 '''
 Will delete this once we are fully confident in the above
 
