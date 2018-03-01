@@ -73,7 +73,7 @@ def logout():
 def login():
 	form = LoginForm()
 	if form.validate_on_submit():
-		# Login and validate the user.
+		# Login and validate the user
 		# user should be an instance of your `User` class
 		user = models.User.query.filter_by(email=form.inputEmail.data).first()
 		if user:
