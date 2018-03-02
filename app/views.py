@@ -178,10 +178,6 @@ def no_lang_main_router(category, page):
 	else:
 		abort(404)
 
-# @app.route('/', subdomain="partners")
-# def partners_main():
-# 		return redirect('https://www.medium.com')
-
 @app.route('/plugin')
 def plugin():
 	return redirect('https://chrome.google.com/webstore/detail/marketolive/onibnnoghllldiecboelbpcaeggfiohl')
