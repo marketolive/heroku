@@ -1,6 +1,6 @@
 var devExtensionId = "dokkjhbgengdlccldgjnbilajdbjlnhm",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
-extensionId = devExtensionId,
+extensionId = prodExtensionId,
 
 key = "AIzaSyC9pdVq6GfquP_MtHCS_izS6Vijdv1ZfNc",
 cx = "014680826408884315290:pmyltjjihus",
