@@ -1,5 +1,6 @@
 var isMktoForm = window.setInterval(function () {
-    if (MktoForms2) {
+    if (typeof(MktoForms2) === 'object'
+      && typeof(MktoForms2.whenReady) === 'function') {
       console.log('Getting: Form');
 
       window.clearInterval(isMktoForm);
