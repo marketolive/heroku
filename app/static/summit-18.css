@@ -1,0 +1,157 @@
+.full {
+	background: url('summit-18.png') center center no-repeat fixed;
+	webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+body {
+	background: transparent;
+}
+
+h1 {
+	color: white;	
+	/*text-decoration: underline;*/
+	margin: 25px 0px 0px;
+}
+
+.h4, p {
+	color: white;
+	font-weight: 100;
+}
+
+.title-img {
+  width: auto;
+  height: 100px;
+  margin-top: 15px;
+}
+
+/* Circle Hover Effects */
+.ch-grid {
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+
+.ch-grid:after,
+.ch-item:before {
+	content: '';
+    display: table;
+}
+
+.ch-grid:after {
+	clear: both;
+}
+
+.ch-grid li {
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	margin: 20px 60px;
+}
+
+.ch-item {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	overflow: hidden;
+	position: relative;
+	cursor: default;
+	/*box-shadow: 
+		inset 0 0 0 16px rgba(255,255,255,0.3),
+		0 1px 2px rgba(0,0,0,0.1);*/
+	transition: all 0.4s ease-in-out;
+}
+
+.ch-img-1 { 
+	background: url('icon-purple-marketing-automation.png') no-repeat center center;
+	background-size: 100%;
+	background-color:rgba(255,255,255, 0.7);
+}
+
+.ch-img-2 { 
+	background: url('icon-purple-account-based-marketing.png') no-repeat center center;
+	background-size: 100%;
+	background-color:rgba(255,255,255, 0.7);
+	
+}
+
+.ch-img-3 { 
+	background: url('icon-purple-content-ai.png') no-repeat center center;
+	background-size: 100%;
+	background-color:rgba(255,255,255, 0.7);
+}
+
+.ch-img-4 { 
+	background: url('icon-purple-web-personalization.png') no-repeat center center;
+	background-size: 100%;
+	background-color:rgba(255,255,255, 0.7);
+}
+
+.ch-img-5 { 
+	background: url('icon-purple-performance-insights.png') no-repeat center center;
+	background-size: 100%;
+	background-color:rgba(255,255,255, 0.7);
+
+}
+
+.ch-img-6 { 
+	background: url('icon-purple-sales-engage.png') no-repeat center center;
+	background-size: 100%;
+  background-color:rgba(255,255,255, 0.7);
+}
+
+.ch-info {
+	position: absolute;
+	background: rgb(90,84,164);
+	padding: 5%;
+	width: inherit;
+	height: inherit;
+	border-radius: 50%;
+	overflow: hidden;
+	transition: all 0.4s ease-in-out;
+	transform: scale(0);
+}
+
+.ch-info h3 {
+	margin-top: 30%;
+	color: #fff;
+	letter-spacing: 2px;
+	font-size: 22px;
+	height: 140px;
+	text-shadow: 
+		0 0 1px #fff, 
+		0 1px 2px rgba(0,0,0,0.3);
+}
+
+.ch-info h4 {
+	color: white;
+}
+
+.ch-item:hover {
+	box-shadow: 
+		inset 0 0 0 1px rgba(255,255,255,0.1),
+		0 1px 2px rgba(0,0,0,0.1);
+	cursor: pointer;
+}
+
+.ch-item:hover .ch-info {
+	transform: scale(1);
+	opacity: 1;
+}
+
+/*Flexbox styling*/
+.flex {
+	display: flex;
+}
+
+/* One off styles*/
+.mlive-icon, .invision, .linkedin, .powerpoint {
+	height: 50px;
+	width: 50px;
+}
+
+.wrap {
+	white-space: normal;
+}
