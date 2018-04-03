@@ -102,6 +102,24 @@ h1 {
   background-color:rgba(255,255,255, 0.7);
 }
 
+.ch-img-7 { 
+	background: url('icon-purple-platform.png') no-repeat center center;
+	background-size: 100%;
+  background-color:rgba(255,255,255, 0.7);
+}
+
+.ch-img-8 { 
+	background: url('icon-purple-integrations.png') no-repeat center center;
+	background-size: 100%;
+  background-color:rgba(255,255,255, 0.7);
+}
+
+.ch-img-9 { 
+	background: url('icon-purple-focus.png') no-repeat center center;
+	background-size: 100%;
+  background-color:rgba(255,255,255, 0.7);
+}
+
 .ch-info {
 	position: absolute;
 	background: rgb(90,84,164);
@@ -147,7 +165,7 @@ h1 {
 }
 
 /* One off styles*/
-.mlive-icon, .invision, .linkedin, .powerpoint {
+.icon {
 	height: 50px;
 	width: 50px;
 }
