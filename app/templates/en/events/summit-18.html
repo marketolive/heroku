@@ -6,12 +6,12 @@
 
 {% block head %}
 <title>Marketing Nation Summit 2018 | Launchpad</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='summit-18.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css', version='04032018v1') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='summit-18.css', version='04032018v1') }}">
 {% endblock %}
 
 {% block page_content %}
-  <img class="title-img" src="{{ url_for('static', filename='the-fearless-marketer-title.svg') }}">
+  <img class="title-img" src="{{ url_for('static', filename='the-fearless-marketer-title.svg', version='04032018v1) }}">
   
   <ul class="ch-grid">
     <li data-toggle="modal" data-target="#modal-1">
@@ -339,5 +339,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='summit-18.js') }}"></script>
+<script src="{{ url_for('static', filename='summit-18.js', version='04032018v1') }}"></script>
 {% endblock %}
