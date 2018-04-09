@@ -139,21 +139,12 @@ var isMktoForm = window.setInterval(function () {
                 });
                 break;
               }
-              
-              if (role == 'SC'
-               || role == 'SA'
-               || role == 'RFP'
-               || role == 'DS') {
-                form.vals({
-                  hasUserWorkspace: true
-                });
-              }
             } else if (role == 'SC'
                || role == 'SA'
                || role == 'RFP'
                || role == 'DS') {
               form.vals({
-                userId106: localPart + '.demo@marketo.com',
+                //userId106: localPart + '.demo@marketo.com',
                 userIdMaster: localPart + '@marketolive.com',
                 Company: 'Marketo',
                 hasUserWorkspace: true
@@ -170,8 +161,10 @@ var isMktoForm = window.setInterval(function () {
               });
             } else {
               form.vals({
-                userId106: localPart + '@marketolive.com',
-                Company: 'Marketo'
+                //userId106: localPart + '@marketolive.com',
+                userIdMaster: localPart + '@marketolive.com',
+                Company: 'Marketo',
+                hasUserWorkspace: false
               });
             }
           } else if (form.getValues().userRole == 'Partner') {
