@@ -1,0 +1,343 @@
+{% extends "en/base.html" %}
+
+{% block full_image %}
+<html class="full" lang="en">
+{% endblock %}
+
+{% block head %}
+<title>Marketing Nation Summit 2018 | Launchpad</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css', version='04032018v1') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='summit-18.css', version='04032018v1') }}">
+{% endblock %}
+
+{% block page_content %}
+  <img class="title-img" src="{{ url_for('static', filename='the-fearless-marketer-title.svg', version='04032018v1') }}">
+  
+  <ul class="ch-grid">
+    <li data-toggle="modal" data-target="#modal-1">
+      <div class="ch-item ch-img-1">
+        <div class="ch-info">
+          <h3>Attract, Nurture, & Deliver Leads</h3>
+        </div>
+      </div>
+      <p class="h4">Marketing Automation</p>
+    </li>
+    
+     <li data-toggle="modal" data-target="#modal-2">
+      <div class="ch-item ch-img-2">
+        <div class="ch-info">
+          <h3>Laser Focus w/ Account-Based Marketing</h3>
+        </div>
+      </div>
+      <p class="h4">ABM</p>
+    </li>
+    
+     <li data-toggle="modal" data-target="#modal-3">
+      <div class="ch-item ch-img-3">
+        <div class="ch-info">
+          <h3>Deliver Content They Want Automatically</h3>
+        </div>
+      </div>
+      <p class="h4">Content
+        <sup class="h4" style="font-size: 90%; top: -.4em;">AI</sup>
+      </p>
+    </li>
+  </ul>
+  
+  <ul class="ch-grid">
+    <li data-toggle="modal" data-target="#modal-4">
+      <div class="ch-item ch-img-4">
+        <div class="ch-info">
+          <h3>Interact Dynamically On Your Website</h3>
+        </div>
+      </div>
+      <p class="h4">Web Personalization</p>
+    </li>
+    
+    <li data-toggle="modal" data-target="#modal-5">
+      <div class="ch-item ch-img-5">
+        <div class="ch-info">
+          <h3>Prove & Improve Your Impact</h3>
+        </div>
+      </div>
+      <p class="h4">Performance Insights</p>
+    </li>
+    
+    <li data-toggle="modal" data-target="#modal-6">
+      <div class="ch-item ch-img-6">
+        <div class="ch-info">
+          <h3>Transform Your Sales Team</h3>
+        </div>
+      </div>
+      <p class="h4">Sales Engage</p>
+    </li>
+  </ul>
+  
+  <ul class="ch-grid">
+    <li data-toggle="modal" data-target="#modal-7">
+      <div class="ch-item ch-img-7">
+        <div class="ch-info">
+          <h3>Maximize Performance & Usability</h3>
+        </div>
+      </div>
+      <p class="h4">Platform & Architecture</p>
+    </li>
+    
+    <li data-toggle="modal" data-target="#modal-8">
+      <div class="ch-item ch-img-8">
+        <div class="ch-info">
+          <h3>Best-in-Class Partners</h3>
+        </div>
+      </div>
+      <p class="h4">Integrations</p>
+    </li>
+    
+    <li data-toggle="modal" data-target="#modal-9">
+      <div class="ch-item ch-img-9">
+        <div class="ch-info">
+          <h3>Focus Investment by Impact</h3>
+        </div>
+      </div>
+      <p class="h4">Advanced Report Builder</p>
+    </li>
+  </ul>
+  
+  <!-- Marketing Automation Modal -->
+  <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog modal-sm" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Marketing Automation</h4>
+  			</div>
+  			<div class="modal-body">
+          <a class="flex" target="_blank" href="https://app-sjdemo1.marketo.com/#MA19A1">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block ">MarketoLive</button>
+          </a>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  
+  <!-- ABM Modal -->
+  <div class="modal fade" id="modal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+         <h4 class="modal-title" id="myModalLabel">Account-Based Marketing</h4>
+        </div>
+        <div class="modal-body">
+          <a class="flex" target="_blank" href="https://app-sjdemo1.marketo.com/#ABM0A1">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block ">MarketoLive</button>
+          </a>
+          <a class="flex" target="_blank" href="https://marketo.box.com/s/e6ecw9og67bqiqhppds7qxpe0s8tlkxc">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block">ABM Overview</button>
+          </a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Content AI Modal -->
+  <div class="modal fade" id="modal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog modal-sm" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Content
+            <sup class="modal-title" style="font-size: 90%; top: -.4em;">AI</sup>
+          </h4>
+  			</div>
+  			<div class="modal-body">
+	  			<a class="flex" target="_blank" href="https://sjrtp3.marketo.com/app/predictive-app/">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block">MarketoLive</button>
+          </a>
+          <a class="flex" target="_blank" href="https://verticals.marketolive.com/microsite/technology">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block">Verticals Microsite</button>
+          </a>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  
+  <!-- Web Personalization Modal -->
+  <div class="modal fade" id="modal-4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog modal-sm" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Web Personalization</h4>
+  			</div>
+  			<div class="modal-body">
+  				<a class="flex" target="_blank" href="https://sjrtp3.marketo.com/app/dashboard.ext">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block ">MarketoLive</button>
+          </a>
+          <a class="flex" target="_blank" href="https://verticals.marketolive.com/microsite/technology">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block">Verticals Microsite</button>
+          </a>
+        </div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  
+  <!-- Performance Insights Modal -->
+  <div class="modal fade" id="modal-5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog modal-sm" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Performance Insights</h4>
+  			</div>
+  			<div class="modal-body">
+          <a class="flex" target="_blank" href="https://insights.marketolive.com/mpi">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block ">MarketoLive</button>
+          </a>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  
+  <!-- Sales Engage Modal -->
+  <div class="modal fade" id="modal-6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog modal-sm" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Sales Engage</h4>
+  			</div>
+  			<div class="modal-body">
+          <a class="flex" target="_blank" href="https://toutapp.com/next#emails/command_center">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block ">MarketoLive</button>
+          </a>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  
+  <!-- Platform & Architecture Modal -->
+  <div class="modal fade" id="modal-7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog modal-sm" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Platform & Architecture</h4>
+  			</div>
+  			<div class="modal-body">
+          <a class="flex" target="_blank" href="https://web-sj.marketo.com/index.html">
+            <img class="icon" src="../../static/marketoballclear.png" alt="Marketo Icon">
+            <button type="button" class="btn btn-default btn-block">New User Experience</button>
+          </a>
+          <a class="flex" target="_blank" href="https://marketo.invisionapp.com/share/V2FQQBSYUPX">
+            <img class="icon" src="../../static/invision.png" alt="InVision Icon">
+            <button type="button" class="btn btn-default btn-block wrap">New User Experience</button>
+          </a>
+          <!-- <a class="flex" target="_blank" href="https://marketo.app.box.com/s/2blybapw9l4euy0grueuswb9nhyv0hp4">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block ">New User Experience</button>
+          </a> -->
+          <hr>
+          <a class="flex" target="_blank" href="https://marketo.box.com/s/">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block">Google Cloud</button>
+          </a>
+          <a class="flex" target="_blank" href="https://marketo.box.com/s/">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block">Platform Updates</button>
+          </a>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  
+  <!-- Integrations Modal -->
+  <div class="modal fade" id="modal-8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog modal-sm" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Integrations</h4>
+  			</div>
+  			<div class="modal-body">
+          <a class="flex" target="_blank" href="https://marketo.box.com/s/">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block">Mintigo</button>
+          </a>
+          <a class="flex" target="_blank" href="https://marketo.box.com/s/">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block">SAP</button>
+          </a>
+          <!-- <a class="flex" target="_blank" href="https://marketo.box.com/s/sp6es6bs2djr6ncft4zyv1ym80nojfwg">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block">LinkedIn Lead Ads</button>
+          </a>
+          <a class="flex" target="_blank" href="https://marketo.box.com/s/cs8q3hmzuq51l05wbid2epqrp3o2eg9w">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block wrap">Engagement Platform Overview</button>
+          </a>
+          <a class="flex" target="_blank" href="https://marketo.box.com/s/uy1il0go82fvzm30hz7213kbxbgjx5dx">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block">SFDC Integration Experience</button>
+          </a>
+          <a class="flex" target="_blank" href="https://marketo.box.com/s/9imlnoyun4lcp26iru0chmmn5u6w81rz">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block">Faster Campaign Execution</button>
+          </a>
+          <a class="flex" target="_blank" href="https://marketo.box.com/s/jgijwqpg2b35qjiqb8nm1772eghtlti5">
+            <img class="icon" src="../../static/ppt-icon.png" alt="PowerPoint Icon">
+            <button type="button" class="btn btn-default btn-block">Bulk API's</button>
+          </a> -->
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  
+  <!-- Advanced Report Builder Modal -->
+  <div class="modal fade" id="modal-9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog modal-sm" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Advanced Report Builder</h4>
+  			</div>
+  			<div class="modal-body">
+          <a class="flex" target="_blank" href="https://sjrcademo1.marketo.com/rce2012/Home">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block">MarketoLive</button>
+          </a>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='summit-18.js', version='04032018v1') }}"></script>
+{% endblock %}
