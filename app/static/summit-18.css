@@ -6,6 +6,10 @@
   	background-size: cover;
 }
 
+.container-custom {
+  margin-top: 20px !important;
+}
+
 body {
 	background: transparent;
 }
@@ -23,9 +27,7 @@ h1 {
 
 .title-img {
   width: auto;
-  height: 100px;
-  margin-top: 16px;
-  margin-bottom: -4px;
+  height: 130px;
 }
 
 /* Circle Hover Effects */
@@ -80,44 +82,32 @@ h1 {
 }
 
 .ch-img-3 { 
-	background: url('icon-purple-content-ai.png') no-repeat center center;
+	background: url('icon-purple-performance-insights.png') no-repeat center center;
 	background-size: 100%;
 	background-color:rgba(255,255,255, 0.7);
 }
 
 .ch-img-4 { 
-	background: url('icon-purple-web-personalization.png') no-repeat center center;
+	background: url('icon-purple-content-ai.png') no-repeat center center;
 	background-size: 100%;
 	background-color:rgba(255,255,255, 0.7);
 }
 
 .ch-img-5 { 
-	background: url('icon-purple-performance-insights.png') no-repeat center center;
+	background: url('icon-purple-sales-engage.png') no-repeat center center;
 	background-size: 100%;
 	background-color:rgba(255,255,255, 0.7);
 
 }
 
 .ch-img-6 { 
-	background: url('icon-purple-sales-engage.png') no-repeat center center;
-	background-size: 100%;
-  background-color:rgba(255,255,255, 0.7);
-}
-
-.ch-img-7 { 
 	background: url('icon-purple-platform.png') no-repeat center center;
 	background-size: 100%;
   background-color:rgba(255,255,255, 0.7);
 }
 
-.ch-img-8 { 
+.ch-img-7 { 
 	background: url('icon-purple-integrations.png') no-repeat center center;
-	background-size: 100%;
-  background-color:rgba(255,255,255, 0.7);
-}
-
-.ch-img-9 { 
-	background: url('icon-purple-focus.png') no-repeat center center;
 	background-size: 100%;
   background-color:rgba(255,255,255, 0.7);
 }

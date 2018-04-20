@@ -1,4 +1,4 @@
-{% extends "en/base.html" %}
+{% extends "en/base-no-navbar.html" %}
 
 {% block full_image %}
 <html class="full" lang="en">
@@ -35,21 +35,12 @@
       <p class="h4">ABM</p>
     </li>
     
-    <!-- <li data-toggle="modal" data-target="#modal-4">
-      <div class="ch-item ch-img-4">
-        <div class="ch-info">
-          <div>Interact Dynamically On Your Website</div>
-        </div>
-      </div>
-      <p class="h4">Web Personalization</p>
-    </li> -->
-    
   </ul>
   
   <ul class="ch-grid">
     
-    <li data-toggle="modal" data-target="#modal-5">
-      <div class="ch-item ch-img-5">
+    <li data-toggle="modal" data-target="#modal-3">
+      <div class="ch-item ch-img-3">
         <div class="ch-info">
           <div>Prove & Improve Your Impact</div>
         </div>
@@ -57,8 +48,8 @@
       <p class="h4"><br>Analytics<br><br></p>
     </li>
     
-    <li data-toggle="modal" data-target="#modal-3">
-      <div class="ch-item ch-img-3">
+    <li data-toggle="modal" data-target="#modal-4">
+      <div class="ch-item ch-img-4">
         <div class="ch-info">
           <div>Deliver Content They Want Automatically</div>
         </div>
@@ -69,8 +60,8 @@
       </p>
     </li>
     
-    <li data-toggle="modal" data-target="#modal-6">
-      <div class="ch-item ch-img-6">
+    <li data-toggle="modal" data-target="#modal-5">
+      <div class="ch-item ch-img-5">
         <div class="ch-info">
           <div>Transform Your Sales Team</div>
         </div>
@@ -82,8 +73,8 @@
   
   <ul class="ch-grid">
     
-    <li data-toggle="modal" data-target="#modal-7">
-      <div class="ch-item ch-img-7">
+    <li data-toggle="modal" data-target="#modal-6">
+      <div class="ch-item ch-img-6">
         <div class="ch-info">
           <div>Maximize Performance & Usability</div>
         </div>
@@ -91,8 +82,8 @@
       <p class="h4">Next Gen UX</p>
     </li>
     
-    <li data-toggle="modal" data-target="#modal-8">
-      <div class="ch-item ch-img-8">
+    <li data-toggle="modal" data-target="#modal-7">
+      <div class="ch-item ch-img-7">
         <div class="ch-info">
           <div>Listen. Learn. Engage.</div>
         </div>
@@ -100,18 +91,9 @@
       <p class="h4">Engagement Platform</p>
     </li>
     
-    <!-- <li data-toggle="modal" data-target="#modal-9">
-      <div class="ch-item ch-img-9">
-        <div class="ch-info">
-          <div>Focus Investment by Impact</div>
-        </div>
-      </div>
-      <p class="h4">Advanced Report Builder</p>
-    </li> -->
-    
   </ul>
   
-  <!-- Lead Management Modal -->
+  <!-- Modal 1 > Lead Management -->
   <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog modal-sm" role="document">
   		<div class="modal-content">
@@ -131,7 +113,7 @@
   	</div>
   </div>
   
-  <!-- ABM Modal -->
+  <!-- Modal 2 > ABM -->
   <div class="modal fade" id="modal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
@@ -155,14 +137,33 @@
     </div>
   </div>
   
-  <!-- Content AI Modal -->
+  <!-- Modal 3 > Analytics -->
   <div class="modal fade" id="modal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog modal-sm" role="document">
   		<div class="modal-content">
   			<div class="modal-header">
+  				<h4 class="modal-title" id="myModalLabel">Analytics</h4>
+  			</div>
+  			<div class="modal-body">
+          <a class="flex" target="_blank" href="https://insights.marketolive.com/mpi">
+            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
+            <button type="button" class="btn btn-default btn-block ">Performance Insights</button>
+          </a>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  
+  <!-- Modal 4 > Content AI & Web Personalization -->
+  <div class="modal fade" id="modal-4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog modal-sm" role="document">
+  		<div class="modal-content">
+  			<div class="modal-header">
   				<h4 class="modal-title" id="myModalLabel">Content
-            <sup class="modal-title" style="font-size: 90%; top: -.4em;">AI</sup> &<br>
-            Web Personalization
+            <sup class="modal-title" style="font-size: 90%; top: -.4em;">AI</sup> & Personalization
           </h4>
   			</div>
   			<div class="modal-body">
@@ -189,52 +190,8 @@
   	</div>
   </div>
   
-  <!-- Web Personalization Modal -->
-  <!-- <div class="modal fade" id="modal-4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog modal-sm" role="document">
-  		<div class="modal-content">
-  			<div class="modal-header">
-  				<h4 class="modal-title" id="myModalLabel">Web Personalization</h4>
-  			</div>
-  			<div class="modal-body">
-  				<a class="flex" target="_blank" href="https://sjrtp3.marketo.com/app/dashboard.ext">
-            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
-            <button type="button" class="btn btn-default btn-block ">MarketoLive</button>
-          </a>
-          <a class="flex" target="_blank" href="https://verticals.marketolive.com/microsite/technology">
-            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
-            <button type="button" class="btn btn-default btn-block">Verticals Microsite</button>
-          </a>
-        </div>
-  			<div class="modal-footer">
-  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-  			</div>
-  		</div>
-  	</div>
-  </div> -->
-  
-  <!-- Analytics Modal -->
+  <!-- Modal 5 > Sales Engage -->
   <div class="modal fade" id="modal-5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog modal-sm" role="document">
-  		<div class="modal-content">
-  			<div class="modal-header">
-  				<h4 class="modal-title" id="myModalLabel">Analytics</h4>
-  			</div>
-  			<div class="modal-body">
-          <a class="flex" target="_blank" href="https://insights.marketolive.com/mpi">
-            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
-            <button type="button" class="btn btn-default btn-block ">Performance Insights</button>
-          </a>
-  			</div>
-  			<div class="modal-footer">
-  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-  			</div>
-  		</div>
-  	</div>
-  </div>
-  
-  <!-- Sales Engage Modal -->
-  <div class="modal fade" id="modal-6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog modal-sm" role="document">
   		<div class="modal-content">
   			<div class="modal-header">
@@ -253,8 +210,8 @@
   	</div>
   </div>
   
-  <!-- Next Gen UX Modal -->
-  <div class="modal fade" id="modal-7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!-- Modal 6 > Next Gen UX -->
+  <div class="modal fade" id="modal-6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog modal-sm" role="document">
   		<div class="modal-content">
   			<div class="modal-header">
@@ -281,8 +238,8 @@
   	</div>
   </div>
   
-  <!-- Engagement Platform Modal -->
-  <div class="modal fade" id="modal-8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!-- Modal 7 > Engagement Platform -->
+  <div class="modal fade" id="modal-7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog modal-sm" role="document">
   		<div class="modal-content">
   			<div class="modal-header">
@@ -313,26 +270,6 @@
   		</div>
   	</div>
   </div>
-  
-  <!-- Advanced Report Builder Modal -->
-  <!--<div class="modal fade" id="modal-9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog modal-sm" role="document">
-  		<div class="modal-content">
-  			<div class="modal-header">
-  				<h4 class="modal-title" id="myModalLabel">Advanced Report Builder</h4>
-  			</div>
-  			<div class="modal-body">
-          <a class="flex" target="_blank" href="https://sjrcademo1.marketo.com/rce2012/Home">
-            <img class="icon" src="../../static/marketo-live-circle-logo.png" alt="MarketoLive Icon">
-            <button type="button" class="btn btn-default btn-block">MarketoLive</button>
-          </a>
-  			</div>
-  			<div class="modal-footer">
-  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-  			</div>
-  		</div>
-  	</div>
-  </div>-->
 {% endblock %}
 
 {% block scripts %}
