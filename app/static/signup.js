@@ -232,6 +232,8 @@ var isMktoForm = window.setInterval(function () {
             }
           };
         }
+      
+      document.getElementById('theForm').style.display = 'block';
       });
     }
   }, 0);
