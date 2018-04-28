@@ -7,7 +7,7 @@
 }
 
 .container-custom {
-  margin-top: 20px !important;
+  margin-top: 16px !important;
 }
 
 body {
@@ -15,9 +15,8 @@ body {
 }
 
 h1 {
-	color: white;	
-	/*text-decoration: underline;*/
-	margin: 25px 0px 0px;
+	color: white;
+	margin: 25px 0 0;
 }
 
 .h4, p {
@@ -27,7 +26,7 @@ h1 {
 
 .title-img {
   width: auto;
-  height: 130px;
+  height: 131px;
 }
 
 /* Circle Hover Effects */
@@ -62,59 +61,59 @@ h1 {
 	overflow: hidden;
 	position: relative;
 	cursor: default;
-	/*box-shadow: 
-		inset 0 0 0 16px rgba(255,255,255,0.3),
+	/*box-shadow:
+		inset 0 0 0 16px rgba(255, 255, 255, 0.3),
 		0 1px 2px rgba(0,0,0,0.1);*/
 	transition: all 0.4s ease-in-out;
 }
 
-.ch-img-1 { 
+.ch-img-1 {
 	background: url('icon-purple-marketing-automation.png') no-repeat center center;
 	background-size: 100%;
-	background-color:rgba(255,255,255, 0.7);
+	background-color:rgba(255, 255, 255, 0.7);
 }
 
-.ch-img-2 { 
+.ch-img-2 {
 	background: url('icon-purple-account-based-marketing.png') no-repeat center center;
 	background-size: 100%;
-	background-color:rgba(255,255,255, 0.7);
+	background-color:rgba(255, 255, 255, 0.7);
 	
 }
 
-.ch-img-3 { 
+.ch-img-3 {
 	background: url('icon-purple-performance-insights.png') no-repeat center center;
 	background-size: 100%;
-	background-color:rgba(255,255,255, 0.7);
+	background-color:rgba(255, 255, 255, 0.7);
 }
 
-.ch-img-4 { 
+.ch-img-4 {
 	background: url('icon-purple-content-ai.png') no-repeat center center;
 	background-size: 100%;
-	background-color:rgba(255,255,255, 0.7);
+	background-color:rgba(255, 255, 255, 0.7);
 }
 
-.ch-img-5 { 
+.ch-img-5 {
 	background: url('icon-purple-sales-engage.png') no-repeat center center;
 	background-size: 100%;
-	background-color:rgba(255,255,255, 0.7);
+	background-color:rgba(255, 255, 255, 0.7);
 
 }
 
-.ch-img-6 { 
+.ch-img-6 {
 	background: url('icon-purple-platform.png') no-repeat center center;
 	background-size: 100%;
-  background-color:rgba(255,255,255, 0.7);
+  background-color:rgba(255, 255, 255, 0.7);
 }
 
-.ch-img-7 { 
+.ch-img-7 {
 	background: url('icon-purple-integrations.png') no-repeat center center;
 	background-size: 100%;
-  background-color:rgba(255,255,255, 0.7);
+  background-color:rgba(255, 255, 255, 0.7);
 }
 
 .ch-info {
 	position: absolute;
-	background: rgb(90,84,164);
+	background: rgb(90, 84, 164);
 	width: inherit;
 	height: inherit;
 	border-radius: 50%;
@@ -133,9 +132,9 @@ h1 {
   text-align: center;
   justify-content: center;
   flex-direction: column;
-	text-shadow: 
-		0 0 1px #fff, 
-		0 1px 2px rgba(0,0,0,0.3);
+	text-shadow:
+		0 0 1px #fff,
+		0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .ch-info h4 {
@@ -143,9 +142,9 @@ h1 {
 }
 
 .ch-item:hover {
-	box-shadow: 
-		inset 0 0 0 1px rgba(255,255,255,0.1),
-		0 1px 2px rgba(0,0,0,0.1);
+	box-shadow:
+		inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+		0 1px 2px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 }
 
