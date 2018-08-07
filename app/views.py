@@ -24,7 +24,6 @@ except ImportError:
 #						Logins
 #					
 ########################################################
-
 #
 # We use the flask-login library to manage user logins, see docs to understand these endpoints
 # https://flask-login.readthedocs.org/en/latest/
@@ -74,7 +73,7 @@ def logout():
 def login():
 	form = LoginForm()
 	if form.validate_on_submit():
-		# Login and validate the user.
+		# Login and validate the user
 		# user should be an instance of your `User` class
 		user = models.User.query.filter_by(email=form.inputEmail.data).first()
 		if user:
@@ -104,7 +103,7 @@ categories = ['solutions', 'verticals', 'analytics', 'update', 'events', 'tools'
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
-		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'clear-cache', 'summit-17', 'ad-targeting', 'videos', 'auto-close']
+		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'clear-cache', 'summit-17', 'summit-18', 'ad-targeting', 'videos', 'auto-close']
 
 @app.route('/')
 @app.route('/', subdomain="partners")
@@ -178,10 +177,6 @@ def no_lang_main_router(category, page):
 		return redirect('/en/%s/%s' % (category, page))
 	else:
 		abort(404)
-
-# @app.route('/', subdomain="partners")
-# def partners_main():
-# 		return redirect('https://www.medium.com')
 
 @app.route('/plugin')
 def plugin():
@@ -261,82 +256,6 @@ def signup():
     else:
         abort(404)
 
-'''
-Will delete this once we are fully confident in the above
-
-########################################################
-#
-#					Solutions Routes
-#					
-########################################################	
-@app.route('/<language>/solutions/email-marketing')
-def email_marketing(language):
-	page = 'email-marketing'
-	if language not in languages:
-		return redirect('/en/solutions/' + page)
-	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
-
-@app.route('/<language>/solutions/lead-management')
-def lead_management(language):
-	page = 'lead-management'
-	if language not in languages:
-		return redirect('/en/solutions/' + page)
-	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
-
-@app.route('/<language>/solutions/consumer-marketing')
-def consumer_marketing(language):
-	page = 'consumer-marketing'
-	if language not in languages:
-		return redirect('/en/solutions/' + page)
-	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
-
-@app.route('/<language>/solutions/customer-base-marketing')
-def customer_base_marketing(language):
-	page = 'customer-base-marketing'
-	if language not in languages:
-		return redirect('/en/solutions/' + page)
-	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
-
-@app.route('/<language>/solutions/mobile-marketing')
-def mobile_marketing(language):
-	page = 'mobile-marketing'
-	if language not in languages:
-		return redirect('/en/solutions/' + page)
-	return render_template(language + '/solutions/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='solutions/', page=page)
-
-########################################################
-#
-#					Vertical Routes
-#					
-########################################################	
-@app.route('/<language>/verticals/b2b')
-def b2b(language):
-	page = 'b2b'
-	if language not in languages:
-		return redirect('/en/verticals/' + page)
-	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
-	
-@app.route('/<language>/verticals/higher-education')
-def higher_education(language):
-	page = 'higher-education'
-	if language not in languages:
-		return redirect('/en/verticals/' + page)
-	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
-
-@app.route('/<language>/verticals/financial-services')
-def financial_services(language):
-	page = 'financial-services'
-	if language not in languages:
-		return redirect('/en/verticals/' + page)
-	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
-
-@app.route('/<language>/verticals/healthcare')
-def healthcare(language):
-	page = 'healthcare'
-	if language not in languages:
-		return redirect('/en/verticals/' + page)
-	return render_template(language + '/verticals/' + page + '.html', form=g.loginform, name=g.name, lang=language, path='verticals/', page=page)
-'''
 ########################################################
 #
 #					API Endpoints
