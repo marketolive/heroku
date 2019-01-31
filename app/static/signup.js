@@ -85,17 +85,17 @@ var isMktoForm = window.setInterval(function () {
             return false;
           }
 
-          if (domain == 'marketo.com'
+          if ((domain == 'marketo.com' || domain == 'adobe.com')
              && role == 'Partner') {
             form.submittable(false);
-            form.showErrorMessage('Do not select <i>Partner</i> for your role if your email is <u>@marketo.com</u>', form.getFormElem().find('#userRole'));
+            form.showErrorMessage('Do not select <i>Partner</i> for your role if your email is <u>@marketo.com</u> OR <u>@adobe.com</u>', form.getFormElem().find('#userRole'));
             return false;
           }
 
-          if (domain != 'marketo.com'
+          if ((domain != 'marketo.com' && domain != 'adobe.com') 
              && role != 'Partner') {
             form.submittable(false);
-            form.showErrorMessage('Select <i>Partner</i> for your role if your email is not <u>@marketo.com</u>', form.getFormElem().find('#userRole'));
+            form.showErrorMessage('Select <i>Partner</i> for your role if your email is not <u>@marketo.com</u> OR <u>@adobe.com</u>', form.getFormElem().find('#userRole'));
             return false;
           }
 
@@ -107,7 +107,7 @@ var isMktoForm = window.setInterval(function () {
             domain: domain
           });
 
-          if (domain == 'marketo.com') {
+          if (domain == 'marketo.com' || domain == 'adobe.com') {
             let instance = getUrlParam('instance');
             
             if (instance) {
@@ -226,7 +226,11 @@ var isMktoForm = window.setInterval(function () {
                && this.value.split('@').length > 0) {
               if (this.value.split('@')[1].toLowerCase().trim() == 'marketo.com') {
                 form.getFormElem().find('#Company')[0].value = 'Marketo';
-              } else {
+              }
+              if (this.value.split('@')[1].toLowerCase().trim() == 'adobe.com') {
+                form.getFormElem().find('#Company')[0].value = 'Adobe';
+              } 
+              else {
                 form.getFormElem().find('#userRole')[0].value = 'Partner';
               }
             }
