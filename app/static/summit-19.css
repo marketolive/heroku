@@ -18,12 +18,20 @@ h1 {
 	color: white;
 	margin: 25px 0 0;
 }
-
+#firstRow{
+	position:absolute;
+	top:0;
+}
+#secondRow{
+	position:absolute;
+	bottom:0;
+}
 .h4, p {
 	color: white;
 	font-weight: 100;
 	font-family:arial;
 	text-transform:uppercase;
+	margin-bottom:0;
 }
 
 .title-img {
@@ -51,6 +59,7 @@ h1 {
 }
 
 .ch-grid li {
+	vertical-align:text-top;
 	width: 200px;
 	height: 200px;
 	display: inline-block;
@@ -112,7 +121,7 @@ h1 {
 	background:#0a4ce6;
 }
 .ch-img-4 .ch-info{
-	background:#fbfd0a;
+	background:#f4e433;
 }
 .ch-img-5 .ch-info{
 	background:#8B6AD0;
