@@ -20,11 +20,11 @@ h1 {
 }
 #firstRow{
 	position:absolute;
-	top:0;
+	top:25px;
 }
 #secondRow{
 	position:absolute;
-	bottom:0;
+	bottom:73px;
 }
 .h4, p {
 	color: white;
