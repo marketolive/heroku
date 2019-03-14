@@ -44,8 +44,8 @@ h1 {
 	display: block;
 	text-align: center;
 	width: 100%;
-  margin-top: -3px;
-  margin-bottom: 35px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .ch-grid:after,
@@ -63,7 +63,7 @@ h1 {
 	width: 200px;
 	height: 200px;
 	display: inline-block;
-	margin: 20px 60px;
+	margin: 0 60px;
 }
 
 .ch-item {
