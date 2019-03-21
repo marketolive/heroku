@@ -103,7 +103,7 @@ categories = ['solutions', 'verticals', 'analytics', 'update', 'events', 'tools'
 pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2',
-		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'clear-cache', 'summit-17', 'summit-18', 'summit-19', 'ad-targeting', 'videos', 'auto-close']
+		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'clear-cache', 'summit-17', 'summit-18', 'summit-19', 'summit-19-links', 'ad-targeting', 'videos', 'auto-close']
 
 @app.route('/')
 @app.route('/', subdomain="partners")
