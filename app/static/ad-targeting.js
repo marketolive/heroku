@@ -22,6 +22,7 @@ adLink = document.getElementById("adLink"),
 adText = document.getElementById("adText"),
 logoContainer = document.getElementById("logoContainer"),
 adLogo = document.getElementById("adLogo"),
+picUrl = document.getElementById("picURL"),
 logo = document.getElementById("logo"),
 searchContainer = document.getElementById("searchContainer"),
 searchBox = document.getElementById("searchBox"),
@@ -515,7 +516,7 @@ sendAdInfoMsg = function (action) {
     } else if (linkedinButton.checked) {
       msg.adType = "linkedin";
       msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc+ ",," + adLogo.value+ ",," + name.value+ ",," + picUrl.value;
-      msg.urlMatch = msg.urlCreate = "https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
+      msg.urlMatch = msg.urlCreate = "http://dev.marketolive.com/en/tools/linkedin";//"https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
     }
   }
   
