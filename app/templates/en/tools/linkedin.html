@@ -1968,7 +1968,7 @@
 	 var adInfo = getMyCookie("ad_info");
   
 	var ad = {};
-	if(!adInfo){
+	if(url.indexOf('?') > 0){
 		var url = location.href;
 		var pairs = url.substring(url.indexOf('?') + 1).split('&');
 		for (var i = 0; i < pairs.length; i++) {
