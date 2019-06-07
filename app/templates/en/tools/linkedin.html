@@ -1965,22 +1965,30 @@
 <div id="a11y-notification" class="visually-hidden" role="region" aria-live="polite"></div>
 <script>
 	 var adInfo = getMyCookie("ad_info");
- /*if(!adInfo)
-  adInfo = ",,COSCO + R5,,www.marketo.com,,YOU HAVE A VISION,,Lets talk about a solution,,https://logo.clearbit.com/cascocorp.com?size=50,,https://mir-s3-cdn-cf.behance.net/project_modules/disp/034a5b46711319.5607dfd81cd92.jpg,,Marketo,,Hunter Grant,,https://media.licdn.com/dms/image/C4E03AQE2-FU5OV19mg/profile-displayphoto-shrink_100_100/0?e=1565222400&v=beta&t=fQ4ibEN-Gji_bY7RJckMb4-SOgPeTRmTC8gyykDPtx4";*/
   
-  var adInfoSplit = adInfo.split(",,"),
-  ad = {};
-  
-  ad.title = adInfoSplit[1];
-  ad.link = adInfoSplit[2];
-  ad.linkText = adInfoSplit[3];
-  ad.text = adInfoSplit[4];
-  ad.logo = adInfoSplit[5];
-  ad.image = adInfoSplit[6];
-  ad.domain = adInfoSplit[7];
-  ad.name = adInfoSplit[8];
-  ad.picURL = adInfoSplit[9];
-
+	var ad = {};
+	if(adInfo){
+		var adInfoSplit = adInfo.split(",,");
+		ad.title = adInfoSplit[1];
+		ad.link = adInfoSplit[2];
+		ad.linkText = adInfoSplit[3];
+		ad.text = adInfoSplit[4];
+		ad.logo = adInfoSplit[5];
+		ad.image = adInfoSplit[6];
+		ad.domain = adInfoSplit[7];
+		ad.name = adInfoSplit[8];
+		ad.picURL = adInfoSplit[9];
+	}
+	else{
+		var url = location.href;
+		var pairs = url.substring(url.indexOf('?') + 1).split('&');
+		for (var i = 0; i < pairs.length; i++) {
+		  if(!pairs[i])
+		      continue;
+		  var pair = pairs[i].split('=');
+		  ad[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+		}
+	}
   
   if (!ad.linkText) {
     ad.linkText = ad.link.replace(/^(http(s)?:\/\/)?(www\.)?/, "").split("?")[0];
