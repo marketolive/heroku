@@ -23,6 +23,7 @@ adText = document.getElementById("adText"),
 logoContainer = document.getElementById("logoContainer"),
 adLogo = document.getElementById("adLogo"),
 picUrl = document.getElementById("picURL"),
+name = document.getElementById("name"),
 logo = document.getElementById("logo"),
 searchContainer = document.getElementById("searchContainer"),
 searchBox = document.getElementById("searchBox"),
@@ -548,7 +549,7 @@ openAdButton.onclick = function () {
     showSelectedAdImage(selectImgSrc);
     document.body.scrollTop = 0;
   } else if (linkedinButton.checked) {
-    if (!validateFields([adTitle, adLink, adText, adLogo, picURL,name])) {
+    if (!validateFields([adTitle, adLink, adText, adLogo, picURL, name])) {
       return;
     }
     
