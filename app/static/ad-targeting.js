@@ -548,7 +548,7 @@ openAdButton.onclick = function () {
     showSelectedAdImage(selectImgSrc);
     document.body.scrollTop = 0;
   } else if (linkedinButton.checked) {
-    if (!validateFields([adTitle, adLink, adText, adLogo])) {
+    if (!validateFields([adTitle, adLink, adText, adLogo, picURL,name])) {
       return;
     }
     
