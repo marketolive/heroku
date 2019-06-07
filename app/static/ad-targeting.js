@@ -515,9 +515,12 @@ sendAdInfoMsg = function (action) {
       msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&*";
       msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
     } else if (linkedinButton.checked) {
+      var url = location.href;
+      var matches = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+      var domain = matches && matches[1];
       msg.adType = "linkedin";
       msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc+ ",," + adLogo.value+ ",," + adName.value+ ",," + picUrl.value;
-      msg.urlMatch = msg.urlCreate = "http://dev.marketolive.com/en/tools/linkedin";//"https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
+      msg.urlMatch = msg.urlCreate = domain+"/en/tools/linkedin";//"https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
     }
   }
   

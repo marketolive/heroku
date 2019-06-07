@@ -265,7 +265,7 @@
       Mark Eto
     </span>
 </a>
-    <p class="identity-headline t-12 t-black--light t-normal mt1">Demo Solutions Developer at Adobe</p>
+    <p class="identity-headline t-12 t-black--light t-normal mt1">Solutions Consultant at Adobe</p>
   </div>
 
   <div class="feed-identity-module__widgets">
@@ -1968,7 +1968,17 @@
 	 var adInfo = getMyCookie("ad_info");
   
 	var ad = {};
-	if(adInfo){
+	if(!adInfo){
+		var url = location.href;
+		var pairs = url.substring(url.indexOf('?') + 1).split('&');
+		for (var i = 0; i < pairs.length; i++) {
+		  if(!pairs[i])
+		      continue;
+		  var pair = pairs[i].split('=');
+		  ad[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+		}
+	}
+	else{
 		var adInfoSplit = adInfo.split(",,");
 		ad.title = adInfoSplit[1];
 		ad.link = adInfoSplit[2];
@@ -1979,16 +1989,6 @@
 		ad.domain = adInfoSplit[7];
 		ad.name = adInfoSplit[8];
 		ad.picURL = adInfoSplit[9];
-	}
-	else{
-		var url = location.href;
-		var pairs = url.substring(url.indexOf('?') + 1).split('&');
-		for (var i = 0; i < pairs.length; i++) {
-		  if(!pairs[i])
-		      continue;
-		  var pair = pairs[i].split('=');
-		  ad[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-		}
 	}
   
   if (!ad.linkText) {
