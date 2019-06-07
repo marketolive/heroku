@@ -23,7 +23,7 @@ adText = document.getElementById("adText"),
 logoContainer = document.getElementById("logoContainer"),
 adLogo = document.getElementById("adLogo"),
 picUrl = document.getElementById("picURL"),
-name = document.getElementById("name"),
+adName = document.getElementById("name"),
 logo = document.getElementById("logo"),
 searchContainer = document.getElementById("searchContainer"),
 searchBox = document.getElementById("searchBox"),
@@ -516,7 +516,7 @@ sendAdInfoMsg = function (action) {
       msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
     } else if (linkedinButton.checked) {
       msg.adType = "linkedin";
-      msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc+ ",," + adLogo.value+ ",," + name.value+ ",," + picUrl.value;
+      msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc+ ",," + adLogo.value+ ",," + adName.value+ ",," + picUrl.value;
       msg.urlMatch = msg.urlCreate = "http://dev.marketolive.com/en/tools/linkedin";//"https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
     }
   }
@@ -549,7 +549,7 @@ openAdButton.onclick = function () {
     showSelectedAdImage(selectImgSrc);
     document.body.scrollTop = 0;
   } else if (linkedinButton.checked) {
-    if (!validateFields([adTitle, adLink, adText, adLogo, picURL, name])) {
+    if (!validateFields([adTitle, adLink, adText, adLogo, picURL, adName])) {
       return;
     }
     
