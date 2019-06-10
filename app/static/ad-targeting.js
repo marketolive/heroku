@@ -520,7 +520,7 @@ sendAdInfoMsg = function (action) {
       var domain = matches && matches[1];
       msg.adType = "linkedin";
       msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc+ ",," + adLogo.value+ ",," + adName.value+ ",," + picUrl.value;
-      msg.urlMatch = msg.urlCreate = ((domain.indexOf('dev.market')>0)?"http://":"https://")+domain+"/en/tools/linkedin";//"https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
+      msg.urlMatch = msg.urlCreate = ((domain.indexOf('dev.market')>=0)?"http://":"https://")+domain+"/en/tools/linkedin";//"https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
     }
   }
   
