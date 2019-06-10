@@ -1965,11 +1965,10 @@
 
 <div id="a11y-notification" class="visually-hidden" role="region" aria-live="polite"></div>
 <script>
-	 var adInfo = getMyCookie("ad_info");
-  
+	var adInfo = getMyCookie("ad_info");
+  	var url = location.href;
 	var ad = {};
-	if(url.indexOf('?') > 0){
-		var url = location.href;
+	if(url.indexOf('?') > 0){	
 		var pairs = url.substring(url.indexOf('?') + 1).split('&');
 		for (var i = 0; i < pairs.length; i++) {
 		  if(!pairs[i])
@@ -1991,7 +1990,7 @@
 		ad.picURL = adInfoSplit[9];
 	}
   
-  if (!ad.linkText) {
+  if (ad.linkText) {
     ad.linkText = ad.link.replace(/^(http(s)?:\/\/)?(www\.)?/, "").split("?")[0];
   }
 
