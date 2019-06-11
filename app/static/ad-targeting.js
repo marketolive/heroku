@@ -237,6 +237,8 @@ getAndSetAdInfo = function (adType) {
       setIfBlank(adLink, adInfoSplit[2]);
       setIfBlank(adLinkText, adInfoSplit[3]);
       setIfBlank(adText, adInfoSplit[4]);
+      setIfBlank(adName, adInfoSplit[8]);
+      setIfBlank(picUrl, adInfoSplit[9]);
       
       if (!logo.src
          && adInfoSplit[5]) {
