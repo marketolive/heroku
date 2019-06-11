@@ -100,7 +100,7 @@ def login():
 # These are used to validate incoming URLs
 languages = ['en', 'jp']
 categories = ['solutions', 'verticals', 'analytics', 'update', 'events', 'tools', 'learn']
-pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 
+pages = ['base', 'b2b', 'email-marketing', 'lead-management', 'consumer-marketing', 'test',
 		 'customer-base-marketing', 'mobile-marketing', 'higher-education',
 		 'financial-services', 'healthcare', 'email-insights', 'higher-education2', 'magento', 'conference'
 		 'email-insights-summit-demo-1', 'email-insights-summit-demo-2', 'msi', 'privacy-policy', 'extension', 'extension-update', 'clear-cache', 'summit-17', 'summit-18', 'summit-19', 'summit-19-links', 'ad-targeting', 'videos', 'auto-close', 'linkedin']
