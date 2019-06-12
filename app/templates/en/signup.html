@@ -71,6 +71,11 @@
 {% endblock %}
 
 {% block scripts %}
-<script>MktoForms2.loadForm("//app-sj08.marketo.com", "226-FBL-320", 1256);</script>
+<script>MktoForms2.loadForm("//app-sj08.marketo.com", "226-FBL-320", 1256, function(form){
+    form.onSubmit(function(){
+      var vals = form.vals();
+      
+    });
+});</script>
 <script type="text/javascript" src="{{ url_for('static', filename='signup.js') }}"></script>
 {% endblock %}
