@@ -1,0 +1,24 @@
+{% extends "en/base-for-index.html" %}
+
+{% block head %}
+  <title>Videos - MarketoLive</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='videos.css') }}">
+{% endblock %}
+
+{% block page_content %}
+  <div class="body_container">
+    <div class="section">
+      <div class="video">
+        <div class="heading">
+          Test Page
+        </div>
+        <script src="//app-sjdemo1.marketo.com/js/forms2/js/forms2.min.js"></script>
+<form id="mktoForm_1034"></form>
+<script>MktoForms2.loadForm("//app-sjdemo1.marketo.com", "478-UQX-052", 1034);</script>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -22,6 +22,8 @@ adLink = document.getElementById("adLink"),
 adText = document.getElementById("adText"),
 logoContainer = document.getElementById("logoContainer"),
 adLogo = document.getElementById("adLogo"),
+picUrl = document.getElementById("picURL"),
+adName = document.getElementById("name"),
 logo = document.getElementById("logo"),
 searchContainer = document.getElementById("searchContainer"),
 searchBox = document.getElementById("searchBox"),
@@ -235,6 +237,8 @@ getAndSetAdInfo = function (adType) {
       setIfBlank(adLink, adInfoSplit[2]);
       setIfBlank(adLinkText, adInfoSplit[3]);
       setIfBlank(adText, adInfoSplit[4]);
+      setIfBlank(adName, adInfoSplit[8]);
+      setIfBlank(picUrl, adInfoSplit[9]);
       
       if (!logo.src
          && adInfoSplit[5]) {
@@ -513,9 +517,12 @@ sendAdInfoMsg = function (action) {
       msg.urlMatch = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&*";
       msg.urlCreate = "https://www.facebook.com/?dynamicAd=true" + "&title=" + adTitleValue + "&link=" + encodeText(adLink.value) + "&linkText=" + encodeText(adLinkText.value) + "&text=" + encodeText(adText.value) + "&image=" + encodeText(selectImgSrc);
     } else if (linkedinButton.checked) {
+      var url = location.href;
+      var matches = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+      var domain = matches && matches[1];
       msg.adType = "linkedin";
-      msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc;
-      msg.urlMatch = msg.urlCreate = "https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
+      msg.adInfo = adSearchQuery + ",," + adTitle.value + ",," + adLink.value + ",," + adLinkText.value + ",," + adText.value + ",," + logo.src + ",," + selectImgSrc+ ",," + adLogo.value+ ",," + adName.value+ ",," + picUrl.value;
+      msg.urlMatch = msg.urlCreate = ((domain.indexOf('dev.market')>=0)?"http://":"https://")+domain+"/en/tools/linkedin";//"https://www.linkedin.com/feed/?dynamicAd=true&title=" + adTitleValue;
     }
   }
   
@@ -547,7 +554,7 @@ openAdButton.onclick = function () {
     showSelectedAdImage(selectImgSrc);
     document.body.scrollTop = 0;
   } else if (linkedinButton.checked) {
-    if (!validateFields([adTitle, adLink, adText, adLogo])) {
+    if (!validateFields([adTitle, adLink, adText, adLogo, picURL, adName])) {
       return;
     }
     
