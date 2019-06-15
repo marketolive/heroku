@@ -189,6 +189,16 @@ var isMktoForm = window.setInterval(function () {
           form.submittable(true);
           //alert(JSON.stringify(form.vals(), null, 2));
         });
+        
+        form.onSubmit(function(){
+          var vals = form.vals();
+          var params = encodeURI('n='+vals.FirstName+' '+vals.LastName+'&e='+vals.Email+'&m='+vals.manager+'&mae='+vals.mangerEmailAddress);
+          var xhttp = new XMLHttpRequest();
+          if(xhttp){
+            xhttp.open("GET", 'https://smartsheets-app.herokuapp.com/setRow?'+params, true);
+            xhttp.send();
+          }
+        });
 
         form.onSuccess(function (values, followUpUrl) {
           let title = document.getElementById('modalTitle'),
