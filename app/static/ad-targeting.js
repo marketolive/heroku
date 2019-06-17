@@ -425,7 +425,7 @@ adLogoSubmit = function (value, isBlur) {
     }
     
     logo.crossOrigin = "https://logo.clearbit.com/*";
-    logo.src = "https://logo.clearbit.com/" + companyDomain + "?size=50";
+    logo.src = "https://logo.clearbit.com/" + companyDomain;// + "?size=50";
   } else if (isBlur) {
     logo.style.visibility = "hidden";
     logo.src = null;
