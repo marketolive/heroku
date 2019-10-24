@@ -2,7 +2,7 @@ var devExtensionId = "dokkjhbgengdlccldgjnbilajdbjlnhm",
 prodExtensionId = "onibnnoghllldiecboelbpcaeggfiohl",
 extensionId = devExtensionId,
 
-key = "AIzaSyC9pdVq6GfquP_MtHCS_izS6Vijdv1ZfNc",
+key = "AIzaSyAvAXVyU31d09qQczySNunmizsJtSgq89w",
 cx = "014680826408884315290:pmyltjjihus",
 startIndex = 1,
 
