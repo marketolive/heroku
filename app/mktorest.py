@@ -95,10 +95,8 @@ class MarketoWrapper:
         self.__http.add_credentials(client_id, client_secret)
         # This value will be overwritten by _getAccessToken, so it is just
         # used for initialization
-        print('***********************constructor 1***********************')
         self.__expire_time = 0
         self.__token = self.__generateAccessToken(self.__munchkin)
-        print('***********************constructor 2***********************')
 
 ############################################################################################
 #                                                                                          #
@@ -122,9 +120,11 @@ class MarketoWrapper:
             string: The access token given by the server.
         """
         # Request the token
+        print('***********************constructor 1***********************')
         response, content = self.__http.request("https://"+self.__munchkin+
                                                ".mktorest.com/identity/"+
                                                "oauth/token?grant_type=client_credentials")
+        print('***********************constructor 2***********************'+response.status)
         # If the request was successful, return the token.
         if (response.status == 200):
             content = json.loads(content.decode("utf-8"))
