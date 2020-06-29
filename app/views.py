@@ -9,15 +9,15 @@ from math import floor
 
 # Init rest client on import
 # setvars.py should be maintained locally containing restcreds dictionary
-#//hunter testing
-#try:
-#	from app import setvars
-#	restClient = mktorest.MarketoWrapper(setvars.restcreds['munchkin_id'], setvars.restcreds['client_id'], setvars.restcreds['client_secret'])
-#	rest_client_mktosolutions = mktorest.MarketoWrapper(setvars.rest_api_mktosolutions['munchkin_id'], setvars.rest_api_mktosolutions['client_id'], setvars.rest_api_mktosolutions['client_secret'])
-#	apiKey = setvars.apiKey
-#except ImportError:
-#	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
-#	apiKey = os.environ['apiKey']
+
+try:
+	from app import setvars
+	restClient = mktorest.MarketoWrapper(setvars.restcreds['munchkin_id'], setvars.restcreds['client_id'], setvars.restcreds['client_secret'])
+	rest_client_mktosolutions = mktorest.MarketoWrapper(setvars.rest_api_mktosolutions['munchkin_id'], setvars.rest_api_mktosolutions['client_id'], setvars.rest_api_mktosolutions['client_secret'])
+	apiKey = setvars.apiKey
+except ImportError:
+	restClient = mktorest.MarketoWrapper(os.environ['munchkin_id'], os.environ['client_id'], os.environ['client_secret'])
+	apiKey = os.environ['apiKey']
 
 
 ########################################################
