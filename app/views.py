@@ -9,7 +9,7 @@ from math import floor
 
 # Init rest client on import
 # setvars.py should be maintained locally containing restcreds dictionary
-
+print('***********************starting***********************')
 try:
 	from app import setvars
 	restClient = mktorest.MarketoWrapper(setvars.restcreds['munchkin_id'], setvars.restcreds['client_id'], setvars.restcreds['client_secret'])
