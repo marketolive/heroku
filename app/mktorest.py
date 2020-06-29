@@ -89,10 +89,16 @@ class MarketoWrapper:
         self.__munchkin = munchkin_id
         # The httplib2.Http constructor takes an optional directory argument
         # where caching will be done. The directory does not need to exist beforehand.
-        self.__http = httplib2.Http()
+        try:
+            self.__http = httplib2.Http()
+        except ssl.SSLError as e:
+            print('HERE IS MY ERROR!!!!!!!!!!!!!$$$$$$$$$$$$$')
         # This will store credentials in __http so they do not need to be passed
         # each time a token is requested.
-        self.__http.add_credentials(client_id, client_secret)
+        try:
+            self.__http.add_credentials(client_id, client_secret)
+        except ssl.SSLError as e:
+            print('ERROR IN add_credentials!!!!!!!!!!!!!$$$$$$$$$$$$$')
         # This value will be overwritten by _getAccessToken, so it is just
         # used for initialization
         self.__expire_time = 0
