@@ -1,7 +1,7 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-FORCE_SSL = True
+FORCE_SSL = False
 
 SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL','postgresql://localhost/mktolive')
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
