@@ -2,20 +2,19 @@
 <!DOCTYPE html>
 <html lang="en">
 {% block head %}
-
 <head>
 
-    <link href="{{ url_for('static', filename='business-frontpage.css')}}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css')}}">
-    <title>Technology</title>
-    {% endblock %}
+<link href="{{ url_for('static', filename='business-frontpage.css')}}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css')}}">
+<title>Technology</title>
+{% endblock %}
 
 </head>
 
 <body>
     {% block page_content %}
     <div id="fullpage">
-
+        
         <header class="business-header section container">
             <div class="container">
                 <div class="row clearfix">
@@ -23,381 +22,365 @@
                         <h1 class="tagline text-center">Technology</h1>
                     </div>
                 </div>
-
+                
                 <div class="row clearfix mt-10">
                     <div class="col-lg-3 col-md-3 col-xs-3 pull-bottom">
-                        <h2 class="subject-tagline">DRIVE MORE AWARENESS</h2>
-                    </div>
+                        <h2 class="subject-tagline">DRIVE MORE AWARENESS</h2>                        
+                    </div>  
                     <div class="col-lg-3 col-md-3 col-xs-3">
-                        <h2 class="subject-tagline">ENGAGE YOUR CUSTOMERS</h2>
-                    </div>
+                        <h2 class="subject-tagline">ENGAGE YOUR CUSTOMER</h2>                            
+                    </div> 
                     <div class="col-lg-3 col-md-3 col-xs-3">
-                        <h2 class="subject-tagline">ALIGN WITH SALES</h2>
-                    </div>
+                        <h2 class="subject-tagline">ALIGN WITH SALES</h2>                        
+                    </div> 
                     <div class="col-lg-3 col-md-3 col-xs-3">
-                        <h2 class="subject-tagline">MEASURE YOUR SUCCESS</h2>
+                        <h2 class="subject-tagline">MEASURE YOUR SUCCESS</h2>                              
                     </div>
-                </div>
+                </div> 
                 <div class="row clearfix">
                     <div class="col-lg-3 col-md-3 col-xs-3">
                         <div class="row">
-                            <div data-menuanchor="driveMoreAwareness" class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+                            <div data-menuanchor="driveMoreAwareness" class= "col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
                                 <div class="subject-tagline-image">
-                                    <a href="#DriveMoreAwareness">
-                                        <img class="img-size img-responsive" src="{{ url_for('static', filename='drive.png') }}"
-                                        />
-                                    </a>
+                                    <a href="#DriveMoreAwareness"><img class="img-size img-responsive" src= "{{ url_for('static', filename='drive.png') }}" /></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-xs-3">
                         <div class="row">
-                            <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+                            <div class= "col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
                                 <div class=" subject-tagline-image">
-                                    <a href="#EngageYourCustomer">
-                                        <img class="img-size img-responsive" src="{{ url_for('static', filename='engage.png') }}"
-                                        />
-                                    </a>
-                                </div>
+                                    <a href="#EngageYourCustomer"><img class="img-size img-responsive" src= "{{ url_for('static', filename='engage.png') }}" /></a>
+                                </div>   
                             </div>
-                        </div>
+                        </div>     
                     </div>
                     <div class="col-lg-3 col-md-3 col-xs-3">
                         <div class="row">
-                            <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+                            <div class= "col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
                                 <div class="subject-tagline-image">
-                                    <a href="#AlignWithSales">
-                                        <img class="img-size img-responsive" src="{{ url_for('static', filename='sales.png') }}"
-                                        />
-                                    </a>
-                                </div>
+                                    <a href="#AlignWithSales"><img class="img-size img-responsive" src= "{{ url_for('static', filename='sales.png') }}" /></a>
+                                </div>   
                             </div>
-                        </div>
+                        </div>        
                     </div>
                     <div class="col-lg-3 col-md-3 col-xs-3">
-                        <div class="row">
-                            <div class="col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
+                        <div class="row"> 
+                            <div class= "col-md-10 col-xs-10 col-md-offset-1 col-xs-offset-1">
                                 <div class="subject-tagline-image">
-                                    <a href="#MeasureYourSuccess">
-                                        <img class="img-size img-responsive" src="{{ url_for('static', filename='report.png') }}"
-                                        />
-                                    </a>
+                                    <a href="#MeasureYourSuccess"><img class="img-size img-responsive" src= "{{ url_for('static', filename='report.png') }}" /></a>
                                 </div>
                             </div>
-                        </div>
+                        </div>       
                     </div>
-                </div>
+                </div>  
             </div>
 
             <div class="arrow-container-down mt-5">
-                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}" />
+                <img class="inner-arrow-container" src= "{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
             </div>
         </header>
 
         <!-- Page Content -->
         <!-- <div class="container"> -->
+            
+            <div class="section container">
 
-        <div class="section container">
-
-            <hr>
-            <div class="arrow-container-up">
-                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}" />
-            </div>
-
-            <h2 class="text-center">Drive More Awareness</h2>
-
-            <!-- Begining of Section 2 -->
-            <div class="row indent">
-                <div class="col-md-6 col-lg-6 col-xs-12">
-
-                    <hr>
-
-                    <div class="section2-image-container fixed-height">
-                        <!-- <img class="section2-image-container" src="{{ url_for('static', filename= 'tofu.png') }}" /> -->
-                    </div>
+                <hr>
+                <div class="arrow-container-up">
+                    <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
                 </div>
 
-                <div class="col-md-6 col-lg-6 col-xs-12 fixed-height">
+                <h2 class="text-center">Drive More Awareness</h2>
+
+                <!-- Begining of Section 2 -->
+                <div class="row indent">
+                    <div class="col-md-6 col-lg-6 col-xs-12">
 
                     <hr>
+                                        
+                        <div class="section2-image-container fixed-height">
+                            <!-- <img class="section2-image-container" src="{{ url_for('static', filename= 'tofu.png') }}" /> -->
+                        </div>
+                    </div>
 
-                    <h3 class="text-center" id="section2-header">Search Optimization</h3>
+                    <div class="col-md-6 col-lg-6 col-xs-12 fixed-height">             
+                       
+                        <hr>
 
-                    <p class="section2-copy">Marketo's Search Engine Optimization (SEO) is an easy-to-use resource that helps marketers without specialized
-                        knowledge drive more quality traffic to their website and landing pages.</p>
+                        <h3 class="text-center" id="section2-header">Search Optimization</h3>
 
-                    <div class="col-lg-12 col-md-12 col-xs-12 mt-12 no-pad mt-25">
-                        <div class="col-lg-4 col-md-4 col-xs-4">
-                            <div data-order="section2-0" class="section2-options purple-background">
-                                <a href="#" class="deeplink" target="_blank" deeplink="search-optimization">
+                        <p class="section2-copy">Marketo's Search Engine Optimization (SEO) is an easy-to-use resource that helps marketers without specialized knowledge drive more quality traffic to their website and landing pages.</p>
+
+                        <div class="col-lg-12 col-md-12 col-xs-12 mt-12 no-pad mt-25">        
+                            <div class="col-lg-4 col-md-4 col-xs-4">
+                                <div data-order="section2-0" class="section2-options purple-background">
+                                  <a href="#" class="deeplink" target="_blank" deeplink="search-optimization">
                                     <p class="text-center">Search Optimization</p>
-                                </a>
+                                   </a>  
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-4 col-xs-4">
-                            <div data-order="section2-1" class="section2-options">
-                                <a href="#" class="deeplink" target="_blank" deeplink="website-retargeting">
+                            <div class="col-lg-4 col-md-4 col-xs-4">
+                                <div data-order="section2-1" class="section2-options">
+                                  <a href="#" class="deeplink" target="_blank" deeplink="website-retargeting">
                                     <p class="text-center">Personalization</p>
-                                </a>
+                                  </a>  
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-4 col-xs-4">
-                            <div data-order="section2-2" class="section2-options">
-                                <a href="#" class="deeplink" target="_blank" deeplink="tech-social-marketing">
+                            <div class="col-lg-4 col-md-4 col-xs-4">
+                                <div data-order="section2-2" class="section2-options">
+                                  <a href="#" class="deeplink" target="_blank" deeplink="tech-social-marketing">
                                     <p class="text-center">Social Promotions</p>
-                                </a>
+                                  </a>   
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
-
                 </div>
+
+                    <div class="arrow-container-down">
+                        <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
+                    </div>
             </div>
+                
+            <!-- End of Section 2 -->
+            
 
-            <div class="arrow-container-down">
-                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}" />
-            </div>
-        </div>
+            <!-- Begining of Section 3 -->
+            <div class="section container">
+                <hr>
 
-        <!-- End of Section 2 -->
+                <div class="arrow-container-up">
+                    <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
+                </div>
 
+                <h2 class="text-center">Engage your Customers</h2>
 
-        <!-- Begining of Section 3 -->
-        <div class="section container">
-            <hr>
+                <div class="row indent">
 
-            <div class="arrow-container-up">
-                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}" />
-            </div>
+                    <div class="col-md-6 col-xs-12">
 
-            <h2 class="text-center">Engage your Customers</h2>
+                        <hr>
 
-            <div class="row indent">
+                        <h3 class="text-center" id="section3-header">Automate</h4>
 
-                <div class="col-md-6 col-xs-12">
-
-                    <hr>
-
-                    <h3 class="text-center" id="section3-header">Automate</h4>
-
-                        <p class="section3-copy">It's hard to coordinate all of your marketing programs in flight across teams and regions. The Marketo
-                            Marketing Calendar makes it easy for marketing teams to efficiently plan, coordinate, and share
-                            the many great things happening in marketing.</p>
-
+                        <p class="section3-copy">It's hard to coordinate all of your marketing programs in flight across teams and regions.  The Marketo Marketing Calendar makes it easy for marketing teams to efficiently plan, coordinate, and share the many great things happening in marketing.</p>
+                   
 
                         <div class="col-md-12 col-xs-12 mb-5">
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section3-0" class="section3-options purple-background">
-                                    <a href="#" class="deeplink" target="_blank" deeplink="tech-automation">
-                                        <p class="text-center font-size-16">Automate</p>
-                                    </a>
+                                  <a href="#" class="deeplink" target="_blank" deeplink="tech-automation">
+                                    <p class="text-center font-size-16">Automate</p>
+                                  </a>  
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section3-1" class="section3-options">
-                                    <a href="#" class="deeplink" target="_blank" deeplink="tech-batch">
-                                        <p class="text-center font-size-16">Batch</p>
-                                    </a>
+                                  <a href="#" class="deeplink" target="_blank" deeplink="tech-batch">
+                                    <p class="text-center font-size-16">Batch</p>
+                                  </a>  
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section3-2" class="section3-options">
-                                    <a href="#" class="deeplink" target="_blank" deeplink="tech-drip">
-                                        <p class="text-center font-size-16">Drip</p>
-                                    </a>
+                                  <a href="#" class="deeplink" target="_blank" deeplink="tech-drip">
+                                    <p class="text-center font-size-16">Drip</p>
+                                  </a>  
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-4 second-row">
                                 <div data-order="section3-3" class="section3-options">
-                                    <a href="#" class="deeplink" target="_blank" deeplink="tech-nurturing">
-                                        <p class="text-center font-size-16">Nurture</p>
-                                    </a>
+                                  <a href="#" class="deeplink" target="_blank" deeplink="tech-nurturing">
+                                    <p class="text-center font-size-16">Nurture</p>
+                                  </a>  
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4 second-row">
                                 <div data-order="section3-4" class="section3-options">
-                                    <a href="#" class="deeplink" target="_blank" deeplink="tech-events">
-                                        <p class="text-center font-size-16">Events</p>
-                                    </a>
+                                  <a href="#" class="deeplink" target="_blank" deeplink="tech-events">
+                                    <p class="text-center font-size-16">Events</p>
+                                  </a>  
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4 second-row">
                                 <div data-order="section3-5" class="section3-options">
-                                    <a href="#" class="deeplink" target="_blank" deeplink="marketing-calendar">
-                                        <p class="text-center font-size-16">Calendar</p>
-                                    </a>
+                                  <a href="#" class="deeplink" target="_blank" deeplink="marketing-calendar">
+                                    <p class="text-center font-size-16">Calendar</p>
+                                  </a>  
                                 </div>
                             </div>
                         </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-
-                    <hr>
-                    <div class="section3-image-container">
-                        <!-- <img class="section3-image-container img-responsive" src="{{ url_for('static', filename= 'section2.png') }}" /> -->
                     </div>
-                </div>
 
-            </div>
+                    <div class="col-md-6 col-xs-12">  
 
-            <div class="arrow-container-down pad-bottom">
-                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}" />
-            </div>
-        </div>
-
-        <!-- End of Section 3 -->
-
-        <!-- Begining of Section 4 -->
-
-        <div class="section container">
-            <hr>
-
-            <div class="arrow-container-up">
-                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}" />
-            </div>
-
-            <h2 class="text-center">Align with Sales</h2>
-
-            <div class="row indent">
-                <div class="col-md-6">
-
-                    <hr>
-
-                    <div class="section4-image-container">
-                        <!-- <img class="section4-image-container" src="{{ url_for('static', filename= 'align1.png') }}" /> -->
+                        <hr>                               
+                        <div class="section3-image-container">
+                            <!-- <img class="section3-image-container img-responsive" src="{{ url_for('static', filename= 'section2.png') }}" /> -->
+                        </div>
                     </div>
+
                 </div>
 
-                <div class="col-md-6">
+                <div class="arrow-container-down pad-bottom">
+                    <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
+                </div>
+            </div>
 
-                    <hr>
+            <!-- End of Section 3 -->
 
-                    <h3 id="section4-header" class="text-center">Lead Scoring</h3>
+            <!-- Begining of Section 4 -->
 
-                    <p class="section4-copy">Lead scoring is a shared sales and marketing methodology for ranking leads in order to determine their
-                        sales-readiness. You score leads based on the interest they show in your business, known as behavioral,
-                        their current stage in the buying cycle, and their fit in regards to your business, known as demographic.</p>
+            <div class="section container">
+                <hr>
 
-                    <div class="col-md-12 col-xs-12 mt-5 no-pad">
-                        <div class="col-md-4 col-xs-4">
-                            <div data-order="section4-0" class="section4-options purple-background">
-                                <a href="#" class="deeplink" target="_blank" deeplink="lead-scoring">
+                <div class="arrow-container-up">
+                    <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
+                </div>
+
+                <h2 class="text-center">Align with Sales</h2>
+
+                <div class="row indent">
+                    <div class="col-md-6">
+
+                        <hr>
+                                        
+                        <div class="section4-image-container">
+                            <!-- <img class="section4-image-container" src="{{ url_for('static', filename= 'align1.png') }}" /> -->
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">             
+                       
+                        <hr>
+
+                        <h3 id="section4-header" class="text-center">Lead Scoring</h3>
+
+                        <p class="section4-copy">Lead scoring is a shared sales and marketing methodology for ranking leads in order to determine their sales-readiness.  You score leads based on the interest they show in your business, known as behavioral, their current stage in the buying cycle, and their fit in regards to your business, known as demographic.</p>
+
+                        <div class="col-md-12 col-xs-12 mt-5 no-pad">        
+                            <div class="col-md-4 col-xs-4">
+                                <div data-order="section4-0" class="section4-options purple-background">
+                                  <a href="#" class="deeplink" target="_blank" deeplink="lead-scoring">
                                     <p class="text-center">Lead Scoring</p>
-                                </a>
+                                  </a>  
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-4 col-xs-4">
-                            <div data-order="section4-1" class="section4-options">
-                                <!-- <a href="#" class="deeplink" target="_blank" deeplink="lead-scoring"> -->
-                                <p class="text-center">Sales Notification</p>
-                                <!-- </a>   -->
+                            <div class="col-md-4 col-xs-4">
+                                <div data-order="section4-1" class="section4-options">
+                                  <!-- <a href="#" class="deeplink" target="_blank" deeplink="lead-scoring"> -->
+                                    <p class="text-center">Sales Notification</p>
+                                  <!-- </a>   -->
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-4 col-xs-4">
-                            <div data-order="section4-2" class="section4-options">
-                                <a href="#" class="deeplink" target="_blank" deeplink="sales-insight">
+                            <div class="col-md-4 col-xs-4">
+                                <div data-order="section4-2" class="section4-options">
+                                  <a href="#" class="deeplink" target="_blank" deeplink="sales-insight">
                                     <p class="text-center">Sales Insight</p>
-                                </a>
+                                  </a>  
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
-
                 </div>
+
+                    <div class="arrow-container-down">
+                        <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}"/>
+                    </div>
             </div>
 
-            <div class="arrow-container-down">
-                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'downarrow-purp.png') }}" />
-            </div>
-        </div>
+            <!-- End of Section 4 -->
 
-        <!-- End of Section 4 -->
+            <!-- Start of Section 5 -->
+            <div class="section container">
+                <hr>
 
-        <!-- Start of Section 5 -->
-        <div class="section container">
-            <hr>
+                <div class="arrow-container-up">
+                    <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}"/>
+                </div>
 
-            <div class="arrow-container-up">
-                <img class="inner-arrow-container" src="{{ url_for('static', filename= 'uparrow-purp.png') }}" />
-            </div>
+                <h2 class="text-center">Measure Your Success</h2>
 
-            <h2 class="text-center">Measure Your Success</h2>
+                <div class="row section3 indent">
 
-            <div class="row section3 indent">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
 
-                <div class="col-lg-6 col-md-6 col-xs-12">
+                        <hr>
 
-                    <hr>
+                        <h3 id="section5-header" class="text-center">Executive Dashboard</h4>
 
-                    <h3 id="section5-header" class="text-center">Executive Dashboard</h4>
-
-                        <p class="section5-copy">Most CRMs and marketing automation software only captures attribution metrics with a single touch
-                            (e.g a lead source). Don't limit yourself to a single-touch attribution model with Marketo.</p>
-
+                        <p class="section5-copy">Most CRMs and marketing automation software only captures attribution metrics with a single touch (e.g a lead source).  Don't limit yourself to a single-touch attribution model with Marketo.</p>
+                   
 
                         <div class="col-md-12 col-xs-12 mb-5 no-pad">
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section5-0" class="section5-options purple-background">
-                                    <a href="#" class="deeplink" target="_blank" deeplink="program-analysis">
-                                        <p class="text-center font-size-16">Executive Dashboard</p>
-                                    </a>
+                                  <a href="#" class="deeplink" target="_blank" deeplink="program-analysis">
+                                    <p class="text-center font-size-16">Executive Dashboard</p>
+                                  </a>  
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section5-1" class="section5-options">
-                                    <a href="#" class="deeplink" target="_blank" deeplink="intelligent-nurturing">
-                                        <p class="text-center font-size-16">Content Analysis</p>
-
-                                    </a>
+                                  <a href="#" class="deeplink" target="_blank" deeplink="intelligent-nurturing">
+                                    <p class="text-center font-size-16">Content Analysis</p>
+                                    
+                                  </a>  
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-xs-4">
                                 <div data-order="section5-2" class="section5-options">
-                                    <a href="#" class="deeplink" target="_blank" deeplink="flexible-reporting">
-                                        <p class="text-center font-size-16">Flexible Reporting</p>
+                                  <a href="#" class="deeplink" target="_blank" deeplink="flexible-reporting">
+                                    <p class="text-center font-size-16">Flexible Reporting</p>
 
-                                    </a>
+                                  </a>  
                                 </div>
                             </div>
                         </div>
 
-
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-xs-12">
-
-                    <hr>
-                    <div class="section5-image-container">
-                        <!-- <img  "img-responsive" src="{{ url_for('static', filename= 'measure1.png') }}" /> -->
+                        
                     </div>
+
+                    <div class="col-lg-6 col-md-6 col-xs-12">  
+
+                        <hr>                               
+                        <div class="section5-image-container">
+                            <!-- <img  "img-responsive" src="{{ url_for('static', filename= 'measure1.png') }}" /> -->
+                        </div>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
+
+                
 
 
-
-
-
+            
 
         <!-- </div> -->
         <!-- /.container -->
     </div>
-    {% endblock %} {% block scripts %}
+    {% endblock %}
+    {% block scripts %}
     <!-- fullPage javascript -->
     <script src="{{ url_for('static', filename='jquery.fullPage.js')}}"></script>
 
-    <script src="{{ url_for('static', filename='b2b.js')}}"></script> {% endblock %}
+    <script src="{{ url_for('static', filename='b2b.js')}}"></script>
+    {% endblock %}
 </body>
 
 </html>

@@ -120,11 +120,9 @@ class MarketoWrapper:
             string: The access token given by the server.
         """
         # Request the token
-
         response, content = self.__http.request("https://"+self.__munchkin+
                                                ".mktorest.com/identity/"+
                                                "oauth/token?grant_type=client_credentials")
-
         # If the request was successful, return the token.
         if (response.status == 200):
             content = json.loads(content.decode("utf-8"))
