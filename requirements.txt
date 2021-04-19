@@ -23,6 +23,6 @@ sqlparse==0.1.18
 Tempita==0.5.2
 Werkzeug==0.14
 WTForms==2.1
-requests==2.11.1
+requests==2.20.0
 fake-useragent==0.1.2
 Flask-SSLify==0.1.5
